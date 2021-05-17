@@ -270,7 +270,9 @@ function devolverdatos($losbytes, $opcion)
                                                         <button type="button" id="bcopiar" class="btn btn-primary mr-1" title="Copiar"><img src="img/botones/copiar.png" alt="+"> Copiar</button>
                                                         <?php
                                                         if ($_SESSION['COPIARFILES'] != "0") {
-                                                            echo '<button type="button" id="bpegar" class="btn btn-primary mr-1" title="Pegar"><img src="img/botones/pegar.png" alt="+"> Pegar</button>';
+                                                            ?>
+                                                            <button type="button" id="bpegar" class="btn btn-primary mr-1" title="Pegar"><img src="img/botones/pegar.png" alt="+"> Pegar</button>
+                                                            <?php
                                                         }
                                                         ?>
                                                     <?php
@@ -632,5 +634,4 @@ function devolverdatos($losbytes, $opcion)
     ?>
 
 </body>
-
 </html>
