@@ -242,7 +242,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                 $rutaexcluidos = trim(dirname(getcwd()) . "/config" . "/excludeback.json" . PHP_EOL);
                 $t = date("Y-m-d-G:i:s");
                 $rutacrearbackup = $dirtemp . "/" . $archivo . "-" . $t;
-                $rutaacomprimir = "'".$dirminecraft . "/' .";
+                $rutaacomprimir = "'" . $dirminecraft . "/' .";
 
                 clearstatcache();
                 if (file_exists($rutaexcluidos)) {
@@ -254,8 +254,12 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                         $contador = count($buscaexcluidos);
 
                         for ($ni = 0; $ni < $contador; $ni++) {
-                            $elcomando .= "--exclude='" . $buscaexcluidos[$ni]['excluido'] . "' ";
+                            clearstatcache();
+                            if (file_exists($buscaexcluidos[$ni]['completa'])) {
+                                $elcomando .= "--exclude='" . $buscaexcluidos[$ni]['excluido'] . "' ";
+                            }
                         }
+
                         $elcomando .= "-czvf '" . $rutacrearbackup . ".tar.gz' -C " . $rutaacomprimir;
                     } else {
                         $elcomando = "tar --warning=no-file-changed -czvf '" . $rutacrearbackup . ".tar.gz' -C " . $rutaacomprimir;
