@@ -329,12 +329,32 @@ if ($elerror == 0) {
 
                                                                 //VERIFICAR SI EXISTE REALMENTE
                                                                 if ($elerror == 0) {
-                                                                    $rutajar = $rutacarpetamine . "/" . $reccarpmine . "/" . $recarchivojar;
+                                                                    $rutajar = $rutacarpetamine . "/" . $recarchivojar;
 
                                                                     clearstatcache();
-                                                                    if (!file_exists($rutacarpetamine)) {
+                                                                    if (!file_exists($rutajar)) {
                                                                         $elerror = 1;
                                                                         $retorno = "Error Tarea Iniciar Servidor, el .jar seleccionado no existe.";
+                                                                    }
+                                                                }
+
+                                                                //COMPROBAR SI ES REALMENTE ARCHIVO JAVA
+                                                                if ($elerror == 0) {
+                                                                    $tipovalido = 0;
+                                                                    $eltipoapplication = mime_content_type($rutajar);
+
+                                                                    switch ($eltipoapplication) {
+                                                                        case "application/java-archive":
+                                                                            $tipovalido = 1;
+                                                                            break;
+                                                                        case "application/zip":
+                                                                            $tipovalido = 1;
+                                                                            break;
+                                                                    }
+
+                                                                    if ($tipovalido == 0) {
+                                                                        $retorno = "Error Tarea Iniciar Servidor, el archivo no es válido.";
+                                                                        $elerror = 1;
                                                                     }
                                                                 }
 
