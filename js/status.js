@@ -37,6 +37,8 @@ $(function () {
                     document.getElementById("textoretorno").innerHTML = "<div class='alert alert-danger' role='alert'>Error: No has seleccionado un servidor .jar.</div>";
                 } else if (data == "noexistejar") {
                     document.getElementById("textoretorno").innerHTML = "<div class='alert alert-danger' role='alert'>Error: El servidor .jar seleccionado no existe.</div>";
+                } else if (data == "notipovalido") {
+                    document.getElementById("textoretorno").innerHTML = "<div class='alert alert-danger' role='alert'>Error: El archivo no es válido.</div>";
                 } else if (data == "noescritura") {
                     document.getElementById("textoretorno").innerHTML = "<div class='alert alert-danger' role='alert'>Error: Carpeta Servidor Minecraft no tiene permisos de escritura.</div>";
                 } else if (data == "puertoenuso") {
@@ -69,7 +71,7 @@ $(function () {
                     document.getElementById("textoretorno").innerHTML = "<div class='alert alert-danger' role='alert'>Error: No hay memoria suficiente para ejecutar el servidor minecraft.</div>";
                 } else if (data == "noscreenconf") {
                     document.getElementById("textoretorno").innerHTML = "<div class='alert alert-danger' role='alert'>Error: El archivo /config/screen.conf no existe.</div>";
-                }else if (data == "nolibforge") {
+                } else if (data == "nolibforge") {
                     document.getElementById("textoretorno").innerHTML = "<div class='alert alert-danger' role='alert'>Error: Faltan las librerias necesarias para iniciar el servidor de Forge.</div>";
                 }
             }
@@ -184,7 +186,7 @@ $(function () {
 
                     if (data.memoria !== "") {
                         document.getElementById("textoram").innerHTML = "Ram: " + String(data.memoria) + " / Total: " + String(data.ramconfig) + " GB";
-                    }         
+                    }
 
                     document.getElementById("eluptime").innerHTML = "Uptime: " + String(data.uptime);
 
@@ -219,7 +221,7 @@ $(function () {
             },
             type: 'POST',
             success: function (data) {
-                document.getElementById("jugadores").innerHTML = "Jugadores Online: " + String(data);  
+                document.getElementById("jugadores").innerHTML = "Jugadores Online: " + String(data);
             }
         });
     }

@@ -231,6 +231,26 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                 }
             }
 
+            //COMPROBAR SI ES REALMENTE ARCHIVO JAVA
+            if ($elerror == 0) {
+                $tipovalido = 0;
+                $eltipoapplication = mime_content_type($rutajar);
+
+                switch ($eltipoapplication) {
+                    case "application/java-archive":
+                        $tipovalido = 1;
+                        break;
+                    case "application/zip":
+                        $tipovalido = 1;
+                        break;
+                }
+
+                if ($tipovalido == 0) {
+                    $retorno = "notipovalido";
+                    $elerror = 1;
+                }
+            }
+
             //COMPROVAR PUERTO EN USO
             if ($elerror == 0) {
                 $comandopuerto = "netstat -tulpn 2>/dev/null | grep :" . $recpuerto;
