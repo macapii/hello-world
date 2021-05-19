@@ -646,8 +646,12 @@ if ($elerror == 0) {
                                                                                     $contadorex = count($buscaexcluidos);
 
                                                                                     for ($ni = 0; $ni < $contadorex; $ni++) {
-                                                                                        $elcomando .= "--exclude='" . $buscaexcluidos[$ni]['excluido'] . "' ";
+                                                                                        clearstatcache();
+                                                                                        if (file_exists($buscaexcluidos[$ni]['completa'])) {
+                                                                                            $elcomando .= "--exclude='" . $buscaexcluidos[$ni]['excluido'] . "' ";
+                                                                                        }
                                                                                     }
+                                                                                    
                                                                                     $elcomando .= "-czvf '" . $dirconfig . $t . ".tar.gz' -C " . $rutaarchivo . " .";
                                                                                 } else {
                                                                                     $elcomando = "tar --warning=no-file-changed -czvf '" . $dirconfig . $t . ".tar.gz' -C " . $rutaarchivo . " .";
