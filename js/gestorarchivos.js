@@ -739,6 +739,34 @@ $(function () {
         });
     }
 
+    if (document.getElementById('resetexcluidos') !== null) {
+        $("#resetexcluidos").click(function () {
+            var eleccion = confirm("Borrar listado excluidos!\n\n¡Vas a eliminar el listado de archivos excludios!\n\n¿Seguro que quieres continuar?");
+            if (eleccion == true) {
+                $.ajax({
+                    url: 'function/gestorborrarexcluidos.php',
+                    data: {
+                        action: 'status'
+                    },
+                    type: 'POST',
+                    success: function (data) {
+
+                        if (data == "ok") {
+                            location.reload();
+                        } else if (data == "nowriteconfig") {
+                            alert("Error: La carpeta config no tiene permisos de escritura");
+                        } else if (data == "nowriteexcluido") {
+                            alert("Error: El archivo excludeback.json no tiene permisos de escritura");
+                        }
+                    }
+                });
+            }
+
+        });
+    }
+
+
+
     //INICIAR VARIABLE SESSION
     sessionStorage.pulsorecuadro = 0;
 

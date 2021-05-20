@@ -32,7 +32,7 @@ function test_input($data)
 }
 
 //FUNCION DEVUELVE DATOS EN EL FORMATO B/KB/MB/GB/TB
-function devolverdatos($losbytes, $opcion)
+function devolverdatos($losbytes, $opcion, $decimal)
 {
     $eltipo = "";
 
@@ -62,13 +62,25 @@ function devolverdatos($losbytes, $opcion)
     }
 
     if ($opcion == 0) {
-        $result = str_replace(".", ",", strval(round($result, 2)));
+        $result = strval(round($result, $decimal));
         return $result;
     } elseif ($opcion == 1) {
-        $result = str_replace(".", ",", strval(round($result, 2))) . " " . $eltipo;
+        $result = strval(round($result, $decimal)) . " " . $eltipo;
         return $result;
     }
 }
+
+function getfoldersize($dir)
+{
+    $size = 0;
+
+    foreach (glob(rtrim($dir, '/') . '/*', GLOB_NOSORT) as $each) {
+        $size += is_file($each) ? filesize($each) : getfoldersize($each);
+    }
+
+    return $size;
+}
+
 ?>
 <!-- Custom styles for this template-->
 <link href="css/test.css" rel="stylesheet">
@@ -270,9 +282,9 @@ function devolverdatos($losbytes, $opcion)
                                                         <button type="button" id="bcopiar" class="btn btn-primary mr-1" title="Copiar"><img src="img/botones/copiar.png" alt="+"> Copiar</button>
                                                         <?php
                                                         if ($_SESSION['COPIARFILES'] != "0") {
-                                                            ?>
+                                                        ?>
                                                             <button type="button" id="bpegar" class="btn btn-primary mr-1" title="Pegar"><img src="img/botones/pegar.png" alt="+"> Pegar</button>
-                                                            <?php
+                                                        <?php
                                                         }
                                                         ?>
                                                     <?php
@@ -285,6 +297,14 @@ function devolverdatos($losbytes, $opcion)
                                                     if ($_SESSION['CONFIGUSER']['rango'] == 1 || $_SESSION['CONFIGUSER']['rango'] == 2 || array_key_exists('pgestorarchivosborrar', $_SESSION['CONFIGUSER']) && $_SESSION['CONFIGUSER']['pgestorarchivosborrar'] == 1) {
                                                     ?>
                                                         <button type="button" id="beliminarseleccion" class="btn btn-danger mr-1" title="Eliminar Seleccionados"><img src="img/botones/borrar.png" alt=""> Eliminar Seleccionados</button>
+                                                    <?php
+                                                    }
+                                                    ?>
+
+                                                    <?php
+                                                    if ($_SESSION['CONFIGUSER']['rango'] == 1 || $_SESSION['CONFIGUSER']['rango'] == 2 || array_key_exists('pgestorarchivosborrar', $_SESSION['CONFIGUSER']) && $_SESSION['CONFIGUSER']['pgestorarchivosborrar'] == 1) {
+                                                    ?>
+                                                        <button type="button" id="resetexcluidos" class="btn btn-warning" title="Borrar Lista Excluidos"><img src="img/botones/borrar.png" alt=""> Borrar Lista Excluidos</button>
                                                     <?php
                                                     }
                                                     ?>
@@ -305,7 +325,6 @@ function devolverdatos($losbytes, $opcion)
                                                                 <?php
 
                                                                 //CARGAR ARRAYS
-                                                                $files = array();
                                                                 $fcarpetas = array();
                                                                 $farchivos = array();
 
@@ -385,27 +404,39 @@ function devolverdatos($losbytes, $opcion)
 
                                                                         //VER TIPO Y AÑADIR ICONO
                                                                         if ($tipoarchivo == ".txt") {
-                                                                            echo '<img class="mr-2" src="img/gestorarchivos/txt.png" alt="txt">' . $fcarpetas[$i] . '</th>';
+                                                                ?>
+                                                                            <img class="mr-2" src="img/gestorarchivos/txt.png" alt="txt"><?php echo $fcarpetas[$i]; ?></th>
+                                                                        <?php
                                                                         } elseif ($tipoarchivo == ".jar") {
-                                                                            echo '<img class="mr-2" src="img/gestorarchivos/java.png" alt="java">' . $fcarpetas[$i] . '</th>';
+                                                                        ?><img class="mr-2" src="img/gestorarchivos/java.png" alt="java"><?php echo $fcarpetas[$i]; ?></th>
+                                                                        <?php
                                                                         } elseif ($tipoarchivo == ".yml") {
-                                                                            echo '<img class="mr-2" src="img/gestorarchivos/yml.png" alt="yml">' . $fcarpetas[$i] . '</th>';
+                                                                        ?><img class="mr-2" src="img/gestorarchivos/yml.png" alt="yml"><?php echo $fcarpetas[$i]; ?></th>
+                                                                        <?php
                                                                         } elseif ($tipoarchivo == ".json") {
-                                                                            echo '<img class="mr-2" src="img/gestorarchivos/json.png" alt="json">' . $fcarpetas[$i] . '</th>';
+                                                                        ?><img class="mr-2" src="img/gestorarchivos/json.png" alt="json"><?php echo $fcarpetas[$i]; ?></th>
+                                                                        <?php
                                                                         } elseif ($tipoarchivo == ".htaccess") {
-                                                                            echo '<img class="mr-2" src="img/gestorarchivos/htaccess.png" alt="htaccess">' . $fcarpetas[$i] . '</th>';
+                                                                        ?><img class="mr-2" src="img/gestorarchivos/htaccess.png" alt="htaccess"><?php echo $fcarpetas[$i]; ?></th>
+                                                                        <?php
                                                                         } elseif ($tipoarchivo == ".properties") {
-                                                                            echo '<img class="mr-2" src="img/gestorarchivos/mine.png" alt="minecraft">' . $fcarpetas[$i] . '</th>';
+                                                                        ?><img class="mr-2" src="img/gestorarchivos/mine.png" alt="minecraft"><?php echo $fcarpetas[$i]; ?></th>
+                                                                        <?php
                                                                         } elseif ($tipoarchivo == ".bmp" || $tipoarchivo == ".dib" || $tipoarchivo == ".jpg" || $tipoarchivo == ".jpeg" || $tipoarchivo == ".jpe" || $tipoarchivo == ".jfif" || $tipoarchivo == ".gif" || $tipoarchivo == ".tiff" || $tipoarchivo == ".png" || $tipoarchivo == ".heic") {
-                                                                            echo '<img class="mr-2" src="img/gestorarchivos/img.png" alt="img">' . $fcarpetas[$i] . '</th>';
+                                                                        ?><img class="mr-2" src="img/gestorarchivos/img.png" alt="img"><?php echo $fcarpetas[$i]; ?></th>
+                                                                        <?php
                                                                         } elseif ($tipoarchivo == ".rar") {
-                                                                            echo '<img class="mr-2" src="img/gestorarchivos/rar.png" alt="rar">' . $fcarpetas[$i] . '</th>';
+                                                                        ?><img class="mr-2" src="img/gestorarchivos/rar.png" alt="rar"><?php echo $fcarpetas[$i]; ?></th>
+                                                                        <?php
                                                                         } elseif ($tipoarchivo == ".zip") {
-                                                                            echo '<img class="mr-2" src="img/gestorarchivos/zip.png" alt="zip">' . $fcarpetas[$i] . '</th>';
+                                                                        ?><img class="mr-2" src="img/gestorarchivos/zip.png" alt="zip"><?php echo $fcarpetas[$i]; ?></th>
+                                                                        <?php
                                                                         } elseif ($tipoarchivo == ".tar" || $tipoarchivo == ".bz2" || $tipoarchivo == ".gz" || $tipoarchivo == ".lz" || $tipoarchivo == ".lzma" || $tipoarchivo == ".xz" || $tipoarchivo == ".z" || $tipoarchivo == ".taz" || $tipoarchivo == ".tb2" || $tipoarchivo == ".tbz" || $tipoarchivo == ".tbz2" || $tipoarchivo == ".tgz" || $tipoarchivo == ".tlz" || $tipoarchivo == ".txz" || $tipoarchivo == ".tz") {
-                                                                            echo '<img class="mr-2" src="img/gestorarchivos/tar.png" alt="tar">' . $fcarpetas[$i] . '</th>';
+                                                                        ?><img class="mr-2" src="img/gestorarchivos/tar.png" alt="tar"><?php echo $fcarpetas[$i]; ?></th>
+                                                                        <?php
                                                                         } else {
-                                                                            echo '<img class="mr-2" src="img/gestorarchivos/void.png" alt="noicon">' . $fcarpetas[$i] . '</th>';
+                                                                        ?><img class="mr-2" src="img/gestorarchivos/void.png" alt="noicon"><?php echo $fcarpetas[$i]; ?></th>
+                                                                    <?php
                                                                         }
                                                                     }
 
@@ -420,9 +451,11 @@ function devolverdatos($losbytes, $opcion)
                                                                     //AÑADIR TAMAÑO ARCHIVO
                                                                     clearstatcache();
                                                                     if (!is_dir($archivoconcreto)) {
-                                                                        $eltamano = devolverdatos(filesize($archivoconcreto), 1);
+                                                                        $eltamano = devolverdatos(filesize($archivoconcreto), 1,2);
                                                                     } else {
-                                                                        $eltamano = ".";
+                                                                        if ($fcarpetas[$i] != "..") {
+                                                                            $eltamano = devolverdatos(getfoldersize($archivoconcreto), 1,2);
+                                                                        }
                                                                     }
                                                                     echo '<td class = "elclick1" id="' . $i . '">' . $eltamano . '</td>';
                                                                     echo '<td>';
@@ -532,22 +565,15 @@ function devolverdatos($losbytes, $opcion)
                                                                     $rutacarpetamine .= "/" . $reccarpmine;
 
                                                                     //OBTENER USADO
-                                                                    $getgigasmine = shell_exec("du -s " . $rutacarpetamine . " | awk '{ print $1 }' ");
-                                                                    $getgigasmine = trim($getgigasmine);
-
-                                                                    if (!is_numeric($getgigasmine)) {
-                                                                        $getgigasback = "Error";
-                                                                    } else {
-                                                                        $getgigasmine = number_format($getgigasmine / 1048576, 2);
-                                                                    }
-                                                                ?>
+                                                                    $getgigasmine = devolverdatos(getfoldersize($rutacarpetamine), 1,2);
+                                                                    ?>
 
                                                                     <tr>
                                                                         <th>
                                                                             <p class="lead negrita">Almacenamiento Minecraft</p>
                                                                         </th>
                                                                         <td>
-                                                                            <p class="lead negrita">Usado: <?php echo ($getgigasmine); ?> GB</p>
+                                                                            <p class="lead negrita">Usado: <?php echo ($getgigasmine); ?></p>
                                                                         </td>
                                                                         <td>
                                                                             <p class="lead negrita">Total: <?php if ($recsizemine == 0) {
@@ -634,4 +660,5 @@ function devolverdatos($losbytes, $opcion)
     ?>
 
 </body>
+
 </html>
