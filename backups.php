@@ -97,7 +97,7 @@ require_once("template/header.php");
                                                                 <?php
 
                                                                 //FUNCION DEVUELVE DATOS EN EL FORMATO B/KB/MB/GB/TB
-                                                                function devolverdatos($losbytes, $opcion)
+                                                                function devolverdatos($losbytes, $opcion, $decimal)
                                                                 {
                                                                     $eltipo = "";
 
@@ -127,12 +127,23 @@ require_once("template/header.php");
                                                                     }
 
                                                                     if ($opcion == 0) {
-                                                                        $result = str_replace(".", ",", strval(round($result, 2)));
+                                                                        $result = strval(round($result, $decimal));
                                                                         return $result;
                                                                     } elseif ($opcion == 1) {
-                                                                        $result = str_replace(".", ",", strval(round($result, 2))) . " " . $eltipo;
+                                                                        $result = strval(round($result, $decimal)) . " " . $eltipo;
                                                                         return $result;
                                                                     }
+                                                                }
+
+                                                                function getfoldersize($dir)
+                                                                {
+                                                                    $size = 0;
+
+                                                                    foreach (glob(rtrim($dir, '/') . '/*', GLOB_NOSORT) as $each) {
+                                                                        $size += is_file($each) ? filesize($each) : getfoldersize($each);
+                                                                    }
+
+                                                                    return $size;
                                                                 }
 
                                                                 //INICIAR VARIABLES
@@ -165,28 +176,25 @@ require_once("template/header.php");
                                                                 }
 
                                                                 //COMPROVAR SI EXISTE CARPETA BACKUP
+                                                                clearstatcache();
                                                                 if (!file_exists($rutaarchivo)) {
                                                                     echo "<div class='alert alert-danger' role='alert'>Error: No existe la carpeta backup.</div>";
                                                                     exit;
                                                                 }
 
-                                                                clearstatcache();
-
                                                                 //COMPROVAR SI SE PUEDE LEER CARPETA BACKUP
+                                                                clearstatcache();
                                                                 if (!is_readable($rutaarchivo)) {
                                                                     echo "<div class='alert alert-danger' role='alert'>Error: La carpeta backup no tiene permisos de lectura.</div>";
                                                                     exit;
                                                                 }
 
-                                                                clearstatcache();
-
                                                                 //COMPROVAR SI SE PUEDE ESCRIVIR EN CARPETA BACKUP
+                                                                clearstatcache();
                                                                 if (!is_writable($rutaarchivo)) {
                                                                     echo "<div class='alert alert-danger' role='alert'>Error: La carpeta backup no tiene permisos de escritura.</div>";
                                                                     exit;
                                                                 }
-
-                                                                clearstatcache();
 
                                                                 //CONTAR CUANTOS ARCHIVOS GZ TIENE LA CARPETA BACKUPS
                                                                 $files = array();
@@ -233,7 +241,7 @@ require_once("template/header.php");
                                                                         echo '<tr class="menu-hover" id="' . $files[$i] . '">';
                                                                         echo '<th scope="row">' . $files[$i] . '</th>';
                                                                         echo '<td>' . date("d/m/Y H:i:s", filemtime($archivoconcreto)) . '</td>';
-                                                                        $eltamano = devolverdatos(filesize($archivoconcreto), 1);
+                                                                        $eltamano = devolverdatos(filesize($archivoconcreto), 1, 2);
                                                                         echo '<td>' . $eltamano . '</td>';
                                                                         echo '<td>';
                                                                 ?>
@@ -270,14 +278,7 @@ require_once("template/header.php");
                                                                     $recsizebackup = CONFIGFOLDERBACKUPSIZE;
 
                                                                     //OBTENER USADO
-                                                                    $getgigasback = shell_exec("du -s " . $rutaarchivo . " | awk '{ print $1 }' ");
-                                                                    $getgigasback = trim($getgigasback);
-
-                                                                    if (!is_numeric($getgigasback)) {
-                                                                        $getgigasback = "Error";
-                                                                    } else {
-                                                                        $getgigasback = number_format($getgigasback / 1048576, 2);
-                                                                    }
+                                                                    $getgigasback = devolverdatos(getfoldersize($rutaarchivo), 1,2);
                                                                     ?>
 
                                                                     <tr>
@@ -285,7 +286,7 @@ require_once("template/header.php");
                                                                             <p class="lead negrita">Almacenamiento Backups</p>
                                                                         </th>
                                                                         <td>
-                                                                            <p class="lead negrita">Usado: <?php echo ($getgigasback); ?> GB</p>
+                                                                            <p class="lead negrita">Usado: <?php echo ($getgigasback); ?></p>
                                                                         </td>
                                                                         <td>
                                                                             <p class="lead negrita">Total: <?php if ($recsizebackup == 0) {
