@@ -302,7 +302,7 @@ function getfoldersize($dir)
                                                     ?>
 
                                                     <?php
-                                                    if ($_SESSION['CONFIGUSER']['rango'] == 1 || $_SESSION['CONFIGUSER']['rango'] == 2 || array_key_exists('pgestorarchivosborrar', $_SESSION['CONFIGUSER']) && $_SESSION['CONFIGUSER']['pgestorarchivosborrar'] == 1) {
+                                                    if ($_SESSION['CONFIGUSER']['rango'] == 1 || $_SESSION['CONFIGUSER']['rango'] == 2 || array_key_exists('pgestorarchivosexcludefiles', $_SESSION['CONFIGUSER']) && $_SESSION['CONFIGUSER']['pgestorarchivosexcludefiles'] == 1) {
                                                     ?>
                                                         <button type="button" id="resetexcluidos" class="btn btn-warning" title="Borrar Lista Excluidos"><img src="img/botones/borrar.png" alt=""> Borrar Lista Excluidos</button>
                                                     <?php
