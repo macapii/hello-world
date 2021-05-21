@@ -571,7 +571,7 @@ if ($elerror == 0) {
                                                             function converdatoscarpbackup($losbytes, $opcion, $decimal)
                                                             {
                                                                 $eltipo = "GB";
-                                                                $result = $losbytes / 1048576;
+                                                                $result = $losbytes / 1073741824;
 
                                                                 if ($opcion == 0) {
                                                                     $result = strval(round($result, $decimal));
@@ -580,6 +580,17 @@ if ($elerror == 0) {
                                                                     $result = strval(round($result, $decimal)) . " " . $eltipo;
                                                                     return $result;
                                                                 }
+                                                            }
+
+                                                            function getfoldersize($dir)
+                                                            {
+                                                                $size = 0;
+
+                                                                foreach (glob(rtrim($dir, '/') . '/*', GLOB_NOSORT) as $each) {
+                                                                    $size += is_file($each) ? filesize($each) : getfoldersize($each);
+                                                                }
+
+                                                                return $size;
                                                             }
 
                                                             $reccarpmine = CONFIGDIRECTORIO;
@@ -595,7 +606,7 @@ if ($elerror == 0) {
                                                             //LIMITE ALMACENAMIENTO
                                                             if ($elerror == 0) {
                                                                 //OBTENER GIGAS CARPETA BACKUPS
-                                                                $getgigasbackup = shell_exec("du -s " . $dirconfig . " | awk '{ print $1 }' ");
+                                                                $getgigasbackup = getfoldersize($dirconfig);
                                                                 $getgigasbackup = trim($getgigasbackup);
 
                                                                 if (!is_numeric($getgigasbackup)) {
@@ -605,7 +616,7 @@ if ($elerror == 0) {
                                                             }
 
                                                             if ($elerror == 0) {
-
+                                                                //CONVERTIR DATOS
                                                                 $getgigasbackup = converdatoscarpbackup($getgigasbackup, 0, 2);
 
                                                                 //OBTENER GIGAS LIMITE BACKUPS
@@ -651,7 +662,7 @@ if ($elerror == 0) {
                                                                                             $elcomando .= "--exclude='" . $buscaexcluidos[$ni]['excluido'] . "' ";
                                                                                         }
                                                                                     }
-                                                                                    
+
                                                                                     $elcomando .= "-czvf '" . $dirconfig . $t . ".tar.gz' -C " . $rutaarchivo . " .";
                                                                                 } else {
                                                                                     $elcomando = "tar --warning=no-file-changed -czvf '" . $dirconfig . $t . ".tar.gz' -C " . $rutaarchivo . " .";
