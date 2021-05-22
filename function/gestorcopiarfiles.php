@@ -22,20 +22,6 @@ require_once("../template/session.php");
 require_once("../template/errorreport.php");
 require_once("../config/confopciones.php");
 
-function converdatoscarpmine($losbytes, $opcion, $decimal)
-{
-    $eltipo = "GB";
-    $result = $losbytes / 1048576;
-
-    if ($opcion == 0) {
-        $result = strval(round($result, $decimal));
-        return $result;
-    } elseif ($opcion == 1) {
-        $result = strval(round($result, $decimal)) . " " . $eltipo;
-        return $result;
-    }
-}
-
 //COMPROVAR SI SESSION EXISTE SINO CREARLA CON NO
 if (!isset($_SESSION['VALIDADO']) || !isset($_SESSION['KEYSECRETA'])) {
     $_SESSION['VALIDADO'] = "NO";
@@ -138,37 +124,6 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                             $retorno = "nopermenter";
                             $elerror = 1;
                         }
-                    }
-                }
-            }
-
-            //LIMITE ALMACENAMIENTO
-            if ($elerror == 0) {
-
-                //OBTENER CARPETA SERVIDOR MINECRAFT
-                $rutacarpetamine = dirname(getcwd()) . PHP_EOL;
-                $rutacarpetamine = trim($rutacarpetamine);
-                $rutacarpetamine .= "/" . $elnombrescreen;
-
-                //OBTENER GIGAS CARPETA BACKUPS
-                $getgigasmine = shell_exec("du -s " . $rutacarpetamine . " | awk '{ print $1 }' ");
-                $getgigasmine = trim($getgigasmine);
-
-                if (!is_numeric($getgigasmine)) {
-                    $retorno = "ERRORGETSIZE";
-                    $elerror = 1;
-                }
-            }
-
-            if ($elerror == 0) {
-
-                $getgigasmine = converdatoscarpmine($getgigasmine, 0, 2);
-
-                //MIRAR SI ES ILIMITADO
-                if ($limitmine >= 1) {
-                    if ($getgigasmine > $limitmine) {
-                        $retorno = "OUTGIGAS";
-                        $elerror = 1;
                     }
                 }
             }

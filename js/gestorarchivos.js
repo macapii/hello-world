@@ -577,8 +577,6 @@ $(function () {
                             alert("Renombre no válido");
                         } else if (data == "novalido") {
                             alert("Nombre no válido");
-                        } else if (data == "ERRORGETSIZE") {
-                            alert("Error: No se puede obtener los GB de la carpeta minecraft");
                         } else if (data == "OUTGIGAS") {
                             alert("Error: Has superado los GB asignados a la carpeta minecraft");
                         } else if (data == "OK") {
@@ -619,8 +617,6 @@ $(function () {
                             location.reload();
                         } else if (data == "nopermenter") {
                             alert("Hay carpetas que no tienen permiso de ejecucion/enter");
-                        } else if (data == "ERRORGETSIZE") {
-                            alert("Error: No se puede obtener los GB de la carpeta minecraft");
                         } else if (data == "OUTGIGAS") {
                             alert("Error: Has superado los GB asignados a la carpeta minecraft");
                         } else if (data == "OK") {
