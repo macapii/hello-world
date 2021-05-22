@@ -50,7 +50,7 @@ $(function () {
             } else if (data == "saveconf") {
                 document.getElementById("result").innerHTML = "<div class='alert alert-success' role='alert'>Configuración Guardada.</div>";
                 document.getElementById("guardaserver").disabled = true;
-            }else{
+            } else {
                 document.getElementById("result").innerHTML = "";
             }
         });
@@ -138,6 +138,13 @@ $(function () {
 
     if (document.getElementById('operasecache') !== null) {
         $("#operasecache").change(function () {
+            document.getElementById("guardaserver").disabled = false;
+            document.getElementById("result").innerHTML = "";
+        });
+    }
+
+    if (document.getElementById('gestorshowsizefolder') !== null) {
+        $("#gestorshowsizefolder").change(function () {
             document.getElementById("guardaserver").disabled = false;
             document.getElementById("result").innerHTML = "";
         });

@@ -99,6 +99,17 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
           $elnumerolineaconsola = CONFIGLINEASCONSOLA;
         }
 
+        //EXTRAS TAMAÑO CARPETAS
+        if ($_SESSION['CONFIGUSER']['rango'] == 1 || $_SESSION['CONFIGUSER']['rango'] == 2) {
+          $elmostrarsizecarpeta = test_input($_POST["gestorshowsizefolder"]);
+
+          if ($elmostrarsizecarpeta != 1) {
+            $elmostrarsizecarpeta = "";
+          }
+        } else {
+          $elmostrarsizecarpeta = CONFIGLINEASCONSOLA;
+        }
+
         //RECOLECTOR DE BASURA
         if ($_SESSION['CONFIGUSER']['rango'] == 1 || array_key_exists('psystemconfavanzados', $_SESSION['CONFIGUSER']) && $_SESSION['CONFIGUSER']['psystemconfavanzados'] == 1) {
           if (isset($_POST['recbasura'])) {
@@ -359,6 +370,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
           fwrite($file, 'define("CONFIGFOLDERBACKUPSIZE", "' . $ellimitebackupgb . '");' . PHP_EOL);
           fwrite($file, 'define("CONFIGFOLDERMINECRAFTSIZE", "' . $ellimiteminecraftgb . '");' . PHP_EOL);
           fwrite($file, 'define("CONFIGLINEASCONSOLA", "' . $elnumerolineaconsola . '");' . PHP_EOL);
+          fwrite($file, 'define("CONFIGSHOWSIZEFOLDERS", "' . $elmostrarsizecarpeta . '");' . PHP_EOL);
           fwrite($file, "?>" . PHP_EOL);
           fclose($file);
 

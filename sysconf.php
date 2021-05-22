@@ -111,6 +111,8 @@ require_once("template/header.php");
 
                                                     $recnumerolineaconsola = CONFIGLINEASCONSOLA;
 
+                                                    $recshowsizefolder = CONFIGSHOWSIZEFOLDERS;
+
                                                     //OBTENER TIPO SERVIDOR WEB
                                                     $servidorweb = $_SERVER["SERVER_SOFTWARE"];
 
@@ -407,8 +409,8 @@ require_once("template/header.php");
                                                                             <br>
                                                                             <div class="col-md-8">
                                                                                 <input type="radio" id="configjavaselect2" name="configjavaselect" value="" <?php if ($recjavaselect == "2") {
-                                                                                                                                                                    echo "checked";
-                                                                                                                                                                } ?>>
+                                                                                                                                                                echo "checked";
+                                                                                                                                                            } ?>>
                                                                                 <label for="configjavaselect2">Ruta manual JAVA (Configurado por Superusuario)</label>
                                                                                 <input readonly type="text" class="form-control" value="<?php echo $recjavamanual; ?>">
                                                                             </div>
@@ -474,6 +476,21 @@ require_once("template/header.php");
                                                         ?>
 
                                                         <?php
+                                                        //EXTRAS
+                                                        if ($_SESSION['CONFIGUSER']['rango'] == 1 || $_SESSION['CONFIGUSER']['rango'] == 2) {
+                                                        ?>
+                                                            <hr>
+                                                            <label class="negrita">Extras:</label>
+                                                            <div class="form-group">
+                                                                <input id="gestorshowsizefolder" name="gestorshowsizefolder" type="checkbox" value="1" <?php if ($recshowsizefolder == "1") {
+                                                                                                                                                            echo "checked";
+                                                                                                                                                        } ?>>
+                                                                <label class="" for="gestorshowsizefolder">Mostrar el tamaño de las carpetas y el total usado en el Gestor Archivos (Puede ralentizar el gestor archivos)</label>
+                                                            </div>
+                                                        <?php
+
+                                                        }
+
                                                         //PARAMETROS AVANZADOS
                                                         if ($_SESSION['CONFIGUSER']['rango'] == 1 || array_key_exists('psystemconfavanzados', $_SESSION['CONFIGUSER']) && $_SESSION['CONFIGUSER']['psystemconfavanzados'] == 1) {
                                                         ?>
