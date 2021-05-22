@@ -101,9 +101,14 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
 
         //EXTRAS TAMAÑO CARPETAS
         if ($_SESSION['CONFIGUSER']['rango'] == 1 || $_SESSION['CONFIGUSER']['rango'] == 2) {
-          $elmostrarsizecarpeta = test_input($_POST["gestorshowsizefolder"]);
 
-          if ($elmostrarsizecarpeta != 1) {
+          if (isset($_POST['gestorshowsizefolder'])) {
+            $elmostrarsizecarpeta = test_input($_POST["gestorshowsizefolder"]);
+
+            if ($elmostrarsizecarpeta != 1) {
+              $elmostrarsizecarpeta = "";
+            }
+          } else {
             $elmostrarsizecarpeta = "";
           }
         } else {
