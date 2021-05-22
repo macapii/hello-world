@@ -70,15 +70,17 @@ function devolverdatos($losbytes, $opcion, $decimal)
     }
 }
 
-function getfoldersize($dir)
+function obtenersizecarpeta($dir)
 {
-    $size = 0;
+    $iterator = new RecursiveIteratorIterator(
+        new RecursiveDirectoryIterator($dir)
+    );
 
-    foreach (glob(rtrim($dir, '/') . '/*', GLOB_NOSORT) as $each) {
-        $size += is_file($each) ? filesize($each) : getfoldersize($each);
+    $totalSize = 0;
+    foreach ($iterator as $file) {
+        $totalSize += $file->getSize();
     }
-
-    return $size;
+    return $totalSize;
 }
 
 ?>
@@ -162,6 +164,7 @@ function getfoldersize($dir)
                                                     $reccarpmine = CONFIGDIRECTORIO;
                                                     $recarchivojar = CONFIGARCHIVOJAR;
                                                     $receulaminecraft = CONFIGEULAMINECRAFT;
+                                                    $recshowsizefolder = CONFIGSHOWSIZEFOLDERS;
 
                                                     //OBTENER RUTA RAIZ
                                                     $dirraiz = getcwd() . PHP_EOL;
@@ -451,10 +454,14 @@ function getfoldersize($dir)
                                                                     //AÑADIR TAMAÑO ARCHIVO
                                                                     clearstatcache();
                                                                     if (!is_dir($archivoconcreto)) {
-                                                                        $eltamano = devolverdatos(filesize($archivoconcreto), 1,2);
+                                                                        $eltamano = devolverdatos(filesize($archivoconcreto), 1, 2);
                                                                     } else {
                                                                         if ($fcarpetas[$i] != "..") {
-                                                                            $eltamano = devolverdatos(getfoldersize($archivoconcreto), 1,2);
+                                                                            if ($recshowsizefolder == 1) {
+                                                                                $eltamano = devolverdatos(obtenersizecarpeta($archivoconcreto), 1, 2);
+                                                                            } else {
+                                                                                $eltamano = ".";
+                                                                            }
                                                                         }
                                                                     }
                                                                     echo '<td class = "elclick1" id="' . $i . '">' . $eltamano . '</td>';
@@ -564,17 +571,23 @@ function getfoldersize($dir)
                                                                     $rutacarpetamine = trim($rutacarpetamine);
                                                                     $rutacarpetamine .= "/" . $reccarpmine;
 
-                                                                    //OBTENER USADO
-                                                                    $getgigasmine = devolverdatos(getfoldersize($rutacarpetamine), 1,2);
                                                                     ?>
 
                                                                     <tr>
                                                                         <th>
                                                                             <p class="lead negrita">Almacenamiento Minecraft</p>
                                                                         </th>
-                                                                        <td>
-                                                                            <p class="lead negrita">Usado: <?php echo ($getgigasmine); ?></p>
-                                                                        </td>
+                                                                        <?php
+                                                                        if ($recshowsizefolder == 1) {
+                                                                            //OBTENER USADO
+                                                                            $getgigasmine = devolverdatos(obtenersizecarpeta($rutacarpetamine), 1, 2);
+                                                                        ?>
+                                                                            <td>
+                                                                                <p class="lead negrita">Usado: <?php echo ($getgigasmine); ?></p>
+                                                                            </td>
+                                                                        <?php
+                                                                        }
+                                                                        ?>
                                                                         <td>
                                                                             <p class="lead negrita">Total: <?php if ($recsizemine == 0) {
                                                                                                                 echo ("Ilimitado");
