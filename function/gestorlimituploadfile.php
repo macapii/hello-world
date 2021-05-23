@@ -58,6 +58,19 @@ function converdatoscarpmineGB($losbytes, $opcion, $decimal)
     }
 }
 
+function obtenersizecarpeta($dir)
+{
+    $iterator = new RecursiveIteratorIterator(
+        new RecursiveDirectoryIterator($dir)
+    );
+
+    $totalSize = 0;
+    foreach ($iterator as $file) {
+        $totalSize += $file->getSize();
+    }
+    return $totalSize;
+}
+
 //COMPROVAR SI SESSION EXISTE SINO CREARLA CON NO
 if (!isset($_SESSION['VALIDADO']) || !isset($_SESSION['KEYSECRETA'])) {
     $_SESSION['VALIDADO'] = "NO";
@@ -72,8 +85,8 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
         $retorno = "";
         $elerror = 0;
         $archivosize = 0;
-        $elnombredirectorio = CONFIGDIRECTORIO;
         $limitmine = CONFIGFOLDERMINECRAFTSIZE;
+        $reccarpmine = CONFIGDIRECTORIO;
         $rutacarpetamine = "";
         $getgigasmine = "";
 
@@ -108,32 +121,29 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
 
         //LIMITE ALMACENAMIENTO
         if ($elerror == 0) {
+            if ($_SESSION['CONFIGUSER']['rango'] == 2 || $_SESSION['CONFIGUSER']['rango'] == 3) {
 
-            //OBTENER CARPETA SERVIDOR MINECRAFT
-            $rutacarpetamine = dirname(getcwd()) . PHP_EOL;
-            $rutacarpetamine = trim($rutacarpetamine);
-            $rutacarpetamine .= "/" . $elnombredirectorio;
+                //MIRAR SI ES ILIMITADO
+                if ($limitmine >= 1) {
 
-            //OBTENER GIGAS CARPETA MINECRAFT
-            $getgigasmine = shell_exec("du -s " . $rutacarpetamine . " | awk '{ print $1 }' ");
-            $getgigasmine = trim($getgigasmine);
+                    //OBTENER CARPETA SERVIDOR MINECRAFT
+                    $rutacarpetamine = dirname(getcwd()) . PHP_EOL;
+                    $rutacarpetamine = trim($rutacarpetamine);
+                    $rutacarpetamine .= "/" . $reccarpmine;
 
-            if (!is_numeric($getgigasmine)) {
-                $retorno = "ERRORGETSIZE";
-                $elerror = 1;
-            }
-        }
+                    $getgigasmine = converdatoscarpmineGB(obtenersizecarpeta($rutacarpetamine), 0, 2);
 
-        if ($elerror == 0) {
+                    if (!is_numeric($getgigasmine)) {
+                        $retorno = "ERRORGETSIZE";
+                        $elerror = 1;
+                    }
 
-            $getgigasmine = converdatoscarpmine($getgigasmine, 0, 2);
-
-            //MIRAR SI ES ILIMITADO
-            if ($limitmine >= 1) {
-                //COMPROBAR SI EL ESPACIO OCUPADO ES MAYOR AL LIMITE CARPETA MINECRAFT
-                if ($getgigasmine > $limitmine) {
-                    $retorno = "OUTGIGAS";
-                    $elerror = 1;
+                    if ($elerror == 0) {
+                        if ($getgigasmine > $limitmine) {
+                            $retorno = "OUTGIGAS";
+                            $elerror = 1;
+                        }
+                    }
                 }
             }
         }
