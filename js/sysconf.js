@@ -197,37 +197,37 @@ $(function () {
         });
     }
 
+    if (document.getElementById('javamanual') !== null) {
+        document.getElementById("javamanual").addEventListener('paste', function (event) {
+            var enviovalor = event.clipboardData.getData('text');
 
+            var eltext = "";
+            var textini = "";
+            var textfinal = "";
+            var enviar = "";
 
-    document.getElementById("javamanual").addEventListener('paste', function (event) {
-        var enviovalor = event.clipboardData.getData('text');
+            var text = document.getElementById("javamanual");
 
-        var eltext = "";
-        var textini = "";
-        var textfinal = "";
-        var enviar = "";
+            var startPosition = text.selectionStart;
+            var endPosition = text.selectionEnd;
+            var longitud = text.leng;
 
-        var text = document.getElementById("javamanual");
+            eltext = document.getElementById("javamanual").value;
+            textini = eltext.substring(0, startPosition);
+            textfinal = eltext.substring(endPosition, longitud);
 
-        var startPosition = text.selectionStart;
-        var endPosition = text.selectionEnd;
-        var longitud = text.leng;
+            enviar = textini + event.clipboardData.getData('text') + textfinal;
+            enviovalor = enviar;
 
-        eltext = document.getElementById("javamanual").value;
-        textini = eltext.substring(0, startPosition);
-        textfinal = eltext.substring(endPosition, longitud);
+            if (document.getElementById('configjavaselect2') !== null) {
+                document.getElementById('configjavaselect2').checked = true;
+            }
 
-        enviar = textini + event.clipboardData.getData('text') + textfinal;
-        enviovalor = enviar;
+            document.getElementById("guardaserver").disabled = false;
+            document.getElementById("result").innerHTML = "";
 
-        if (document.getElementById('configjavaselect2') !== null) {
-            document.getElementById('configjavaselect2').checked = true;
-        }
-
-        document.getElementById("guardaserver").disabled = false;
-        document.getElementById("result").innerHTML = "";
-
-    });
+        });
+    }
 
     if (document.getElementById('elport') !== null) {
         $("#elport").change(function () {
