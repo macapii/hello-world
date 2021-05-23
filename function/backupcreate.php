@@ -30,10 +30,10 @@ function test_input($data)
     return $data;
 }
 
-function converdatoscarpbackup($losbytes, $opcion, $decimal)
+function converdatos($losbytes, $opcion, $decimal)
 {
     $eltipo = "GB";
-    $result = $losbytes / 1048576;
+    $result = $losbytes / 1073741824;
 
     if ($opcion == 0) {
         $result = strval(round($result, $decimal));
@@ -42,6 +42,19 @@ function converdatoscarpbackup($losbytes, $opcion, $decimal)
         $result = strval(round($result, $decimal)) . " " . $eltipo;
         return $result;
     }
+}
+
+function obtenersizecarpeta($dir)
+{
+    $iterator = new RecursiveIteratorIterator(
+        new RecursiveDirectoryIterator($dir)
+    );
+
+    $totalSize = 0;
+    foreach ($iterator as $file) {
+        $totalSize += $file->getSize();
+    }
+    return $totalSize;
 }
 
 //COMPROVAR SI SESSION EXISTE SINO CREARLA CON NO
@@ -59,6 +72,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
 
             $retorno = "";
             $reccarpmine = CONFIGDIRECTORIO;
+            $limitbackupgb = CONFIGFOLDERBACKUPSIZE;
             $elerror = 0;
             $test = 0;
 
@@ -151,28 +165,24 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
 
             //LIMITE ALMACENAMIENTO
             if ($elerror == 0) {
-                //OBTENER GIGAS CARPETA BACKUPS
-                $getgigasbackup = shell_exec("du -s " . $dirbackups . " | awk '{ print $1 }' ");
-                $getgigasbackup = trim($getgigasbackup);
+                if ($_SESSION['CONFIGUSER']['rango'] == 2 || $_SESSION['CONFIGUSER']['rango'] == 3) {
 
-                if (!is_numeric($getgigasbackup)) {
-                    $retorno = "ERRORGETSIZE";
-                    $elerror = 1;
-                }
-            }
+                    //MIRAR SI ES ILIMITADO
+                    if ($limitbackupgb >= 1) {
 
-            if ($elerror == 0) {
+                        $getgigasbackup = converdatos(obtenersizecarpeta($dirbackups), 0, 2);
 
-                $getgigasbackup = converdatoscarpbackup($getgigasbackup, 0, 2);
+                        if (!is_numeric($getgigasbackup)) {
+                            $retorno = "ERRORGETSIZE";
+                            $elerror = 1;
+                        }
 
-                //OBTENER GIGAS LIMITE BACKUPS
-                $limitbackupgb = CONFIGFOLDERBACKUPSIZE;
-
-                //MIRAR SI ES ILIMITADO
-                if ($limitbackupgb >= 1) {
-                    if ($getgigasbackup > $limitbackupgb) {
-                        $retorno = "limitgbexceeded";
-                        $elerror = 1;
+                        if ($elerror == 0) {
+                            if ($getgigasbackup > $limitbackupgb) {
+                                $retorno = "limitgbexceeded";
+                                $elerror = 1;
+                            }
+                        }
                     }
                 }
             }
