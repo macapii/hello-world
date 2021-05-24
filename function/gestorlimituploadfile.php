@@ -86,7 +86,6 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
         $elerror = 0;
         $archivosize = 0;
         $limitmine = CONFIGFOLDERMINECRAFTSIZE;
-        //$limitmine = intval($limitmine);
         $reccarpmine = CONFIGDIRECTORIO;
         $rutacarpetamine = "";
         $getgigasmine = "";
@@ -152,7 +151,6 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
 
         //COMPROVAR SI LO QUE SE SUBE ES MAYOR AL TAMAÑO RESTANTE DISPONIBLE
         if ($elerror == 0) {
-            $laresta = 0;
             if ($limitmine >= 1) {
                 $laresta = $getgigasmine;
                 $espaciolibre = $limitmine - $laresta;
