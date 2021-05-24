@@ -86,6 +86,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
         $elerror = 0;
         $archivosize = 0;
         $limitmine = CONFIGFOLDERMINECRAFTSIZE;
+        //$limitmine = intval($limitmine);
         $reccarpmine = CONFIGDIRECTORIO;
         $rutacarpetamine = "";
         $getgigasmine = "";
@@ -121,22 +122,23 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
 
         //LIMITE ALMACENAMIENTO
         if ($elerror == 0) {
+
+            //OBTENER CARPETA SERVIDOR MINECRAFT
+            $rutacarpetamine = dirname(getcwd()) . PHP_EOL;
+            $rutacarpetamine = trim($rutacarpetamine);
+            $rutacarpetamine .= "/" . $reccarpmine;
+
+            $getgigasmine = converdatoscarpmineGB(obtenersizecarpeta($rutacarpetamine), 0, 2);
+
+            if (!is_numeric($getgigasmine)) {
+                $retorno = "ERRORGETSIZE";
+                $elerror = 1;
+            }
+
             if ($_SESSION['CONFIGUSER']['rango'] == 2 || $_SESSION['CONFIGUSER']['rango'] == 3) {
 
                 //MIRAR SI ES ILIMITADO
                 if ($limitmine >= 1) {
-
-                    //OBTENER CARPETA SERVIDOR MINECRAFT
-                    $rutacarpetamine = dirname(getcwd()) . PHP_EOL;
-                    $rutacarpetamine = trim($rutacarpetamine);
-                    $rutacarpetamine .= "/" . $reccarpmine;
-
-                    $getgigasmine = converdatoscarpmineGB(obtenersizecarpeta($rutacarpetamine), 0, 2);
-
-                    if (!is_numeric($getgigasmine)) {
-                        $retorno = "ERRORGETSIZE";
-                        $elerror = 1;
-                    }
 
                     if ($elerror == 0) {
                         if ($getgigasmine > $limitmine) {
@@ -150,6 +152,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
 
         //COMPROVAR SI LO QUE SE SUBE ES MAYOR AL TAMAÑO RESTANTE DISPONIBLE
         if ($elerror == 0) {
+            $laresta = 0;
             if ($limitmine >= 1) {
                 $laresta = $getgigasmine;
                 $espaciolibre = $limitmine - $laresta;
