@@ -30,7 +30,7 @@ function test_input($data)
 	return $data;
 }
 
-function devolverdatos($loskilobytes, $opcion)
+function devolverdatos($loskilobytes, $opcion, $decimal)
 {
 	$eltipo = "";
 
@@ -54,11 +54,12 @@ function devolverdatos($loskilobytes, $opcion)
 		$result = $loskilobytes / 1073741824;
 	}
 
+
 	if ($opcion == 0) {
-		$result = str_replace(".", ",", strval(round($result, 2)));
+		$result = strval(round($result, $decimal));
 		return $result;
 	} elseif ($opcion == 1) {
-		$result = str_replace(".", ",", strval(round($result, 2))) . " " . $eltipo;
+		$result = strval(round($result, $decimal)) . " " . $eltipo;
 		return $result;
 	}
 }
@@ -87,7 +88,6 @@ function getdistroinfo()
 
 function secondsToTime($inputSeconds)
 {
-
 	$secondsInAMinute = 60;
 	$secondsInAnHour  = 60 * $secondsInAMinute;
 	$secondsInADay    = 24 * $secondsInAnHour;
@@ -175,7 +175,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
 
 			//CONVERTIR RAM EN GB
 			if (is_numeric($laram)) {
-				$laram = devolverdatos($laram, 1);
+				$laram = devolverdatos($laram, 1, 2);
 			} else {
 				$laram = "";
 			}
@@ -184,8 +184,12 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
 			$uptime = "ps -p " . $elpid . " -o etimes=";
 			$uptime = shell_exec($uptime);
 			$uptime = trim($uptime);
-			$uptimearray = secondsToTime($uptime);
-			$eluptime = $uptimearray['d'] . " Dias  " . $uptimearray['h'] . " Horas  " . $uptimearray['m'] . " Minutos  " . $uptimearray['s'] . " Segundos";
+			if (is_numeric($uptime)) {
+				$uptimearray = secondsToTime($uptime);
+				$eluptime = $uptimearray['d'] . " Dias  " . $uptimearray['h'] . " Horas  " . $uptimearray['m'] . " Minutos  " . $uptimearray['s'] . " Segundos";
+			}else{
+				$eluptime = "";
+			}
 
 			//OBTENER MEMORIA TOTAL CONFIGURADA
 			$laramconfig = CONFIGRAM;
