@@ -102,6 +102,19 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
             //VARIABLE RUTA SERVERPROPERTIES.TXT
             $rutaconfigproperties = $rutacarpetaconfig . "/serverproperties.txt";
 
+            //OBTENER PID SABER SI ESTA EN EJECUCION
+            if ($elerror == 0) {
+                $elcomando = "";
+                $elcomando = "screen -ls | awk '/\." . $reccarpmine . "\t/ {print strtonum($1)'}";
+                $elpid = shell_exec($elcomando);
+
+                //SI ESTA EN EJECUCION ENVIAR ERROR
+                if (!$elpid == "") {
+                    $elerror = 1;
+                    $retorno = "yaenejecucion";
+                }
+            }
+
             //VERIFICAR CARPETA MINECRAFT
             if ($elerror == 0) {
                 clearstatcache();

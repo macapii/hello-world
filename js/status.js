@@ -29,6 +29,8 @@ $(function () {
 
                 if (data == "ok") {
                     document.getElementById("textoretorno").innerHTML = "<div class='alert alert-success' role='alert'>Servidor iniciado correctamente.</div>";
+                } else if (data == "yaenejecucion") {
+                    document.getElementById("textoretorno").innerHTML = "<div class='alert alert-danger' role='alert'>Error: El servidor ya está en ejecución.</div>";
                 } else if (data == "noexistecarpetaminecraft") {
                     document.getElementById("textoretorno").innerHTML = "<div class='alert alert-danger' role='alert'>Error: No existe la carpeta del servidor minecraft.</div>";
                 } else if (data == "noeula") {
