@@ -335,7 +335,7 @@ require_once("template/header.php");
 
                                                             <?php
                                                             //INICIAR AL ARRANCAR SERVIDOR LINUX
-                                                            if ($_SESSION['CONFIGUSER']['rango'] == 1 || array_key_exists('psystemconfnombre', $_SESSION['CONFIGUSER']) && $_SESSION['CONFIGUSER']['psystemconfnombre'] == 1) {
+                                                            if ($_SESSION['CONFIGUSER']['rango'] == 1 || array_key_exists('psystemstartonboot', $_SESSION['CONFIGUSER']) && $_SESSION['CONFIGUSER']['psystemstartonboot'] == 1) {
                                                             ?>
 
                                                                 <div class="form-group col-md-6">

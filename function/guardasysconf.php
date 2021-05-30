@@ -93,7 +93,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
         }
 
         //INPUT BOOTCONFIG
-        if ($_SESSION['CONFIGUSER']['rango'] == 1 || array_key_exists('psystemconfnombre', $_SESSION['CONFIGUSER']) && $_SESSION['CONFIGUSER']['psystemconfnombre'] == 1) {
+        if ($_SESSION['CONFIGUSER']['rango'] == 1 || array_key_exists('psystemstartonboot', $_SESSION['CONFIGUSER']) && $_SESSION['CONFIGUSER']['psystemstartonboot'] == 1) {
 
           if (isset($_POST["elbootconf"])) {
             $elbootconfig = test_input($_POST["elbootconf"]);
