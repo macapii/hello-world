@@ -92,6 +92,19 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
           $elnombreservidor = CONFIGNOMBRESERVER;
         }
 
+        //INPUT BOOTCONFIG
+        if ($_SESSION['CONFIGUSER']['rango'] == 1 || array_key_exists('psystemconfnombre', $_SESSION['CONFIGUSER']) && $_SESSION['CONFIGUSER']['psystemconfnombre'] == 1) {
+
+          if (isset($_POST["elbootconf"])) {
+            $elbootconfig = test_input($_POST["elbootconf"]);
+            if ($elbootconfig != "SI") {
+              $elbootconfig = "NO";
+            }
+          }
+        } else {
+          $elbootconfig = CONFIGBOOTSYSTEM;
+        }
+
         //LINEAS CONSOLA
         if ($_SESSION['CONFIGUSER']['rango'] == 1 || array_key_exists('psystemconflinconsole', $_SESSION['CONFIGUSER']) && $_SESSION['CONFIGUSER']['psystemconflinconsole'] == 1) {
           $elnumerolineaconsola = test_input($_POST["linconsola"]);
@@ -376,6 +389,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
           fwrite($file, 'define("CONFIGFOLDERMINECRAFTSIZE", "' . $ellimiteminecraftgb . '");' . PHP_EOL);
           fwrite($file, 'define("CONFIGLINEASCONSOLA", "' . $elnumerolineaconsola . '");' . PHP_EOL);
           fwrite($file, 'define("CONFIGSHOWSIZEFOLDERS", "' . $elmostrarsizecarpeta . '");' . PHP_EOL);
+          fwrite($file, 'define("CONFIGBOOTSYSTEM", "' . $elbootconfig . '");' . PHP_EOL);
           fwrite($file, "?>" . PHP_EOL);
           fclose($file);
 

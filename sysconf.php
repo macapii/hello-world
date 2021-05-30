@@ -113,6 +113,8 @@ require_once("template/header.php");
 
                                                     $recshowsizefolder = CONFIGSHOWSIZEFOLDERS;
 
+                                                    $recbootconf = CONFIGBOOTSYSTEM;
+
                                                     //OBTENER TIPO SERVIDOR WEB
                                                     $servidorweb = $_SERVER["SERVER_SOFTWARE"];
 
@@ -315,19 +317,52 @@ require_once("template/header.php");
                                                             ?>
                                                         </div>
 
-                                                        <?php
-                                                        //NOMBRE SERVIDOR
-                                                        if ($_SESSION['CONFIGUSER']['rango'] == 1 || array_key_exists('psystemconfnombre', $_SESSION['CONFIGUSER']) && $_SESSION['CONFIGUSER']['psystemconfnombre'] == 1) {
-                                                        ?>
+                                                        <div class="form-row">
 
-                                                            <div class="form-group">
-                                                                <label class="negrita" for="elnomserv">Nombre Servidor:</label>
-                                                                <input type="text" class="form-control" id="elnomserv" name="elnomserv" required="required" value="<?php echo $recnombreserv; ?>">
-                                                            </div>
+                                                            <?php
+                                                            //NOMBRE SERVIDOR
+                                                            if ($_SESSION['CONFIGUSER']['rango'] == 1 || array_key_exists('psystemconfnombre', $_SESSION['CONFIGUSER']) && $_SESSION['CONFIGUSER']['psystemconfnombre'] == 1) {
+                                                            ?>
 
-                                                        <?php
-                                                        }
-                                                        ?>
+                                                                <div class="form-group col-md-6">
+                                                                    <label class="negrita" for="elnomserv">Nombre Servidor:</label>
+                                                                    <input type="text" class="form-control" id="elnomserv" name="elnomserv" required="required" value="<?php echo $recnombreserv; ?>">
+                                                                </div>
+
+                                                            <?php
+                                                            }
+                                                            ?>
+
+                                                            <?php
+                                                            //INICIAR AL ARRANCAR SERVIDOR LINUX
+                                                            if ($_SESSION['CONFIGUSER']['rango'] == 1 || array_key_exists('psystemconfnombre', $_SESSION['CONFIGUSER']) && $_SESSION['CONFIGUSER']['psystemconfnombre'] == 1) {
+                                                            ?>
+
+                                                                <div class="form-group col-md-6">
+                                                                    <label class="negrita" for="elbootconf">Iniciar servidor Minecraft al arrancar linux:</label>
+                                                                    <select id="elbootconf" name="elbootconf" class="form-control" required="required">
+                                                                        <?php
+
+                                                                        //COMPROBAR OPCION BOOT
+                                                                        if ($recbootconf == "SI") {
+                                                                            echo '<option value="NO">NO</option>';
+                                                                            echo '<option selected value="SI">SI</option>';
+                                                                        } else {
+                                                                            echo '<option selected value="NO">NO</option>';
+                                                                            echo '<option value="SI">SI</option>';
+                                                                        }
+
+                                                                        ?>
+
+                                                                    </select>
+
+                                                                </div>
+
+                                                            <?php
+                                                            }
+                                                            ?>
+
+                                                        </div>
 
                                                         <?php
                                                         //LINEAS CONSOLA

@@ -108,6 +108,13 @@ $(function () {
         });
     }
 
+    if (document.getElementById('elbootconf') !== null) {
+        $("#elbootconf").change(function () {
+            document.getElementById("guardaserver").disabled = false;
+            document.getElementById("result").innerHTML = "";
+        });
+    }
+
     if (document.getElementById('basura0') !== null) {
         $("#basura0").change(function () {
             document.getElementById("guardaserver").disabled = false;
