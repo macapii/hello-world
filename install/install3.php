@@ -317,6 +317,7 @@ require_once("../template/errorreport.php");
         fwrite($file, 'define("CONFIGFOLDERMINECRAFTSIZE", "0");' . PHP_EOL);
         fwrite($file, 'define("CONFIGLINEASCONSOLA", "100");' . PHP_EOL);
         fwrite($file, 'define("CONFIGSHOWSIZEFOLDERS", "");' . PHP_EOL);
+        fwrite($file, 'define("CONFIGSHOWSIZEFOLDERS", "NO");' . PHP_EOL);
         fwrite($file, "?>" . PHP_EOL);
         fclose($file);
 
