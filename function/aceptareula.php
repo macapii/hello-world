@@ -67,6 +67,8 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
 
         $elmostrarsizecarpeta = CONFIGSHOWSIZEFOLDERS;
 
+        $elbootconfig = CONFIGBOOTSYSTEM;
+
         //OBTENER RUTA DONDE TIENE QUE ESTAR LA CARPETA CONFIG
         $dirconfig = "";
         $dirconfig = dirname(getcwd()) . PHP_EOL;
@@ -105,8 +107,11 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                 fwrite($file, 'define("CONFIGFOLDERMINECRAFTSIZE", "' . $ellimitminefoldersize . '");' . PHP_EOL);
                 fwrite($file, 'define("CONFIGLINEASCONSOLA", "' . $elnumerolineaconsola . '");' . PHP_EOL);
                 fwrite($file, 'define("CONFIGSHOWSIZEFOLDERS", "' . $elmostrarsizecarpeta . '");' . PHP_EOL);
+                fwrite($file, 'define("CONFIGBOOTSYSTEM", "' . $elbootconfig . '");' . PHP_EOL);
                 fwrite($file, "?>" . PHP_EOL);
                 fclose($file);
+
+                sleep(2);
 
                 $retorno = "ok";
             } else {
