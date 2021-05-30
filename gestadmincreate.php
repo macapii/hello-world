@@ -189,6 +189,14 @@ require_once("template/header.php");
                                                                                 <p>Permite configurar el máximo de líneas que se mostraran en la consola.</p>
                                                                             </div>
 
+                                                                            <div class="form-group">
+                                                                                <div>
+                                                                                    <input id="psystemstartonboot" name="psystemstartonboot" type="checkbox" value="1">
+                                                                                    <label class="negrita mr-2" for="psystemstartonboot">Iniciar servidor Minecraft al arrancar Linux</label>
+                                                                                </div>
+                                                                                <p>Permite iniciar servidor Minecraft automáticamente al arrancar el servidor Linux.</p>
+                                                                            </div>
+
                                                                         </div>
 
                                                                     </div>
