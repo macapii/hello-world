@@ -31,8 +31,6 @@ $RUTAPRINCIPAL = $_SERVER['PHP_SELF'];
 $RUTAPRINCIPAL = substr($RUTAPRINCIPAL, 0, -14);
 $RUTACONFIG = $RUTAPRINCIPAL . "/config/confopciones.php";
 
-require_once($RUTACONFIG);
-
 $retorno = "";
 $logfechayhora = "[" . date("d/m/Y") . "] [" . date("H:i:s") . "]";
 
@@ -77,7 +75,27 @@ if ($elerror == 0) {
     }
 }
 
+//COMPROVAR SI EXISTE ARCHIVO CONFIGURACION
 if ($elerror == 0) {
+    clearstatcache();
+    if (!file_exists($RUTACONFIG)) {
+        $elerror = 1;
+    }
+}
+
+//COMPROVAR SI ARCHIVO CONFIGURACION TIENE PERMISOS DE LECTURA
+if ($elerror == 0) {
+    clearstatcache();
+    if (!is_readable($RUTACONFIG)) {
+        $elerror = 1;
+    }
+}
+
+if ($elerror == 0) {
+    
+    //CARGAR CONFIGURACION PANEL
+    require_once($RUTACONFIG);
+
     clearstatcache();
     if (file_exists($elarchivo)) {
 
