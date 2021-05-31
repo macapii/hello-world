@@ -27,8 +27,6 @@ require_once($RUTACONFIG);
 $retorno = "";
 $elerror = 0;
 
-$eldebug = $RUTAPRINCIPAL . "/cron/testeos.txt";
-
 $recbootconf = "";
 $recbootconf = CONFIGBOOTSYSTEM;
 
@@ -67,10 +65,6 @@ if ($recbootconf == "SI") {
 
   if (!empty($argv[1])) {
     $getsistemd = $argv[1];
-
-    $fp = fopen($eldebug, 'a');
-    fwrite($fp, $getsistemd);
-    fclose($fp);
 
     switch ($getsistemd) {
       case "start":
