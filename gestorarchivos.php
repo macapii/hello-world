@@ -269,12 +269,12 @@ function obtenersizecarpeta($dir)
                                                         </ol>
                                                     </nav>
 
-                                                    <button type="button" id="bnactualizar" class="btn btn-primary mr-1" title="Actualizar"><img src="img/botones/refresh.png" alt="Actualizar"></button>
+                                                    <button type="button" id="bnactualizar" class="btn btn-primary mr-1 mt-1" title="Actualizar"><img src="img/botones/refresh.png" alt="Actualizar"></button>
 
                                                     <?php
                                                     if ($_SESSION['CONFIGUSER']['rango'] == 1 || $_SESSION['CONFIGUSER']['rango'] == 2 || array_key_exists('pgestorarchivoscrearcarpeta', $_SESSION['CONFIGUSER']) && $_SESSION['CONFIGUSER']['pgestorarchivoscrearcarpeta'] == 1) {
                                                     ?>
-                                                        <button type="button" id="bnnuevacarpeta" class="btn btn-primary mr-1" title="Crear Carpeta"><img src="img/botones/new.png" alt="+"> Crear Carpeta</button>
+                                                        <button type="button" id="bnnuevacarpeta" class="btn btn-primary mr-1 mt-1" title="Crear Carpeta"><img src="img/botones/new.png" alt="+"> Crear Carpeta</button>
                                                     <?php
                                                     }
                                                     ?>
@@ -282,33 +282,36 @@ function obtenersizecarpeta($dir)
                                                     <?php
                                                     if ($_SESSION['CONFIGUSER']['rango'] == 1 || $_SESSION['CONFIGUSER']['rango'] == 2 || array_key_exists('pgestorarchivoscopiar', $_SESSION['CONFIGUSER']) && $_SESSION['CONFIGUSER']['pgestorarchivoscopiar'] == 1) {
                                                     ?>
-                                                        <button type="button" id="bcopiar" class="btn btn-primary mr-1" title="Copiar"><img src="img/botones/copiar.png" alt="+"> Copiar</button>
+                                                        <button type="button" id="bcopiar" class="btn btn-primary mr-1 mt-1" title="Copiar"><img src="img/botones/copiar.png" alt="+"> Copiar</button>
                                                         <?php
                                                         if ($_SESSION['COPIARFILES'] != "0") {
                                                         ?>
-                                                            <button type="button" id="bpegar" class="btn btn-primary mr-1" title="Pegar"><img src="img/botones/pegar.png" alt="+"> Pegar</button>
+                                                            <button type="button" id="bpegar" class="btn btn-primary mr-1 mt-1" title="Pegar"><img src="img/botones/pegar.png" alt="+"> Pegar</button>
                                                         <?php
                                                         }
                                                         ?>
                                                     <?php
                                                     }
                                                     ?>
-                                                    <button type="button" id="bselectall" class="btn btn-primary mr-1" title="Seleccionar Todo"><img src="img/botones/checkselect.png" alt=""> Seleccionar Todo</button>
-                                                    <button type="button" id="bunselectall" class="btn btn-primary mr-1" title="Quitar Selección"><img src="img/botones/checkunselect.png" alt=""> Quitar Selección</button>
+                                                    <button type="button" id="bselectall" class="btn btn-primary mr-1 mt-1" title="Seleccionar Todo"><img src="img/botones/checkselect.png" alt=""> Seleccionar Todo</button>
+                                                    <button type="button" id="bunselectall" class="btn btn-primary mr-1 mt-1" title="Quitar Selección"><img src="img/botones/checkunselect.png" alt=""> Quitar Selección</button>
 
                                                     <?php
                                                     if ($_SESSION['CONFIGUSER']['rango'] == 1 || $_SESSION['CONFIGUSER']['rango'] == 2 || array_key_exists('pgestorarchivosborrar', $_SESSION['CONFIGUSER']) && $_SESSION['CONFIGUSER']['pgestorarchivosborrar'] == 1) {
                                                     ?>
-                                                        <button type="button" id="beliminarseleccion" class="btn btn-danger mr-1" title="Eliminar Seleccionados"><img src="img/botones/borrar.png" alt=""> Eliminar Seleccionados</button>
+                                                        <button type="button" id="beliminarseleccion" class="btn btn-danger mr-1 mt-1" title="Eliminar Seleccionados"><img src="img/botones/borrar.png" alt=""> Eliminar Seleccionados</button>
                                                     <?php
                                                     }
                                                     ?>
 
                                                     <?php
                                                     if ($_SESSION['CONFIGUSER']['rango'] == 1 || $_SESSION['CONFIGUSER']['rango'] == 2 || array_key_exists('pgestorarchivosexcludefiles', $_SESSION['CONFIGUSER']) && $_SESSION['CONFIGUSER']['pgestorarchivosexcludefiles'] == 1) {
+                                                        clearstatcache();
+                                                        if (file_exists($rutaexcluidos)) {
                                                     ?>
-                                                        <button type="button" id="resetexcluidos" class="btn btn-warning" title="Borrar Lista Excluidos"><img src="img/botones/borrar.png" alt=""> Borrar Lista Excluidos</button>
+                                                            <button type="button" id="resetexcluidos" class="btn btn-warning mr-1 mt-1" title="Borrar Lista Excluidos"><img src="img/botones/borrar.png" alt=""> Borrar Lista Excluidos</button>
                                                     <?php
+                                                        }
                                                     }
                                                     ?>
 
@@ -565,12 +568,6 @@ function obtenersizecarpeta($dir)
                                                                 if (defined('CONFIGFOLDERMINECRAFTSIZE')) {
                                                                     //OBTENER TAMAÑO CARPETA MINE MAXIMO PERMITIDO
                                                                     $recsizemine = CONFIGFOLDERMINECRAFTSIZE;
-
-                                                                    //OBTENER CARPETA SERVIDOR MINECRAFT
-                                                                    $rutacarpetamine = getcwd() . PHP_EOL;
-                                                                    $rutacarpetamine = trim($rutacarpetamine);
-                                                                    $rutacarpetamine .= "/" . $reccarpmine;
-
                                                                     ?>
 
                                                                     <tr>
@@ -579,6 +576,12 @@ function obtenersizecarpeta($dir)
                                                                         </th>
                                                                         <?php
                                                                         if ($recshowsizefolder == 1) {
+
+                                                                            //OBTENER CARPETA SERVIDOR MINECRAFT
+                                                                            $rutacarpetamine = getcwd() . PHP_EOL;
+                                                                            $rutacarpetamine = trim($rutacarpetamine);
+                                                                            $rutacarpetamine .= "/" . $reccarpmine;
+
                                                                             //OBTENER USADO
                                                                             $getgigasmine = devolverdatos(obtenersizecarpeta($rutacarpetamine), 1, 2);
                                                                         ?>
