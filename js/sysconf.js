@@ -26,8 +26,7 @@ $(function () {
         document.getElementById('finpage').scrollIntoView();
 
         $.post($("#formconf").attr("action"), eldata, function (data) {
-            alert(data);
-
+            
             if (data == "novalidoname") {
                 document.getElementById("result").innerHTML = "<div class='alert alert-danger' role='alert'>Error: Nombre Servidor Jar no válido.</div>";
             } else if (data == "noexistejar") {
