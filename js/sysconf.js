@@ -26,8 +26,47 @@ $(function () {
         document.getElementById('finpage').scrollIntoView();
 
         $.post($("#formconf").attr("action"), eldata, function (data) {
+            alert(data);
 
-            if (data == "nowriteconf") {
+            if (data == "novalidoname") {
+                document.getElementById("result").innerHTML = "<div class='alert alert-danger' role='alert'>Error: Nombre Servidor Jar no válido.</div>";
+            } else if (data == "noexistejar") {
+                document.getElementById("result").innerHTML = "<div class='alert alert-danger' role='alert'>Error: El Servidor Jar no existe.</div>";
+            } else if (data == "notipovalido") {
+                document.getElementById("result").innerHTML = "<div class='alert alert-danger' role='alert'>Error: El Servidor Jar no es válido.</div>";
+            } else if (data == "portnonumerico") {
+                document.getElementById("result").innerHTML = "<div class='alert alert-danger' role='alert'>Error: El puerto introducido no es numérico.</div>";
+            } else if (data == "portoutrango") {
+                document.getElementById("result").innerHTML = "<div class='alert alert-danger' role='alert'>Error: El puerto está fuera de rango (1024-65535).</div>";
+            } else if (data == "portvacio") {
+                document.getElementById("result").innerHTML = "<div class='alert alert-danger' role='alert'>Error: El campo puerto esta vacío.</div>";
+            } else if (data == "ramnonumerico") {
+                document.getElementById("result").innerHTML = "<div class='alert alert-danger' role='alert'>Error: La ram introducida no es numérica.</div>";
+            } else if (data == "raminsuficiente") {
+                document.getElementById("result").innerHTML = "<div class='alert alert-danger' role='alert'>Error: Ram insuficiente.</div>";
+            } else if (data == "ramoutrange") {
+                document.getElementById("result").innerHTML = "<div class='alert alert-danger' role='alert'>Error: La ram introducida supera a la del sistema.</div>";
+            } else if (data == "ramvacia") {
+                document.getElementById("result").innerHTML = "<div class='alert alert-danger' role='alert'>Error: El campo ram esta vacío.</div>";
+            } else if (data == "badtipserv") {
+                document.getElementById("result").innerHTML = "<div class='alert alert-danger' role='alert'>Error: El tipo de servidor no es válido.</div>";
+            } else if (data == "tipservvacio") {
+                document.getElementById("result").innerHTML = "<div class='alert alert-danger' role='alert'>Error: El campo tipo servidor esta vacío.</div>";
+            } else if (data == "badmaxupload") {
+                document.getElementById("result").innerHTML = "<div class='alert alert-danger' role='alert'>Error: Los MB de upload no son válidos.</div>";
+            } else if (data == "maxuploadvacio") {
+                document.getElementById("result").innerHTML = "<div class='alert alert-danger' role='alert'>Error: El campo Upload MB esta vacío.</div>";
+            } else if (data == "nomservvacio") {
+                document.getElementById("result").innerHTML = "<div class='alert alert-danger' role='alert'>Error: El campo nombre servidor esta vacío.</div>";
+            } else if (data == "bootconfvacio") {
+                document.getElementById("result").innerHTML = "<div class='alert alert-danger' role='alert'>Error: El campo config boot esta vacío.</div>";
+            } else if (data == "lineasconsolanonumerico") {
+                document.getElementById("result").innerHTML = "<div class='alert alert-danger' role='alert'>Error: Las lineas consola no es numérico.</div>";
+            } else if (data == "lineasconsolaoutrango") {
+                document.getElementById("result").innerHTML = "<div class='alert alert-danger' role='alert'>Error: Lineas consola fuera de rango (0-1000).</div>";
+            } else if (data == "linconsolavacio") {
+                document.getElementById("result").innerHTML = "<div class='alert alert-danger' role='alert'>Error: El campo linea consola esta vacío.</div>";
+            } else if (data == "nowriteconf") {
                 document.getElementById("result").innerHTML = "<div class='alert alert-danger' role='alert'>Error: La carpeta config no tiene permisos de escritura.</div>";
             } else if (data == "nocarpetaconf") {
                 document.getElementById("result").innerHTML = "<div class='alert alert-danger' role='alert'>Error: La carpeta conf no existe.</div>";
@@ -241,10 +280,10 @@ $(function () {
             var elnumero = document.getElementById("elport").value;
             document.getElementById("result").innerHTML = "";
 
-            if (elnumero < 1025 || elnumero > 65535) {
-                document.getElementById("elport").value = "";
-            } else {
+            if (elnumero >= 1024 && elnumero <= 65535) {
                 document.getElementById("guardaserver").disabled = false;
+            } else {
+                document.getElementById("elport").value = "";
             }
         });
     }

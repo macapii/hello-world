@@ -47,47 +47,179 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
       if (isset($_POST['action']) && $_POST['action'] === 'submit') {
 
         $elerror = 0;
+        $test = 0;
+
+        $reccarpmine = CONFIGDIRECTORIO;
+
+        //VARIABLE RUTA SERVIDOR MINECRAFT
+        $rutacarpetamine = dirname(getcwd()) . PHP_EOL;
+        $rutacarpetamine = trim($rutacarpetamine);
+        $rutacarpetamine .= "/" . $reccarpmine;
 
 
         //INPUT LISTADO JARS
         if (isset($_POST["listadojars"])) {
           $ellistadojars = test_input($_POST["listadojars"]);
+
+          //COMPOBAR SI HAY ".." "..."
+          $verificar = array('..', '...', '/.', '~', '../', './', ';', ':', '>', '<', '/', '\\', '&&', '#', "|", '$', '%', '!', '`', '&', '*', '{', '}', '?', '=', '@', "'", '"', "'\'");
+
+          for ($i = 0; $i < count($verificar); $i++) {
+
+            $test = substr_count($ellistadojars, $verificar[$i]);
+
+            if ($test >= 1) {
+              $retorno = "novalidoname";
+              $elerror = 1;
+            }
+          }
+
+          //VERIFICAR SI EXISTE REALMENTE
+          if ($elerror == 0) {
+            $rutajar = $rutacarpetamine . "/" . $ellistadojars;
+
+            clearstatcache();
+            if (!file_exists($rutajar)) {
+              $elerror = 1;
+              $retorno = "noexistejar";
+            }
+          }
+
+          //COMPROBAR SI ES REALMENTE ARCHIVO JAVA
+          if ($elerror == 0) {
+            $tipovalido = 0;
+            $eltipoapplication = mime_content_type($rutajar);
+
+            switch ($eltipoapplication) {
+              case "application/java-archive":
+                $tipovalido = 1;
+                break;
+              case "application/zip":
+                $tipovalido = 1;
+                break;
+            }
+
+            if ($tipovalido == 0) {
+              $retorno = "notipovalido";
+              $elerror = 1;
+            }
+          }
         } else {
           $ellistadojars = "";
         }
 
-
         //INPUT PUERTO
         if ($_SESSION['CONFIGUSER']['rango'] == 1 || array_key_exists('psystemconfpuerto', $_SESSION['CONFIGUSER']) && $_SESSION['CONFIGUSER']['psystemconfpuerto'] == 1) {
-          $elpuerto = test_input($_POST["elport"]);
+
+          if (isset($_POST["elport"])) {
+            $elpuerto = test_input($_POST["elport"]);
+
+            //ES NUMERICO
+            if ($elerror == 0) {
+              if (!is_numeric($elpuerto)) {
+                $retorno = "portnonumerico";
+                $elerror = 1;
+              }
+            }
+
+            //RANGO
+            if ($elerror == 0) {
+              if ($elpuerto < 1024 || $elpuerto > 65535) {
+                $retorno = "portoutrango";
+                $elerror = 1;
+              }
+            }
+          } else {
+            $retorno = "portvacio";
+            $elerror = 1;
+          }
         } else {
           $elpuerto = CONFIGPUERTO;
         }
 
         //INPUT RAM
         if ($_SESSION['CONFIGUSER']['rango'] == 1 || array_key_exists('psystemconfmemoria', $_SESSION['CONFIGUSER']) && $_SESSION['CONFIGUSER']['psystemconfmemoria'] == 1) {
-          $laram = test_input($_POST["elram"]);
+          if (isset($_POST["elram"])) {
+            $laram = test_input($_POST["elram"]);
+
+            //ES NUMERICO
+            if ($elerror == 0) {
+              if (!is_numeric($laram)) {
+                $retorno = "ramnonumerico";
+                $elerror = 1;
+              }
+            }
+
+            if ($elerror == 0) {
+              $salida = shell_exec("free -g | grep Mem | awk '{ print $2 }'");
+              $totalram = trim($salida);
+              $totalram = intval($totalram);
+
+              if ($totalram <= 0) {
+                $retorno = "raminsuficiente";
+                $elerror = 1;
+              } else {
+                if ($laram > $totalram) {
+                  $retorno = "ramoutrange";
+                  $elerror = 1;
+                }
+              }
+            }
+          } else {
+            $retorno = "ramvacia";
+            $elerror = 1;
+          }
         } else {
           $laram = CONFIGRAM;
         }
 
         //INPUT TIPO SERVIDOR
         if ($_SESSION['CONFIGUSER']['rango'] == 1 || array_key_exists('psystemconftipo', $_SESSION['CONFIGUSER']) && $_SESSION['CONFIGUSER']['psystemconftipo'] == 1) {
-          $eltiposerver = test_input($_POST["eltipserv"]);
+          if (isset($_POST["eltipserv"])) {
+            $eltiposerver = test_input($_POST["eltipserv"]);
+            $opcionesserver = array('vanilla', 'spigot', 'paper', 'forge', 'magma', 'otros');
+
+            if ($elerror == 0) {
+              if (!in_array($eltiposerver, $opcionesserver)) {
+                $retorno = "badtipserv";
+                $elerror = 1;
+              }
+            }
+          } else {
+            $retorno = "tipservvacio";
+            $elerror = 1;
+          }
         } else {
           $eltiposerver = CONFIGTIPOSERVER;
         }
 
         //INPUT SUBIDA MAXIMA FICHEROS
         if ($_SESSION['CONFIGUSER']['rango'] == 1 || array_key_exists('psystemconfsubida', $_SESSION['CONFIGUSER']) && $_SESSION['CONFIGUSER']['psystemconfsubida'] == 1) {
-          $eluploadmax = test_input($_POST["elmaxupload"]);
+          if (isset($_POST["elmaxupload"])) {
+            $eluploadmax = test_input($_POST["elmaxupload"]);
+            $opcionesserver = array('128', '256', '386', '512', '640', '768', '896', '1024', '2048', '3072', '4096', '5120');
+            if ($elerror == 0) {
+              if (!in_array($eluploadmax, $opcionesserver)) {
+                $retorno = "badmaxupload";
+                $elerror = 1;
+              }
+            }
+          } else {
+            $retorno = "maxuploadvacio";
+            $elerror = 1;
+          }
         } else {
           $eluploadmax = CONFIGMAXUPLOAD;
         }
 
         //INPUT NOMBRE SERVIDOR
         if ($_SESSION['CONFIGUSER']['rango'] == 1 || array_key_exists('psystemconfnombre', $_SESSION['CONFIGUSER']) && $_SESSION['CONFIGUSER']['psystemconfnombre'] == 1) {
-          $elnombreservidor = test_input($_POST["elnomserv"]);
+          if (isset($_POST["elnomserv"])) {
+            $elnombreservidor = test_input($_POST["elnomserv"]);
+          } else {
+            $retorno = "nomservvacio";
+            $elerror = 1;
+          }
         } else {
           $elnombreservidor = CONFIGNOMBRESERVER;
         }
@@ -100,6 +232,9 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
             if ($elbootconfig != "SI") {
               $elbootconfig = "NO";
             }
+          } else {
+            $retorno = "bootconfvacio";
+            $elerror = 1;
           }
         } else {
           $elbootconfig = CONFIGBOOTSYSTEM;
@@ -107,7 +242,28 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
 
         //LINEAS CONSOLA
         if ($_SESSION['CONFIGUSER']['rango'] == 1 || array_key_exists('psystemconflinconsole', $_SESSION['CONFIGUSER']) && $_SESSION['CONFIGUSER']['psystemconflinconsole'] == 1) {
-          $elnumerolineaconsola = test_input($_POST["linconsola"]);
+          if (isset($_POST["linconsola"])) {
+            $elnumerolineaconsola = test_input($_POST["linconsola"]);
+
+            //ES NUMERICO
+            if ($elerror == 0) {
+              if (!is_numeric($elnumerolineaconsola)) {
+                $retorno = "lineasconsolanonumerico";
+                $elerror = 1;
+              }
+            }
+
+            //RANGO
+            if ($elerror == 0) {
+              if ($elnumerolineaconsola < 0 || $elnumerolineaconsola > 1000) {
+                $retorno = "lineasconsolaoutrango";
+                $elerror = 1;
+              }
+            }
+          } else {
+            $retorno = "linconsolavacio";
+            $elerror = 1;
+          }
         } else {
           $elnumerolineaconsola = CONFIGLINEASCONSOLA;
         }
