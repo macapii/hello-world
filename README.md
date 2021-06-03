@@ -67,7 +67,7 @@ Instalar
 
 ```
 Descargar:
-wget https://github.com/Konata400/McWebPanel/archive/refs/tags/0.10-pre.zip
+wget https://github.com/Konata400/McWebPanel/archive/refs/tags/0.11-pre.zip
 
 Descomprimir:
 unzip 0.10-pre.zip
@@ -76,7 +76,7 @@ Eliminar index.html por defecto de apache:
 sudo rm /var/www/html/index.html
 
 Copiar a la carpeta Apache:
-sudo cp -r McWebPanel-0.10-pre/. /var/www/html/
+sudo cp -r McWebPanel-0.11-pre/. /var/www/html/
 
 Cambiar Usuario Archivos:
 sudo chown -R www-data:www-data /var/www/html/
