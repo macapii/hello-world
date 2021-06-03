@@ -249,7 +249,7 @@ function test_input($data)
 
                                                         </div>
                                                         <div class="col-md-6">
-                                                            <img class="" src="img/loading.gif" id="gifloading" alt="loading" style="visibility: hidden;">
+                                                            <img class="invisible" src="img/loading.gif" id="gifloading" alt="loading">
                                                         </div>
                                                     </div>
                                                 </div>
