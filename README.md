@@ -70,7 +70,7 @@ Descargar:
 wget https://github.com/Konata400/McWebPanel/archive/refs/tags/0.11-pre.zip
 
 Descomprimir:
-unzip 0.10-pre.zip
+unzip 0.11-pre.zip
 
 Eliminar index.html por defecto de apache:
 sudo rm /var/www/html/index.html
