@@ -382,8 +382,11 @@ require_once("../template/errorreport.php");
         fwrite($file, "spawn-monsters=true" . PHP_EOL);
         fwrite($file, "enforce-whitelist=false" . PHP_EOL);
         fwrite($file, "resource-pack-sha1=" . PHP_EOL);
+        fwrite($file, "require-resource-pack=false" . PHP_EOL);
+        fwrite($file, "resource-pack-prompt=" . PHP_EOL);
         fwrite($file, "spawn-protection=16" . PHP_EOL);
         fwrite($file, "max-world-size=29999984" . PHP_EOL);
+        fwrite($file, "text-filtering-config=" . PHP_EOL);
         fclose($file);
 
         //ELIMINAR INSTALL
