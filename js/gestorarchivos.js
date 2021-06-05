@@ -737,7 +737,7 @@ $(function () {
 
     if (document.getElementById('resetexcluidos') !== null) {
         $("#resetexcluidos").click(function () {
-            var eleccion = confirm("Borrar listado excluidos!\n\n¡Vas a eliminar el listado de archivos excludios!\n\n¿Seguro que quieres continuar?");
+            var eleccion = confirm("Borrar listado excluidos!\n\n¡Vas a eliminar el listado de archivos excluidos!\n\n¿Seguro que quieres continuar?");
             if (eleccion == true) {
                 $.ajax({
                     url: 'function/gestorborrarexcluidos.php',
