@@ -42,7 +42,6 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
   if ($_SESSION['CONFIGUSER']['rango'] == 1 || $_SESSION['CONFIGUSER']['rango'] == 2 || array_key_exists('pconfmine', $_SESSION['CONFIGUSER']) && $_SESSION['CONFIGUSER']['pconfmine'] == 1) {
 
     if (isset($_POST['action']) && !empty($_POST['action'])) {
-      $retorno = "";
 
       function escribir($lakey, $elvalor)
       {
@@ -51,6 +50,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
         $rutatemp = $rutacarpetamine;
         $rutacarpetamine .= "/config/serverproperties.txt";
         $rutatemp .= "/config/serverproperties.tmp";
+        $contador = 0;
 
         clearstatcache();
         if (file_exists($rutacarpetamine)) {
@@ -63,9 +63,14 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
 
             if ($array[0] == $lakey) {
               fwrite($file, $lakey . '=' . $elvalor . PHP_EOL);
+              $contador = 1;
             } else {
               fwrite($file, $búfer);
             }
+          }
+
+          if($contador == 0){
+            fwrite($file, $lakey . '=' . $elvalor . PHP_EOL);
           }
 
           if (!feof($gestor)) {
@@ -78,6 +83,8 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
         }
       }
 
+      session_write_close();
+      
       $elaction = trim($_POST['action']);
       $elresultado = trim($_POST['valor']);
 

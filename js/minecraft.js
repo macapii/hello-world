@@ -222,6 +222,18 @@ $(function() {
         }
     }
 
+    if (document.getElementById("label-require-resource-pack") !== null) {
+        if (document.getElementById("form-require-resource-pack") !== null) {
+            document.getElementById("label-require-resource-pack").innerHTML = htmlEntities("require-resource-pack=" + document.getElementById("form-require-resource-pack").value);
+        }
+    }
+
+    if (document.getElementById("label-resource-pack-prompt") !== null) {
+        if (document.getElementById("form-resource-pack-prompt") !== null) {
+            document.getElementById("label-resource-pack-prompt").innerHTML = htmlEntities("resource-pack-prompt=" + document.getElementById("form-resource-pack-prompt").value);
+        }
+    }
+
     if (document.getElementById("label-level-name") !== null) {
         if (document.getElementById("form-level-name") !== null) {
             document.getElementById("label-level-name").innerHTML = htmlEntities("level-name=" + document.getElementById("form-level-name").value);
@@ -737,6 +749,56 @@ $(function() {
         }
 
     });
+
+    $("#form-require-resource-pack").change(function() {
+        var envioaction = "require-resource-pack";
+        var enviovalor = document.getElementById("form-require-resource-pack").value;
+        $.ajax({
+            type: "POST",
+            url: "function/guardarproperties.php",
+            data: {
+                action: envioaction,
+                valor: enviovalor
+            },
+            success: function(data) {
+                var getdebug = 0;
+                if (getdebug == 1) {
+                    alert(data);
+                }
+            }
+        });
+
+        if (document.getElementById("label-require-resource-pack") !== null) {
+            document.getElementById("label-require-resource-pack").innerHTML = htmlEntities("require-resource-pack=" + document.getElementById("form-require-resource-pack").value);
+        }
+
+    });
+
+    $("#form-resource-pack-prompt").keyup(function() {
+        var envioaction = "resource-pack-prompt";
+        var enviovalor = document.getElementById("form-resource-pack-prompt").value;
+        $.ajax({
+            type: "POST",
+            url: "function/guardarproperties.php",
+            data: {
+                action: envioaction,
+                valor: enviovalor
+            },
+            success: function(data) {
+                var getdebug = 0;
+                if (getdebug == 1) {
+                    alert(data);
+                }
+            }
+        });
+
+        if (document.getElementById("label-resource-pack-prompt") !== null) {
+            document.getElementById("label-resource-pack-prompt").innerHTML = htmlEntities("resource-pack-prompt=" + document.getElementById("form-resource-pack-prompt").value);
+        }
+
+    });
+
+
 
     $("#form-level-name").keyup(function() {
         var envioaction = "level-name";

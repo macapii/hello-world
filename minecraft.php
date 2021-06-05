@@ -660,6 +660,79 @@ function test_input($data)
                                     <!-- Separacion Fin -->
                                     <hr>
                                     <!-- Separacion Inicio -->
+                                    <div class="">
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="col-md-8">
+                                                    <h3 class=""><b>Requerir Paquete de recursos</b></h3>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <p class="">Valor Defecto: false<br>Requiere Versión: 1.17 o superior</p>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-8">
+                                                    <p class="lead">Al estar en true, fuerza a requerir que tengas el paquete de recursos del servidor<br>Los usuarios que no acepten el paquete de recursos serán desconectados.</p>
+                                                </div>
+                                                <div class="col-md-4">
+                                                <select id="form-require-resource-pack" class="form-control w-100">
+                                                        <?php
+                                                        $lostextos = array('False', 'True');
+                                                        $losvalues = array('false', 'true');
+
+                                                        $obtener = leerlineas('require-resource-pack');
+
+                                                        for ($i = 0; $i < count($lostextos); $i++) {
+
+                                                            if ($obtener == $losvalues[$i]) {
+                                                                echo '<option selected value="' . $losvalues[$i] . '">' . $lostextos[$i] . '</option>';
+                                                            } else {
+                                                                echo '<option value="' . $losvalues[$i] . '">' . $lostextos[$i] . '</option>';
+                                                            }
+                                                        }
+
+                                                        ?>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p id="label-require-resource-pack" class="lead text-center text-white mt-2 bg-primary">require-resource-pack</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Separacion Fin -->
+                                    <hr>
+                                    <!-- Separacion Inicio -->
+                                    <div class="">
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="col-md-8">
+                                                    <h3 class=""><b>Dialogo Paquete de recursos</b></h3>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <p class="">Valor Defecto: Vacío<br>Requiere Versión: 1.17 o superior</p>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-8">
+                                                    <p class="lead">Añade un dialogo personalizado que se mostrara al solicitar el paquete de recursos cuando está activado (Opcional).</p>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <input id="form-resource-pack-prompt" type="text" class="form-control" value="<?php echo (test_input(leerlineas('resource-pack-prompt'))); ?>">
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p id="label-resource-pack-prompt" class="lead text-center text-white mt-2 bg-primary">resource-pack-prompt</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Separacion Fin -->
+                                    <hr>
+                                    <!-- Separacion Inicio -->
                                     <div class="pt-3">
                                         <div class="container">
                                             <div class="row">
