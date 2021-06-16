@@ -25,10 +25,10 @@ require_once("template/header.php");
 
 function test_input($data)
 {
-  $data = trim($data);
-  $data = stripslashes($data);
-  $data = htmlspecialchars($data);
-  return $data;
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
 }
 
 ?>
@@ -82,10 +82,10 @@ function test_input($data)
                     $lakey = strlen($array[0]);
                     $lakey++;
                     if ($array[0] == $eltipo) {
-                        if($lakey < $totalletras){
-                            $elresul = substr($str,$lakey);
+                        if ($lakey < $totalletras) {
+                            $elresul = substr($str, $lakey);
                             return trim($elresul);
-                        }else{
+                        } else {
                             $vacio = "";
                             return $vacio;
                         }
@@ -139,6 +139,18 @@ function test_input($data)
                                                     clearstatcache();
                                                     if (!file_exists($rutacarpetamine)) {
                                                         echo '<div class="alert alert-danger" role="alert">Error: El archivo /config/serverproperties.txt no existe.</div>';
+                                                    ?>
+                                                        <div class="">
+                                                            <div class="container">
+                                                                <div class="row">
+                                                                    <div class="col-md-12">
+                                                                        <button id="restablecer" type="button" class="btn btn-block btn-lg btn-danger">Restablecer configuración por defecto</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <script src="js/minecraft.js"></script>
+                                                    <?php
                                                         exit;
                                                     }
 
@@ -675,7 +687,7 @@ function test_input($data)
                                                     <p class="lead">Al estar en true, fuerza a requerir que tengas el paquete de recursos del servidor<br>Los usuarios que no acepten el paquete de recursos serán desconectados.</p>
                                                 </div>
                                                 <div class="col-md-4">
-                                                <select id="form-require-resource-pack" class="form-control w-100">
+                                                    <select id="form-require-resource-pack" class="form-control w-100">
                                                         <?php
                                                         $lostextos = array('False', 'True');
                                                         $losvalues = array('false', 'true');
@@ -720,7 +732,7 @@ function test_input($data)
                                                     <p class="lead">Añade un dialogo personalizado que se mostrara al solicitar el paquete de recursos cuando está activado (Opcional).</p>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <input id="form-resource-pack-prompt" type="text" class="form-control" value="<?php echo (test_input(leerlineas('resource-pack-prompt'))); ?>">
+                                                    <input id="form-resource-pack-prompt" type="text" class="form-control" value="<?php echo htmlentities(leerlineas('resource-pack-prompt')); ?>">
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -1877,9 +1889,9 @@ function test_input($data)
                                                     <h3 class=""><b>op-permission-level</b></h3>
                                                     <p class="lead">Asigna el permiso por defecto para operadores.</p>
                                                     <p class="">Valor 1: Ops pueden hacer bypass a la protección del spawn.
-                                                    <br>Valor 2: Ops pueden usar todos los comandos de un jugador, /debug y bloques de comandos.
-                                                    <br>Valor 3: Ops pueden usar la mayoría de comandos multijugador incluidos /ban /op, etc...
-                                                    <br>Valor 4: Ops pueden usar todos los comandos incluso /stop /save-all /save-on y /save-off
+                                                        <br>Valor 2: Ops pueden usar todos los comandos de un jugador, /debug y bloques de comandos.
+                                                        <br>Valor 3: Ops pueden usar la mayoría de comandos multijugador incluidos /ban /op, etc...
+                                                        <br>Valor 4: Ops pueden usar todos los comandos incluso /stop /save-all /save-on y /save-off
                                                     </p>
                                                 </div>
                                                 <div class="col-md-4">
@@ -1889,10 +1901,10 @@ function test_input($data)
                                             </div>
                                             <div class="row">
                                                 <div class="col-md-8">
-                                                    
+
                                                 </div>
                                                 <div class="col-md-4">
-                                                    
+
                                                 </div>
                                             </div>
                                             <div class="row">

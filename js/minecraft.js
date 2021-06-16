@@ -16,13 +16,13 @@ Copyright (C) 2020 Cristina Ibañez, Konata400
     along with McWebPanel.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-$(function() {
+$(function () {
 
     function htmlEntities(str) {
         return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
     }
 
-    $("#form-player-idle-timeout").keypress(function(e) {
+    $("#form-player-idle-timeout").keypress(function (e) {
         if (e.keyCode < 48 || e.keyCode > 57) {
             return false;
         } else {
@@ -30,7 +30,7 @@ $(function() {
         }
     });
 
-    $("#form-max-build-height").keypress(function(e) {
+    $("#form-max-build-height").keypress(function (e) {
         if (e.keyCode < 48 || e.keyCode > 57) {
             return false;
         } else {
@@ -38,7 +38,7 @@ $(function() {
         }
     });
 
-    $("#form-entity-broadcast-range-percentage").keypress(function(e) {
+    $("#form-entity-broadcast-range-percentage").keypress(function (e) {
         if (e.keyCode < 48 || e.keyCode > 57) {
             return false;
         } else {
@@ -46,7 +46,7 @@ $(function() {
         }
     });
 
-    $("#form-spawn-protection").keypress(function(e) {
+    $("#form-spawn-protection").keypress(function (e) {
         if (e.keyCode < 48 || e.keyCode > 57) {
             return false;
         } else {
@@ -54,7 +54,7 @@ $(function() {
         }
     });
 
-    $("#form-max-world-size").keypress(function(e) {
+    $("#form-max-world-size").keypress(function (e) {
         if (e.keyCode < 48 || e.keyCode > 57) {
             return false;
         } else {
@@ -62,7 +62,7 @@ $(function() {
         }
     });
 
-    $("#form-max-players").keypress(function(e) {
+    $("#form-max-players").keypress(function (e) {
         if (e.keyCode < 48 || e.keyCode > 57) {
             return false;
         } else {
@@ -70,7 +70,7 @@ $(function() {
         }
     });
 
-    $("#form-query-port").keypress(function(e) {
+    $("#form-query-port").keypress(function (e) {
         if (e.keyCode < 48 || e.keyCode > 57) {
             return false;
         } else {
@@ -78,7 +78,7 @@ $(function() {
         }
     });
 
-    $("#form-rconport").keypress(function(e) {
+    $("#form-rconport").keypress(function (e) {
         if (e.keyCode < 48 || e.keyCode > 57) {
             return false;
         } else {
@@ -86,7 +86,7 @@ $(function() {
         }
     });
 
-    $("#form-max-tick-time").keypress(function(e) {
+    $("#form-max-tick-time").keypress(function (e) {
         if (e.keyCode < 48 || e.keyCode > 57) {
             if (e.keyCode == 45) {
                 return true;
@@ -98,7 +98,7 @@ $(function() {
         }
     });
 
-    $("#form-op-permission-level").keypress(function(e) {
+    $("#form-op-permission-level").keypress(function (e) {
         if (e.keyCode < 48 || e.keyCode > 57) {
             return false;
         } else {
@@ -106,7 +106,7 @@ $(function() {
         }
     });
 
-    $("#form-function-permission-level").keypress(function(e) {
+    $("#form-function-permission-level").keypress(function (e) {
         if (e.keyCode < 48 || e.keyCode > 57) {
             return false;
         } else {
@@ -114,7 +114,7 @@ $(function() {
         }
     });
 
-    $("#form-rate-limit").keypress(function(e) {
+    $("#form-rate-limit").keypress(function (e) {
         if (e.keyCode < 48 || e.keyCode > 57) {
             return false;
         } else {
@@ -122,7 +122,7 @@ $(function() {
         }
     });
 
-    $("#form-network-compression-threshold").keypress(function(e) {
+    $("#form-network-compression-threshold").keypress(function (e) {
         if (e.keyCode < 48 || e.keyCode > 57) {
             if (e.keyCode == 45) {
                 return true;
@@ -134,7 +134,7 @@ $(function() {
         }
     });
 
-    $("#form-view-distance").keypress(function(e) {
+    $("#form-view-distance").keypress(function (e) {
         if (e.keyCode < 48 || e.keyCode > 57) {
             return false;
         } else {
@@ -142,7 +142,7 @@ $(function() {
         }
     });
 
-    $("#form-level-name").keypress(function(e) {
+    $("#form-level-name").keypress(function (e) {
         if (e.keyCode >= 48 && e.keyCode <= 57 || e.keyCode >= 65 && e.keyCode <= 90 || e.keyCode >= 97 && e.keyCode <= 122 || e.keyCode == 45 || e.keyCode == 95 || e.keyCode == 13) {
             return true;
         } else {
@@ -152,61 +152,61 @@ $(function() {
 
     if (document.getElementById("label-gamemode") !== null) {
         if (document.getElementById("form-gamemode") !== null) {
-            document.getElementById("label-gamemode").innerHTML = htmlEntities( "gamemode=" + document.getElementById("form-gamemode").value);
+            document.getElementById("label-gamemode").innerHTML = htmlEntities("gamemode=" + document.getElementById("form-gamemode").value);
         }
     }
 
     if (document.getElementById("label-force-gamemode") !== null) {
         if (document.getElementById("form-force-gamemode") !== null) {
-            document.getElementById("label-force-gamemode").innerHTML = htmlEntities( "force-gamemode=" + document.getElementById("form-force-gamemode").value);
+            document.getElementById("label-force-gamemode").innerHTML = htmlEntities("force-gamemode=" + document.getElementById("form-force-gamemode").value);
         }
     }
 
     if (document.getElementById("label-difficulty") !== null) {
         if (document.getElementById("form-difficulty") !== null) {
-            document.getElementById("label-difficulty").innerHTML = htmlEntities( "difficulty=" + document.getElementById("form-difficulty").value);
+            document.getElementById("label-difficulty").innerHTML = htmlEntities("difficulty=" + document.getElementById("form-difficulty").value);
         }
     }
 
     if (document.getElementById("label-hardcore") !== null) {
         if (document.getElementById("form-hardcore") !== null) {
-            document.getElementById("label-hardcore").innerHTML = htmlEntities( "hardcore=" + document.getElementById("form-hardcore").value);
+            document.getElementById("label-hardcore").innerHTML = htmlEntities("hardcore=" + document.getElementById("form-hardcore").value);
         }
     }
 
     if (document.getElementById("label-pvp") !== null) {
         if (document.getElementById("form-pvp") !== null) {
-            document.getElementById("label-pvp").innerHTML = htmlEntities( "pvp=" + document.getElementById("form-pvp").value);
+            document.getElementById("label-pvp").innerHTML = htmlEntities("pvp=" + document.getElementById("form-pvp").value);
         }
     }
 
     if (document.getElementById("label-spawn-npcs") !== null) {
         if (document.getElementById("form-spawn-npcs") !== null) {
-            document.getElementById("label-spawn-npcs").innerHTML = htmlEntities( "spawn-npcs=" + document.getElementById("form-spawn-npcs").value);
+            document.getElementById("label-spawn-npcs").innerHTML = htmlEntities("spawn-npcs=" + document.getElementById("form-spawn-npcs").value);
         }
     }
 
     if (document.getElementById("label-spawn-animals") !== null) {
         if (document.getElementById("form-spawn-animals") !== null) {
-            document.getElementById("label-spawn-animals").innerHTML = htmlEntities( "spawn-animals=" + document.getElementById("form-spawn-animals").value);
+            document.getElementById("label-spawn-animals").innerHTML = htmlEntities("spawn-animals=" + document.getElementById("form-spawn-animals").value);
         }
     }
 
     if (document.getElementById("label-spawn-monsters") !== null) {
         if (document.getElementById("form-spawn-monsters") !== null) {
-            document.getElementById("label-spawn-monsters").innerHTML = htmlEntities( "spawn-monsters=" + document.getElementById("form-spawn-monsters").value);
+            document.getElementById("label-spawn-monsters").innerHTML = htmlEntities("spawn-monsters=" + document.getElementById("form-spawn-monsters").value);
         }
     }
 
     if (document.getElementById("label-allow-flight") !== null) {
         if (document.getElementById("form-allow-flight") !== null) {
-            document.getElementById("label-allow-flight").innerHTML = htmlEntities( "allow-flight=" + document.getElementById("form-allow-flight").value);
+            document.getElementById("label-allow-flight").innerHTML = htmlEntities("allow-flight=" + document.getElementById("form-allow-flight").value);
         }
     }
 
     if (document.getElementById("label-player-idle-timeout") !== null) {
         if (document.getElementById("form-player-idle-timeout") !== null) {
-            document.getElementById("label-player-idle-timeout").innerHTML = htmlEntities( "player-idle-timeout=" + document.getElementById("form-player-idle-timeout").value);
+            document.getElementById("label-player-idle-timeout").innerHTML = htmlEntities("player-idle-timeout=" + document.getElementById("form-player-idle-timeout").value);
         }
     }
 
@@ -248,7 +248,7 @@ $(function() {
 
     if (document.getElementById("label-level-type") !== null) {
         if (document.getElementById("form-level-type") !== null) {
-            document.getElementById("label-level-type").innerHTML = htmlEntities( "level-type=" + document.getElementById("form-level-type").value);
+            document.getElementById("label-level-type").innerHTML = htmlEntities("level-type=" + document.getElementById("form-level-type").value);
         }
     }
 
@@ -260,79 +260,79 @@ $(function() {
 
     if (document.getElementById("label-max-build-height") !== null) {
         if (document.getElementById("form-max-build-height") !== null) {
-            document.getElementById("label-max-build-height").innerHTML = htmlEntities( "max-build-height=" + document.getElementById("form-max-build-height").value);
+            document.getElementById("label-max-build-height").innerHTML = htmlEntities("max-build-height=" + document.getElementById("form-max-build-height").value);
         }
     }
 
     if (document.getElementById("label-generate-structures") !== null) {
         if (document.getElementById("form-generate-structures") !== null) {
-            document.getElementById("label-generate-structures").innerHTML = htmlEntities( "generate-structures=" + document.getElementById("form-generate-structures").value);
+            document.getElementById("label-generate-structures").innerHTML = htmlEntities("generate-structures=" + document.getElementById("form-generate-structures").value);
         }
     }
 
     if (document.getElementById("label-allow-nether") !== null) {
         if (document.getElementById("form-allow-nether") !== null) {
-            document.getElementById("label-allow-nether").innerHTML = htmlEntities( "allow-nether=" + document.getElementById("form-allow-nether").value);
+            document.getElementById("label-allow-nether").innerHTML = htmlEntities("allow-nether=" + document.getElementById("form-allow-nether").value);
         }
     }
 
     if (document.getElementById("label-entity-broadcast-range-percentage") !== null) {
         if (document.getElementById("form-entity-broadcast-range-percentage") !== null) {
-            document.getElementById("label-entity-broadcast-range-percentage").innerHTML = htmlEntities( "entity-broadcast-range-percentage=" + document.getElementById("form-entity-broadcast-range-percentage").value);
+            document.getElementById("label-entity-broadcast-range-percentage").innerHTML = htmlEntities("entity-broadcast-range-percentage=" + document.getElementById("form-entity-broadcast-range-percentage").value);
         }
     }
 
     if (document.getElementById("label-spawn-protection") !== null) {
         if (document.getElementById("form-spawn-protection") !== null) {
-            document.getElementById("label-spawn-protection").innerHTML = htmlEntities( "spawn-protection=" + document.getElementById("form-spawn-protection").value);
+            document.getElementById("label-spawn-protection").innerHTML = htmlEntities("spawn-protection=" + document.getElementById("form-spawn-protection").value);
         }
     }
 
     if (document.getElementById("label-max-world-size") !== null) {
         if (document.getElementById("form-max-world-size") !== null) {
-            document.getElementById("label-max-world-size").innerHTML = htmlEntities( "max-world-size=" + document.getElementById("form-max-world-size").value);
+            document.getElementById("label-max-world-size").innerHTML = htmlEntities("max-world-size=" + document.getElementById("form-max-world-size").value);
         }
     }
 
     if (document.getElementById("label-online-mode") !== null) {
         if (document.getElementById("form-online-mode") !== null) {
-            document.getElementById("label-online-mode").innerHTML = htmlEntities( "online-mode=" + document.getElementById("form-online-mode").value);
+            document.getElementById("label-online-mode").innerHTML = htmlEntities("online-mode=" + document.getElementById("form-online-mode").value);
         }
     }
 
     if (document.getElementById("label-max-players") !== null) {
         if (document.getElementById("form-max-players") !== null) {
-            document.getElementById("label-max-players").innerHTML = htmlEntities( "max-players=" + document.getElementById("form-max-players").value);
+            document.getElementById("label-max-players").innerHTML = htmlEntities("max-players=" + document.getElementById("form-max-players").value);
         }
     }
 
     if (document.getElementById("label-enable-command-block") !== null) {
         if (document.getElementById("form-enable-command-block") !== null) {
-            document.getElementById("label-enable-command-block").innerHTML = htmlEntities( "enable-command-block=" + document.getElementById("form-enable-command-block").value);
+            document.getElementById("label-enable-command-block").innerHTML = htmlEntities("enable-command-block=" + document.getElementById("form-enable-command-block").value);
         }
     }
 
     if (document.getElementById("label-enable-query") !== null) {
         if (document.getElementById("form-enable-query") !== null) {
-            document.getElementById("label-enable-query").innerHTML = htmlEntities( "enable-query=" + document.getElementById("form-enable-query").value);
+            document.getElementById("label-enable-query").innerHTML = htmlEntities("enable-query=" + document.getElementById("form-enable-query").value);
         }
     }
 
     if (document.getElementById("label-query-port") !== null) {
         if (document.getElementById("form-query-port") !== null) {
-            document.getElementById("label-query-port").innerHTML = htmlEntities( "query.port=" + document.getElementById("form-query-port").value);
+            document.getElementById("label-query-port").innerHTML = htmlEntities("query.port=" + document.getElementById("form-query-port").value);
         }
     }
 
     if (document.getElementById("label-enable-rcon") !== null) {
         if (document.getElementById("form-enable-rcon") !== null) {
-            document.getElementById("label-enable-rcon").innerHTML = htmlEntities( "enable-rcon=" + document.getElementById("form-enable-rcon").value);
+            document.getElementById("label-enable-rcon").innerHTML = htmlEntities("enable-rcon=" + document.getElementById("form-enable-rcon").value);
         }
     }
 
     if (document.getElementById("label-rconport") !== null) {
         if (document.getElementById("form-rconport") !== null) {
-            document.getElementById("label-rconport").innerHTML = htmlEntities( "rcon.port=" + document.getElementById("form-rconport").value);
+            document.getElementById("label-rconport").innerHTML = htmlEntities("rcon.port=" + document.getElementById("form-rconport").value);
         }
     }
 
@@ -344,13 +344,13 @@ $(function() {
 
     if (document.getElementById("label-white-list") !== null) {
         if (document.getElementById("form-white-list") !== null) {
-            document.getElementById("label-white-list").innerHTML = htmlEntities( "white-list=" + document.getElementById("form-white-list").value);
+            document.getElementById("label-white-list").innerHTML = htmlEntities("white-list=" + document.getElementById("form-white-list").value);
         }
     }
 
     if (document.getElementById("label-enforce-whitelist") !== null) {
         if (document.getElementById("form-enforce-whitelist") !== null) {
-            document.getElementById("label-enforce-whitelist").innerHTML = htmlEntities( "enforce-whitelist=" + document.getElementById("form-enforce-whitelist").value);
+            document.getElementById("label-enforce-whitelist").innerHTML = htmlEntities("enforce-whitelist=" + document.getElementById("form-enforce-whitelist").value);
         }
     }
 
@@ -362,85 +362,85 @@ $(function() {
 
     if (document.getElementById("label-enable-status") !== null) {
         if (document.getElementById("form-enable-status") !== null) {
-            document.getElementById("label-enable-status").innerHTML = htmlEntities( "enable-status=" + document.getElementById("form-enable-status").value);
+            document.getElementById("label-enable-status").innerHTML = htmlEntities("enable-status=" + document.getElementById("form-enable-status").value);
         }
     }
 
     if (document.getElementById("label-broadcast-console-to-ops") !== null) {
         if (document.getElementById("form-broadcast-console-to-ops") !== null) {
-            document.getElementById("label-broadcast-console-to-ops").innerHTML = htmlEntities( "broadcast-console-to-ops=" + document.getElementById("form-broadcast-console-to-ops").value);
+            document.getElementById("label-broadcast-console-to-ops").innerHTML = htmlEntities("broadcast-console-to-ops=" + document.getElementById("form-broadcast-console-to-ops").value);
         }
     }
 
     if (document.getElementById("label-broadcast-rcon-to-ops") !== null) {
         if (document.getElementById("form-broadcast-rcon-to-ops") !== null) {
-            document.getElementById("label-broadcast-rcon-to-ops").innerHTML = htmlEntities( "broadcast-rcon-to-ops=" + document.getElementById("form-broadcast-rcon-to-ops").value);
+            document.getElementById("label-broadcast-rcon-to-ops").innerHTML = htmlEntities("broadcast-rcon-to-ops=" + document.getElementById("form-broadcast-rcon-to-ops").value);
         }
     }
 
     if (document.getElementById("label-use-native-transport") !== null) {
         if (document.getElementById("form-use-native-transport") !== null) {
-            document.getElementById("label-use-native-transport").innerHTML = htmlEntities( "use-native-transport=" + document.getElementById("form-use-native-transport").value);
+            document.getElementById("label-use-native-transport").innerHTML = htmlEntities("use-native-transport=" + document.getElementById("form-use-native-transport").value);
         }
     }
 
     if (document.getElementById("label-prevent-proxy-connections") !== null) {
         if (document.getElementById("form-prevent-proxy-connections") !== null) {
-            document.getElementById("label-prevent-proxy-connections").innerHTML = htmlEntities( "prevent-proxy-connections=" + document.getElementById("form-prevent-proxy-connections").value);
+            document.getElementById("label-prevent-proxy-connections").innerHTML = htmlEntities("prevent-proxy-connections=" + document.getElementById("form-prevent-proxy-connections").value);
         }
     }
 
     if (document.getElementById("label-enable-jmx-monitoring") !== null) {
         if (document.getElementById("form-enable-jmx-monitoring") !== null) {
-            document.getElementById("label-enable-jmx-monitoring").innerHTML = htmlEntities( "enable-jmx-monitoring=" + document.getElementById("form-enable-jmx-monitoring").value);
+            document.getElementById("label-enable-jmx-monitoring").innerHTML = htmlEntities("enable-jmx-monitoring=" + document.getElementById("form-enable-jmx-monitoring").value);
         }
     }
 
     if (document.getElementById("label-snooper-enabled") !== null) {
         if (document.getElementById("form-snooper-enabled") !== null) {
-            document.getElementById("label-snooper-enabled").innerHTML = htmlEntities( "snooper-enabled=" + document.getElementById("form-snooper-enabled").value);
+            document.getElementById("label-snooper-enabled").innerHTML = htmlEntities("snooper-enabled=" + document.getElementById("form-snooper-enabled").value);
         }
     }
 
     if (document.getElementById("label-sync-chunk-writes") !== null) {
         if (document.getElementById("form-sync-chunk-writes") !== null) {
-            document.getElementById("label-sync-chunk-writes").innerHTML = htmlEntities( "sync-chunk-writes=" + document.getElementById("form-sync-chunk-writes").value);
+            document.getElementById("label-sync-chunk-writes").innerHTML = htmlEntities("sync-chunk-writes=" + document.getElementById("form-sync-chunk-writes").value);
         }
     }
 
     if (document.getElementById("label-max-tick-time") !== null) {
         if (document.getElementById("form-max-tick-time") !== null) {
-            document.getElementById("label-max-tick-time").innerHTML = htmlEntities( "max-tick-time=" + document.getElementById("form-max-tick-time").value);
+            document.getElementById("label-max-tick-time").innerHTML = htmlEntities("max-tick-time=" + document.getElementById("form-max-tick-time").value);
         }
     }
 
     if (document.getElementById("label-op-permission-level") !== null) {
         if (document.getElementById("form-op-permission-level") !== null) {
-            document.getElementById("label-op-permission-level").innerHTML = htmlEntities( "op-permission-level=" + document.getElementById("form-op-permission-level").value);
+            document.getElementById("label-op-permission-level").innerHTML = htmlEntities("op-permission-level=" + document.getElementById("form-op-permission-level").value);
         }
     }
 
     if (document.getElementById("label-function-permission-level") !== null) {
         if (document.getElementById("form-function-permission-level") !== null) {
-            document.getElementById("label-function-permission-level").innerHTML = htmlEntities( "function-permission-level=" + document.getElementById("form-function-permission-level").value);
+            document.getElementById("label-function-permission-level").innerHTML = htmlEntities("function-permission-level=" + document.getElementById("form-function-permission-level").value);
         }
     }
 
     if (document.getElementById("label-rate-limit") !== null) {
         if (document.getElementById("form-rate-limit") !== null) {
-            document.getElementById("label-rate-limit").innerHTML = htmlEntities( "rate-limit=" + document.getElementById("form-rate-limit").value);
+            document.getElementById("label-rate-limit").innerHTML = htmlEntities("rate-limit=" + document.getElementById("form-rate-limit").value);
         }
     }
 
     if (document.getElementById("label-network-compression-threshold") !== null) {
         if (document.getElementById("form-network-compression-threshold") !== null) {
-            document.getElementById("label-network-compression-threshold").innerHTML = htmlEntities( "network-compression-threshold=" + document.getElementById("form-network-compression-threshold").value);
+            document.getElementById("label-network-compression-threshold").innerHTML = htmlEntities("network-compression-threshold=" + document.getElementById("form-network-compression-threshold").value);
         }
     }
 
     if (document.getElementById("label-view-distance") !== null) {
         if (document.getElementById("form-view-distance") !== null) {
-            document.getElementById("label-view-distance").innerHTML = htmlEntities( "view-distance=" + document.getElementById("form-view-distance").value);
+            document.getElementById("label-view-distance").innerHTML = htmlEntities("view-distance=" + document.getElementById("form-view-distance").value);
         }
     }
 
@@ -456,7 +456,7 @@ $(function() {
         }
     }
 
-    $("#form-gamemode").change(function() {
+    $("#form-gamemode").change(function () {
         var envioaction = "gamemode";
         var enviovalor = document.getElementById("form-gamemode").value;
         $.ajax({
@@ -466,7 +466,7 @@ $(function() {
                 action: envioaction,
                 valor: enviovalor
             },
-            success: function(data) {
+            success: function (data) {
                 var getdebug = 0;
                 if (getdebug == 1) {
                     alert(data);
@@ -475,12 +475,12 @@ $(function() {
         });
 
         if (document.getElementById("label-gamemode") !== null) {
-            document.getElementById("label-gamemode").innerHTML = htmlEntities( "gamemode=" + document.getElementById("form-gamemode").value);
+            document.getElementById("label-gamemode").innerHTML = htmlEntities("gamemode=" + document.getElementById("form-gamemode").value);
         }
 
     });
 
-    $("#form-force-gamemode").change(function() {
+    $("#form-force-gamemode").change(function () {
         var envioaction = "force-gamemode";
         var enviovalor = document.getElementById("form-force-gamemode").value;
         $.ajax({
@@ -490,7 +490,7 @@ $(function() {
                 action: envioaction,
                 valor: enviovalor
             },
-            success: function(data) {
+            success: function (data) {
                 var getdebug = 0;
                 if (getdebug == 1) {
                     alert(data);
@@ -499,12 +499,12 @@ $(function() {
         });
 
         if (document.getElementById("label-force-gamemode") !== null) {
-            document.getElementById("label-force-gamemode").innerHTML = htmlEntities( "force-gamemode=" + document.getElementById("form-force-gamemode").value);
+            document.getElementById("label-force-gamemode").innerHTML = htmlEntities("force-gamemode=" + document.getElementById("form-force-gamemode").value);
         }
 
     });
 
-    $("#form-difficulty").change(function() {
+    $("#form-difficulty").change(function () {
         var envioaction = "difficulty";
         var enviovalor = document.getElementById("form-difficulty").value;
         $.ajax({
@@ -514,7 +514,7 @@ $(function() {
                 action: envioaction,
                 valor: enviovalor
             },
-            success: function(data) {
+            success: function (data) {
                 var getdebug = 0;
                 if (getdebug == 1) {
                     alert(data);
@@ -523,12 +523,12 @@ $(function() {
         });
 
         if (document.getElementById("label-difficulty") !== null) {
-            document.getElementById("label-difficulty").innerHTML = htmlEntities( "difficulty=" + document.getElementById("form-difficulty").value);
+            document.getElementById("label-difficulty").innerHTML = htmlEntities("difficulty=" + document.getElementById("form-difficulty").value);
         }
 
     });
 
-    $("#form-hardcore").change(function() {
+    $("#form-hardcore").change(function () {
         var envioaction = "hardcore";
         var enviovalor = document.getElementById("form-hardcore").value;
         $.ajax({
@@ -538,7 +538,7 @@ $(function() {
                 action: envioaction,
                 valor: enviovalor
             },
-            success: function(data) {
+            success: function (data) {
                 var getdebug = 0;
                 if (getdebug == 1) {
                     alert(data);
@@ -547,12 +547,12 @@ $(function() {
         });
 
         if (document.getElementById("label-hardcore") !== null) {
-            document.getElementById("label-hardcore").innerHTML = htmlEntities( "hardcore=" + document.getElementById("form-hardcore").value);
+            document.getElementById("label-hardcore").innerHTML = htmlEntities("hardcore=" + document.getElementById("form-hardcore").value);
         }
 
     });
 
-    $("#form-pvp").change(function() {
+    $("#form-pvp").change(function () {
         var envioaction = "pvp";
         var enviovalor = document.getElementById("form-pvp").value;
         $.ajax({
@@ -562,7 +562,7 @@ $(function() {
                 action: envioaction,
                 valor: enviovalor
             },
-            success: function(data) {
+            success: function (data) {
                 var getdebug = 0;
                 if (getdebug == 1) {
                     alert(data);
@@ -571,12 +571,12 @@ $(function() {
         });
 
         if (document.getElementById("label-pvp") !== null) {
-            document.getElementById("label-pvp").innerHTML = htmlEntities( "pvp=" + document.getElementById("form-pvp").value);
+            document.getElementById("label-pvp").innerHTML = htmlEntities("pvp=" + document.getElementById("form-pvp").value);
         }
 
     });
 
-    $("#form-spawn-npcs").change(function() {
+    $("#form-spawn-npcs").change(function () {
         var envioaction = "spawn-npcs";
         var enviovalor = document.getElementById("form-spawn-npcs").value;
         $.ajax({
@@ -586,7 +586,7 @@ $(function() {
                 action: envioaction,
                 valor: enviovalor
             },
-            success: function(data) {
+            success: function (data) {
                 var getdebug = 0;
                 if (getdebug == 1) {
                     alert(data);
@@ -595,12 +595,12 @@ $(function() {
         });
 
         if (document.getElementById("label-spawn-npcs") !== null) {
-            document.getElementById("label-spawn-npcs").innerHTML = htmlEntities( "spawn-npcs=" + document.getElementById("form-spawn-npcs").value);
+            document.getElementById("label-spawn-npcs").innerHTML = htmlEntities("spawn-npcs=" + document.getElementById("form-spawn-npcs").value);
         }
 
     });
 
-    $("#form-spawn-animals").change(function() {
+    $("#form-spawn-animals").change(function () {
         var envioaction = "spawn-animals";
         var enviovalor = document.getElementById("form-spawn-animals").value;
         $.ajax({
@@ -610,7 +610,7 @@ $(function() {
                 action: envioaction,
                 valor: enviovalor
             },
-            success: function(data) {
+            success: function (data) {
                 var getdebug = 0;
                 if (getdebug == 1) {
                     alert(data);
@@ -619,12 +619,12 @@ $(function() {
         });
 
         if (document.getElementById("label-spawn-animals") !== null) {
-            document.getElementById("label-spawn-animals").innerHTML = htmlEntities( "spawn-animals=" + document.getElementById("form-spawn-animals").value);
+            document.getElementById("label-spawn-animals").innerHTML = htmlEntities("spawn-animals=" + document.getElementById("form-spawn-animals").value);
         }
 
     });
 
-    $("#form-spawn-monsters").change(function() {
+    $("#form-spawn-monsters").change(function () {
         var envioaction = "spawn-monsters";
         var enviovalor = document.getElementById("form-spawn-monsters").value;
         $.ajax({
@@ -634,7 +634,7 @@ $(function() {
                 action: envioaction,
                 valor: enviovalor
             },
-            success: function(data) {
+            success: function (data) {
                 var getdebug = 0;
                 if (getdebug == 1) {
                     alert(data);
@@ -643,12 +643,12 @@ $(function() {
         });
 
         if (document.getElementById("label-spawn-monsters") !== null) {
-            document.getElementById("label-spawn-monsters").innerHTML = htmlEntities( "spawn-monsters=" + document.getElementById("form-spawn-monsters").value);
+            document.getElementById("label-spawn-monsters").innerHTML = htmlEntities("spawn-monsters=" + document.getElementById("form-spawn-monsters").value);
         }
 
     });
 
-    $("#form-allow-flight").change(function() {
+    $("#form-allow-flight").change(function () {
         var envioaction = "allow-flight";
         var enviovalor = document.getElementById("form-allow-flight").value;
         $.ajax({
@@ -658,7 +658,7 @@ $(function() {
                 action: envioaction,
                 valor: enviovalor
             },
-            success: function(data) {
+            success: function (data) {
                 var getdebug = 0;
                 if (getdebug == 1) {
                     alert(data);
@@ -667,12 +667,12 @@ $(function() {
         });
 
         if (document.getElementById("label-allow-flight") !== null) {
-            document.getElementById("label-allow-flight").innerHTML = htmlEntities( "allow-flight=" + document.getElementById("form-allow-flight").value);
+            document.getElementById("label-allow-flight").innerHTML = htmlEntities("allow-flight=" + document.getElementById("form-allow-flight").value);
         }
 
     });
 
-    $("#form-player-idle-timeout").change(function() {
+    $("#form-player-idle-timeout").change(function () {
         var errores = 0;
         var envioaction = "player-idle-timeout";
         var enviovalor = document.getElementById("form-player-idle-timeout").value;
@@ -688,7 +688,7 @@ $(function() {
                     action: envioaction,
                     valor: enviovalor
                 },
-                success: function(data) {
+                success: function (data) {
                     var getdebug = 0;
                     if (getdebug == 1) {
                         alert(data);
@@ -697,12 +697,12 @@ $(function() {
             });
 
             if (document.getElementById("label-player-idle-timeout") !== null) {
-                document.getElementById("label-player-idle-timeout").innerHTML = htmlEntities( "player-idle-timeout=" + document.getElementById("form-player-idle-timeout").value);
+                document.getElementById("label-player-idle-timeout").innerHTML = htmlEntities("player-idle-timeout=" + document.getElementById("form-player-idle-timeout").value);
             }
         }
     });
 
-    $("#form-resource-pack").keyup(function() {
+    $("#form-resource-pack").keyup(function () {
         var envioaction = "resource-pack";
         var enviovalor = document.getElementById("form-resource-pack").value;
         $.ajax({
@@ -712,7 +712,7 @@ $(function() {
                 action: envioaction,
                 valor: enviovalor
             },
-            success: function(data) {
+            success: function (data) {
                 var getdebug = 0;
                 if (getdebug == 1) {
                     alert(data);
@@ -726,7 +726,7 @@ $(function() {
 
     });
 
-    $("#form-resource-pack-sha1").keyup(function() {
+    $("#form-resource-pack-sha1").keyup(function () {
         var envioaction = "resource-pack-sha1";
         var enviovalor = document.getElementById("form-resource-pack-sha1").value;
         $.ajax({
@@ -736,7 +736,7 @@ $(function() {
                 action: envioaction,
                 valor: enviovalor
             },
-            success: function(data) {
+            success: function (data) {
                 var getdebug = 0;
                 if (getdebug == 1) {
                     alert(data);
@@ -750,7 +750,7 @@ $(function() {
 
     });
 
-    $("#form-require-resource-pack").change(function() {
+    $("#form-require-resource-pack").change(function () {
         var envioaction = "require-resource-pack";
         var enviovalor = document.getElementById("form-require-resource-pack").value;
         $.ajax({
@@ -760,7 +760,7 @@ $(function() {
                 action: envioaction,
                 valor: enviovalor
             },
-            success: function(data) {
+            success: function (data) {
                 var getdebug = 0;
                 if (getdebug == 1) {
                     alert(data);
@@ -774,7 +774,7 @@ $(function() {
 
     });
 
-    $("#form-resource-pack-prompt").keyup(function() {
+    $("#form-resource-pack-prompt").keyup(function () {
         var envioaction = "resource-pack-prompt";
         var enviovalor = document.getElementById("form-resource-pack-prompt").value;
         $.ajax({
@@ -784,7 +784,7 @@ $(function() {
                 action: envioaction,
                 valor: enviovalor
             },
-            success: function(data) {
+            success: function (data) {
                 var getdebug = 0;
                 if (getdebug == 1) {
                     alert(data);
@@ -800,7 +800,7 @@ $(function() {
 
 
 
-    $("#form-level-name").keyup(function() {
+    $("#form-level-name").keyup(function () {
         var envioaction = "level-name";
         var enviovalor = document.getElementById("form-level-name").value;
         enviovalor = enviovalor.toLowerCase();
@@ -811,7 +811,7 @@ $(function() {
                 action: envioaction,
                 valor: enviovalor
             },
-            success: function(data) {
+            success: function (data) {
                 var getdebug = 0;
                 if (getdebug == 1) {
                     alert(data);
@@ -825,7 +825,7 @@ $(function() {
 
     });
 
-    $("#form-level-seed").keyup(function() {
+    $("#form-level-seed").keyup(function () {
         var envioaction = "level-seed";
         var enviovalor = document.getElementById("form-level-seed").value;
         $.ajax({
@@ -835,7 +835,7 @@ $(function() {
                 action: envioaction,
                 valor: enviovalor
             },
-            success: function(data) {
+            success: function (data) {
                 var getdebug = 0;
                 if (getdebug == 1) {
                     alert(data);
@@ -849,7 +849,7 @@ $(function() {
 
     });
 
-    $("#form-level-type").change(function() {
+    $("#form-level-type").change(function () {
         var envioaction = "level-type";
         var enviovalor = document.getElementById("form-level-type").value;
         $.ajax({
@@ -859,7 +859,7 @@ $(function() {
                 action: envioaction,
                 valor: enviovalor
             },
-            success: function(data) {
+            success: function (data) {
                 var getdebug = 0;
                 if (getdebug == 1) {
                     alert(data);
@@ -868,12 +868,12 @@ $(function() {
         });
 
         if (document.getElementById("label-level-type") !== null) {
-            document.getElementById("label-level-type").innerHTML = htmlEntities( "level-type=" + document.getElementById("form-level-type").value);
+            document.getElementById("label-level-type").innerHTML = htmlEntities("level-type=" + document.getElementById("form-level-type").value);
         }
 
     });
 
-    $("#form-generator-settings").keyup(function() {
+    $("#form-generator-settings").keyup(function () {
         var envioaction = "generator-settings";
         var enviovalor = document.getElementById("form-generator-settings").value;
         $.ajax({
@@ -883,7 +883,7 @@ $(function() {
                 action: envioaction,
                 valor: enviovalor
             },
-            success: function(data) {
+            success: function (data) {
                 var getdebug = 0;
                 if (getdebug == 1) {
                     alert(data);
@@ -897,7 +897,7 @@ $(function() {
 
     });
 
-    $("#form-max-build-height").change(function() {
+    $("#form-max-build-height").change(function () {
         var errores = 0;
         var envioaction = "max-build-height";
         var enviovalor = document.getElementById("form-max-build-height").value;
@@ -913,7 +913,7 @@ $(function() {
                     action: envioaction,
                     valor: enviovalor
                 },
-                success: function(data) {
+                success: function (data) {
                     var getdebug = 0;
                     if (getdebug == 1) {
                         alert(data);
@@ -922,12 +922,12 @@ $(function() {
             });
 
             if (document.getElementById("label-max-build-height") !== null) {
-                document.getElementById("label-max-build-height").innerHTML = htmlEntities( "max-build-height=" + document.getElementById("form-max-build-height").value);
+                document.getElementById("label-max-build-height").innerHTML = htmlEntities("max-build-height=" + document.getElementById("form-max-build-height").value);
             }
         }
     });
 
-    $("#form-generate-structures").change(function() {
+    $("#form-generate-structures").change(function () {
         var envioaction = "generate-structures";
         var enviovalor = document.getElementById("form-generate-structures").value;
         $.ajax({
@@ -937,7 +937,7 @@ $(function() {
                 action: envioaction,
                 valor: enviovalor
             },
-            success: function(data) {
+            success: function (data) {
                 var getdebug = 0;
                 if (getdebug == 1) {
                     alert(data);
@@ -946,12 +946,12 @@ $(function() {
         });
 
         if (document.getElementById("label-generate-structures") !== null) {
-            document.getElementById("label-generate-structures").innerHTML = htmlEntities( "generate-structures=" + document.getElementById("form-generate-structures").value);
+            document.getElementById("label-generate-structures").innerHTML = htmlEntities("generate-structures=" + document.getElementById("form-generate-structures").value);
         }
 
     });
 
-    $("#form-allow-nether").change(function() {
+    $("#form-allow-nether").change(function () {
         var envioaction = "allow-nether";
         var enviovalor = document.getElementById("form-allow-nether").value;
         $.ajax({
@@ -961,7 +961,7 @@ $(function() {
                 action: envioaction,
                 valor: enviovalor
             },
-            success: function(data) {
+            success: function (data) {
                 var getdebug = 0;
                 if (getdebug == 1) {
                     alert(data);
@@ -970,12 +970,12 @@ $(function() {
         });
 
         if (document.getElementById("label-allow-nether") !== null) {
-            document.getElementById("label-allow-nether").innerHTML = htmlEntities( "allow-nether=" + document.getElementById("form-allow-nether").value);
+            document.getElementById("label-allow-nether").innerHTML = htmlEntities("allow-nether=" + document.getElementById("form-allow-nether").value);
         }
 
     });
 
-    $("#form-entity-broadcast-range-percentage").change(function() {
+    $("#form-entity-broadcast-range-percentage").change(function () {
         var errores = 0;
         var envioaction = "entity-broadcast-range-percentage";
         var enviovalor = document.getElementById("form-entity-broadcast-range-percentage").value;
@@ -993,7 +993,7 @@ $(function() {
                     action: envioaction,
                     valor: enviovalor
                 },
-                success: function(data) {
+                success: function (data) {
                     var getdebug = 0;
                     if (getdebug == 1) {
                         alert(data);
@@ -1002,12 +1002,12 @@ $(function() {
             });
 
             if (document.getElementById("label-entity-broadcast-range-percentage") !== null) {
-                document.getElementById("label-entity-broadcast-range-percentage").innerHTML = htmlEntities( "entity-broadcast-range-percentage=" + document.getElementById("form-entity-broadcast-range-percentage").value);
+                document.getElementById("label-entity-broadcast-range-percentage").innerHTML = htmlEntities("entity-broadcast-range-percentage=" + document.getElementById("form-entity-broadcast-range-percentage").value);
             }
         }
     });
 
-    $("#form-spawn-protection").change(function() {
+    $("#form-spawn-protection").change(function () {
         var errores = 0;
         var envioaction = "spawn-protection";
         var enviovalor = document.getElementById("form-spawn-protection").value;
@@ -1025,7 +1025,7 @@ $(function() {
                     action: envioaction,
                     valor: enviovalor
                 },
-                success: function(data) {
+                success: function (data) {
                     var getdebug = 0;
                     if (getdebug == 1) {
                         alert(data);
@@ -1034,12 +1034,12 @@ $(function() {
             });
 
             if (document.getElementById("label-spawn-protection") !== null) {
-                document.getElementById("label-spawn-protection").innerHTML = htmlEntities( "spawn-protection=" + document.getElementById("form-spawn-protection").value);
+                document.getElementById("label-spawn-protection").innerHTML = htmlEntities("spawn-protection=" + document.getElementById("form-spawn-protection").value);
             }
         }
     });
 
-    $("#form-max-world-size").change(function() {
+    $("#form-max-world-size").change(function () {
         var errores = 0;
         var envioaction = "max-world-size";
         var enviovalor = document.getElementById("form-max-world-size").value;
@@ -1057,7 +1057,7 @@ $(function() {
                     action: envioaction,
                     valor: enviovalor
                 },
-                success: function(data) {
+                success: function (data) {
                     var getdebug = 0;
                     if (getdebug == 1) {
                         alert(data);
@@ -1066,12 +1066,12 @@ $(function() {
             });
 
             if (document.getElementById("label-max-world-size") !== null) {
-                document.getElementById("label-max-world-size").innerHTML = htmlEntities( "max-world-size=" + document.getElementById("form-max-world-size").value);
+                document.getElementById("label-max-world-size").innerHTML = htmlEntities("max-world-size=" + document.getElementById("form-max-world-size").value);
             }
         }
     });
 
-    $("#form-online-mode").change(function() {
+    $("#form-online-mode").change(function () {
         var envioaction = "online-mode";
         var enviovalor = document.getElementById("form-online-mode").value;
         $.ajax({
@@ -1081,7 +1081,7 @@ $(function() {
                 action: envioaction,
                 valor: enviovalor
             },
-            success: function(data) {
+            success: function (data) {
                 var getdebug = 0;
                 if (getdebug == 1) {
                     alert(data);
@@ -1090,12 +1090,12 @@ $(function() {
         });
 
         if (document.getElementById("label-online-mode") !== null) {
-            document.getElementById("label-online-mode").innerHTML = htmlEntities( "online-mode=" + document.getElementById("form-online-mode").value);
+            document.getElementById("label-online-mode").innerHTML = htmlEntities("online-mode=" + document.getElementById("form-online-mode").value);
         }
 
     });
 
-    $("#form-max-players").change(function() {
+    $("#form-max-players").change(function () {
         var errores = 0;
         var envioaction = "max-players";
         var enviovalor = document.getElementById("form-max-players").value;
@@ -1113,7 +1113,7 @@ $(function() {
                     action: envioaction,
                     valor: enviovalor
                 },
-                success: function(data) {
+                success: function (data) {
                     var getdebug = 0;
                     if (getdebug == 1) {
                         alert(data);
@@ -1122,12 +1122,12 @@ $(function() {
             });
 
             if (document.getElementById("label-max-players") !== null) {
-                document.getElementById("label-max-players").innerHTML = htmlEntities( "max-players=" + document.getElementById("form-max-players").value);
+                document.getElementById("label-max-players").innerHTML = htmlEntities("max-players=" + document.getElementById("form-max-players").value);
             }
         }
     });
 
-    $("#form-enable-command-block").change(function() {
+    $("#form-enable-command-block").change(function () {
         var envioaction = "enable-command-block";
         var enviovalor = document.getElementById("form-enable-command-block").value;
         $.ajax({
@@ -1137,7 +1137,7 @@ $(function() {
                 action: envioaction,
                 valor: enviovalor
             },
-            success: function(data) {
+            success: function (data) {
                 var getdebug = 0;
                 if (getdebug == 1) {
                     alert(data);
@@ -1146,12 +1146,12 @@ $(function() {
         });
 
         if (document.getElementById("label-enable-command-block") !== null) {
-            document.getElementById("label-enable-command-block").innerHTML = htmlEntities( "enable-command-block=" + document.getElementById("form-enable-command-block").value);
+            document.getElementById("label-enable-command-block").innerHTML = htmlEntities("enable-command-block=" + document.getElementById("form-enable-command-block").value);
         }
 
     });
 
-    $("#form-enable-query").change(function() {
+    $("#form-enable-query").change(function () {
         var envioaction = "enable-query";
         var enviovalor = document.getElementById("form-enable-query").value;
         $.ajax({
@@ -1161,7 +1161,7 @@ $(function() {
                 action: envioaction,
                 valor: enviovalor
             },
-            success: function(data) {
+            success: function (data) {
                 var getdebug = 0;
                 if (getdebug == 1) {
                     alert(data);
@@ -1170,12 +1170,12 @@ $(function() {
         });
 
         if (document.getElementById("label-enable-query") !== null) {
-            document.getElementById("label-enable-query").innerHTML = htmlEntities( "enable-query=" + document.getElementById("form-enable-query").value);
+            document.getElementById("label-enable-query").innerHTML = htmlEntities("enable-query=" + document.getElementById("form-enable-query").value);
         }
 
     });
 
-    $("#form-query-port").change(function() {
+    $("#form-query-port").change(function () {
         var errores = 0;
         var envioaction = "query.port";
         var enviovalor = document.getElementById("form-query-port").value;
@@ -1193,7 +1193,7 @@ $(function() {
                     action: envioaction,
                     valor: enviovalor
                 },
-                success: function(data) {
+                success: function (data) {
                     var getdebug = 0;
                     if (getdebug == 1) {
                         alert(data);
@@ -1202,12 +1202,12 @@ $(function() {
             });
 
             if (document.getElementById("label-query-port") !== null) {
-                document.getElementById("label-query-port").innerHTML = htmlEntities( "query.port=" + document.getElementById("form-query-port").value);
+                document.getElementById("label-query-port").innerHTML = htmlEntities("query.port=" + document.getElementById("form-query-port").value);
             }
         }
     });
 
-    $("#form-enable-rcon").change(function() {
+    $("#form-enable-rcon").change(function () {
         var envioaction = "enable-rcon";
         var enviovalor = document.getElementById("form-enable-rcon").value;
         $.ajax({
@@ -1217,7 +1217,7 @@ $(function() {
                 action: envioaction,
                 valor: enviovalor
             },
-            success: function(data) {
+            success: function (data) {
                 var getdebug = 0;
                 if (getdebug == 1) {
                     alert(data);
@@ -1226,12 +1226,12 @@ $(function() {
         });
 
         if (document.getElementById("label-enable-rcon") !== null) {
-            document.getElementById("label-enable-rcon").innerHTML = htmlEntities( "enable-rcon=" + document.getElementById("form-enable-rcon").value);
+            document.getElementById("label-enable-rcon").innerHTML = htmlEntities("enable-rcon=" + document.getElementById("form-enable-rcon").value);
         }
 
     });
 
-    $("#form-rconport").change(function() {
+    $("#form-rconport").change(function () {
         var errores = 0;
         var envioaction = "rcon.port";
         var enviovalor = document.getElementById("form-rconport").value;
@@ -1249,7 +1249,7 @@ $(function() {
                     action: envioaction,
                     valor: enviovalor
                 },
-                success: function(data) {
+                success: function (data) {
                     var getdebug = 0;
                     if (getdebug == 1) {
                         alert(data);
@@ -1258,12 +1258,12 @@ $(function() {
             });
 
             if (document.getElementById("label-rconport") !== null) {
-                document.getElementById("label-rconport").innerHTML = htmlEntities( "rcon.port=" + document.getElementById("form-rconport").value);
+                document.getElementById("label-rconport").innerHTML = htmlEntities("rcon.port=" + document.getElementById("form-rconport").value);
             }
         }
     });
 
-    $("#form-rcon-password").keyup(function() {
+    $("#form-rcon-password").keyup(function () {
         var envioaction = "rcon.password";
         var enviovalor = document.getElementById("form-rcon-password").value;
         $.ajax({
@@ -1273,7 +1273,7 @@ $(function() {
                 action: envioaction,
                 valor: enviovalor
             },
-            success: function(data) {
+            success: function (data) {
                 var getdebug = 0;
                 if (getdebug == 1) {
                     alert(data);
@@ -1286,7 +1286,7 @@ $(function() {
         }
     });
 
-    $("#form-white-list").change(function() {
+    $("#form-white-list").change(function () {
         var envioaction = "white-list";
         var enviovalor = document.getElementById("form-white-list").value;
         $.ajax({
@@ -1296,7 +1296,7 @@ $(function() {
                 action: envioaction,
                 valor: enviovalor
             },
-            success: function(data) {
+            success: function (data) {
                 var getdebug = 0;
                 if (getdebug == 1) {
                     alert(data);
@@ -1305,12 +1305,12 @@ $(function() {
         });
 
         if (document.getElementById("label-white-list") !== null) {
-            document.getElementById("label-white-list").innerHTML = htmlEntities( "white-list=" + document.getElementById("form-white-list").value);
+            document.getElementById("label-white-list").innerHTML = htmlEntities("white-list=" + document.getElementById("form-white-list").value);
         }
 
     });
 
-    $("#form-enforce-whitelist").change(function() {
+    $("#form-enforce-whitelist").change(function () {
         var envioaction = "enforce-whitelist";
         var enviovalor = document.getElementById("form-enforce-whitelist").value;
         $.ajax({
@@ -1320,7 +1320,7 @@ $(function() {
                 action: envioaction,
                 valor: enviovalor
             },
-            success: function(data) {
+            success: function (data) {
                 var getdebug = 0;
                 if (getdebug == 1) {
                     alert(data);
@@ -1329,12 +1329,12 @@ $(function() {
         });
 
         if (document.getElementById("label-enforce-whitelist") !== null) {
-            document.getElementById("label-enforce-whitelist").innerHTML = htmlEntities( "enforce-whitelist=" + document.getElementById("form-enforce-whitelist").value);
+            document.getElementById("label-enforce-whitelist").innerHTML = htmlEntities("enforce-whitelist=" + document.getElementById("form-enforce-whitelist").value);
         }
 
     });
 
-    $("#form-server-ip").keyup(function() {
+    $("#form-server-ip").keyup(function () {
         var envioaction = "server-ip";
         var enviovalor = document.getElementById("form-server-ip").value;
         $.ajax({
@@ -1344,7 +1344,7 @@ $(function() {
                 action: envioaction,
                 valor: enviovalor
             },
-            success: function(data) {
+            success: function (data) {
                 var getdebug = 0;
                 if (getdebug == 1) {
                     alert(data);
@@ -1358,7 +1358,7 @@ $(function() {
 
     });
 
-    $("#form-enable-status").change(function() {
+    $("#form-enable-status").change(function () {
         var envioaction = "enable-status";
         var enviovalor = document.getElementById("form-enable-status").value;
         $.ajax({
@@ -1368,7 +1368,7 @@ $(function() {
                 action: envioaction,
                 valor: enviovalor
             },
-            success: function(data) {
+            success: function (data) {
                 var getdebug = 0;
                 if (getdebug == 1) {
                     alert(data);
@@ -1377,12 +1377,12 @@ $(function() {
         });
 
         if (document.getElementById("label-enable-status") !== null) {
-            document.getElementById("label-enable-status").innerHTML = htmlEntities( "enable-status=" + document.getElementById("form-enable-status").value);
+            document.getElementById("label-enable-status").innerHTML = htmlEntities("enable-status=" + document.getElementById("form-enable-status").value);
         }
 
     });
 
-    $("#form-broadcast-console-to-ops").change(function() {
+    $("#form-broadcast-console-to-ops").change(function () {
         var envioaction = "broadcast-console-to-ops";
         var enviovalor = document.getElementById("form-broadcast-console-to-ops").value;
         $.ajax({
@@ -1392,7 +1392,7 @@ $(function() {
                 action: envioaction,
                 valor: enviovalor
             },
-            success: function(data) {
+            success: function (data) {
                 var getdebug = 0;
                 if (getdebug == 1) {
                     alert(data);
@@ -1401,12 +1401,12 @@ $(function() {
         });
 
         if (document.getElementById("label-broadcast-console-to-ops") !== null) {
-            document.getElementById("label-broadcast-console-to-ops").innerHTML = htmlEntities( "broadcast-console-to-ops=" + document.getElementById("form-broadcast-console-to-ops").value);
+            document.getElementById("label-broadcast-console-to-ops").innerHTML = htmlEntities("broadcast-console-to-ops=" + document.getElementById("form-broadcast-console-to-ops").value);
         }
 
     });
 
-    $("#form-broadcast-rcon-to-ops").change(function() {
+    $("#form-broadcast-rcon-to-ops").change(function () {
         var envioaction = "broadcast-rcon-to-ops";
         var enviovalor = document.getElementById("form-broadcast-rcon-to-ops").value;
         $.ajax({
@@ -1416,7 +1416,7 @@ $(function() {
                 action: envioaction,
                 valor: enviovalor
             },
-            success: function(data) {
+            success: function (data) {
                 var getdebug = 0;
                 if (getdebug == 1) {
                     alert(data);
@@ -1425,12 +1425,12 @@ $(function() {
         });
 
         if (document.getElementById("label-broadcast-rcon-to-ops") !== null) {
-            document.getElementById("label-broadcast-rcon-to-ops").innerHTML = htmlEntities( "broadcast-rcon-to-ops=" + document.getElementById("form-broadcast-rcon-to-ops").value);
+            document.getElementById("label-broadcast-rcon-to-ops").innerHTML = htmlEntities("broadcast-rcon-to-ops=" + document.getElementById("form-broadcast-rcon-to-ops").value);
         }
 
     });
 
-    $("#form-use-native-transport").change(function() {
+    $("#form-use-native-transport").change(function () {
         var envioaction = "use-native-transport";
         var enviovalor = document.getElementById("form-use-native-transport").value;
         $.ajax({
@@ -1440,7 +1440,7 @@ $(function() {
                 action: envioaction,
                 valor: enviovalor
             },
-            success: function(data) {
+            success: function (data) {
                 var getdebug = 0;
                 if (getdebug == 1) {
                     alert(data);
@@ -1449,12 +1449,12 @@ $(function() {
         });
 
         if (document.getElementById("label-use-native-transport") !== null) {
-            document.getElementById("label-use-native-transport").innerHTML = htmlEntities( "use-native-transport=" + document.getElementById("form-use-native-transport").value);
+            document.getElementById("label-use-native-transport").innerHTML = htmlEntities("use-native-transport=" + document.getElementById("form-use-native-transport").value);
         }
 
     });
 
-    $("#form-prevent-proxy-connections").change(function() {
+    $("#form-prevent-proxy-connections").change(function () {
         var envioaction = "prevent-proxy-connections";
         var enviovalor = document.getElementById("form-prevent-proxy-connections").value;
         $.ajax({
@@ -1464,7 +1464,7 @@ $(function() {
                 action: envioaction,
                 valor: enviovalor
             },
-            success: function(data) {
+            success: function (data) {
                 var getdebug = 0;
                 if (getdebug == 1) {
                     alert(data);
@@ -1473,12 +1473,12 @@ $(function() {
         });
 
         if (document.getElementById("label-prevent-proxy-connections") !== null) {
-            document.getElementById("label-prevent-proxy-connections").innerHTML = htmlEntities( "prevent-proxy-connections=" + document.getElementById("form-prevent-proxy-connections").value);
+            document.getElementById("label-prevent-proxy-connections").innerHTML = htmlEntities("prevent-proxy-connections=" + document.getElementById("form-prevent-proxy-connections").value);
         }
 
     });
 
-    $("#form-enable-jmx-monitoring").change(function() {
+    $("#form-enable-jmx-monitoring").change(function () {
         var envioaction = "enable-jmx-monitoring";
         var enviovalor = document.getElementById("form-enable-jmx-monitoring").value;
         $.ajax({
@@ -1488,7 +1488,7 @@ $(function() {
                 action: envioaction,
                 valor: enviovalor
             },
-            success: function(data) {
+            success: function (data) {
                 var getdebug = 0;
                 if (getdebug == 1) {
                     alert(data);
@@ -1497,12 +1497,12 @@ $(function() {
         });
 
         if (document.getElementById("label-enable-jmx-monitoring") !== null) {
-            document.getElementById("label-enable-jmx-monitoring").innerHTML = htmlEntities( "enable-jmx-monitoring=" + document.getElementById("form-enable-jmx-monitoring").value);
+            document.getElementById("label-enable-jmx-monitoring").innerHTML = htmlEntities("enable-jmx-monitoring=" + document.getElementById("form-enable-jmx-monitoring").value);
         }
 
     });
 
-    $("#form-snooper-enabled").change(function() {
+    $("#form-snooper-enabled").change(function () {
         var envioaction = "snooper-enabled";
         var enviovalor = document.getElementById("form-snooper-enabled").value;
         $.ajax({
@@ -1512,7 +1512,7 @@ $(function() {
                 action: envioaction,
                 valor: enviovalor
             },
-            success: function(data) {
+            success: function (data) {
                 var getdebug = 0;
                 if (getdebug == 1) {
                     alert(data);
@@ -1521,12 +1521,12 @@ $(function() {
         });
 
         if (document.getElementById("label-snooper-enabled") !== null) {
-            document.getElementById("label-snooper-enabled").innerHTML = htmlEntities( "snooper-enabled=" + document.getElementById("form-snooper-enabled").value);
+            document.getElementById("label-snooper-enabled").innerHTML = htmlEntities("snooper-enabled=" + document.getElementById("form-snooper-enabled").value);
         }
 
     });
 
-    $("#form-sync-chunk-writes").change(function() {
+    $("#form-sync-chunk-writes").change(function () {
         var envioaction = "sync-chunk-writes";
         var enviovalor = document.getElementById("form-sync-chunk-writes").value;
         $.ajax({
@@ -1536,7 +1536,7 @@ $(function() {
                 action: envioaction,
                 valor: enviovalor
             },
-            success: function(data) {
+            success: function (data) {
                 var getdebug = 0;
                 if (getdebug == 1) {
                     alert(data);
@@ -1545,12 +1545,12 @@ $(function() {
         });
 
         if (document.getElementById("label-sync-chunk-writes") !== null) {
-            document.getElementById("label-sync-chunk-writes").innerHTML = htmlEntities( "sync-chunk-writes=" + document.getElementById("form-sync-chunk-writes").value);
+            document.getElementById("label-sync-chunk-writes").innerHTML = htmlEntities("sync-chunk-writes=" + document.getElementById("form-sync-chunk-writes").value);
         }
 
     });
 
-    $("#form-max-tick-time").change(function() {
+    $("#form-max-tick-time").change(function () {
         var errores = 0;
         var envioaction = "max-tick-time";
         var enviovalor = document.getElementById("form-max-tick-time").value;
@@ -1569,7 +1569,7 @@ $(function() {
                     action: envioaction,
                     valor: enviovalor
                 },
-                success: function(data) {
+                success: function (data) {
                     var getdebug = 0;
                     if (getdebug == 1) {
                         alert(data);
@@ -1578,12 +1578,12 @@ $(function() {
             });
 
             if (document.getElementById("label-max-tick-time") !== null) {
-                document.getElementById("label-max-tick-time").innerHTML = htmlEntities( "max-tick-time=" + document.getElementById("form-max-tick-time").value);
+                document.getElementById("label-max-tick-time").innerHTML = htmlEntities("max-tick-time=" + document.getElementById("form-max-tick-time").value);
             }
         }
     });
 
-    $("#form-op-permission-level").change(function() {
+    $("#form-op-permission-level").change(function () {
         var errores = 0;
         var envioaction = "op-permission-level";
         var enviovalor = document.getElementById("form-op-permission-level").value;
@@ -1601,7 +1601,7 @@ $(function() {
                     action: envioaction,
                     valor: enviovalor
                 },
-                success: function(data) {
+                success: function (data) {
                     var getdebug = 0;
                     if (getdebug == 1) {
                         alert(data);
@@ -1610,12 +1610,12 @@ $(function() {
             });
 
             if (document.getElementById("label-op-permission-level") !== null) {
-                document.getElementById("label-op-permission-level").innerHTML = htmlEntities( "op-permission-level=" + document.getElementById("form-op-permission-level").value);
+                document.getElementById("label-op-permission-level").innerHTML = htmlEntities("op-permission-level=" + document.getElementById("form-op-permission-level").value);
             }
         }
     });
 
-    $("#form-function-permission-level").change(function() {
+    $("#form-function-permission-level").change(function () {
         var errores = 0;
         var envioaction = "function-permission-level";
         var enviovalor = document.getElementById("form-function-permission-level").value;
@@ -1633,7 +1633,7 @@ $(function() {
                     action: envioaction,
                     valor: enviovalor
                 },
-                success: function(data) {
+                success: function (data) {
                     var getdebug = 0;
                     if (getdebug == 1) {
                         alert(data);
@@ -1642,12 +1642,12 @@ $(function() {
             });
 
             if (document.getElementById("label-function-permission-level") !== null) {
-                document.getElementById("label-function-permission-level").innerHTML = htmlEntities( "function-permission-level=" + document.getElementById("form-function-permission-level").value);
+                document.getElementById("label-function-permission-level").innerHTML = htmlEntities("function-permission-level=" + document.getElementById("form-function-permission-level").value);
             }
         }
     });
 
-    $("#form-rate-limit").change(function() {
+    $("#form-rate-limit").change(function () {
         var envioaction = "rate-limit";
         var enviovalor = document.getElementById("form-rate-limit").value;
         $.ajax({
@@ -1657,7 +1657,7 @@ $(function() {
                 action: envioaction,
                 valor: enviovalor
             },
-            success: function(data) {
+            success: function (data) {
                 var getdebug = 0;
                 if (getdebug == 1) {
                     alert(data);
@@ -1666,12 +1666,12 @@ $(function() {
         });
 
         if (document.getElementById("label-rate-limit") !== null) {
-            document.getElementById("label-rate-limit").innerHTML = htmlEntities( "rate-limit=" + document.getElementById("form-rate-limit").value);
+            document.getElementById("label-rate-limit").innerHTML = htmlEntities("rate-limit=" + document.getElementById("form-rate-limit").value);
         }
 
     });
 
-    $("#form-network-compression-threshold").change(function() {
+    $("#form-network-compression-threshold").change(function () {
         var errores = 0;
         var envioaction = "network-compression-threshold";
         var enviovalor = document.getElementById("form-network-compression-threshold").value;
@@ -1690,7 +1690,7 @@ $(function() {
                     action: envioaction,
                     valor: enviovalor
                 },
-                success: function(data) {
+                success: function (data) {
                     var getdebug = 0;
                     if (getdebug == 1) {
                         alert(data);
@@ -1699,12 +1699,12 @@ $(function() {
             });
 
             if (document.getElementById("label-network-compression-threshold") !== null) {
-                document.getElementById("label-network-compression-threshold").innerHTML = htmlEntities( "network-compression-threshold=" + document.getElementById("form-network-compression-threshold").value);
+                document.getElementById("label-network-compression-threshold").innerHTML = htmlEntities("network-compression-threshold=" + document.getElementById("form-network-compression-threshold").value);
             }
         }
     });
 
-    $("#form-view-distance").change(function() {
+    $("#form-view-distance").change(function () {
         var errores = 0;
         var envioaction = "view-distance";
         var enviovalor = document.getElementById("form-view-distance").value;
@@ -1722,7 +1722,7 @@ $(function() {
                     action: envioaction,
                     valor: enviovalor
                 },
-                success: function(data) {
+                success: function (data) {
                     var getdebug = 0;
                     if (getdebug == 1) {
                         alert(data);
@@ -1731,7 +1731,7 @@ $(function() {
             });
 
             if (document.getElementById("label-view-distance") !== null) {
-                document.getElementById("label-view-distance").innerHTML = htmlEntities( "view-distance=" + document.getElementById("form-view-distance").value);
+                document.getElementById("label-view-distance").innerHTML = htmlEntities("view-distance=" + document.getElementById("form-view-distance").value);
             }
         }
     });
@@ -1743,7 +1743,7 @@ $(function() {
             data: {
                 action: textomotd
             },
-            success: function(data) {
+            success: function (data) {
                 var getdebug = 0;
                 if (getdebug == 1) {
                     alert(data);
@@ -1756,7 +1756,7 @@ $(function() {
         });
     }
 
-    $("#form-motd").keyup(function() {
+    $("#form-motd").keyup(function () {
         var envioaction = "motd";
         var enviovalor = document.getElementById("form-motd").value;
         $.ajax({
@@ -1766,7 +1766,7 @@ $(function() {
                 action: envioaction,
                 valor: enviovalor
             },
-            success: function(data) {
+            success: function (data) {
                 var getdebug = 0;
                 if (getdebug == 1) {
                     alert(data);
@@ -1784,76 +1784,80 @@ $(function() {
 
     });
 
-    document.getElementById("form-motd").addEventListener('paste', function(event) {
-        var envioaction = "motd";
-        var enviovalor = event.clipboardData.getData('text');
+    if (document.getElementById("form-motd") !== null) {
+        document.getElementById("form-motd").addEventListener('paste', function (event) {
+            var envioaction = "motd";
+            var enviovalor = event.clipboardData.getData('text');
 
-        var eltext = "";
-        var textini = "";
-        var textfinal = "";
-        var enviar = "";
+            var eltext = "";
+            var textini = "";
+            var textfinal = "";
+            var enviar = "";
 
-        var text = document.getElementById("form-motd");
+            var text = document.getElementById("form-motd");
 
-        var startPosition = text.selectionStart;
-        var endPosition = text.selectionEnd;
-        var longitud = text.leng;
+            var startPosition = text.selectionStart;
+            var endPosition = text.selectionEnd;
+            var longitud = text.leng;
 
-        eltext = document.getElementById("form-motd").value;
-        textini = eltext.substring(0, startPosition);
-        textfinal = eltext.substring(endPosition, longitud);
+            eltext = document.getElementById("form-motd").value;
+            textini = eltext.substring(0, startPosition);
+            textfinal = eltext.substring(endPosition, longitud);
 
-        enviar = textini + event.clipboardData.getData('text') + textfinal;
-        enviovalor = enviar;
-
-        $.ajax({
-            type: "POST",
-            url: "function/guardarproperties.php",
-            data: {
-                action: envioaction,
-                valor: enviovalor
-            },
-            success: function(data) {
-                var getdebug = 0;
-                if (getdebug == 1) {
-                    alert(data);
-                }
-            }
-        });
-
-        if (document.getElementById("label-motd") !== null) {
-            document.getElementById("label-motd").innerHTML = "motd=" + htmlEntities(enviovalor);
-        }
-
-        if (document.getElementById("visormotd") !== null) {
-            updatemotd(enviovalor);
-        }
-
-    });
-
-    $("#restablecer").click(function() {
-        var eleccion = confirm("¡Confirmacion de restablecer configuracin por defecto!\n\n¡Esta acción creará un nuevo archivo de configuración server.properties, una vez realizado no se podrá cancelar!\n\n¿Seguro que quieres continuar?");
-        if (eleccion == true) {
+            enviar = textini + event.clipboardData.getData('text') + textfinal;
+            enviovalor = enviar;
 
             $.ajax({
-                url: 'function/restablecerproperties.php',
+                type: "POST",
+                url: "function/guardarproperties.php",
                 data: {
-                    action: 'status'
+                    action: envioaction,
+                    valor: enviovalor
                 },
-                type: 'POST',
-                success: function(data) {
-                    if (data == "OK") {
-                        location.reload();
-                    } else if (data == "nowriteconfig") {
-                        alert("La carpeta config no tiene permisos de escritura");
-                    } else if (data == "nowriteproperties") {
-                        alert("El archivo /config/serverproperties.txt no tiene permisos de escritura");
+                success: function (data) {
+                    var getdebug = 0;
+                    if (getdebug == 1) {
+                        alert(data);
                     }
-
                 }
             });
-        }
-    });
+
+            if (document.getElementById("label-motd") !== null) {
+                document.getElementById("label-motd").innerHTML = "motd=" + htmlEntities(enviovalor);
+            }
+
+            if (document.getElementById("visormotd") !== null) {
+                updatemotd(enviovalor);
+            }
+
+        });
+    }
+
+    if (document.getElementById("restablecer") !== null) {
+        $("#restablecer").click(function () {
+            var eleccion = confirm("¡Confirmacion de restablecer configuracin por defecto!\n\n¡Esta acción creará un nuevo archivo de configuración server.properties, una vez realizado no se podrá cancelar!\n\n¿Seguro que quieres continuar?");
+            if (eleccion == true) {
+
+                $.ajax({
+                    url: 'function/restablecerproperties.php',
+                    data: {
+                        action: 'status'
+                    },
+                    type: 'POST',
+                    success: function (data) {
+                        if (data == "OK") {
+                            location.reload();
+                        } else if (data == "nowriteconfig") {
+                            alert("La carpeta config no tiene permisos de escritura");
+                        } else if (data == "nowriteproperties") {
+                            alert("El archivo /config/serverproperties.txt no tiene permisos de escritura");
+                        }
+
+                    }
+                });
+            }
+        });
+    }
 
     function sessionTimer() {
 
@@ -1863,7 +1867,7 @@ $(function() {
                 action: 'status'
             },
             type: 'POST',
-            success: function(data) {
+            success: function (data) {
                 if (data == "SALIR") {
                     location.href = "index.php";
                 }
