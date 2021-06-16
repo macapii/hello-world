@@ -45,6 +45,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
 
       function escribir($lakey, $elvalor)
       {
+        $errorfuncion = 0;
         $rutacarpetamine = dirname(getcwd()) . PHP_EOL;
         $rutacarpetamine = trim($rutacarpetamine);
         $rutatemp = $rutacarpetamine;
@@ -69,22 +70,25 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
             }
           }
 
-          if($contador == 0){
+          if ($contador == 0) {
             fwrite($file, $lakey . '=' . $elvalor . PHP_EOL);
           }
 
           if (!feof($gestor)) {
             echo "Error: fallo inesperado de fgets()\n";
+            return 1;
+          } else {
+            fclose($gestor);
+            fclose($file);
+            unlink($rutacarpetamine);
+            rename($rutatemp, $rutacarpetamine);
+            return 0;
           }
-          fclose($gestor);
-          fclose($file);
-          unlink($rutacarpetamine);
-          rename($rutatemp, $rutacarpetamine);
         }
       }
 
       session_write_close();
-      
+
       $elaction = trim($_POST['action']);
       $elresultado = trim($_POST['valor']);
 
