@@ -193,11 +193,8 @@ require_once("template/header.php");
 
       //VERIFICAR /config/serverproperties.txt";
       clearstatcache();
-      if (!file_exists($iniverificonfserverpropertiestxt)) {
-        $showerrors .= 'Error: El archivo serverproperties.txt no existe , vuelve a realizar el install.<br><br>';
-        $elerror = 1;
-      } else {
-
+      if (file_exists($iniverificonfserverpropertiestxt)) {
+        
         clearstatcache();
         if (!is_readable($iniverificonfserverpropertiestxt)) {
           $showerrors .= 'Error: No tienes permisos de lectura en el archivo /config/serverproperties.txt, revisa los permisos de linux.<br><br>';
@@ -213,7 +210,7 @@ require_once("template/header.php");
     }
 
     if ($elerror == 1) {
-      echo '<div class="alert alert-danger" role="alert">' .$showerrors .'</div>';
+      echo '<div class="alert alert-danger" role="alert">' . $showerrors . '</div>';
       exit;
     }
 
@@ -279,7 +276,7 @@ require_once("template/header.php");
         $_SESSION['VALIDADO'] = "NO";
         $_SESSION['KEYSECRETA'] = "0";
       }
-      
+
       if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
         header("location:status.php");
         exit;
