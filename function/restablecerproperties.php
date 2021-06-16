@@ -58,6 +58,10 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                 $dirconfig = trim($dirconfig);
                 $dirconfig .= "/config";
 
+                //ASIGNAR DIRECTORIO A RUTAESCRIVIR
+                $rutaescrivir = $dirconfig;
+                $rutaescrivir .= "/serverproperties.txt";
+
                 //SI HAY PERMISOS ESCRITURA EN CONFIG
                 clearstatcache();
                 if (!is_writable($dirconfig)) {
@@ -66,10 +70,6 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                 }
 
                 if ($elerror == 0) {
-                    //Asignar serverproperties.txt
-                    $rutaescrivir = $dirconfig;
-                    $rutaescrivir .= "/serverproperties.txt";
-
                     //SI EXISTE EL ARCHIVO
                     clearstatcache();
                     if (file_exists($rutaescrivir)) {
