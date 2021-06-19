@@ -82,6 +82,7 @@ function test_input($data)
         $contenido = @file_get_contents($url, false, $context);
 
         if ($contenido === FALSE) {
+            $versiones[] = "1.17";
             $versiones[] = "1.16.5";
             $versiones[] = "1.16.4";
             $versiones[] = "1.16.3";
