@@ -631,7 +631,7 @@ function test_input($data)
                                                     <p class="lead">Asignar URL al paquete de recursos.</p>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <input id="form-resource-pack" type="text" class="form-control" value="<?php echo (test_input(leerlineas('resource-pack'))); ?>">
+                                                    <input id="form-resource-pack" type="text" class="form-control" value="<?php echo htmlentities(leerlineas('resource-pack')); ?>">
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -659,7 +659,7 @@ function test_input($data)
                                                     <p class="lead">Comprueba si el SHA1 corresponde con el fichero seleccionado de la URL.<br>Se utiliza el SHA1 del fichero en hexadecimal y en minúsculas.</p>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <input id="form-resource-pack-sha1" type="text" class="form-control" value="<?php echo (test_input(leerlineas('resource-pack-sha1'))); ?>">
+                                                    <input id="form-resource-pack-sha1" type="text" class="form-control" value="<?php echo test_input(leerlineas('resource-pack-sha1')); ?>">
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -773,7 +773,7 @@ function test_input($data)
                                                     <p class="lead">Nombre con el que se creara el mapa principal.</p>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <input id="form-level-name" type="text" class="form-control" maxlength="255" value="<?php echo (test_input(leerlineas('level-name'))); ?>">
+                                                    <input id="form-level-name" type="text" class="form-control" maxlength="255" value="<?php echo test_input(leerlineas('level-name')); ?>">
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -801,7 +801,7 @@ function test_input($data)
                                                     <p class="lead">Semilla para generación de mapas.</p>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <input id="form-level-seed" type="text" class="form-control" value="<?php echo (test_input(leerlineas('level-seed'))); ?>">
+                                                    <input id="form-level-seed" type="text" class="form-control" value="<?php echo test_input(leerlineas('level-seed')); ?>">
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -873,7 +873,7 @@ function test_input($data)
                                                     <p class="lead">Configuración utilizada para personalizar la generación del mapa.</p>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <input id="form-generator-settings" type="text" class="form-control" value="<?php echo (test_input(leerlineas('generator-settings'))); ?>">
+                                                    <input id="form-generator-settings" type="text" class="form-control" value="<?php echo htmlentities(leerlineas('generator-settings')); ?>">
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -1373,7 +1373,7 @@ function test_input($data)
                                                     <p class="lead">Fijar el password que usaras al conectarte con RCON.</p>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <input id="form-rcon-password" type="text" class="form-control" value="<?php echo (test_input(leerlineas('rcon.password'))); ?>">
+                                                    <input id="form-rcon-password" type="text" class="form-control" value="<?php echo htmlentities(leerlineas('rcon.password')); ?>">
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -1489,7 +1489,7 @@ function test_input($data)
                                                     <p class="lead">Fijar el servidor obligatoriamente a una IP, se recomienda dejarla en blanco.</p>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <input id="form-server-ip" type="text" class="form-control" value="<?php echo (test_input(leerlineas('server-ip'))); ?>">
+                                                    <input id="form-server-ip" type="text" class="form-control" value="<?php echo test_input(leerlineas('server-ip')); ?>">
                                                 </div>
                                             </div>
                                             <div class="row">

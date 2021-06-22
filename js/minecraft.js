@@ -726,6 +726,51 @@ $(function () {
 
     });
 
+    if (document.getElementById("form-resource-pack") !== null) {
+        document.getElementById("form-resource-pack").addEventListener('paste', function (event) {
+            var envioaction = "resource-pack";
+            var enviovalor = event.clipboardData.getData('text');
+
+            var eltext = "";
+            var textini = "";
+            var textfinal = "";
+            var enviar = "";
+
+            var text = document.getElementById("form-resource-pack");
+
+            var startPosition = text.selectionStart;
+            var endPosition = text.selectionEnd;
+            var longitud = text.leng;
+
+            eltext = document.getElementById("form-resource-pack").value;
+            textini = eltext.substring(0, startPosition);
+            textfinal = eltext.substring(endPosition, longitud);
+
+            enviar = textini + event.clipboardData.getData('text') + textfinal;
+            enviovalor = enviar;
+
+            $.ajax({
+                type: "POST",
+                url: "function/guardarproperties.php",
+                data: {
+                    action: envioaction,
+                    valor: enviovalor
+                },
+                success: function (data) {
+                    var getdebug = 0;
+                    if (getdebug == 1) {
+                        alert(data);
+                    }
+                }
+            });
+
+            if (document.getElementById("label-resource-pack") !== null) {
+                document.getElementById("label-resource-pack").innerHTML = "resource-pack=" + htmlEntities(enviovalor);
+            }
+
+        });
+    }
+
     $("#form-resource-pack-sha1").keyup(function () {
         var envioaction = "resource-pack-sha1";
         var enviovalor = document.getElementById("form-resource-pack-sha1").value;
@@ -749,6 +794,51 @@ $(function () {
         }
 
     });
+
+    if (document.getElementById("form-resource-pack-sha1") !== null) {
+        document.getElementById("form-resource-pack-sha1").addEventListener('paste', function (event) {
+            var envioaction = "resource-pack-sha1";
+            var enviovalor = event.clipboardData.getData('text');
+
+            var eltext = "";
+            var textini = "";
+            var textfinal = "";
+            var enviar = "";
+
+            var text = document.getElementById("form-resource-pack-sha1");
+
+            var startPosition = text.selectionStart;
+            var endPosition = text.selectionEnd;
+            var longitud = text.leng;
+
+            eltext = document.getElementById("form-resource-pack-sha1").value;
+            textini = eltext.substring(0, startPosition);
+            textfinal = eltext.substring(endPosition, longitud);
+
+            enviar = textini + event.clipboardData.getData('text') + textfinal;
+            enviovalor = enviar;
+
+            $.ajax({
+                type: "POST",
+                url: "function/guardarproperties.php",
+                data: {
+                    action: envioaction,
+                    valor: enviovalor
+                },
+                success: function (data) {
+                    var getdebug = 0;
+                    if (getdebug == 1) {
+                        alert(data);
+                    }
+                }
+            });
+
+            if (document.getElementById("label-resource-pack-sha1") !== null) {
+                document.getElementById("label-resource-pack-sha1").innerHTML = "resource-pack-sha1=" + htmlEntities(enviovalor);
+            }
+
+        });
+    }
 
     $("#form-require-resource-pack").change(function () {
         var envioaction = "require-resource-pack";
@@ -798,7 +888,50 @@ $(function () {
 
     });
 
+    if (document.getElementById("form-resource-pack-prompt") !== null) {
+        document.getElementById("form-resource-pack-prompt").addEventListener('paste', function (event) {
+            var envioaction = "resource-pack-prompt";
+            var enviovalor = event.clipboardData.getData('text');
 
+            var eltext = "";
+            var textini = "";
+            var textfinal = "";
+            var enviar = "";
+
+            var text = document.getElementById("form-resource-pack-prompt");
+
+            var startPosition = text.selectionStart;
+            var endPosition = text.selectionEnd;
+            var longitud = text.leng;
+
+            eltext = document.getElementById("form-resource-pack-prompt").value;
+            textini = eltext.substring(0, startPosition);
+            textfinal = eltext.substring(endPosition, longitud);
+
+            enviar = textini + event.clipboardData.getData('text') + textfinal;
+            enviovalor = enviar;
+
+            $.ajax({
+                type: "POST",
+                url: "function/guardarproperties.php",
+                data: {
+                    action: envioaction,
+                    valor: enviovalor
+                },
+                success: function (data) {
+                    var getdebug = 0;
+                    if (getdebug == 1) {
+                        alert(data);
+                    }
+                }
+            });
+
+            if (document.getElementById("label-resource-pack-prompt") !== null) {
+                document.getElementById("label-resource-pack-prompt").innerHTML = "resource-pack-prompt=" + htmlEntities(enviovalor);
+            }
+
+        });
+    }
 
     $("#form-level-name").keyup(function () {
         var envioaction = "level-name";
@@ -849,6 +982,51 @@ $(function () {
 
     });
 
+    if (document.getElementById("form-level-seed") !== null) {
+        document.getElementById("form-level-seed").addEventListener('paste', function (event) {
+            var envioaction = "level-seed";
+            var enviovalor = event.clipboardData.getData('text');
+
+            var eltext = "";
+            var textini = "";
+            var textfinal = "";
+            var enviar = "";
+
+            var text = document.getElementById("form-level-seed");
+
+            var startPosition = text.selectionStart;
+            var endPosition = text.selectionEnd;
+            var longitud = text.leng;
+
+            eltext = document.getElementById("form-level-seed").value;
+            textini = eltext.substring(0, startPosition);
+            textfinal = eltext.substring(endPosition, longitud);
+
+            enviar = textini + event.clipboardData.getData('text') + textfinal;
+            enviovalor = enviar;
+
+            $.ajax({
+                type: "POST",
+                url: "function/guardarproperties.php",
+                data: {
+                    action: envioaction,
+                    valor: enviovalor
+                },
+                success: function (data) {
+                    var getdebug = 0;
+                    if (getdebug == 1) {
+                        alert(data);
+                    }
+                }
+            });
+
+            if (document.getElementById("label-level-seed") !== null) {
+                document.getElementById("label-level-seed").innerHTML = "level-seed=" + htmlEntities(enviovalor);
+            }
+
+        });
+    }
+
     $("#form-level-type").change(function () {
         var envioaction = "level-type";
         var enviovalor = document.getElementById("form-level-type").value;
@@ -896,6 +1074,51 @@ $(function () {
         }
 
     });
+
+    if (document.getElementById("form-generator-settings") !== null) {
+        document.getElementById("form-generator-settings").addEventListener('paste', function (event) {
+            var envioaction = "generator-settings";
+            var enviovalor = event.clipboardData.getData('text');
+
+            var eltext = "";
+            var textini = "";
+            var textfinal = "";
+            var enviar = "";
+
+            var text = document.getElementById("form-generator-settings");
+
+            var startPosition = text.selectionStart;
+            var endPosition = text.selectionEnd;
+            var longitud = text.leng;
+
+            eltext = document.getElementById("form-generator-settings").value;
+            textini = eltext.substring(0, startPosition);
+            textfinal = eltext.substring(endPosition, longitud);
+
+            enviar = textini + event.clipboardData.getData('text') + textfinal;
+            enviovalor = enviar;
+
+            $.ajax({
+                type: "POST",
+                url: "function/guardarproperties.php",
+                data: {
+                    action: envioaction,
+                    valor: enviovalor
+                },
+                success: function (data) {
+                    var getdebug = 0;
+                    if (getdebug == 1) {
+                        alert(data);
+                    }
+                }
+            });
+
+            if (document.getElementById("label-generator-settings") !== null) {
+                document.getElementById("label-generator-settings").innerHTML = "generator-settings=" + htmlEntities(enviovalor);
+            }
+
+        });
+    }
 
     $("#form-max-build-height").change(function () {
         var errores = 0;
@@ -1286,6 +1509,51 @@ $(function () {
         }
     });
 
+    if (document.getElementById("form-rcon-password") !== null) {
+        document.getElementById("form-rcon-password").addEventListener('paste', function (event) {
+            var envioaction = "rcon.password";
+            var enviovalor = event.clipboardData.getData('text');
+
+            var eltext = "";
+            var textini = "";
+            var textfinal = "";
+            var enviar = "";
+
+            var text = document.getElementById("form-rcon-password");
+
+            var startPosition = text.selectionStart;
+            var endPosition = text.selectionEnd;
+            var longitud = text.leng;
+
+            eltext = document.getElementById("form-rcon-password").value;
+            textini = eltext.substring(0, startPosition);
+            textfinal = eltext.substring(endPosition, longitud);
+
+            enviar = textini + event.clipboardData.getData('text') + textfinal;
+            enviovalor = enviar;
+
+            $.ajax({
+                type: "POST",
+                url: "function/guardarproperties.php",
+                data: {
+                    action: envioaction,
+                    valor: enviovalor
+                },
+                success: function (data) {
+                    var getdebug = 0;
+                    if (getdebug == 1) {
+                        alert(data);
+                    }
+                }
+            });
+
+            if (document.getElementById("label-rcon-password") !== null) {
+                document.getElementById("label-rcon-password").innerHTML = "rcon.password=" + htmlEntities(enviovalor);
+            }
+
+        });
+    }
+
     $("#form-white-list").change(function () {
         var envioaction = "white-list";
         var enviovalor = document.getElementById("form-white-list").value;
@@ -1357,6 +1625,51 @@ $(function () {
         }
 
     });
+
+    if (document.getElementById("form-server-ip") !== null) {
+        document.getElementById("form-server-ip").addEventListener('paste', function (event) {
+            var envioaction = "server-ip";
+            var enviovalor = event.clipboardData.getData('text');
+
+            var eltext = "";
+            var textini = "";
+            var textfinal = "";
+            var enviar = "";
+
+            var text = document.getElementById("form-server-ip");
+
+            var startPosition = text.selectionStart;
+            var endPosition = text.selectionEnd;
+            var longitud = text.leng;
+
+            eltext = document.getElementById("form-server-ip").value;
+            textini = eltext.substring(0, startPosition);
+            textfinal = eltext.substring(endPosition, longitud);
+
+            enviar = textini + event.clipboardData.getData('text') + textfinal;
+            enviovalor = enviar;
+
+            $.ajax({
+                type: "POST",
+                url: "function/guardarproperties.php",
+                data: {
+                    action: envioaction,
+                    valor: enviovalor
+                },
+                success: function (data) {
+                    var getdebug = 0;
+                    if (getdebug == 1) {
+                        alert(data);
+                    }
+                }
+            });
+
+            if (document.getElementById("label-server-ip") !== null) {
+                document.getElementById("label-server-ip").innerHTML = "server-ip=" + htmlEntities(enviovalor);
+            }
+
+        });
+    }
 
     $("#form-enable-status").change(function () {
         var envioaction = "enable-status";
