@@ -337,7 +337,6 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
 
                 fclose($gestor);
                 fclose($file);
-                unlink($rutacarpetamine);
                 rename($rutatemp, $rutacarpetamine);
                 copy($rutacarpetamine, $rutafinal);
             }

@@ -448,7 +448,6 @@ if ($elerror == 0) {
 
                                                                     fclose($gestor);
                                                                     fclose($file);
-                                                                    unlink($rutacarpetamine);
                                                                     rename($rutatemp, $rutacarpetamine);
                                                                     copy($rutacarpetamine, $rutafinal);
                                                                 }
