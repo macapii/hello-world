@@ -80,7 +80,6 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
           } else {
             fclose($gestor);
             fclose($file);
-            unlink($rutacarpetamine);
             rename($rutatemp, $rutacarpetamine);
             return 0;
           }
