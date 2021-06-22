@@ -38,9 +38,6 @@ header('Expires: 0');
   <meta name="author" content="Konata400">
   <title>McWebPanel</title>
 
-  <!-- Bootstrap core CSS -->
-  <link rel="stylesheet" href="css/bootstrap.min.css">
-
   <!-- Menu CSS -->
   <link rel="stylesheet" href="css/menu.css">
 

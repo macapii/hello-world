@@ -22,6 +22,9 @@ require_once("template/errorreport.php");
 require_once("template/header.php");
 ?>
 
+<!-- Bootstrap core CSS -->
+<link rel="stylesheet" href="css/bootstrap.min.css">
+
 <!-- Estilo CSS -->
 <link href="css/signin.css" rel="stylesheet">
 <link href="css/login.css" rel="stylesheet">
@@ -194,7 +197,7 @@ require_once("template/header.php");
       //VERIFICAR /config/serverproperties.txt";
       clearstatcache();
       if (file_exists($iniverificonfserverpropertiestxt)) {
-        
+
         clearstatcache();
         if (!is_readable($iniverificonfserverpropertiestxt)) {
           $showerrors .= 'Error: No tienes permisos de lectura en el archivo /config/serverproperties.txt, revisa los permisos de linux.<br><br>';
