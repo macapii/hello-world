@@ -722,6 +722,7 @@ function test_input($data)
                                             <div class="row">
                                                 <div class="col-md-8">
                                                     <h3 class=""><b>Dialogo Paquete de recursos</b></h3>
+                                                    <p class="lead">Añade un dialogo personalizado que se mostrara al solicitar el paquete de recursos cuando está activado (Opcional).</p>
                                                 </div>
                                                 <div class="col-md-4">
                                                     <p class="">Valor Defecto: Vacío<br>Requiere Versión: 1.17 o superior</p>
@@ -729,7 +730,7 @@ function test_input($data)
                                             </div>
                                             <div class="row">
                                                 <div class="col-md-8">
-                                                    <p class="lead">Añade un dialogo personalizado que se mostrara al solicitar el paquete de recursos cuando está activado (Opcional).</p>
+                                                <p class="lead">Ejemplo: {"text":"Linea1\nLinea2"}</p>
                                                 </div>
                                                 <div class="col-md-4">
                                                     <input id="form-resource-pack-prompt" type="text" class="form-control" value="<?php echo htmlentities(leerlineas('resource-pack-prompt')); ?>">
