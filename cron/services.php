@@ -149,6 +149,8 @@ if ($elerror == 0) {
             $recjavaname = CONFIGJAVANAME;
             $recjavamanual = CONFIGJAVAMANUAL;
 
+            $recignoreramlimit = CONFIGIGNORERAMLIMIT;
+
             $javaruta = "";
 
             $rutacarpetamine = "";
@@ -328,33 +330,36 @@ if ($elerror == 0) {
               }
             }
 
-            //COMPROVAR MEMORIA RAM
-            if ($elerror == 0) {
-              $totalramsys = shell_exec("free -g | grep Mem | awk '{ print $2 }'");
-              $totalramsys = trim($totalramsys);
-              $totalramsys = intval($totalramsys);
+            //COMPROBAR IGNORAR LIMITE RAM
+            if ($recignoreramlimit != 1) {
+              //COMPROVAR MEMORIA RAM
+              if ($elerror == 0) {
+                $totalramsys = shell_exec("free -g | grep Mem | awk '{ print $2 }'");
+                $totalramsys = trim($totalramsys);
+                $totalramsys = intval($totalramsys);
 
-              $getramavaliable = shell_exec("free -g | grep Mem | awk '{ print $7 }'");
-              $getramavaliable = trim($getramavaliable);
-              $getramavaliable = intval($getramavaliable);
+                $getramavaliable = shell_exec("free -g | grep Mem | awk '{ print $7 }'");
+                $getramavaliable = trim($getramavaliable);
+                $getramavaliable = intval($getramavaliable);
 
-              //COMPRUEBA SI AL MENOS SE TIENE 1GB
-              if ($totalramsys == 0) {
-                $elerror = 1;
-                $retorno = "Error Tarea Iniciar Servidor, Memoria Ram menor a 1 GB.";
-              } elseif ($totalramsys >= 1) {
-
-                //COMPRUEBA QUE LA RAM SELECCIONADA NO SEA MAYOR A LA DEL SISTEMA
-                if ($recram > $totalramsys) {
+                //COMPRUEBA SI AL MENOS SE TIENE 1GB
+                if ($totalramsys == 0) {
                   $elerror = 1;
-                  $retorno = "Error Tarea Iniciar Servidor, la Ram seleccionada es superior a la del sistema.";
-                }
+                  $retorno = "Error Tarea Iniciar Servidor, Memoria Ram menor a 1 GB.";
+                } elseif ($totalramsys >= 1) {
 
-                //COMPROBAR SI HAY MEMORIA SUFICIENTE PARA INICIAR CON RAM DISPONIBLE
-                if ($elerror == 0) {
-                  if ($recram > $getramavaliable) {
+                  //COMPRUEBA QUE LA RAM SELECCIONADA NO SEA MAYOR A LA DEL SISTEMA
+                  if ($recram > $totalramsys) {
                     $elerror = 1;
-                    $retorno = "Error Tarea Iniciar Servidor, Memoria del sistema insuficiente para iniciar el servidor.";
+                    $retorno = "Error Tarea Iniciar Servidor, la Ram seleccionada es superior a la del sistema.";
+                  }
+
+                  //COMPROBAR SI HAY MEMORIA SUFICIENTE PARA INICIAR CON RAM DISPONIBLE
+                  if ($elerror == 0) {
+                    if ($recram > $getramavaliable) {
+                      $elerror = 1;
+                      $retorno = "Error Tarea Iniciar Servidor, Memoria del sistema insuficiente para iniciar el servidor.";
+                    }
                   }
                 }
               }

@@ -83,6 +83,8 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
             $recjavaname = CONFIGJAVANAME;
             $recjavamanual = CONFIGJAVAMANUAL;
 
+            $recignoreramlimit = CONFIGIGNORERAMLIMIT;
+
             $javaruta = "";
 
             $rutacarpetamine = "";
@@ -274,33 +276,36 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                 }
             }
 
-            //COMPROVAR MEMORIA RAM
-            if ($elerror == 0) {
-                $totalramsys = shell_exec("free -g | grep Mem | awk '{ print $2 }'");
-                $totalramsys = trim($totalramsys);
-                $totalramsys = intval($totalramsys);
+            //COMPROBAR IGNORAR LIMITE RAM
+            if ($recignoreramlimit != 1) {
+                //COMPROVAR MEMORIA RAM
+                if ($elerror == 0) {
+                    $totalramsys = shell_exec("free -g | grep Mem | awk '{ print $2 }'");
+                    $totalramsys = trim($totalramsys);
+                    $totalramsys = intval($totalramsys);
 
-                $getramavaliable = shell_exec("free -g | grep Mem | awk '{ print $7 }'");
-                $getramavaliable = trim($getramavaliable);
-                $getramavaliable = intval($getramavaliable);
+                    $getramavaliable = shell_exec("free -g | grep Mem | awk '{ print $7 }'");
+                    $getramavaliable = trim($getramavaliable);
+                    $getramavaliable = intval($getramavaliable);
 
-                //COMPRUEBA SI AL MENOS SE TIENE 1GB
-                if ($totalramsys == 0) {
-                    $elerror = 1;
-                    $retorno = "rammenoragiga";
-                } elseif ($totalramsys >= 1) {
-
-                    //COMPRUEBA QUE LA RAM SELECCIONADA NO SEA MAYOR A LA DEL SISTEMA
-                    if ($recram > $totalramsys) {
+                    //COMPRUEBA SI AL MENOS SE TIENE 1GB
+                    if ($totalramsys == 0) {
                         $elerror = 1;
-                        $retorno = "ramselectout";
-                    }
+                        $retorno = "rammenoragiga";
+                    } elseif ($totalramsys >= 1) {
 
-                    //COMPROBAR SI HAY MEMORIA SUFICIENTE PARA INICIAR CON RAM DISPONIBLE
-                    if ($elerror == 0) {
-                        if ($recram > $getramavaliable) {
+                        //COMPRUEBA QUE LA RAM SELECCIONADA NO SEA MAYOR A LA DEL SISTEMA
+                        if ($recram > $totalramsys) {
                             $elerror = 1;
-                            $retorno = "ramavaliableout";
+                            $retorno = "ramselectout";
+                        }
+
+                        //COMPROBAR SI HAY MEMORIA SUFICIENTE PARA INICIAR CON RAM DISPONIBLE
+                        if ($elerror == 0) {
+                            if ($recram > $getramavaliable) {
+                                $elerror = 1;
+                                $retorno = "ramavaliableout";
+                            }
                         }
                     }
                 }
