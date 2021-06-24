@@ -284,6 +284,22 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
           $elmostrarsizecarpeta = CONFIGLINEASCONSOLA;
         }
 
+        //EXTRA IGNORAR LIMITE RAM
+        if ($_SESSION['CONFIGUSER']['rango'] == 1 || array_key_exists('psystemconfignoreramlimit', $_SESSION['CONFIGUSER']) && $_SESSION['CONFIGUSER']['psystemconfignoreramlimit'] == 1) {
+
+          if (isset($_POST['gestorignoreram'])) {
+            $elignorarlimitram = test_input($_POST["gestorignoreram"]);
+
+            if ($elignorarlimitram != 1) {
+              $elignorarlimitram = "";
+            }
+          } else {
+            $elignorarlimitram = "";
+          }
+        } else {
+          $elignorarlimitram = CONFIGLINEASCONSOLA;
+        }
+
         //RECOLECTOR DE BASURA
         if ($_SESSION['CONFIGUSER']['rango'] == 1 || array_key_exists('psystemconfavanzados', $_SESSION['CONFIGUSER']) && $_SESSION['CONFIGUSER']['psystemconfavanzados'] == 1) {
           if (isset($_POST['recbasura'])) {
@@ -546,6 +562,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
           fwrite($file, 'define("CONFIGLINEASCONSOLA", "' . $elnumerolineaconsola . '");' . PHP_EOL);
           fwrite($file, 'define("CONFIGSHOWSIZEFOLDERS", "' . $elmostrarsizecarpeta . '");' . PHP_EOL);
           fwrite($file, 'define("CONFIGBOOTSYSTEM", "' . $elbootconfig . '");' . PHP_EOL);
+          fwrite($file, 'define("CONFIGIGNORERAMLIMIT", "' . $elignorarlimitram . '");' . PHP_EOL);
           fwrite($file, "?>" . PHP_EOL);
           fclose($file);
 

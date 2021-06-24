@@ -115,6 +115,8 @@ require_once("template/header.php");
 
                                                     $recbootconf = CONFIGBOOTSYSTEM;
 
+                                                    $recignoreramlimit = CONFIGIGNORERAMLIMIT;
+
                                                     //OBTENER TIPO SERVIDOR WEB
                                                     $servidorweb = $_SERVER["SERVER_SOFTWARE"];
 
@@ -521,89 +523,103 @@ require_once("template/header.php");
                                                                                                                                                             echo "checked";
                                                                                                                                                         } ?>>
                                                                 <label class="" for="gestorshowsizefolder">Mostrar el tamaño de las carpetas y el total usado en el Gestor Archivos (Puede ralentizar el gestor archivos)</label>
-                                                            </div>
-                                                        <?php
 
-                                                        }
+                                                                <?php
 
-                                                        //PARAMETROS AVANZADOS
-                                                        if ($_SESSION['CONFIGUSER']['rango'] == 1 || array_key_exists('psystemconfavanzados', $_SESSION['CONFIGUSER']) && $_SESSION['CONFIGUSER']['psystemconfavanzados'] == 1) {
-                                                        ?>
-                                                            <hr>
-                                                            <div class="form-group">
-                                                                <label class="negrita">Parametros Avanzados:</label>
-                                                                <div class="form-row">
-                                                                    <div class="form-group col-md-6">
-                                                                        <p>Garbage collector - Recolector de basura</p>
-                                                                        <div>
-                                                                            <input type="radio" id="basura0" name="recbasura" value="0" <?php if ($recgarbagecolector == "0") {
-                                                                                                                                            echo "checked";
-                                                                                                                                        } ?>>
-                                                                            <label for="basura0">Ninguno</label>
-                                                                        </div>
-
-                                                                        <div>
-                                                                            <input type="radio" id="basura1" name="recbasura" value="1" <?php if ($recgarbagecolector == "1") {
-                                                                                                                                            echo "checked";
-                                                                                                                                        } ?>>
-                                                                            <label for="basura1">Usar ConcMarkSweepGC (Solo Java 8)</label>
-                                                                        </div>
-
-                                                                        <div>
-                                                                            <input type="radio" id="basura2" name="recbasura" value="2" <?php if ($recgarbagecolector == "2") {
-                                                                                                                                            echo "checked";
-                                                                                                                                        } ?>>
-                                                                            <label for="basura2">Usar G1GC (Java 8/11 o superior)</label>
-                                                                        </div>
-
-                                                                    </div>
-
-                                                                    <div class="form-group col-md-6">
-                                                                        <br>
-                                                                        <label>Conversion Mapa ¡PRECAUCIÓN!</label>
-                                                                        <div>
-                                                                            <input id="opforceupgrade" name="opforceupgrade" type="checkbox" value="1" <?php if ($recforseupgrade == "1") {
+                                                                //EXTRA IGNORAR RAM LIMITE
+                                                                if ($_SESSION['CONFIGUSER']['rango'] == 1) {
+                                                                ?>
+                                                                <br>
+                                                                    <input id="gestorignoreram" name="gestorignoreram" type="checkbox" value="1" <?php if ($recignoreramlimit == "1") {
                                                                                                                                                             echo "checked";
                                                                                                                                                         } ?>>
-                                                                            <label for="opforceupgrade">Usar --forceUpgrade (Requiere Versión: 1.13 o superior)</label>
+                                                                    <label class="" for="gestorignoreram">Ignorar límite Ram disponible al arrancar servidor de Minecraft.</label>
+                                                                <?php
+                                                                }
+                                                            }
+                                                            ?>
+                                                            </div>
+                                                            <?php
+                                                            //FIN EXTRAS
+
+                                                            //PARAMETROS AVANZADOS
+                                                            if ($_SESSION['CONFIGUSER']['rango'] == 1 || array_key_exists('psystemconfavanzados', $_SESSION['CONFIGUSER']) && $_SESSION['CONFIGUSER']['psystemconfavanzados'] == 1) {
+                                                            ?>
+                                                                <hr>
+                                                                <div class="form-group">
+                                                                    <label class="negrita">Parametros Avanzados:</label>
+                                                                    <div class="form-row">
+                                                                        <div class="form-group col-md-6">
+                                                                            <p>Garbage collector - Recolector de basura</p>
+                                                                            <div>
+                                                                                <input type="radio" id="basura0" name="recbasura" value="0" <?php if ($recgarbagecolector == "0") {
+                                                                                                                                                echo "checked";
+                                                                                                                                            } ?>>
+                                                                                <label for="basura0">Ninguno</label>
+                                                                            </div>
+
+                                                                            <div>
+                                                                                <input type="radio" id="basura1" name="recbasura" value="1" <?php if ($recgarbagecolector == "1") {
+                                                                                                                                                echo "checked";
+                                                                                                                                            } ?>>
+                                                                                <label for="basura1">Usar ConcMarkSweepGC (Solo Java 8)</label>
+                                                                            </div>
+
+                                                                            <div>
+                                                                                <input type="radio" id="basura2" name="recbasura" value="2" <?php if ($recgarbagecolector == "2") {
+                                                                                                                                                echo "checked";
+                                                                                                                                            } ?>>
+                                                                                <label for="basura2">Usar G1GC (Java 8/11 o superior)</label>
+                                                                            </div>
+
                                                                         </div>
 
-                                                                        <div>
-                                                                            <input id="operasecache" name="operasecache" type="checkbox" value="1" <?php if ($recerasecache == "1") {
-                                                                                                                                                        echo "checked";
-                                                                                                                                                    } ?>>
-                                                                            <label for="operasecache">Usar --eraseCache (Requiere Versión: 1.14 o superior)</label>
+                                                                        <div class="form-group col-md-6">
+                                                                            <br>
+                                                                            <label>Conversion Mapa ¡PRECAUCIÓN!</label>
+                                                                            <div>
+                                                                                <input id="opforceupgrade" name="opforceupgrade" type="checkbox" value="1" <?php if ($recforseupgrade == "1") {
+                                                                                                                                                                echo "checked";
+                                                                                                                                                            } ?>>
+                                                                                <label for="opforceupgrade">Usar --forceUpgrade (Requiere Versión: 1.13 o superior)</label>
+                                                                            </div>
+
+                                                                            <div>
+                                                                                <input id="operasecache" name="operasecache" type="checkbox" value="1" <?php if ($recerasecache == "1") {
+                                                                                                                                                            echo "checked";
+                                                                                                                                                        } ?>>
+                                                                                <label for="operasecache">Usar --eraseCache (Requiere Versión: 1.14 o superior)</label>
+                                                                            </div>
                                                                         </div>
+
                                                                     </div>
 
                                                                 </div>
-
-                                                            </div>
-                                                        <?php
-                                                        }
-                                                        ?>
+                                                            <?php
+                                                            }
+                                                            ?>
 
 
-                                                        <?php
-                                                        //NOMBRE CARPETA
-                                                        if ($_SESSION['CONFIGUSER']['rango'] == 1 || $_SESSION['CONFIGUSER']['rango'] == 2) {
-                                                        ?>
+                                                            <?php
+                                                            //NOMBRE CARPETA
+                                                            if ($_SESSION['CONFIGUSER']['rango'] == 1 || $_SESSION['CONFIGUSER']['rango'] == 2) {
+                                                            ?>
+                                                                <div class="form-group">
+                                                                    <label class="negrita" for="eldirect">Nombre carpeta del servidor Minecraft</label>
+                                                                    <input readonly type="text" data-toggle="tooltip" data-placement="top" title="No se puede modificar la carpeta" class="form-control" id="eldirect" name="eldirect" required="required" value="<?php echo $reccarpmine; ?>">
+                                                                </div>
+
+                                                            <?php
+                                                            }
+                                                            ?>
+                                                            <hr>
+
+                                                            <button class="btn btn-primary btn-block" id="guardaserver" name="guardarserver">Guardar Cambios</button>
+                                                            <input type="hidden" name="action" value="submit">
+                                                            <br>
                                                             <div class="form-group">
-                                                                <label class="negrita" for="eldirect">Nombre carpeta del servidor Minecraft</label>
-                                                                <input readonly type="text" data-toggle="tooltip" data-placement="top" title="No se puede modificar la carpeta" class="form-control" id="eldirect" name="eldirect" required="required" value="<?php echo $reccarpmine; ?>">
+                                                                <span id="result"></span>
                                                             </div>
-
-                                                        <?php
-                                                        }
-                                                        ?>
-                                                        <hr>
-
-                                                        <button class="btn btn-primary btn-block" id="guardaserver" name="guardarserver">Guardar Cambios</button>
-                                                        <input type="hidden" name="action" value="submit">
-                                                        <br>
-                                                        <div class="form-group">
-                                                            <span id="result"></span>
-                                                        </div>
 
                                                     </form>
                                                     <hr id="finpage">

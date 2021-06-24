@@ -318,6 +318,7 @@ require_once("../template/errorreport.php");
         fwrite($file, 'define("CONFIGLINEASCONSOLA", "100");' . PHP_EOL);
         fwrite($file, 'define("CONFIGSHOWSIZEFOLDERS", "");' . PHP_EOL);
         fwrite($file, 'define("CONFIGBOOTSYSTEM", "NO");' . PHP_EOL);
+        fwrite($file, 'define("CONFIGIGNORERAMLIMIT", "");' . PHP_EOL);
         fwrite($file, "?>" . PHP_EOL);
         fclose($file);
 
