@@ -273,6 +273,11 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                     $arrayobtenido[$elindice]['psystemstartonboot'] = 1;
                 }
 
+                //SYSTEM CONFIG IGNORAR RAM SISTEMA AL INICIAR MINECRAFT
+                if (isset($_POST['psystemconfignoreramlimit'])) {
+                    $arrayobtenido[$elindice]['psystemconfignoreramlimit'] = 1;
+                }
+
                 //GUARDAR EN ARCHIVO
                 $serialized = serialize($arrayobtenido);
                 file_put_contents($elarchivo, $serialized);

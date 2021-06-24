@@ -197,6 +197,14 @@ require_once("template/header.php");
                                                                                 <p>Permite iniciar servidor Minecraft automáticamente al arrancar el servidor Linux.</p>
                                                                             </div>
 
+                                                                            <div class="form-group">
+                                                                                <div>
+                                                                                    <input id="psystemconfignoreramlimit" name="psystemconfignoreramlimit" type="checkbox" value="1">
+                                                                                    <label class="negrita mr-2" for="psystemconfignoreramlimit">Ignorar limites RAM sistema</label>
+                                                                                </div>
+                                                                                <p>Permite iniciar servidor Minecraft ignorando los limites de RAM del sistema.</p>
+                                                                            </div>
+
                                                                         </div>
 
                                                                     </div>
