@@ -195,6 +195,13 @@ $(function () {
         });
     }
 
+    if (document.getElementById('gestorignoreram') !== null) {
+        $("#gestorignoreram").change(function () {
+            document.getElementById("guardaserver").disabled = false;
+            document.getElementById("result").innerHTML = "";
+        });
+    }
+
     if (document.getElementById('configjavaselect0') !== null) {
         $("#configjavaselect0").change(function () {
             if (document.getElementById('javamanual') !== null) {
