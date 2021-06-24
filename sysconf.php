@@ -527,7 +527,7 @@ require_once("template/header.php");
                                                                 <?php
 
                                                                 //EXTRA IGNORAR RAM LIMITE
-                                                                if ($_SESSION['CONFIGUSER']['rango'] == 1) {
+                                                                if ($_SESSION['CONFIGUSER']['rango'] == 1 || array_key_exists('psystemconfignoreramlimit', $_SESSION['CONFIGUSER']) && $_SESSION['CONFIGUSER']['psystemconfignoreramlimit'] == 1) {
                                                                 ?>
                                                                 <br>
                                                                     <input id="gestorignoreram" name="gestorignoreram" type="checkbox" value="1" <?php if ($recignoreramlimit == "1") {
@@ -536,10 +536,10 @@ require_once("template/header.php");
                                                                     <label class="" for="gestorignoreram">Ignorar límite Ram disponible al arrancar servidor de Minecraft.</label>
                                                                 <?php
                                                                 }
-                                                            }
-                                                            ?>
+                                                                ?>
                                                             </div>
                                                             <?php
+                                                            }
                                                             //FIN EXTRAS
 
                                                             //PARAMETROS AVANZADOS
