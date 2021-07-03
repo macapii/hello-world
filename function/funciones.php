@@ -64,28 +64,6 @@ function devolverdatos($loskilobytes, $opcion, $decimal)
 	}
 }
 
-function getdistroinfo()
-{
-	$vars = array();
-	$files = glob('/etc/*-release');
-
-	foreach ($files as $file) {
-		$lines = array_filter(array_map(function ($line) {
-
-			$parts = explode('=', $line);
-
-			if (count($parts) !== 2) return false;
-
-			$parts[1] = str_replace(array('"', "'"), '', $parts[1]);
-			return $parts;
-		}, file($file)));
-
-		foreach ($lines as $line)
-			$vars[$line[0]] = $line[1];
-	}
-	return $vars;
-}
-
 function secondsToTime($inputSeconds)
 {
 	$secondsInAMinute = 60;
@@ -148,11 +126,6 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
 			$valor3 = "Apagado";
 		} else {
 			$valor3 = "Encendido";
-
-			//OBTENER DISTRO
-			$iddistro = getdistroinfo();
-			$iddistro = trim($iddistro["ID"]);
-			$iddistro = strtolower($iddistro);
 
 			//OBTENER CPU
 			$lacpu = shell_exec('uptime');
