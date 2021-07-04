@@ -130,13 +130,13 @@ Copyright (C) 2020 Cristina Ibañez, Konata400
     ?>
 
     <?php
-    if ($_SESSION['CONFIGUSER']['rango'] == 1 || $_SESSION['CONFIGUSER']['rango'] == 2 || array_key_exists('pcompilarspigot', $_SESSION['CONFIGUSER']) && $_SESSION['CONFIGUSER']['pcompilarspigot'] == 1) {
+    if ($_SESSION['CONFIGUSER']['rango'] == 1 || $_SESSION['CONFIGUSER']['rango'] == 2 || array_key_exists('ppagedownserver', $_SESSION['CONFIGUSER']) && $_SESSION['CONFIGUSER']['ppagedownserver'] == 1) {
     ?>
         <!-- Nav Item - Compilar Spigot -->
         <li class="nav-item menu-hover">
-            <a class="nav-link" href="spigot.php">
-                <img class="d-block float-left mr-2" src="img/menu/spigot.png" alt="compilar">
-                <h6 class="text-light">Compilar Spigot</h6>
+            <a class="nav-link" href="servers.php">
+                <img class="d-block float-left mr-2" src="img/menu/servers.png" alt="servers">
+                <h6 class="text-light">Descargar Servidor</h6>
             </a>
         </li>
     <?php
@@ -217,6 +217,6 @@ Copyright (C) 2020 Cristina Ibañez, Konata400
     <!-- Linea Final -->
     <hr class="sidebar-divider d-none d-md-block">
 
-    <p class="text-light text-right pr-4 mini-ver">McWebAdmin<br>Ver 0.12 Develop</p>
+    <p class="text-light text-right pr-4 mini-ver">McWebAdmin<br>Ver 0.11 Pre-Release</p>
 
 </ul>
