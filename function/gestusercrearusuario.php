@@ -284,6 +284,16 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                     $arrayobtenido[$elindice]['psystemconf'] = 1;
                 }
 
+                //PAGINA DESCARGAR SERVIDOR
+                if (isset($_POST['ppagedownserver'])) {
+                    $arrayobtenido[$elindice]['ppagedownserver'] = 1;
+                }
+
+                //DESCARGAR VANILLA
+                if (isset($_POST['ppagedownvanilla'])) {
+                    $arrayobtenido[$elindice]['ppagedownvanilla'] = 1;
+                }
+
                 //COMPILAR SPIGOT
                 if (isset($_POST['pcompilarspigot'])) {
                     $arrayobtenido[$elindice]['pcompilarspigot'] = 1;

@@ -149,12 +149,12 @@ require_once("template/header.php");
                                                                             <div class="form-group">
                                                                                 <div>
                                                                                     <input id="pstatusrestartserver" name="pstatusrestartserver" type="checkbox" value="1" <?php
-                                                                                                                                                                        if (array_key_exists('pstatusrestartserver', $_SESSION['EDITARUSUARIO'])) {
-                                                                                                                                                                            if ($_SESSION['EDITARUSUARIO']['pstatusrestartserver'] == 1) {
-                                                                                                                                                                                echo "checked";
+                                                                                                                                                                            if (array_key_exists('pstatusrestartserver', $_SESSION['EDITARUSUARIO'])) {
+                                                                                                                                                                                if ($_SESSION['EDITARUSUARIO']['pstatusrestartserver'] == 1) {
+                                                                                                                                                                                    echo "checked";
+                                                                                                                                                                                }
                                                                                                                                                                             }
-                                                                                                                                                                        }
-                                                                                                                                                                        ?>>
+                                                                                                                                                                            ?>>
                                                                                     <label class="negrita mr-2" for="pstatusrestartserver">Reiniciar Servidor</label>
                                                                                 </div>
                                                                                 <p>Permite al usuario reiniciar el servidor.</p>
@@ -285,12 +285,12 @@ require_once("template/header.php");
                                                                             <div class="form-group">
                                                                                 <div>
                                                                                     <input id="pprogtareaseditar" name="pprogtareaseditar" type="checkbox" value="1" <?php
-                                                                                                                                                                    if (array_key_exists('pprogtareaseditar', $_SESSION['EDITARUSUARIO'])) {
-                                                                                                                                                                        if ($_SESSION['EDITARUSUARIO']['pprogtareaseditar'] == 1) {
-                                                                                                                                                                            echo "checked";
+                                                                                                                                                                        if (array_key_exists('pprogtareaseditar', $_SESSION['EDITARUSUARIO'])) {
+                                                                                                                                                                            if ($_SESSION['EDITARUSUARIO']['pprogtareaseditar'] == 1) {
+                                                                                                                                                                                echo "checked";
+                                                                                                                                                                            }
                                                                                                                                                                         }
-                                                                                                                                                                    }
-                                                                                                                                                                    ?>>
+                                                                                                                                                                        ?>>
                                                                                     <label class="negrita mr-2" for="pprogtareaseditar">Editar Tareas</label>
                                                                                 </div>
                                                                                 <p>Permite editar tareas programadas.</p>
@@ -327,12 +327,12 @@ require_once("template/header.php");
                                                                             <div class="form-group">
                                                                                 <div>
                                                                                     <input id="pprogtareaslog" name="pprogtareaslog" type="checkbox" value="1" <?php
-                                                                                                                                                                        if (array_key_exists('pprogtareaslog', $_SESSION['EDITARUSUARIO'])) {
-                                                                                                                                                                            if ($_SESSION['EDITARUSUARIO']['pprogtareaslog'] == 1) {
-                                                                                                                                                                                echo "checked";
-                                                                                                                                                                            }
-                                                                                                                                                                        }
-                                                                                                                                                                        ?>>
+                                                                                                                                                                if (array_key_exists('pprogtareaslog', $_SESSION['EDITARUSUARIO'])) {
+                                                                                                                                                                    if ($_SESSION['EDITARUSUARIO']['pprogtareaslog'] == 1) {
+                                                                                                                                                                        echo "checked";
+                                                                                                                                                                    }
+                                                                                                                                                                }
+                                                                                                                                                                ?>>
                                                                                     <label class="negrita mr-2" for="pprogtareaslog">Ver Log / Borrar Log</label>
                                                                                 </div>
                                                                                 <p>Permite Ver o borrar el archivo log de las tareas programadas.</p>
@@ -365,21 +365,49 @@ require_once("template/header.php");
                                                                         <br>
 
                                                                         <!-- COMPILAR SPIGOT -->
-                                                                        <div class="negrita card-header text-white bg-primary">Página Compilar Spigot</div>
+                                                                        <div class="negrita card-header text-white bg-primary">Página Descargar Servidor</div>
                                                                         <div class="card-body border">
 
                                                                             <div class="form-group">
                                                                                 <div>
-                                                                                    <input id="pcompilarspigot" name="pcompilarspigot" type="checkbox" value="1" <?php
-                                                                                                                                                            if (array_key_exists('pcompilarspigot', $_SESSION['EDITARUSUARIO'])) {
-                                                                                                                                                                if ($_SESSION['EDITARUSUARIO']['pcompilarspigot'] == 1) {
-                                                                                                                                                                    echo "checked";
-                                                                                                                                                                }
-                                                                                                                                                            }
-                                                                                                                                                            ?>>
-                                                                                    <label class="negrita mr-2" for="pcompilarspigot">Acceder y Configurar</label>
+                                                                                    <input id="ppagedownserver" name="ppagedownserver" type="checkbox" value="1" <?php
+                                                                                                                                                                    if (array_key_exists('ppagedownserver', $_SESSION['EDITARUSUARIO'])) {
+                                                                                                                                                                        if ($_SESSION['EDITARUSUARIO']['ppagedownserver'] == 1) {
+                                                                                                                                                                            echo "checked";
+                                                                                                                                                                        }
+                                                                                                                                                                    }
+                                                                                                                                                                    ?>>
+                                                                                    <label class="negrita mr-2" for="ppagedownserver">Acceder</label>
                                                                                 </div>
-                                                                                <p>Permite acceder a la página y compilar el servidor spigot.</p>
+                                                                                <p>Permite acceder a la página de descarga servidor.</p>
+                                                                            </div>
+
+                                                                            <div class="form-group">
+                                                                                <div>
+                                                                                    <input id="ppagedownvanilla" name="ppagedownvanilla" type="checkbox" value="1" <?php
+                                                                                                                                                                    if (array_key_exists('ppagedownvanilla', $_SESSION['EDITARUSUARIO'])) {
+                                                                                                                                                                        if ($_SESSION['EDITARUSUARIO']['ppagedownvanilla'] == 1) {
+                                                                                                                                                                            echo "checked";
+                                                                                                                                                                        }
+                                                                                                                                                                    }
+                                                                                                                                                                    ?>>
+                                                                                    <label class="negrita mr-2" for="ppagedownvanilla">Descargar Vanilla</label>
+                                                                                </div>
+                                                                                <p>Permite descargar el servidor vanilla.</p>
+                                                                            </div>
+
+                                                                            <div class="form-group">
+                                                                                <div>
+                                                                                    <input id="pcompilarspigot" name="pcompilarspigot" type="checkbox" value="1" <?php
+                                                                                                                                                                    if (array_key_exists('pcompilarspigot', $_SESSION['EDITARUSUARIO'])) {
+                                                                                                                                                                        if ($_SESSION['EDITARUSUARIO']['pcompilarspigot'] == 1) {
+                                                                                                                                                                            echo "checked";
+                                                                                                                                                                        }
+                                                                                                                                                                    }
+                                                                                                                                                                    ?>>
+                                                                                    <label class="negrita mr-2" for="pcompilarspigot">Compilar Spigot</label>
+                                                                                </div>
+                                                                                <p>Permite compilar el servidor spigot.</p>
                                                                             </div>
 
                                                                         </div>
@@ -633,12 +661,12 @@ require_once("template/header.php");
                                                                             <div class="form-group">
                                                                                 <div>
                                                                                     <input id="pgestorarchivosexcludefiles" name="pgestorarchivosexcludefiles" type="checkbox" value="1" <?php
-                                                                                                                                                                            if (array_key_exists('pgestorarchivosexcludefiles', $_SESSION['EDITARUSUARIO'])) {
-                                                                                                                                                                                if ($_SESSION['EDITARUSUARIO']['pgestorarchivosexcludefiles'] == 1) {
-                                                                                                                                                                                    echo "checked";
-                                                                                                                                                                                }
-                                                                                                                                                                            }
-                                                                                                                                                                            ?>>
+                                                                                                                                                                                            if (array_key_exists('pgestorarchivosexcludefiles', $_SESSION['EDITARUSUARIO'])) {
+                                                                                                                                                                                                if ($_SESSION['EDITARUSUARIO']['pgestorarchivosexcludefiles'] == 1) {
+                                                                                                                                                                                                    echo "checked";
+                                                                                                                                                                                                }
+                                                                                                                                                                                            }
+                                                                                                                                                                                            ?>>
                                                                                     <label class="negrita mr-2" for="pgestorarchivosexcludefiles">Excluir/Incluir al backup</label>
                                                                                 </div>
                                                                                 <p>Permite excluir/incluir archivos y carpetas del backup.</p>

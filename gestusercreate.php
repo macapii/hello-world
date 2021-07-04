@@ -265,16 +265,32 @@ require_once("template/header.php");
 
                                                                         <br>
 
-                                                                        <!-- COMPILAR SPIGOT -->
-                                                                        <div class="negrita card-header text-white bg-primary">Página Compilar Spigot</div>
+                                                                        <!-- DESCARGAR SERVIDOR -->
+                                                                        <div class="negrita card-header text-white bg-primary">Página Descargar Servidor</div>
                                                                         <div class="card-body border">
+
+                                                                        <div class="form-group">
+                                                                                <div>
+                                                                                    <input id="ppagedownserver" name="ppagedownserver" type="checkbox" value="1">
+                                                                                    <label class="negrita mr-2" for="ppagedownserver">Acceder</label>
+                                                                                </div>
+                                                                                <p>Permite acceder a la página de descarga servidor.</p>
+                                                                            </div>
+
+                                                                            <div class="form-group">
+                                                                                <div>
+                                                                                    <input id="ppagedownvanilla" name="ppagedownvanilla" type="checkbox" value="1">
+                                                                                    <label class="negrita mr-2" for="ppagedownvanilla">Descargar Vanilla</label>
+                                                                                </div>
+                                                                                <p>Permite descargar el servidor vanilla.</p>
+                                                                            </div>
 
                                                                             <div class="form-group">
                                                                                 <div>
                                                                                     <input id="pcompilarspigot" name="pcompilarspigot" type="checkbox" value="1">
-                                                                                    <label class="negrita mr-2" for="pcompilarspigot">Acceder y Configurar</label>
+                                                                                    <label class="negrita mr-2" for="pcompilarspigot">Compilar Spigot</label>
                                                                                 </div>
-                                                                                <p>Permite acceder a la página y compilar el servidor spigot.</p>
+                                                                                <p>Permite compilar el servidor spigot.</p>
                                                                             </div>
 
                                                                         </div>
