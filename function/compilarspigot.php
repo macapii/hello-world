@@ -66,78 +66,240 @@ if (!isset($_SESSION['VALIDADO']) || !isset($_SESSION['KEYSECRETA'])) {
 //VALIDAMOS SESSION
 if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
 
-  if ($_SESSION['CONFIGUSER']['rango'] == 1 || $_SESSION['CONFIGUSER']['rango'] == 2 || array_key_exists('pcompilarspigot', $_SESSION['CONFIGUSER']) && $_SESSION['CONFIGUSER']['pcompilarspigot'] == 1) {
+  if ($_SESSION['CONFIGUSER']['rango'] == 1 || $_SESSION['CONFIGUSER']['rango'] == 2 || array_key_exists('ppagedownserver', $_SESSION['CONFIGUSER']) && $_SESSION['CONFIGUSER']['ppagedownserver'] == 1) {
+    if ($_SESSION['CONFIGUSER']['rango'] == 1 || $_SESSION['CONFIGUSER']['rango'] == 2 || array_key_exists('pcompilarspigot', $_SESSION['CONFIGUSER']) && $_SESSION['CONFIGUSER']['pcompilarspigot'] == 1) {
 
-    if (isset($_POST['action']) && !empty($_POST['action'])) {
-      $retorno = "";
-      $elerror = 0;
+      if (isset($_POST['action']) && !empty($_POST['action'])) {
+        $retorno = "";
+        $elerror = 0;
 
-      $limitmine = CONFIGFOLDERMINECRAFTSIZE;
-      $reccarpmine = CONFIGDIRECTORIO;
-      $rutacarpetamine = "";
-      $getgigasmine = "";
+        $limitmine = CONFIGFOLDERMINECRAFTSIZE;
+        $reccarpmine = CONFIGDIRECTORIO;
+        $rutacarpetamine = "";
+        $getgigasmine = "";
 
-      $laaction = test_input($_POST['action']);
+        $laaction = test_input($_POST['action']);
 
-      $carpraiz = dirname(getcwd()) . PHP_EOL;
-      $carpraiz = trim($carpraiz);
+        $carpraiz = dirname(getcwd()) . PHP_EOL;
+        $carpraiz = trim($carpraiz);
 
-      $carpcompilar = $carpraiz . "/compilar";
-      $elssh = $carpcompilar . "/compilar.sh";
-      $elbuildtools = $carpcompilar . "/BuildTools.jar";
-      $archivolog = $carpcompilar . "/BuildTools.log.txt";
+        $carpcompilar = $carpraiz . "/compilar";
+        $elssh = $carpcompilar . "/compilar.sh";
+        $elbuildtools = $carpcompilar . "/BuildTools.jar";
+        $archivolog = $carpcompilar . "/BuildTools.log.txt";
 
-      //VERIFICAR LECTURA CARPETA RAIZ
-      if ($elerror == 0) {
-        clearstatcache();
-        if (!is_readable($carpraiz)) {
-          $retorno = "noreadraiz";
-          $elerror = 1;
+        //VERIFICAR LECTURA CARPETA RAIZ
+        if ($elerror == 0) {
+          clearstatcache();
+          if (!is_readable($carpraiz)) {
+            $retorno = "noreadraiz";
+            $elerror = 1;
+          }
         }
-      }
 
-      //VERIFICAR ESCRITURA CARPETA RAIZ
-      if ($elerror == 0) {
-        clearstatcache();
-        if (!is_writable($carpraiz)) {
-          $retorno = "nowriteraiz";
-          $elerror = 1;
+        //VERIFICAR ESCRITURA CARPETA RAIZ
+        if ($elerror == 0) {
+          clearstatcache();
+          if (!is_writable($carpraiz)) {
+            $retorno = "nowriteraiz";
+            $elerror = 1;
+          }
         }
-      }
 
-      if ($elerror == 0) {
-        if ($laaction == "compilar") {
+        if ($elerror == 0) {
+          if ($laaction == "compilar") {
 
-          //LIMITE ALMACENAMIENTO
-          if ($elerror == 0) {
-            if ($_SESSION['CONFIGUSER']['rango'] == 2 || $_SESSION['CONFIGUSER']['rango'] == 3) {
+            //LIMITE ALMACENAMIENTO
+            if ($elerror == 0) {
+              if ($_SESSION['CONFIGUSER']['rango'] == 2 || $_SESSION['CONFIGUSER']['rango'] == 3) {
 
-              //MIRAR SI ES ILIMITADO
-              if ($limitmine >= 1) {
+                //MIRAR SI ES ILIMITADO
+                if ($limitmine >= 1) {
 
-                //OBTENER CARPETA SERVIDOR MINECRAFT
-                $rutacarpetamine = dirname(getcwd()) . PHP_EOL;
-                $rutacarpetamine = trim($rutacarpetamine);
-                $rutacarpetamine .= "/" . $reccarpmine;
+                  //OBTENER CARPETA SERVIDOR MINECRAFT
+                  $rutacarpetamine = dirname(getcwd()) . PHP_EOL;
+                  $rutacarpetamine = trim($rutacarpetamine);
+                  $rutacarpetamine .= "/" . $reccarpmine;
 
-                $getgigasmine = converdatos(obtenersizecarpeta($rutacarpetamine), 0, 2);
+                  $getgigasmine = converdatos(obtenersizecarpeta($rutacarpetamine), 0, 2);
 
-                if (!is_numeric($getgigasmine)) {
-                  $retorno = "ERRORGETSIZE";
-                  $elerror = 1;
-                }
-
-                if ($elerror == 0) {
-                  if ($getgigasmine > $limitmine) {
-                    $retorno = "OUTGIGAS";
+                  if (!is_numeric($getgigasmine)) {
+                    $retorno = "ERRORGETSIZE";
                     $elerror = 1;
+                  }
+
+                  if ($elerror == 0) {
+                    if ($getgigasmine > $limitmine) {
+                      $retorno = "OUTGIGAS";
+                      $elerror = 1;
+                    }
                   }
                 }
               }
             }
-          }
 
-          if ($elerror == 0) {
+            if ($elerror == 0) {
+              //SABER SI ESTA EN EJECUCION
+              $elcomando = "";
+              $nombresession = str_replace("/", "", $carpcompilar);
+              $elcomando = "screen -ls | awk '/\." . $nombresession . "\t/ {print strtonum($1)'}";
+              $elpid = shell_exec($elcomando);
+
+              if ($elpid == "") {
+                $elerror = 0;
+              } else {
+                $elerror = 1;
+                $retorno = "yaenmarcha";
+              }
+            }
+
+            if ($elerror == 0) {
+
+              $recjavaselect = CONFIGJAVASELECT;
+              $recjavaname = CONFIGJAVANAME;
+              $recjavamanual = CONFIGJAVAMANUAL;
+
+              $javaruta = "";
+
+              //OBTENER VERSION AJAX
+              $version = test_input($_POST['laversion']);
+
+              //OBTENER CARPETA SERVIDOR MINECRAFT
+              $elnombredirectorio = $carpraiz . "/" . CONFIGDIRECTORIO . "/";
+
+              //OBTENER FECHA
+              $t = date("Y-m-d-G-i-s");
+
+              //BORRAR CARPETA COMPILAR (SI EXISTIERA)
+              clearstatcache();
+              if (file_exists($carpcompilar)) {
+                if (is_writable($carpcompilar)) {
+                  $comando = "cd " . $carpraiz . " && rm -R compilar";
+                  exec($comando);
+                } else {
+                  $retorno = "nowritecompilar";
+                  $elerror = 1;
+                }
+              }
+            }
+
+            if ($elerror == 0) {
+
+              //CREAR CARPETA
+              mkdir($carpcompilar, 0700);
+
+              //FORZAR .htaccess
+              $rutahta = $carpcompilar . "/.htaccess";
+              $file = fopen($rutahta, "w");
+              fwrite($file, "deny from all" . PHP_EOL);
+              fclose($file);
+
+              //CREACION DEL SSH
+              $file = fopen($elssh, "w");
+              fwrite($file, "#!/bin/bash" . PHP_EOL);
+              fwrite($file, "wget https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifact/target/BuildTools.jar" . PHP_EOL);
+              fclose($file);
+
+              $comando = "cd " . $carpcompilar . " && chmod +x compilar.sh && sh compilar.sh";
+              exec($comando);
+
+              //COMPRUEBA LA DESCARGA DE BUILDTOOLS
+              clearstatcache();
+              if (!file_exists($elbuildtools)) {
+                $retorno = "nobuildtools";
+                $elerror = 1;
+              }
+            }
+
+            //COMPROVAR MEMORIA RAM
+            if ($elerror == 0) {
+              $totalramsys = shell_exec("free -g | grep Mem | awk '{ print $2 }'");
+              $totalramsys = trim($totalramsys);
+              $totalramsys = intval($totalramsys);
+
+              $getramavaliable = shell_exec("free -g | grep Mem | awk '{ print $7 }'");
+              $getramavaliable = trim($getramavaliable);
+              $getramavaliable = intval($getramavaliable);
+
+              //COMPRUEBA SI AL MENOS SE TIENE 1GB
+              if ($totalramsys == 0) {
+                $elerror = 1;
+                $retorno = "rammenoragiga";
+              }
+
+              if ($totalramsys >= 1) {
+                //COMPRUEBA QUE HAYA AL MENOS 1GB DE MEMORIA DISPONIBLE
+                if ($getramavaliable < 2) {
+                  $elerror = 1;
+                  $retorno = "ramavaiableout";
+                }
+              }
+            }
+
+            //INICIAR VARIABLE JAVARUTA Y COMPROBAR SI EXISTE
+            if ($elerror == 0) {
+              if ($recjavaselect == "0") {
+                $javaruta = "java";
+              } elseif ($recjavaselect == "1") {
+                $javaruta = $recjavaname;
+                clearstatcache();
+                if (!file_exists($javaruta)) {
+                  $retorno = "nojavaenruta";
+                  $elerror = 1;
+                }
+              } elseif ($recjavaselect == "2") {
+                $javaruta = $recjavamanual . "/bin/java";
+                clearstatcache();
+                if (!file_exists($javaruta)) {
+                  $retorno = "nojavaenruta";
+                  $elerror = 1;
+                }
+              }
+            }
+
+            if ($elerror == 0) {
+              $file = fopen($elssh, "w");
+              fwrite($file, "#!/bin/bash" . PHP_EOL);
+              fwrite($file, "chmod +x BuildTools.jar" . PHP_EOL);
+              fwrite($file, "export HOME=" . $carpcompilar . PHP_EOL);
+              fwrite($file, "export XDG_CONFIG_HOME=" . $carpcompilar . "/.config" . PHP_EOL);
+              fwrite($file, "export M2_HOME=" . $carpcompilar . "/.m2" . PHP_EOL);
+              fwrite($file, "git config --global --unset core.autocrlf" . PHP_EOL);
+              fwrite($file, $javaruta . " -Xmx2048M -jar " . $carpcompilar . "/BuildTools.jar --rev " . $version . PHP_EOL);
+              fwrite($file, "mv spigot-" . $version . ".jar spigot-" . $version . "-" . $t . ".jar" . PHP_EOL);
+              fwrite($file, "mv spigot-" . $version . "-" . $t . ".jar " . $elnombredirectorio . "spigot-" . $version . "-" . $t . ".jar" . PHP_EOL);
+              fclose($file);
+
+              //DAR PERMISOS AL SH
+              $comando = "cd " . $carpcompilar . " && chmod +x compilar.sh";
+              exec($comando);
+
+              //GENERAR UNA SESSION PARA EL SCREEN, QUITANDO LAS / DE LA RUTA AL NO ESTAR SOPORTADO
+              $nombresession = str_replace("/", "", $carpcompilar);
+
+              //INICIAR SCREEN
+              $comando = "cd " . $carpcompilar . " && umask 002 && screen -dmS '" . $nombresession . "' sh compilar.sh";
+              shell_exec($comando);
+
+              $retorno = "OK";
+            }
+          } elseif ($laaction == "consola") {
+
+            //COMPROVAR SI EXISTE LA RUTA
+            clearstatcache();
+            if (file_exists($archivolog)) {
+              //COMPROVAR SI SE PUEDE LEER
+              clearstatcache();
+              if (is_readable($archivolog)) {
+                //LEER ARCHIVO
+                $retorno = file_get_contents($archivolog);
+              } else {
+                $retorno = "No se puede leer el archivo";
+              }
+            } else {
+              $retorno = "";
+            }
+          } elseif ($laaction == "estado") {
             //SABER SI ESTA EN EJECUCION
             $elcomando = "";
             $nombresession = str_replace("/", "", $carpcompilar);
@@ -145,203 +307,43 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
             $elpid = shell_exec($elcomando);
 
             if ($elpid == "") {
-              $elerror = 0;
-            } else {
-              $elerror = 1;
-              $retorno = "yaenmarcha";
-            }
-          }
-
-          if ($elerror == 0) {
-
-            $recjavaselect = CONFIGJAVASELECT;
-            $recjavaname = CONFIGJAVANAME;
-            $recjavamanual = CONFIGJAVAMANUAL;
-
-            $javaruta = "";
-
-            //OBTENER VERSION AJAX
-            $version = test_input($_POST['laversion']);
-
-            //OBTENER CARPETA SERVIDOR MINECRAFT
-            $elnombredirectorio = $carpraiz . "/" . CONFIGDIRECTORIO . "/";
-
-            //OBTENER FECHA
-            $t = date("Y-m-d-G-i-s");
-
-            //BORRAR CARPETA COMPILAR (SI EXISTIERA)
-            clearstatcache();
-            if (file_exists($carpcompilar)) {
-              if (is_writable($carpcompilar)) {
-                $comando = "cd " . $carpraiz . " && rm -R compilar";
-                exec($comando);
-              } else {
-                $retorno = "nowritecompilar";
-                $elerror = 1;
-              }
-            }
-          }
-
-          if ($elerror == 0) {
-
-            //CREAR CARPETA
-            mkdir($carpcompilar, 0700);
-
-            //FORZAR .htaccess
-            $rutahta = $carpcompilar . "/.htaccess";
-            $file = fopen($rutahta, "w");
-            fwrite($file, "deny from all" . PHP_EOL);
-            fclose($file);
-
-            //CREACION DEL SSH
-            $file = fopen($elssh, "w");
-            fwrite($file, "#!/bin/bash" . PHP_EOL);
-            fwrite($file, "wget https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifact/target/BuildTools.jar" . PHP_EOL);
-            fclose($file);
-
-            $comando = "cd " . $carpcompilar . " && chmod +x compilar.sh && sh compilar.sh";
-            exec($comando);
-
-            //COMPRUEBA LA DESCARGA DE BUILDTOOLS
-            clearstatcache();
-            if (!file_exists($elbuildtools)) {
-              $retorno = "nobuildtools";
-              $elerror = 1;
-            }
-          }
-
-          //COMPROVAR MEMORIA RAM
-          if ($elerror == 0) {
-            $totalramsys = shell_exec("free -g | grep Mem | awk '{ print $2 }'");
-            $totalramsys = trim($totalramsys);
-            $totalramsys = intval($totalramsys);
-
-            $getramavaliable = shell_exec("free -g | grep Mem | awk '{ print $7 }'");
-            $getramavaliable = trim($getramavaliable);
-            $getramavaliable = intval($getramavaliable);
-
-            //COMPRUEBA SI AL MENOS SE TIENE 1GB
-            if ($totalramsys == 0) {
-              $elerror = 1;
-              $retorno = "rammenoragiga";
-            }
-
-            if ($totalramsys >= 1) {
-              //COMPRUEBA QUE HAYA AL MENOS 1GB DE MEMORIA DISPONIBLE
-              if ($getramavaliable < 2) {
-                $elerror = 1;
-                $retorno = "ramavaiableout";
-              }
-            }
-          }
-
-          //INICIAR VARIABLE JAVARUTA Y COMPROBAR SI EXISTE
-          if ($elerror == 0) {
-            if ($recjavaselect == "0") {
-              $javaruta = "java";
-            } elseif ($recjavaselect == "1") {
-              $javaruta = $recjavaname;
-              clearstatcache();
-              if (!file_exists($javaruta)) {
-                $retorno = "nojavaenruta";
-                $elerror = 1;
-              }
-            } elseif ($recjavaselect == "2") {
-              $javaruta = $recjavamanual . "/bin/java";
-              clearstatcache();
-              if (!file_exists($javaruta)) {
-                $retorno = "nojavaenruta";
-                $elerror = 1;
-              }
-            }
-          }
-
-          if ($elerror == 0) {
-            $file = fopen($elssh, "w");
-            fwrite($file, "#!/bin/bash" . PHP_EOL);
-            fwrite($file, "chmod +x BuildTools.jar" . PHP_EOL);
-            fwrite($file, "export HOME=" . $carpcompilar . PHP_EOL);
-            fwrite($file, "export XDG_CONFIG_HOME=" . $carpcompilar . "/.config" . PHP_EOL);
-            fwrite($file, "export M2_HOME=" . $carpcompilar . "/.m2" . PHP_EOL);
-            fwrite($file, "git config --global --unset core.autocrlf" . PHP_EOL);
-            fwrite($file, $javaruta . " -Xmx2048M -jar " . $carpcompilar . "/BuildTools.jar --rev " . $version . PHP_EOL);
-            fwrite($file, "mv spigot-" . $version . ".jar spigot-" . $version . "-" . $t . ".jar" . PHP_EOL);
-            fwrite($file, "mv spigot-" . $version . "-" . $t . ".jar " . $elnombredirectorio . "spigot-" . $version . "-" . $t . ".jar" . PHP_EOL);
-            fclose($file);
-
-            //DAR PERMISOS AL SH
-            $comando = "cd " . $carpcompilar . " && chmod +x compilar.sh";
-            exec($comando);
-
-            //GENERAR UNA SESSION PARA EL SCREEN, QUITANDO LAS / DE LA RUTA AL NO ESTAR SOPORTADO
-            $nombresession = str_replace("/", "", $carpcompilar);
-
-            //INICIAR SCREEN
-            $comando = "cd " . $carpcompilar . " && umask 002 && screen -dmS '" . $nombresession . "' sh compilar.sh";
-            shell_exec($comando);
-
-            $retorno = "OK";
-          }
-        } elseif ($laaction == "consola") {
-
-          //COMPROVAR SI EXISTE LA RUTA
-          clearstatcache();
-          if (file_exists($archivolog)) {
-            //COMPROVAR SI SE PUEDE LEER
-            clearstatcache();
-            if (is_readable($archivolog)) {
-              //LEER ARCHIVO
-              $retorno = file_get_contents($archivolog);
-            } else {
-              $retorno = "No se puede leer el archivo";
-            }
-          } else {
-            $retorno = "";
-          }
-        } elseif ($laaction == "estado") {
-          //SABER SI ESTA EN EJECUCION
-          $elcomando = "";
-          $nombresession = str_replace("/", "", $carpcompilar);
-          $elcomando = "screen -ls | awk '/\." . $nombresession . "\t/ {print strtonum($1)'}";
-          $elpid = shell_exec($elcomando);
-
-          if ($elpid == "") {
-            $retorno = "OFF";
-          } else {
-            $retorno = "ON";
-          }
-        } elseif ($laaction == "matarcompilar") {
-
-          //SABER SI ESTA EN EJECUCION
-          $elcomando = "";
-          $nombresession = str_replace("/", "", $carpcompilar);
-          $elcomando = "screen -ls | awk '/\." . $nombresession . "\t/ {print strtonum($1)'}";
-          $elpid = shell_exec($elcomando);
-
-          if ($elpid == "") {
-            $retorno = "OFF";
-          } else {
-
-            //OBTENER PID COMPILADOR BUILDTOOLS
-            $tipserver = trim(exec('whoami'));
-            $elpid = "ps au | grep '" . $tipserver . "' | grep '" . $carpcompilar . "/BuildTools.jar' | awk '{print $2}'";
-            $elpid = shell_exec($elpid);
-            $elpid = trim($elpid);
-
-            //COMPROVAR QUE SEA NUMERICO
-            if (is_numeric($elpid)) {
-              $elcomando = "kill -9 " . $elpid;
-              $elcomando = trim($elcomando);
-              shell_exec($elcomando);
-              $retorno = "OK";
-            } else {
               $retorno = "OFF";
+            } else {
+              $retorno = "ON";
+            }
+          } elseif ($laaction == "matarcompilar") {
+
+            //SABER SI ESTA EN EJECUCION
+            $elcomando = "";
+            $nombresession = str_replace("/", "", $carpcompilar);
+            $elcomando = "screen -ls | awk '/\." . $nombresession . "\t/ {print strtonum($1)'}";
+            $elpid = shell_exec($elcomando);
+
+            if ($elpid == "") {
+              $retorno = "OFF";
+            } else {
+
+              //OBTENER PID COMPILADOR BUILDTOOLS
+              $tipserver = trim(exec('whoami'));
+              $elpid = "ps au | grep '" . $tipserver . "' | grep '" . $carpcompilar . "/BuildTools.jar' | awk '{print $2}'";
+              $elpid = shell_exec($elpid);
+              $elpid = trim($elpid);
+
+              //COMPROVAR QUE SEA NUMERICO
+              if (is_numeric($elpid)) {
+                $elcomando = "kill -9 " . $elpid;
+                $elcomando = trim($elcomando);
+                shell_exec($elcomando);
+                $retorno = "OK";
+              } else {
+                $retorno = "OFF";
+              }
             }
           }
         }
-      }
 
-      echo $retorno;
+        echo $retorno;
+      }
     }
   }
 }
