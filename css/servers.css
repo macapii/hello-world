@@ -1,0 +1,15 @@
+.cartel {
+  font-weight: normal;
+  margin: 0 auto;
+  padding: 20px 20px 20px;
+  background-color: #4e73df;
+  color: #fff;
+  text-align: center;
+  display: inline-block;
+  border-radius: 5px;
+}
+
+.download-hover:hover {
+  color: rgb(255, 255, 255) !important;
+  background-color: #87CEEB!important;
+}
