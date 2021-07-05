@@ -63,6 +63,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
 
                 //COMPROBQAR SI TEMP ES WRITABLE
                 if ($elerror == 0) {
+                    clearstatcache();
                     if (!is_writable($dirtemp)) {
                         $elerror = 1;
                         $retorno = "nodirwrite";
@@ -71,6 +72,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
 
                 //COMPROBAR SI DIR MINECRAFT ES WRITABLE
                 if ($elerror == 0) {
+                    clearstatcache();
                     if (!is_writable($dirmine)) {
                         $elerror = 1;
                         $retorno = "nominewrite";
@@ -203,6 +205,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                 //COMPROBAR SI ESTA DESCARGADO
                 if ($elerror == 0) {
                     $rutafichero = $dirtemp . "/" . $nombrefichero;
+                    clearstatcache();
                     if (!file_exists($rutafichero)) {
                         $elerror = 1;
                         $retorno = "filenodownload";
