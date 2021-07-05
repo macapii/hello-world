@@ -214,6 +214,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                     $verifisha1 = sha1_file($rutafichero);
 
                     if ($verifisha1 != $resultado2[$elindexarray]['sha1']) {
+                        unlink($rutafichero);
                         $elerror = 1;
                         $retorno = "nogoodsha1";
                     }
