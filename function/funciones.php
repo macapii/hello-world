@@ -136,15 +136,22 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
 			//OBTENER QUIEN EJECUTA
 			$tipserver = trim(exec('whoami'));
 
-			//OBTENER PID
-			$elpid = "ps au | grep '" . $tipserver . "' | grep '" . $elnombrescreen . "' | awk '{print $2}'";
+			//OBTENER PID y RAM
+			$elpid = "ps au | grep '" . $tipserver . "' | grep '" . $elnombrescreen . "'" . " | awk '{ print $2 ";
+			$elpid .= '"="' . " $6 }'";
 			$elpid = shell_exec($elpid);
 			$elpid = trim($elpid);
 
-			//OBTENER RAM
-			$laram = "ps au | grep '" . $tipserver . "' | grep '" . $elnombrescreen . "' | awk '{print $6}'";
-			$laram = shell_exec($laram);
-			$laram = trim($laram);
+			$losdatos = explode("=", $elpid);
+
+			//ASIGNAR VALORES
+			$elpid = trim($losdatos[0]);
+
+			if (isset($losdatos[1])) {
+				$laram = trim($losdatos[1]);
+			} else {
+				$laram = "";
+			}
 
 			//CONVERTIR RAM EN GB
 			if (is_numeric($laram)) {
@@ -160,7 +167,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
 			if (is_numeric($uptime)) {
 				$uptimearray = secondsToTime($uptime);
 				$eluptime = $uptimearray['d'] . " Dias  " . $uptimearray['h'] . " Horas  " . $uptimearray['m'] . " Minutos  " . $uptimearray['s'] . " Segundos";
-			}else{
+			} else {
 				$eluptime = "";
 			}
 
