@@ -184,6 +184,74 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
             }
 
             if ($elerror == 0) {
+              //CONFIRMAR VERSION A DESCARGAR CON EL LISTADO
+
+              $url = "https://hub.spigotmc.org/nexus/content/repositories/snapshots/org/spigotmc/spigot-api/maven-metadata.xml";
+
+              $context = stream_context_create(
+                array(
+                  "http" => array(
+                    "timeout" => 10,
+                    "header" => "User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+                  )
+                )
+              );
+
+              $contenido = @file_get_contents($url, false, $context);
+
+              if ($contenido === FALSE) {
+                $elerror = 1;
+                $retorno = "timeout";
+              } else {
+
+                $contenido = htmlentities($contenido);
+
+                $elarray = explode(" ", $contenido);
+
+                for ($i = 0; $i < count($elarray); $i++) {
+
+                  $test = substr_count($elarray[$i], "R0.1-SNAPSHOT");
+
+                  if ($test >= 1) {
+
+                    $test = substr_count($elarray[$i], "pre");
+
+                    if ($test == 0) {
+
+                      $test = substr_count($elarray[$i], "latest");
+
+                      if ($test == 0) {
+                        $linea = trim($elarray[$i]);
+                        $linea = substr($linea, 0, -30);
+                        $linea = substr($linea, 15);
+                        $versiones[] = test_input(trim($linea));
+                      }
+                    }
+                  }
+                }
+
+                $versiones = array_reverse($versiones);
+              }
+            }
+
+            //COMPROBAR SI EXISTE LA VERSION SELECCIONADA
+            if ($elerror == 0) {
+
+              $verencontrado = 0;
+
+              for ($i = 0; $i < count($versiones); $i++) {
+                if ($version == $versiones[$i]) {
+                  $verencontrado = 1;
+                }
+              }
+
+              if ($verencontrado == 0) {
+                $elerror = 1;
+                $retorno = "noverfound";
+              }
+            }
+
+            if ($elerror == 0) {
 
               //CREAR CARPETA
               mkdir($carpcompilar, 0700);

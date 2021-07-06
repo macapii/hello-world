@@ -49,6 +49,10 @@ $(function () {
                         alert("Ya existe un proceso compilar en ejecución");
                     } else if (data == "nowritecompilar") {
                         alert("No se puede borrar la carpeta compilar, no hay permisos de escritura");
+                    } else if (data == "timeout") {
+                        alert("Timeout al obtener versiones de Spigot");
+                    } else if (data == "noverfound") {
+                        alert("No se encontró la versión seleccionada en el listado de versiones Spigot");
                     } else if (data == "nobuildtools") {
                         alert("Error: No se ha podido descargar la herramienta Buildtools");
                     } else if (data == "nojavaenruta") {
