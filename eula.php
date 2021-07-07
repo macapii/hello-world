@@ -24,6 +24,7 @@ require_once("config/confopciones.php");
 require_once("template/header.php");
 ?>
 
+<link href="css/test.css" rel="stylesheet">
 <link href="css/eula.css" rel="stylesheet">
 
 </head>
