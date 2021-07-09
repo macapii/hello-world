@@ -99,8 +99,6 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                         $retorno = "timeoutmanifest";
                     } else {
 
-                        $contenido = @file_get_contents($url, false, $context);
-
                         $elarray = explode('"', $contenido);
 
                         $busversions = 0;
