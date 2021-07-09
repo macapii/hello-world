@@ -93,8 +93,6 @@ function test_input($data)
             $versiones[$elindexarray]['version'] = "Error obtener listado";
         } else {
 
-            $contenido = @file_get_contents($url, false, $context);
-
             $elarray = explode('"', $contenido);
 
             $busversions = 0;
