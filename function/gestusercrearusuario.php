@@ -299,6 +299,11 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                     $arrayobtenido[$elindice]['pcompilarspigot'] = 1;
                 }
 
+                //DESCARGAR PAPER
+                if (isset($_POST['ppagedownpaper'])) {
+                    $arrayobtenido[$elindice]['ppagedownpaper'] = 1;
+                }
+
                 //SUBIR SERVIDOR
                 if (isset($_POST['psubirservidor'])) {
                     $arrayobtenido[$elindice]['psubirservidor'] = 1;

@@ -293,6 +293,14 @@ require_once("template/header.php");
                                                                                 <p>Permite compilar el servidor spigot.</p>
                                                                             </div>
 
+                                                                            <div class="form-group">
+                                                                                <div>
+                                                                                    <input id="ppagedownpaper" name="ppagedownpaper" type="checkbox" value="1">
+                                                                                    <label class="negrita mr-2" for="ppagedownpaper">Descargar Paper</label>
+                                                                                </div>
+                                                                                <p>Permite descargar el servidor paper.</p>
+                                                                            </div>
+
                                                                         </div>
 
                                                                         <br>
