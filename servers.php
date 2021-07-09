@@ -150,10 +150,36 @@ function test_input($data)
                                                                     <li>Creado y soportado por la comunidad.</li>
                                                                 </ul>
                                                             </div>
+                                                            <div class="col-md-12">
+                                                                <hr>
+                                                            </div>
                                                         <?php
                                                         }
                                                         ?>
                                                         <!-- SPIGOT Fin -->
+
+                                                        <!-- PAPER Inicio -->
+                                                        <?php
+                                                        if ($_SESSION['CONFIGUSER']['rango'] == 1 || $_SESSION['CONFIGUSER']['rango'] == 2 || array_key_exists('ppagedownpaper', $_SESSION['CONFIGUSER']) && $_SESSION['CONFIGUSER']['ppagedownpaper'] == 1) {
+                                                            $contador++;
+                                                        ?>
+                                                            <div class="col-md-3">
+                                                                <a class="" href="paper.php">
+                                                                    <span class="cartel border border-dark shadow-lg download-hover"><img src="img/menu/paper.png" alt="papericon" width="32" height="32"> Servidor Paper</span>
+                                                                </a>
+                                                            </div>
+                                                            <div class="col-md-9">
+                                                                <ul class="">
+                                                                    <li>Servidor Paper es una versión modificada del servidor de Spigot.</li>
+                                                                    <li>Soporta plugins.</li>
+                                                                    <li>Servidor de alto rendimiento</li>
+                                                                    <li>Creado y soportado por la comunidad.</li>
+                                                                </ul>
+                                                            </div>
+                                                        <?php
+                                                        }
+                                                        ?>
+                                                        <!-- PAPER Fin -->
                                                         <?php
                                                         if ($contador == 0) {
                                                         ?>
