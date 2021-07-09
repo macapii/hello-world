@@ -139,7 +139,7 @@ function test_input($data)
                                 <div class="card-body">
                                     <div class="py-1">
                                         <div class="container">
-                                            <h1 class="mb-5">Descargar Servidor</h1>
+                                            <h1 class="mb-5">Descargar Servidor Vanilla</h1>
 
                                             <div class="py-2">
                                                 <div class="container">
@@ -165,7 +165,7 @@ function test_input($data)
 
                                                             if ($elerror == 0) {
                                                             ?>
-                                                                <button class="btn btn-primary btn-block mt-2" id="descargar" name="descargar">Descargar</button>
+                                                                <button class="btn btn-primary btn-block mt-2" id="descargar" name="descargar">Descargar Servidor Vanilla</button>
                                                             <?php
                                                             } else {
                                                                 echo '<p>Error: ' . $retorno . '</p>';
