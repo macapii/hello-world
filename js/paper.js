@@ -90,7 +90,7 @@ $(function () {
                     document.getElementById("gifloading").style.visibility = "hidden";
 
                     if (data.retorno == "ok") {
-                        document.getElementById("textoretorno").innerHTML = "<div class='alert alert-success' role='alert'>Server Paper descargado correctamente.</div>";
+                        document.getElementById("textoretorno").innerHTML = "<div class='alert alert-success' role='alert'>Servidor Paper descargado correctamente.</div>";
                     } else if (data.retorno == "nopostaction") {
                         document.getElementById("textoretorno").innerHTML = "<div class='alert alert-danger' role='alert'>Error: No se envió valor action.</div>";
                     } else if (data.retorno == "nopostver") {
@@ -116,7 +116,7 @@ $(function () {
                     } else if (data.retorno == "nogoodsha256") {
                         document.getElementById("textoretorno").innerHTML = "<div class='alert alert-danger' role='alert'>Error: Verificación SHA256 errónea, descarga incorrecta.<br>Vuelve a intentarlo.</div>";
                     } else if (data.retorno == "renamerror") {
-                        document.getElementById("textoretorno").innerHTML = "<div class='alert alert-danger' role='alert'>Error: Al mover archivo a la carpeta Minecraft.</div>";
+                        document.getElementById("textoretorno").innerHTML = "<div class='alert alert-danger' role='alert'>Error: Al mover servidor a la carpeta Minecraft.</div>";
                     }
                 }
             });

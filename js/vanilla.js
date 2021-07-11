@@ -38,7 +38,7 @@ $(function () {
                     document.getElementById("gifloading").style.visibility = "hidden";
 
                     if(data == "ok"){
-                        document.getElementById("textoretorno").innerHTML = "<div class='alert alert-success' role='alert'>Server Vanilla descargado correctamente.</div>";
+                        document.getElementById("textoretorno").innerHTML = "<div class='alert alert-success' role='alert'>Servidor Vanilla descargado correctamente.</div>";
                     } else if (data == "nodirwrite") {
                         document.getElementById("textoretorno").innerHTML = "<div class='alert alert-danger' role='alert'>Error: La carpeta temp no tiene permisos de escritura.</div>";
                     } else if (data == "nominewrite") {
@@ -54,7 +54,7 @@ $(function () {
                     } else if (data == "nogoodsha1") {
                         document.getElementById("textoretorno").innerHTML = "<div class='alert alert-danger' role='alert'>Error: Verificación SHA1 errónea, descarga incorrecta.<br>Vuelve a intentarlo.</div>";
                     } else if (data == "renamerror") {
-                        document.getElementById("textoretorno").innerHTML = "<div class='alert alert-danger' role='alert'>Error: Al moverlo a la carpeta Minecraft.</div>";
+                        document.getElementById("textoretorno").innerHTML = "<div class='alert alert-danger' role='alert'>Error: Al mover servidor a la carpeta Minecraft.</div>";
                     }
                 }
             });
