@@ -90,29 +90,11 @@ function test_input($data)
         $contenido = @file_get_contents($url, false, $context);
 
         if ($contenido === FALSE) {
-            $versiones[$elindexarray]['version'] = "Error obtener listado";
+            $elerror = 1;
+            $retorno = "timeoutmanifest";
         } else {
-
-            $elarray = explode('"', $contenido);
-
-            $busversions = 0;
-            $elindexarray = 0;
-
-            $versiones = array();
-
-            for ($i = 0; $i < count($elarray); $i++) {
-                if ($elarray[$i] == "versions") {
-                    $busversions = 1;
-                }
-
-                if ($busversions == 1) {
-
-                    if ($elarray[$i] == "id") {
-                        $versiones[$elindexarray]['version'] = trim($elarray[$i + 2]);
-                        $elindexarray++;
-                    }
-                }
-            }
+            $versiones = json_decode($contenido, true);
+            $versiones = $versiones['versions'];
         }
 
     ?>
@@ -149,7 +131,8 @@ function test_input($data)
                                                             <select id="serselectver" name="serselectver" class="form-control" required="required">
                                                                 <?php
                                                                 for ($i = 0; $i < count($versiones); $i++) {
-                                                                    echo '<option value="' . $versiones[$i]['version'] . '">Vanilla '  . $versiones[$i]['version'] . '</option>';
+                                                                    echo '<option value="' . $versiones[$i]['id'] . '">Vanilla '  . $versiones[$i]['id'] . '</option>';
+                                                                    $elindexarray++;
                                                                 }
                                                                 ?>
                                                             </select>

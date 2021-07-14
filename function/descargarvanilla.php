@@ -98,29 +98,8 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                         $elerror = 1;
                         $retorno = "timeoutmanifest";
                     } else {
-
-                        $elarray = explode('"', $contenido);
-
-                        $busversions = 0;
-                        $elindexarray = 0;
-
-                        $versiones = array();
-
-                        for ($i = 0; $i < count($elarray); $i++) {
-                            if ($elarray[$i] == "versions") {
-                                $busversions = 1;
-                            }
-
-                            if ($busversions == 1) {
-
-                                if ($elarray[$i] == "id") {
-                                    $versiones[$elindexarray]['version'] = trim($elarray[$i + 2]);
-                                    $versiones[$elindexarray]['tipo'] = trim($elarray[$i + 6]);
-                                    $versiones[$elindexarray]['url'] =  trim($elarray[$i + 10]);
-                                    $elindexarray++;
-                                }
-                            }
-                        }
+                        $versiones = json_decode($contenido, true);
+                        $versiones = $versiones['versions'];
                     }
                 }
 
@@ -128,7 +107,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                 if ($elerror == 0) {
 
                     for ($i = 0; $i < count($versiones); $i++) {
-                        if ($getversion == $versiones[$i]['version']) {
+                        if ($getversion == $versiones[$i]['id']) {
                             $indexverencontrada = $i;
                             $verencontrado = 1;
                         }
@@ -160,20 +139,12 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                         $retorno = "timeout";
                     } else {
 
-                        $elarray2 = explode('"', $contenido2);
+                        $versiones2 = json_decode($contenido2, true);
+                        $versiones2 = $versiones2['downloads'];
 
-                        $elindexarray2 = 0;
-
-                        for ($i = 0; $i < count($elarray2); $i++) {
-                            if ($elarray2[$i] == "server") {
-                                $resultado2[$elindexarray]['sha1'] = trim($elarray2[$i + 4]);
-                                $resultado2[$elindexarray]['url'] =  trim($elarray2[$i + 10]);
-                                $elindexarray2++;
-                            }
-                        }
-
-                        //MIRAR SI EXISTE SERVER.JAR DE LA VERSION
-                        if ($elindexarray2 == 0) {
+                        if (isset($versiones2['server'])) {
+                            $versiones2 = $versiones2['server'];
+                        } else {
                             $elerror = 1;
                             $retorno = "noserverfound";
                         }
@@ -192,7 +163,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
 
                     $file = fopen($elssh, "w");
                     fwrite($file, "#!/bin/bash" . PHP_EOL);
-                    fwrite($file, "wget -cO - " . $resultado2[$elindexarray]['url'] . " > " . $nombrefichero . PHP_EOL);
+                    fwrite($file, "wget -cO - " . $versiones2['url'] . " > " . $nombrefichero . PHP_EOL);
                     fwrite($file, $delsh . PHP_EOL);
                     fclose($file);
 
@@ -214,7 +185,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                 if ($elerror == 0) {
                     $verifisha1 = sha1_file($rutafichero);
 
-                    if ($verifisha1 != $resultado2[$elindexarray]['sha1']) {
+                    if ($verifisha1 != $versiones2['sha1']) {
                         unlink($rutafichero);
                         $elerror = 1;
                         $retorno = "nogoodsha1";
