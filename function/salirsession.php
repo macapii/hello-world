@@ -20,6 +20,7 @@ Copyright (C) 2020 Cristina Ibañez, Konata400
 
 require_once("../template/session.php");
 require_once("../template/errorreport.php");
+require_once("../config/confopciones.php");
 
 $retorno = "";
 
@@ -30,6 +31,17 @@ if (!isset($_SESSION['VALIDADO']) || !isset($_SESSION['KEYSECRETA'])) {
     $retorno = "SALIR";
 } else {
     if ($_SESSION['VALIDADO'] == "NO" && $_SESSION['KEYSECRETA'] == "0") {
+        $_SESSION = array();
+        session_destroy();
+        $retorno = "SALIR";
+    }
+}
+
+//MODO MANTENIMIENTO
+if ($_SESSION['CONFIGUSER']['rango'] != 1) {
+    $recmantenimiento = CONFIGMANTENIMIENTO;
+
+    if ($recmantenimiento == "Activado") {
         $_SESSION = array();
         session_destroy();
         $retorno = "SALIR";
