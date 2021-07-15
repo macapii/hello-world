@@ -300,6 +300,23 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
           $elignorarlimitram = CONFIGLINEASCONSOLA;
         }
 
+        //MODO MANTENIMIENTO
+        if ($_SESSION['CONFIGUSER']['rango'] == 1) {
+
+          if (isset($_POST['modomantenimiento'])) {
+            $elmantenimiento = test_input($_POST["modomantenimiento"]);
+            $opcmantenimiento = array('Desactivado', 'Activado');
+
+            if (!in_array($elmantenimiento, $opcmantenimiento)) {
+              $elmantenimiento = CONFIGMANTENIMIENTO;
+            }
+          } else {
+            $elmantenimiento = CONFIGMANTENIMIENTO;
+          }
+        } else {
+          $elmantenimiento = CONFIGMANTENIMIENTO;
+        }
+
         //RECOLECTOR DE BASURA
         if ($_SESSION['CONFIGUSER']['rango'] == 1 || array_key_exists('psystemconfavanzados', $_SESSION['CONFIGUSER']) && $_SESSION['CONFIGUSER']['psystemconfavanzados'] == 1) {
           if (isset($_POST['recbasura'])) {
@@ -563,6 +580,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
           fwrite($file, 'define("CONFIGSHOWSIZEFOLDERS", "' . $elmostrarsizecarpeta . '");' . PHP_EOL);
           fwrite($file, 'define("CONFIGBOOTSYSTEM", "' . $elbootconfig . '");' . PHP_EOL);
           fwrite($file, 'define("CONFIGIGNORERAMLIMIT", "' . $elignorarlimitram . '");' . PHP_EOL);
+          fwrite($file, 'define("CONFIGMANTENIMIENTO", "' . $elmantenimiento . '");' . PHP_EOL);
           fwrite($file, "?>" . PHP_EOL);
           fclose($file);
 
