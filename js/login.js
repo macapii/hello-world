@@ -16,9 +16,9 @@ Copyright (C) 2020 Cristina Ibañez, Konata400
     along with McWebPanel.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-$(function() {
+$(function () {
 
-    $("#login-form").on('submit', (function(e) {
+    $("#login-form").on('submit', (function (e) {
         e.preventDefault();
         $.ajax({
             url: "function/login.php",
@@ -27,7 +27,7 @@ $(function() {
             contentType: false,
             cache: false,
             processData: false,
-            success: function(data) {
+            success: function (data) {
 
                 if (data == "maxintentos") {
                     document.getElementById("textologincount").innerHTML = "<div class='alert alert-danger' role='alert'>Has superado el número de intentos no válidos.</div>";
@@ -37,14 +37,13 @@ $(function() {
                 } else if (data == "novaliduser") {
                     document.getElementById("textologinerror").innerHTML = "<div class='alert alert-danger' role='alert'>Nombre de usuario o contraseña incorrecta.</div>";
                 } else if (data == "userdesactivado") {
-                    document.getElementById("textologinerror").innerHTML = "<div class='alert alert-danger' role='alert'>El usuario esta desactivado.</div>";
-                } else if (data == "gotostatus") {
+                    document.getElementById("textologinerror").innerHTML = "<div class='alert alert-danger' role='alert'>El usuario está desactivado.</div>";
+                } else if (data == "mantenimiento") {
+                    document.getElementById("textologinerror").innerHTML = "<div class='alert alert-danger' role='alert'>La página se encuentra en mantenimiento.</div>";
+                }  else if (data == "gotostatus") {
                     location.href = "status.php";
                 }
 
-            },
-            error: function() {
-                alert("error");
             }
         });
     }));

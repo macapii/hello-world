@@ -49,7 +49,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     //INICIAR VARIABLES
     $retorno = "";
     $elerror = 0;
-    $noencontrouser = 0;
+    $encontraruser = 0;
+    $indexuser = "";
     $getconfuser = "";
     $getconfpass = "";
     $elusuario = "";
@@ -77,10 +78,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 
-    //LOGIN
+    //ENCONTRAR USUARIO
     if ($elerror == 0) {
-        require_once("../config/confopciones.php");
-
         $dirconfig = dirname(getcwd()) . PHP_EOL;
         $dirconfig = trim($dirconfig);
         $dirconfig .= "/config/confuser.json";
@@ -88,9 +87,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         //OBTENER ARRAY DE USUARIOS
         $getarray = file_get_contents($dirconfig);
         $arrayobtenido = unserialize($getarray);
-
-        //COGER INDICE
-        $elindice = count($arrayobtenido);
 
         //COGER INPUTS
         $elusuario = test_input($_POST["eluser"]);
@@ -100,40 +96,59 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $hashed = hash("sha3-512", $elpassword);
 
         //RECORRER USUARIOS DEL ARRAY
-        for ($i = 0; $i < $elindice; $i++) {
+        for ($i = 0; $i < count($arrayobtenido); $i++) {
             $getconfuser = $arrayobtenido[$i]['usuario'];
             $getconfpass = $arrayobtenido[$i]['hash'];
 
             //SI EL USUARIO CONCUERTDA
             if ($elusuario == $getconfuser && $hashed == $getconfpass) {
-                $noencontrouser = 1;
-
-                if ($arrayobtenido[$i]['estado'] == "desactivado") {
-                    $retorno = "userdesactivado";
-                } else {
-
-                    //REGENERAR SESSION
-                    session_regenerate_id();
-                    $getconflakey = CONFIGSESSIONKEY;
-
-                    $lakey = generarkey($lakey);
-
-                    $_SESSION['KEYSECRETA'] = $lakey;
-                    $_SESSION['VALIDADO'] = $lakey;
-                    $_SESSION['IDENTIFICARSESSION'] = $getconflakey;
-                    $_SESSION['CONFIGUSER'] = $arrayobtenido[$i];
-
-                    unset($lakey);
-
-                    $retorno = "gotostatus";
-                    
-                }
+                $encontraruser = 1;
+                $indexuser = $i;
             }
         }
 
-        if ($noencontrouser == 0) {
+        if ($encontraruser == 0) {
             $retorno = "novaliduser";
+            $elerror = 1;
         }
+    }
+
+    //COMPROBAR MANTENIMIENTO
+    if ($elerror == 0) {
+        require_once("../config/confopciones.php");
+        $recmantenimiento = CONFIGMANTENIMIENTO;
+        if ($recmantenimiento == "Activado") {
+            if ($arrayobtenido[$indexuser]['rango'] != 1) {
+                $retorno = "mantenimiento";
+                $elerror = 1;
+            }
+        }
+    }
+
+    //COMPROBAR SI EL USUARIO ESTA ACTIVO
+    if ($elerror == 0) {
+        if ($arrayobtenido[$indexuser]['estado'] == "desactivado") {
+            $retorno = "userdesactivado";
+            $elerror = 1;
+        }
+    }
+
+    //LOGIN
+    if ($elerror == 0) {
+        //REGENERAR SESSION
+        session_regenerate_id();
+        $getconflakey = CONFIGSESSIONKEY;
+
+        $lakey = generarkey($lakey);
+
+        $_SESSION['KEYSECRETA'] = $lakey;
+        $_SESSION['VALIDADO'] = $lakey;
+        $_SESSION['IDENTIFICARSESSION'] = $getconflakey;
+        $_SESSION['CONFIGUSER'] = $arrayobtenido[$indexuser];
+
+        unset($lakey);
+
+        $retorno = "gotostatus";
     }
 
     echo $retorno;
