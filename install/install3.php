@@ -391,6 +391,15 @@ require_once("../template/errorreport.php");
         fwrite($file, "text-filtering-config=" . PHP_EOL);
         fclose($file);
 
+        //GUARDAR FICHERO versions.txt
+        $rutaescrivir = $dirconfig;
+        $rutaescrivir .= "/versions.txt";
+        
+        $file = fopen($rutaescrivir, "w");
+        fwrite($file, "version=0.13" . PHP_EOL);
+        fwrite($file, "sysconfigver=1" . PHP_EOL);
+        fclose($file);
+
         //ELIMINAR INSTALL
         $elcomando = "rm -r ";
         $elcomando .= $dirinstall;
