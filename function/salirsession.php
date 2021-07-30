@@ -34,17 +34,17 @@ if (!isset($_SESSION['VALIDADO']) || !isset($_SESSION['KEYSECRETA'])) {
         $_SESSION = array();
         session_destroy();
         $retorno = "SALIR";
-    }
-}
+    } else {
+        //MODO MANTENIMIENTO
+        if ($_SESSION['CONFIGUSER']['rango'] != 1) {
+            $recmantenimiento = CONFIGMANTENIMIENTO;
 
-//MODO MANTENIMIENTO
-if ($_SESSION['CONFIGUSER']['rango'] != 1) {
-    $recmantenimiento = CONFIGMANTENIMIENTO;
-
-    if ($recmantenimiento == "Activado") {
-        $_SESSION = array();
-        session_destroy();
-        $retorno = "SALIR";
+            if ($recmantenimiento == "Activado") {
+                $_SESSION = array();
+                session_destroy();
+                $retorno = "SALIR";
+            }
+        }
     }
 }
 
