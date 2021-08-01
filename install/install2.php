@@ -81,19 +81,19 @@ require_once("../template/errorreport.php");
 
               <div class="form-group">
                 <label for="eluser" class="">Nombre Usuario (SuperAdmin):</label>
-                <input type="text" class="form-control" id="eluser" name="eluser" required="required">
+                <input type="text" class="form-control" id="eluser" name="eluser" spellcheck="false" autocapitalize="off" required="required">
               </div>
 
               <div class="form-row">
 
                 <div class="form-group col-md-6">
                   <label for="elpass">Contraseña:</label>
-                  <input type="password" class="form-control" id="elpass" name="elpass" placeholder="••••" required="required">
+                  <input type="password" class="form-control" id="elpass" name="elpass" spellcheck="false" autocapitalize="off" placeholder="••••" required="required">
                 </div>
 
                 <div class="form-group col-md-6">
                   <label for="elrepass">Confirmar Contraseña:</label>
-                  <input type="password" class="form-control" id="elrepass" name="elrepass" placeholder="••••" required="required">
+                  <input type="password" class="form-control" id="elrepass" name="elrepass" spellcheck="false" autocapitalize="off" placeholder="••••" required="required">
                 </div>
 
               </div>
