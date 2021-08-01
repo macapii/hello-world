@@ -19,7 +19,7 @@ Copyright (C) 2020 Cristina Ibañez, Konata400
 */
 
 header("Content-Security-Policy: default-src 'none'; style-src 'self'; img-src 'self'; script-src 'self'; form-action 'self'; base-uri 'none'; connect-src 'self'; frame-ancestors 'none'");
-header('X-Content-Type-Options: nosniff'); 
+header('X-Content-Type-Options: nosniff');
 header('Strict-Transport-Security: max-age=63072000; includeSubDomains; preload');
 header("X-XSS-Protection: 1; mode=block");
 header("Referrer-Policy: no-referrer");
@@ -94,6 +94,12 @@ require_once("../template/errorreport.php");
                 <div class="form-group col-md-6">
                   <label for="elrepass">Confirmar Contraseña:</label>
                   <input type="password" class="form-control" id="elrepass" name="elrepass" spellcheck="false" autocapitalize="off" placeholder="••••" required="required">
+                </div>
+
+                <div class="form-group col-md-12">
+                  <label>
+                    <input type="checkbox" name="verpassword" id="verpassword"> Mostrar contraseñas
+                  </label>
                 </div>
 
               </div>
