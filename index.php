@@ -297,14 +297,14 @@ require_once("template/header.php");
     <p class="lead" id="textologinerror"></p>
 
     <label for="inputUser" class="sr-only">Nombre de usuario</label>
-    <input type="text" id="inputUser" name="eluser" class="form-control" placeholder="Nombre de usuario" required autofocus>
+    <input type="text" id="inputUser" name="eluser" spellcheck="false" autocapitalize="off" class="form-control" placeholder="Nombre de usuario" required autofocus>
 
     <label for="inputPassword" class="sr-only">Contraseña</label>
-    <input type="password" id="inputPassword" name="elpass" class="form-control" placeholder="Contraseña" required>
+    <input type="password" id="inputPassword" name="elpass" spellcheck="false" autocapitalize="off" class="form-control" placeholder="Contraseña" required>
 
     <div class="checkbox mb-3">
       <label>
-        <input type="checkbox" value="remember-me"> Recuérdame
+        <input type="checkbox" name="verpassword" id="verpassword"> Mostrar contraseña
       </label>
     </div>
 

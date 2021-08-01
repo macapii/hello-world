@@ -18,6 +18,15 @@ Copyright (C) 2020 Cristina Ibañez, Konata400
 
 $(function () {
 
+    $("#verpassword").click(function () {
+        var x = document.getElementById("inputPassword");
+        if (x.type === "password") {
+            x.type = "text";
+        } else {
+            x.type = "password";
+        }
+    });
+
     $("#login-form").on('submit', (function (e) {
         e.preventDefault();
         $.ajax({
@@ -40,7 +49,7 @@ $(function () {
                     document.getElementById("textologinerror").innerHTML = "<div class='alert alert-danger' role='alert'>El usuario está desactivado.</div>";
                 } else if (data == "mantenimiento") {
                     document.getElementById("textologinerror").innerHTML = "<div class='alert alert-danger' role='alert'>La página se encuentra en mantenimiento.</div>";
-                }  else if (data == "gotostatus") {
+                } else if (data == "gotostatus") {
                     location.href = "status.php";
                 }
 
