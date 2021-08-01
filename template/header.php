@@ -34,7 +34,7 @@ header('Expires: 0');
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="robots" content="noindex, nofollow">
-  <meta name="description" content="Konata Minecraft Admin">
+  <meta name="description" content="McWebPanel">
   <meta name="author" content="Konata400">
   <title>McWebPanel</title>
 
