@@ -45,6 +45,9 @@ $(function () {
                 checkminutos = document.getElementById('m' + i);
                 checkminutos.checked = true;
             }
+            if (document.getElementById('marcahoras') !== null) {
+                $('#marcahoras').append('<option selected disabled hidden>Elige una opción</option>');
+            }
         });
     }
 
@@ -53,6 +56,23 @@ $(function () {
             for (var i = 0; i <= 59; i++) {
                 checkminutos = document.getElementById('m' + i);
                 checkminutos.checked = false;
+            }
+            if (document.getElementById('marcahoras') !== null) {
+                $('#marcahoras').append('<option selected disabled hidden>Elige una opción</option>');
+            }
+        });
+    }
+
+    if (document.getElementById('marcahoras') !== null) {
+        $("#marcahoras").change(function () {
+            marcado = parseInt(this.value);
+            for (var i = 0; i <= 59; i++) {
+                checkminutos = document.getElementById('m' + i);
+                checkminutos.checked = false;
+            }
+            for (var i = 0; i <= 59; i = i + marcado) {
+                checkminutos = document.getElementById('m' + i);
+                checkminutos.checked = true;
             }
         });
     }

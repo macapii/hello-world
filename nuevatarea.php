@@ -255,8 +255,29 @@ require_once("template/header.php");
 
                                                         <!-- CARD MINUTO -->
                                                         <div class="card text-white bg-primary mb-3">
-                                                            <div class="card-header text-white bg-primary"><b>Minuto:</b><button class="btn btn-light float-right ml-2" id="deselecionarminutos" name="deselecionarminutos">Desactivar todo</button><button class="btn btn-light float-right" id="selectodosminutos" name="selectodosminutos">Activar todo</button></div>
+                                                            <div class="card-header text-white bg-primary"><b>Minuto:</b><button class="btn btn-light float-right ml-2" id="deselecionarminutos" name="deselecionarminutos">Desactivar todo</button><button class="btn btn-light float-right ml-2" id="selectodosminutos" name="selectodosminutos">Activar todo</button>
+                                                            </div>
                                                             <div class="card-body">
+                                                                <div class="row">
+                                                                    <div class="col-md-3">
+                                                                        <label for="marcahoras">Marcar minutos:</label>
+                                                                        <select class="form-control" name="marcahoras" id="marcahoras">
+                                                                            <option selected="" disabled="" hidden="">Elige una opción</option>
+                                                                            <option value="2">Cada 2 minutos</option>
+                                                                            <option value="3">Cada 3 minutos</option>
+                                                                            <option value="4">Cada 4 minutos</option>
+                                                                            <option value="5">Cada 5 minutos</option>
+                                                                            <option value="6">Cada 6 minutos</option>
+                                                                            <option value="10">Cada 10 minutos</option>
+                                                                            <option value="15">Cada 15 minutos</option>
+                                                                            <option value="20">Cada 20 minutos</option>
+                                                                            <option value="30">Cada 30 minutos</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+
+                                                                <br>
+                                                                
                                                                 <input id="m0" name="minuto[]" type="checkbox" value="00">
                                                                 <label class="mr-2" for="m0">00</label>
 
@@ -447,10 +468,10 @@ require_once("template/header.php");
                                                         <div class="row">
                                                             <div class="col-md-6">
                                                                 <label for="nombretarea">Nombre Tarea:</label>
-                                                                <input type="text" id="nombretarea" name="nombretarea" class="form-control" required>
+                                                                <input type="text" id="nombretarea" name="nombretarea" class="form-control" spellcheck="false" autocapitalize="none" required>
                                                             </div>
                                                             <div class="col-md-6">
-                                                                <label for="laaccion">Acción</label> <select id="laaccion" name="laaccion" class="form-control" required="required">
+                                                                <label for="laaccion">Acción</label> <select id="laaccion" name="laaccion" class="form-control" spellcheck="false" autocapitalize="none" required>
                                                                     <option value="acc1">Apagar Servidor</option>
                                                                     <option value="acc2">Iniciar Servidor</option>
                                                                     <option value="acc3">Backup Servidor</option>
@@ -460,7 +481,7 @@ require_once("template/header.php");
                                                         </div>
                                                         <br>
                                                         <label for="elcomando">Comando:</label>
-                                                        <textarea class="form-control" id="elcomando" name="elcomando"></textarea>
+                                                        <textarea class="form-control" id="elcomando" name="elcomando" spellcheck="false" autocapitalize="none"></textarea>
                                                         <br>
                                                         <p class="lead" id="textotarearetorno"></p>
                                                         <hr>
