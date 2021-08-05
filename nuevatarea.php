@@ -471,7 +471,7 @@ require_once("template/header.php");
                                                                 <input type="text" id="nombretarea" name="nombretarea" class="form-control" spellcheck="false" autocapitalize="none" required>
                                                             </div>
                                                             <div class="col-md-6">
-                                                                <label for="laaccion">Acción</label> <select id="laaccion" name="laaccion" class="form-control" spellcheck="false" autocapitalize="none" required>
+                                                                <label for="laaccion">Acción</label> <select id="laaccion" name="laaccion" class="form-control" required>
                                                                     <option value="acc1">Apagar Servidor</option>
                                                                     <option value="acc2">Iniciar Servidor</option>
                                                                     <option value="acc3">Backup Servidor</option>
