@@ -22,7 +22,7 @@ header('Strict-Transport-Security: max-age=63072000; includeSubDomains; preload'
 header("X-XSS-Protection: 1; mode=block");
 header("Referrer-Policy: no-referrer");
 header('Permissions-Policy: geolocation=(), microphone=()');
-header('Cache-Control: no-cache, no-store, must-revalidate');
+header('Cache-Control: public, max-age=0, immutable');
 header('Pragma: no-cache');
 header('Expires: 0');
 ?>
