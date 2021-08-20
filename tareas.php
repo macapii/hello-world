@@ -212,7 +212,7 @@ require_once("template/header.php");
                                                             <div class="col-md-10">
                                                                 <button type="button" class="btn btn-primary text-white float-right" id="borrarlog">Borrar Archivo Log</button>
                                                             </div>
-                                                            <textarea readonly="" class="form-control textoconsola mb-1" id="logcron" name="logcron" rows="18"></textarea>
+                                                            <textarea readonly="" class="form-control textoconsola bgconsolablanca textconsolanegro mb-1" id="logcron" name="logcron" rows="18"></textarea>
                                                         </div>
                                                         <hr>
                                                     <?php
