@@ -141,6 +141,11 @@ if ($elerror == 0) {
                                                         case "acc1":
                                                             //APAGAR SERVIDOR
 
+                                                            //MATAR SCREEN DEAD / ZOMBIS ANTES DE APAGAR
+                                                            $elcomando = "";
+                                                            $elcomando = "screen -wipe";
+                                                            shell_exec($elcomando);
+
                                                             //OBTENER PID SABER SI ESTA EN EJECUCION
                                                             $elcomando = "";
                                                             $elnombrescreen = CONFIGDIRECTORIO;
