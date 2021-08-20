@@ -40,9 +40,14 @@ $(function () {
         success: function (data) {
 
             if (data !== undefined) {
-                document.getElementById("laconsola").value = data;
+                document.getElementById("laconsola").innerHTML = data;
 
                 if (data.length != sessionStorage.antiguo) {
+
+                    if (data !== "") {
+                        document.getElementById("laconsola").innerHTML = data;
+                    }
+                    
                     if (sessionStorage.actdesroll == 0) {
                         document.getElementById("laconsola").scrollTop = document.getElementById("laconsola").scrollHeight;
                     }
@@ -63,12 +68,13 @@ $(function () {
             success: function (data) {
 
                 if (data !== undefined) {
-                    if (data !== "") {
-                        document.getElementById("laconsola").value = data;
-                    }
-
-
+                    
                     if (data.length != sessionStorage.antiguo) {
+
+                        if (data !== "") {
+                            document.getElementById("laconsola").innerHTML = data;
+                        }
+
                         if (sessionStorage.actdesroll == 0) {
                             document.getElementById("laconsola").scrollTop = document.getElementById("laconsola").scrollHeight;
                         }
