@@ -27,7 +27,6 @@ require_once("template/header.php");
 <!-- Custom styles for this template-->
 <link href="css/test.css" rel="stylesheet">
 <link href="css/consola.css" rel="stylesheet">
-
 </head>
 
 <body id="page-top">
@@ -88,7 +87,9 @@ require_once("template/header.php");
 
                         <div class="row">
                             <div class="col-md-12">
-                                <textarea readonly class="form-control textoconsola mb-1" id="laconsola" name="laconsola"></textarea>
+                                
+                                <div class="textoconsola barrahorizonal bgconsolanegra colbase mb-1" id="laconsola" name="laconsola">
+                                </div>
                             </div>
                         </div>
 
