@@ -360,7 +360,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
               clearstatcache();
               if (is_readable($archivolog)) {
                 //LEER ARCHIVO
-                $retorno = file_get_contents($archivolog);
+                $retorno = test_input(file_get_contents($archivolog));
               } else {
                 $retorno = "No se puede leer el archivo";
               }
