@@ -46,6 +46,11 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
             $retorno = "";
             $elerror = 0;
 
+            //MATAR SCREEN DEAD / ZOMBIS ANTES DE APAGAR
+            $elcomando = "";
+            $elcomando = "screen -wipe";
+            shell_exec($elcomando);
+
             //OBTENER PID SABER SI SCREEN ESTA EN EJECUCION
             $elcomando = "";
             $elnombrescreen = CONFIGDIRECTORIO;
