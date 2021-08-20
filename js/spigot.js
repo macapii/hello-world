@@ -99,7 +99,7 @@ $(function () {
             success: function (data) {
                 var textoantiguo = document.getElementById("laconsola").value;
 
-                document.getElementById("laconsola").value = data;
+                document.getElementById("laconsola").innerHTML = data;
 
                 if (data !== textoantiguo) {
                     document.getElementById("laconsola").scrollTop = document.getElementById("laconsola").scrollHeight;

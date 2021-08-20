@@ -164,7 +164,7 @@ $(function () {
                 },
                 type: 'POST',
                 success: function (data) {
-                    document.getElementById("logcron").value = data;
+                    document.getElementById("logcron").innerHTML = data;
                 }
             });
         }
