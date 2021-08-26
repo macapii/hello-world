@@ -55,6 +55,9 @@ require_once("template/header.php");
 
     //VALIDAMOS SESSION SINO ERROR
     if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
+
+        //INICIAR BUFFER
+        $_SESSION['BUFFER'] = -1;
     ?>
 
         <!-- Page Wrapper -->
