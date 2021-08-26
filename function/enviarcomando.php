@@ -53,6 +53,12 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
       $permcomando = "";
       $elerror = 0;
 
+      $carpraiz = dirname(getcwd()) . PHP_EOL;
+      $carpraiz = trim($carpraiz);
+
+      $carpconfig = $carpraiz . "/config";
+      $archbuffer = $carpconfig . "/buffer.json";
+
       $paraejecutar = addslashes($_POST['action']);
 
       //OBTENER PID SABER SI ESTA EN EJECUCION
@@ -82,6 +88,81 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
           $laejecucion = 'screen -S ' . $elnombrescreen . ' -X stuff "' . trim($paraejecutar) . '^M"';
           shell_exec($laejecucion);
           $retorno = "ok";
+
+          if ($_SESSION['CONFIGUSER']['rango'] == 1 || $_SESSION['CONFIGUSER']['rango'] == 2 || array_key_exists('pconsolaenviar', $_SESSION['CONFIGUSER']) && $_SESSION['CONFIGUSER']['pconsolaenviar'] == 1) {
+
+            if (defined('CONFIGBUFFERLIMIT')) {
+              //VERIFICAR ESCRITURA CARPETA CONFIG
+              if ($elerror == 0) {
+                clearstatcache();
+                if (!is_writable($carpconfig)) {
+                  //$retorno = "nowritecarpconfig";
+                  $elerror = 1;
+                }
+              }
+
+              if ($elerror == 0) {
+                clearstatcache();
+                if (!file_exists($archbuffer)) {
+                  $array[0]['comando'] = strval($paraejecutar);
+
+                  //GUARDAR ARRAY EN ARCHIVO
+                  $serialized = serialize($array);
+                  file_put_contents($archbuffer, $serialized);
+                } else {
+
+                  //COMPROVAR SI SE PUEDE LEER EL JSON
+                  if ($elerror == 0) {
+                    clearstatcache();
+                    if (!is_readable($archbuffer)) {
+                      //$retorno = "errjsonnoread";
+                      $elerror = 1;
+                    }
+                  }
+
+                  //COMPROVAR SI SE PUEDE ESCRIVIR EL JSON
+                  if ($elerror == 0) {
+                    clearstatcache();
+                    if (!is_writable($archbuffer)) {
+                      //$retorno = "errjsonnowrite";
+                      $elerror = 1;
+                    }
+                  }
+
+                  $bufflimite = CONFIGBUFFERLIMIT;
+
+                  if ($elerror == 0) {
+
+                    if ($bufflimite >= 1) {
+
+                      $getarray = file_get_contents($archbuffer);
+                      $arrayobtenido = unserialize($getarray);
+
+                      $elindice = count($arrayobtenido);
+
+                      if ($elindice < $bufflimite) {
+                        //CUANDO NO SE SUPERA EL LIMITE
+                        $arrayobtenido[$elindice]['comando'] = strval($paraejecutar);
+                        $serialized = serialize($arrayobtenido);
+                        file_put_contents($archbuffer, $serialized);
+                      } else {
+                        //CUANDO SE SUPERA EL LIMITE
+                        $elcontador = 0;
+                        for ($i = 1; $i < $elindice; $i++) {
+                          $auxarray[$elcontador]['comando'] = $arrayobtenido[$i]['comando'];
+                          $elcontador++;
+                        }
+                        $elindice = count($auxarray);
+                        $auxarray[$elindice]['comando'] = strval($paraejecutar);
+                        $serialized = serialize($auxarray);
+                        file_put_contents($archbuffer, $serialized);
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
         } else {
           $retorno = "off";
         }
