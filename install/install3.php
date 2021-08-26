@@ -320,6 +320,7 @@ require_once("../template/errorreport.php");
         fwrite($file, 'define("CONFIGBOOTSYSTEM", "NO");' . PHP_EOL);
         fwrite($file, 'define("CONFIGIGNORERAMLIMIT", "");' . PHP_EOL);
         fwrite($file, 'define("CONFIGMANTENIMIENTO", "Desactivado");' . PHP_EOL);
+        fwrite($file, 'define("CONFIGBUFFERLIMIT", "100");' . PHP_EOL);
         fwrite($file, "?>" . PHP_EOL);
         fclose($file);
 
@@ -389,6 +390,15 @@ require_once("../template/errorreport.php");
         fwrite($file, "spawn-protection=16" . PHP_EOL);
         fwrite($file, "max-world-size=29999984" . PHP_EOL);
         fwrite($file, "text-filtering-config=" . PHP_EOL);
+        fclose($file);
+
+        //GUARDAR FICHERO versions.txt
+        $rutaescrivir = $dirconfig;
+        $rutaescrivir .= "/versions.txt";
+        
+        $file = fopen($rutaescrivir, "w");
+        fwrite($file, "version=0.13" . PHP_EOL);
+        fwrite($file, "sysconfigver=1" . PHP_EOL);
         fclose($file);
 
         //ELIMINAR INSTALL
