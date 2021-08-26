@@ -45,6 +45,12 @@ $(function () {
                     document.getElementById("textologinerror").innerHTML = "<div class='alert alert-danger' role='alert'>Error: Se necesita el usuario y contraseña.</div>";
                 } else if (data == "novaliduser") {
                     document.getElementById("textologinerror").innerHTML = "<div class='alert alert-danger' role='alert'>Nombre de usuario o contraseña incorrecta.</div>";
+                } else if (data == "novaliduser1") {
+                    document.getElementById("textologinerror").innerHTML = "<div class='alert alert-danger' role='alert'>Nombre de usuario o contraseña incorrecta.</div>";
+                    document.getElementById("textologincount").innerHTML = "<div class='alert alert-danger' role='alert'>Quedan 2 intentos.</div>"
+                } else if (data == "novaliduser2") {
+                    document.getElementById("textologinerror").innerHTML = "<div class='alert alert-danger' role='alert'>Nombre de usuario o contraseña incorrecta.</div>";
+                    document.getElementById("textologincount").innerHTML = "<div class='alert alert-danger' role='alert'>Queda 1 intento.</div>"
                 } else if (data == "userdesactivado") {
                     document.getElementById("textologinerror").innerHTML = "<div class='alert alert-danger' role='alert'>El usuario está desactivado.</div>";
                 } else if (data == "mantenimiento") {

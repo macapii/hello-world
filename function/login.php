@@ -63,7 +63,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION['count'] = 0;
     } else {
         $_SESSION['count']++;
-        if ($_SESSION['count'] >= 2) {
+        if ($_SESSION['count'] > 2) {
             $retorno = "maxintentos";
             $elerror = 1;
         }
@@ -108,7 +108,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 
         if ($encontraruser == 0) {
-            $retorno = "novaliduser";
+            if($_SESSION['count'] == 0){
+                $retorno = "novaliduser1";
+            }elseif($_SESSION['count'] == 1){
+                $retorno = "novaliduser2";
+            }elseif($_SESSION['count'] == 2){
+                $retorno = "maxintentos";
+            }
             $elerror = 1;
         }
     }
