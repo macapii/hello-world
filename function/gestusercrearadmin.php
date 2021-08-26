@@ -268,6 +268,11 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                     $arrayobtenido[$elindice]['psystemconflinconsole'] = 1;
                 }
 
+                //SYSTEM CONFIG LIMITE BUFFER CONSOLA
+                if (isset($_POST['psystemconfbuffer'])) {
+                    $arrayobtenido[$elindice]['psystemconfbuffer'] = 1;
+                }
+
                 //SYSTEM CONFIG INICIAR MINECRAFT AL ARRANCAR LINUX
                 if (isset($_POST['psystemstartonboot'])) {
                     $arrayobtenido[$elindice]['psystemstartonboot'] = 1;

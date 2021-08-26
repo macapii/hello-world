@@ -191,6 +191,14 @@ require_once("template/header.php");
 
                                                                             <div class="form-group">
                                                                                 <div>
+                                                                                    <input id="psystemconfbuffer" name="psystemconfbuffer" type="checkbox" value="1">
+                                                                                    <label class="negrita mr-2" for="psystemconfbuffer">Buffer Consola</label>
+                                                                                </div>
+                                                                                <p>Permite configurar el máximo de líneas que guarda el buffer en la consola.</p>
+                                                                            </div>
+
+                                                                            <div class="form-group">
+                                                                                <div>
                                                                                     <input id="psystemstartonboot" name="psystemstartonboot" type="checkbox" value="1">
                                                                                     <label class="negrita mr-2" for="psystemstartonboot">Iniciar servidor Minecraft al arrancar Linux</label>
                                                                                 </div>
@@ -208,7 +216,6 @@ require_once("template/header.php");
                                                                         </div>
 
                                                                     </div>
-
 
                                                                     <div class="col-md-12">
                                                                         <br>

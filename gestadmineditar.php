@@ -298,6 +298,23 @@ require_once("template/header.php");
 
                                                                                 <div class="form-group">
                                                                                     <div>
+                                                                                        <input id="psystemconfbuffer" name="psystemconfbuffer" type="checkbox" value="1" <?php
+
+                                                                                                                                                                                    if (array_key_exists('psystemconfbuffer', $_SESSION['EDITARSUPER'])) {
+                                                                                                                                                                                        if ($_SESSION['EDITARSUPER']['psystemconfbuffer'] == 1) {
+                                                                                                                                                                                            echo "checked";
+                                                                                                                                                                                        }
+                                                                                                                                                                                    }
+                                                                                                                                                                                    ?>>
+
+                                                                                        <label class="negrita mr-2" for="psystemconfbuffer">Buffer Consola</label>
+                                                                                    </div>
+                                                                                    <p>Permite configurar el máximo de líneas que guarda el buffer en la consola.</p>
+                                                                                </div>
+
+
+                                                                                <div class="form-group">
+                                                                                    <div>
                                                                                         <input id="psystemstartonboot" name="psystemstartonboot" type="checkbox" value="1" <?php
 
                                                                                                                                                                                     if (array_key_exists('psystemstartonboot', $_SESSION['EDITARSUPER'])) {
