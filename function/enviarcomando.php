@@ -89,7 +89,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
           shell_exec($laejecucion);
           $retorno = "ok";
 
-          if ($_SESSION['CONFIGUSER']['rango'] == 1 || $_SESSION['CONFIGUSER']['rango'] == 2 || array_key_exists('psystemconfbuffer', $_SESSION['CONFIGUSER']) && $_SESSION['CONFIGUSER']['psystemconfbuffer'] == 1) {
+          if ($_SESSION['CONFIGUSER']['rango'] == 1 || array_key_exists('psystemconfbuffer', $_SESSION['CONFIGUSER']) && $_SESSION['CONFIGUSER']['psystemconfbuffer'] == 1) {
 
             if (defined('CONFIGBUFFERLIMIT')) {
               //VERIFICAR ESCRITURA CARPETA CONFIG
