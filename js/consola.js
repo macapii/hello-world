@@ -31,6 +31,10 @@ $(function () {
 
     window.addEventListener("resize", redimensionar);
 
+    if (document.getElementById("elcomando").value !== null) {
+        document.getElementById('elcomando').value = "";
+    }
+
     $.ajax({
         url: 'function/enviarconsola.php',
         data: {
@@ -47,7 +51,7 @@ $(function () {
                     if (data !== "") {
                         document.getElementById("laconsola").innerHTML = data;
                     }
-                    
+
                     if (sessionStorage.actdesroll == 0) {
                         document.getElementById("laconsola").scrollTop = document.getElementById("laconsola").scrollHeight;
                     }
@@ -68,7 +72,7 @@ $(function () {
             success: function (data) {
 
                 if (data !== undefined) {
-                    
+
                     if (data.length != sessionStorage.antiguo) {
 
                         if (data !== "") {
@@ -134,10 +138,58 @@ $(function () {
         });
     }
 
+    function teclaupbuffer() {
+        //alert('Flecha Arriba');
+
+        $.ajax({
+            url: 'function/buffer.php',
+            data: {
+                action: 'bufferarriba'
+            },
+            type: 'POST',
+            success: function (data) {
+
+                //alert(data);
+                if (document.getElementById('elcomando') !== null) {
+                    document.getElementById('elcomando').value = String(data);
+                }
+            }
+        });
+    }
+
+    function tecladownbuffer(){
+        //alert('Flecha Abajo');
+
+        $.ajax({
+            url: 'function/buffer.php',
+            data: {
+                action: 'bufferabajo'
+            },
+            type: 'POST',
+            success: function (data) {
+
+                //alert(data);
+                if (document.getElementById('elcomando') !== null) {
+                    document.getElementById('elcomando').value = String(data);
+                }
+            }
+        });
+    }
+
     if (document.getElementById('elcomando') !== null) {
-        $("#elcomando").keypress(function (e) {
-            if (e.keyCode == 13) {
-                enviarcomando();
+
+        document.getElementById('elcomando').addEventListener('keydown', function (event) {
+            const key = event.key;
+            switch (key) {
+                case "Enter":
+                    enviarcomando();
+                    break;
+                case "ArrowUp":
+                    teclaupbuffer();
+                    break;
+                case "ArrowDown":
+                    tecladownbuffer();
+                    break;
             }
         });
     }
