@@ -64,6 +64,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
         $ellimitminefoldersize = CONFIGFOLDERMINECRAFTSIZE;
 
         $elnumerolineaconsola = CONFIGLINEASCONSOLA;
+        $elbufferlimit = CONFIGBUFFERLIMIT;
 
         $elmostrarsizecarpeta = CONFIGSHOWSIZEFOLDERS;
 
@@ -114,6 +115,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                 fwrite($file, 'define("CONFIGBOOTSYSTEM", "' . $elbootconfig . '");' . PHP_EOL);
                 fwrite($file, 'define("CONFIGIGNORERAMLIMIT", "' . $elignorarlimitram . '");' . PHP_EOL);
                 fwrite($file, 'define("CONFIGMANTENIMIENTO", "' . $elmantenimiento . '");' . PHP_EOL);
+                fwrite($file, 'define("CONFIGBUFFERLIMIT", "' . $elbufferlimit . '");' . PHP_EOL);
                 fwrite($file, "?>" . PHP_EOL);
                 fclose($file);
 
