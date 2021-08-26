@@ -268,6 +268,34 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
           $elnumerolineaconsola = CONFIGLINEASCONSOLA;
         }
 
+        //LINEAS BUFFER
+        if ($_SESSION['CONFIGUSER']['rango'] == 1 || array_key_exists('psystemconflinconsole', $_SESSION['CONFIGUSER']) && $_SESSION['CONFIGUSER']['psystemconflinconsole'] == 1) {
+          if (isset($_POST["bufferlimit"])) {
+            $elbufferlimit = test_input($_POST["bufferlimit"]);
+
+            //ES NUMERICO
+            if ($elerror == 0) {
+              if (!is_numeric($elbufferlimit)) {
+                $retorno = "buffernonumerico";
+                $elerror = 1;
+              }
+            }
+
+            //RANGO
+            if ($elerror == 0) {
+              if ($elbufferlimit < 0 || $elbufferlimit > 500) {
+                $retorno = "bufferoutrango";
+                $elerror = 1;
+              }
+            }
+          } else {
+            $retorno = "buffervacio";
+            $elerror = 1;
+          }
+        } else {
+          $elbufferlimit = CONFIGBUFFERLIMIT;
+        }
+
         //EXTRAS TAMAÑO CARPETAS
         if ($_SESSION['CONFIGUSER']['rango'] == 1 || $_SESSION['CONFIGUSER']['rango'] == 2) {
 
@@ -581,6 +609,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
           fwrite($file, 'define("CONFIGBOOTSYSTEM", "' . $elbootconfig . '");' . PHP_EOL);
           fwrite($file, 'define("CONFIGIGNORERAMLIMIT", "' . $elignorarlimitram . '");' . PHP_EOL);
           fwrite($file, 'define("CONFIGMANTENIMIENTO", "' . $elmantenimiento . '");' . PHP_EOL);
+          fwrite($file, 'define("CONFIGBUFFERLIMIT", "' . $elbufferlimit . '");' . PHP_EOL);
           fwrite($file, "?>" . PHP_EOL);
           fclose($file);
 

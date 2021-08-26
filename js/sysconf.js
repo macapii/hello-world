@@ -65,6 +65,12 @@ $(function () {
                 document.getElementById("result").innerHTML = "<div class='alert alert-danger' role='alert'>Error: Lineas consola fuera de rango (0-1000).</div>";
             } else if (data == "linconsolavacio") {
                 document.getElementById("result").innerHTML = "<div class='alert alert-danger' role='alert'>Error: El campo linea consola esta vacío.</div>";
+            } else if (data == "buffernonumerico") {
+                document.getElementById("result").innerHTML = "<div class='alert alert-danger' role='alert'>Error: El buffer no es numérico.</div>";
+            } else if (data == "bufferoutrango") {
+                document.getElementById("result").innerHTML = "<div class='alert alert-danger' role='alert'>Error: Buffer fuera de rango (0-500).</div>";
+            } else if (data == "buffervacio") {
+                document.getElementById("result").innerHTML = "<div class='alert alert-danger' role='alert'>Error: El campo Buffer esta vacío.</div>";
             } else if (data == "nowriteconf") {
                 document.getElementById("result").innerHTML = "<div class='alert alert-danger' role='alert'>Error: La carpeta config no tiene permisos de escritura.</div>";
             } else if (data == "nocarpetaconf") {
@@ -326,6 +332,29 @@ $(function () {
 
     if (document.getElementById('linconsola') !== null) {
         $("#linconsola").keypress(function (e) {
+            if (e.keyCode < 48 || e.keyCode > 57) {
+                return false;
+            } else {
+                return true;
+            }
+        });
+    }
+
+    if (document.getElementById('bufferlimit') !== null) {
+        $("#bufferlimit").change(function () {
+            var elnumero = document.getElementById("bufferlimit").value;
+            document.getElementById("result").innerHTML = "";
+
+            if (elnumero < 0 || elnumero > 500) {
+                document.getElementById("bufferlimit").value = "100";
+            } else {
+                document.getElementById("guardaserver").disabled = false;
+            }
+        });
+    }
+
+    if (document.getElementById('bufferlimit') !== null) {
+        $("#bufferlimit").keypress(function (e) {
             if (e.keyCode < 48 || e.keyCode > 57) {
                 return false;
             } else {

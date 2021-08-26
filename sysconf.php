@@ -111,6 +111,8 @@ require_once("template/header.php");
 
                                                     $recnumerolineaconsola = CONFIGLINEASCONSOLA;
 
+                                                    $recbuffer = CONFIGBUFFERLIMIT;
+
                                                     $recshowsizefolder = CONFIGSHOWSIZEFOLDERS;
 
                                                     $recbootconf = CONFIGBOOTSYSTEM;
@@ -373,10 +375,29 @@ require_once("template/header.php");
                                                         if ($_SESSION['CONFIGUSER']['rango'] == 1 || array_key_exists('psystemconflinconsole', $_SESSION['CONFIGUSER']) && $_SESSION['CONFIGUSER']['psystemconflinconsole'] == 1) {
                                                         ?>
                                                             <hr>
-                                                            <div class="form-group col-md-3">
-                                                                <label class="negrita" for="linconsola">Líneas Mostradas por Consola:</label>
-                                                                <input type="number" class="form-control" id="linconsola" name="linconsola" required="required" min="0" max="1000" value="<?php echo $recnumerolineaconsola; ?>">
-                                                                <label> 0 = Ilimitado</label>
+                                                            <div class="row">
+                                                                <div class="col-md-3">
+                                                                    <label class="negrita" for="linconsola">Líneas Mostradas por Consola:</label>
+                                                                    <input type="number" class="form-control" id="linconsola" name="linconsola" required="required" min="0" max="1000" value="<?php echo $recnumerolineaconsola; ?>">
+                                                                    <label> 0 = Ilimitado</label>
+                                                                </div>
+                                                            </div>
+
+                                                        <?php
+                                                        }
+                                                        ?>
+
+                                                        <?php
+                                                        //LINEAS BUFFER
+                                                        if ($_SESSION['CONFIGUSER']['rango'] == 1 || array_key_exists('psystemconflinconsole', $_SESSION['CONFIGUSER']) && $_SESSION['CONFIGUSER']['psystemconflinconsole'] == 1) {
+                                                        ?>
+                                                            <hr>
+                                                            <div class="row">
+                                                                <div class="col-md-3">
+                                                                    <label class="negrita" for="bufferlimit">Lineas Buffer Consola:</label>
+                                                                    <input type="number" class="form-control" id="bufferlimit" name="bufferlimit" required="required" min="0" max="500" value="<?php echo $recbuffer; ?>">
+                                                                    <label> 0 = Desactivado</label>
+                                                                </div>
                                                             </div>
 
                                                         <?php
@@ -472,16 +493,14 @@ require_once("template/header.php");
                                                         if ($_SESSION['CONFIGUSER']['rango'] == 1 || array_key_exists('psystemconffoldersize', $_SESSION['CONFIGUSER']) && $_SESSION['CONFIGUSER']['psystemconffoldersize'] == 1) {
                                                         ?>
                                                             <hr>
-                                                            <div class="container">
                                                                 <div class="row">
                                                                     <div class="col-md-12">
                                                                         <label class="negrita">Limite Almacenamiento:</label>
                                                                     </div>
                                                                 </div>
-                                                            </div>
-
+                                                            
                                                             <div class="">
-                                                                <div class="container">
+                                                                
                                                                     <div class="row">
                                                                         <div class="col-md-4">
                                                                             <label>Carpeta Backups</label>
@@ -508,7 +527,7 @@ require_once("template/header.php");
                                                                             <p class="lead">GB</p>
                                                                         </div>
                                                                     </div>
-                                                                </div>
+                                                                
                                                             </div>
                                                         <?php
                                                         }
