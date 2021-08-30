@@ -81,6 +81,17 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                 }
             }
 
+            //COMPROVAR EXTENSION VALIDA
+            if ($elerror == 0) {
+                $fileNameCmps = explode(".", $archivo);
+                $fileExtension = strtolower(end($fileNameCmps));
+
+                if ($fileExtension != "txt" && $fileExtension != "json" && $fileExtension != "log" && $fileExtension != "mcmeta" && $fileExtension != "yml" && $fileExtension != "cfg" && $fileExtension != "toml" && $fileExtension != "sk" && $fileExtension != "properties") {
+                    $retorno = "noextvalid";
+                    $elerror = 1;
+                }
+            }
+
             //AÑADIR RUTA ACTUAL AL ARCHIVO
             if ($elerror == 0) {
                 $archivo = $_SESSION['RUTACTUAL'] . "/" . $archivo;
