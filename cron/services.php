@@ -497,7 +497,7 @@ if ($elerror == 0) {
                 unlink($larutascrrenlog);
               }
 
-              $comandoserver .= "cd .. && cd " . $reccarpmine . " && umask 002 && screen -c '" . $rutascreenconf . "' -dmS " . $reccarpmine . " -L -Logfile 'logs/screen.log' " . $javaruta . " -Xms1G -Xmx" . $recram . "G ";
+              $comandoserver .= "cd " . $RUTAPRINCIPAL . " && cd " . $reccarpmine . " && umask 002 && screen -c '" . $rutascreenconf . "' -dmS " . $reccarpmine . " -L -Logfile 'logs/screen.log' " . $javaruta . " -Xms1G -Xmx" . $recram . "G ";
 
               //RECOLECTOR
               if ($recgarbagecolector == "1") {
