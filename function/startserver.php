@@ -429,7 +429,11 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
             //INICIAR SERVIDOR
             if ($elerror == 0) {
                 $comandoserver = "";
+                $cominiciostart = "";
                 $larutash = "";
+                $inigc = "";
+                $iniforceupg = "";
+                $inieracecache = "";
 
                 $rutacarpetamine = dirname(getcwd()) . PHP_EOL;
                 $rutacarpetamine = trim($rutacarpetamine);
@@ -437,17 +441,13 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                 $larutascrrenlog = $rutacarpetamine . "/" . $reccarpmine . "/logs/screen.log";
                 $rutacarpetamine .= "/" . $reccarpmine . "/" . $recarchivojar;
 
-                $inigc = "";
-                $iniforceupg = "";
-                $inieracecache = "";
-
-                $cominiciostart = "";
-
                 //BORRAR LOG SCREEN
                 clearstatcache();
                 if (file_exists($larutascrrenlog)) {
                     unlink($larutascrrenlog);
                 }
+
+                $comandoserver .= "cd .. && cd " . $reccarpmine . " && umask 002 && screen -c '" . $rutascreenconf . "' -dmS " . $reccarpmine . " -L -Logfile 'logs/screen.log' " . $javaruta . " -Xms1G -Xmx" . $recram . "G ";
 
                 //RECOLECTOR
                 if ($recgarbagecolector == "1") {
@@ -456,9 +456,21 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                     $inigc = "-XX:+UseG1GC";
                 }
 
+                if ($inigc != "") {
+                    $comandoserver .= $inigc . " ";
+                }
+
+                $comandoserver .= "-Dfile.encoding=UTF8 ";
+
+                $comandoserver .= "-jar '" . $rutacarpetamine . "' ";
+
                 //FORCEUPGRADE MAPA
                 if ($recforseupgrade == "1") {
                     $iniforceupg = "--forceUpgrade";
+                }
+
+                if ($iniforceupg != "") {
+                    $comandoserver .= $iniforceupg . " ";
                 }
 
                 //ERASE CACHE MAPA
@@ -466,23 +478,18 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                     $inieracecache = "--eraseCache";
                 }
 
-                //TIPO SERVIDOR
-                if ($rectiposerv == "vanilla") {
-                    $comandoserver .= "cd .. && cd " . $reccarpmine . " && umask 002 && screen -c '" . $rutascreenconf . "' -dmS " . $reccarpmine . " -L -Logfile 'logs/screen.log' " . $javaruta . " -Xms1G -Xmx" . $recram . "G " . $inigc . " -Dfile.encoding=UTF8" . " -jar '" . $rutacarpetamine . "' " . $iniforceupg . " " . $inieracecache . " nogui";
-                } elseif ($rectiposerv == "spigot") {
-                    $comandoserver .= "cd .. && cd " . $reccarpmine . " && umask 002 && screen -c '" . $rutascreenconf . "' -dmS " . $reccarpmine . " -L -Logfile 'logs/screen.log' " . $javaruta . " -Xms1G -Xmx" . $recram . "G " . $inigc . " -Dfile.encoding=UTF8" . " -jar '" . $rutacarpetamine . "' " . $iniforceupg . " " . $inieracecache . " nogui";
-                    $cominiciostart = "screen -c '" . $rutascreenconf . "' -dmS " . $reccarpmine . " -L -Logfile 'logs/screen.log' " . $javaruta . " -Xms1G -Xmx" . $recram . "G " . $inigc . " -Dfile.encoding=UTF8" . " -jar '" . $rutacarpetamine . "' nogui";
+                if ($inieracecache != "") {
+                    $comandoserver .= $inieracecache . " ";
+                }
+
+                $comandoserver .= "nogui";
+
+                //RESTART
+                $cominiciostart = "screen -c '" . $rutascreenconf . "' -dmS " . $reccarpmine . " -L -Logfile 'logs/screen.log' " . $javaruta . " -Xms1G -Xmx" . $recram . "G " . $inigc . " -Dfile.encoding=UTF8" . " -jar '" . $rutacarpetamine . "' nogui";
+                if ($rectiposerv == "spigot") {
                     guardareinicio($larutash, $cominiciostart, $larutascrrenlog);
                 } elseif ($rectiposerv == "paper") {
-                    $comandoserver .= "cd .. && cd " . $reccarpmine . " && umask 002 && screen -c '" . $rutascreenconf . "' -dmS " . $reccarpmine . " -L -Logfile 'logs/screen.log' " . $javaruta . " -Xms1G -Xmx" . $recram . "G " . $inigc . " -Dfile.encoding=UTF8" . " -jar '" . $rutacarpetamine . "' " . $iniforceupg . " " . $inieracecache . " nogui";
-                    $cominiciostart = "screen -c '" . $rutascreenconf . "' -dmS " . $reccarpmine . " -L -Logfile 'logs/screen.log' " . $javaruta . " -Xms1G -Xmx" . $recram . "G " . $inigc . " -Dfile.encoding=UTF8" . " -jar '" . $rutacarpetamine . "' nogui";
                     guardareinicio($larutash, $cominiciostart, $larutascrrenlog);
-                } elseif ($rectiposerv == "forge") {
-                    $comandoserver .= "cd .. && cd " . $reccarpmine . " && umask 002 && screen -c '" . $rutascreenconf . "' -dmS " . $reccarpmine . " -L -Logfile 'logs/screen.log' " . $javaruta . " -Xms1G -Xmx" . $recram . "G " . $inigc . " -Dfile.encoding=UTF8" . " -jar '" . $rutacarpetamine . "' " . $iniforceupg . " " . $inieracecache . " nogui";
-                } elseif ($rectiposerv == "magma") {
-                    $comandoserver .= "cd .. && cd " . $reccarpmine . " && umask 002 && screen -c '" . $rutascreenconf . "' -dmS " . $reccarpmine . " -L -Logfile 'logs/screen.log' " . $javaruta . " -Xms1G -Xmx" . $recram . "G " . $inigc . " -Dfile.encoding=UTF8" . " -jar '" . $rutacarpetamine . "' " . $iniforceupg . " " . $inieracecache . " nogui";
-                } elseif ($rectiposerv == "otros") {
-                    $comandoserver .= "cd .. && cd " . $reccarpmine . " && umask 002 && screen -c '" . $rutascreenconf . "' -dmS " . $reccarpmine . " -L -Logfile 'logs/screen.log' " . $javaruta . " -Xms1G -Xmx" . $recram . "G " . $inigc . " -Dfile.encoding=UTF8" . " -jar '" . $rutacarpetamine . "' " . $iniforceupg . " " . $inieracecache . " nogui";
                 }
 
                 $elpid = shell_exec($comandoserver);
