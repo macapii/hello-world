@@ -26,7 +26,7 @@ $(function () {
         document.getElementById('finpage').scrollIntoView();
 
         $.post($("#formconf").attr("action"), eldata, function (data) {
-            
+
             if (data == "novalidoname") {
                 document.getElementById("result").innerHTML = "<div class='alert alert-danger' role='alert'>Error: Nombre Servidor Jar no válido.</div>";
             } else if (data == "noexistejar") {
@@ -91,6 +91,10 @@ $(function () {
                 document.getElementById("result").innerHTML = "<div class='alert alert-danger' role='alert'>Error: La ruta introducida no es válida.</div>";
             } else if (data == "inpanel") {
                 document.getElementById("result").innerHTML = "<div class='alert alert-danger' role='alert'>Error: No se puede asignar una ruta dentro del panel.</div>";
+            } else if (data == "elargmanuininovalid") {
+                document.getElementById("result").innerHTML = "<div class='alert alert-danger' role='alert'>Error: El argumento del inicio no es válido.</div>";
+            } else if (data == "elargmanufinalnovalid") {
+                document.getElementById("result").innerHTML = "<div class='alert alert-danger' role='alert'>Error: El argumento del final no es válido.</div>";
             } else if (data == "saveconf") {
                 document.getElementById("result").innerHTML = "<div class='alert alert-success' role='alert'>Configuración Guardada.</div>";
                 document.getElementById("guardaserver").disabled = true;
@@ -207,6 +211,51 @@ $(function () {
             document.getElementById("result").innerHTML = "";
         });
     }
+
+    if (document.getElementById('argmanualinicio') !== null) {
+        document.getElementById('argmanualinicio').addEventListener('keydown', function (event) {
+            const key = event.key;
+
+            document.getElementById("guardaserver").disabled = false;
+            document.getElementById("result").innerHTML = "";
+
+            document.getElementById("argmanualinicio").addEventListener('paste', function () {
+                document.getElementById("guardaserver").disabled = false;
+            });
+
+        });
+    }
+
+    if (document.getElementById('argmanualinicio') !== null) {
+
+        document.getElementById("argmanualinicio").addEventListener('paste', function () {
+            document.getElementById("guardaserver").disabled = false;
+            document.getElementById("result").innerHTML = "";
+        });
+    }
+
+    if (document.getElementById('argmanualfinal') !== null) {
+        document.getElementById('argmanualfinal').addEventListener('keydown', function (event) {
+            const key = event.key;
+
+            document.getElementById("guardaserver").disabled = false;
+            document.getElementById("result").innerHTML = "";
+
+            document.getElementById("argmanualfinal").addEventListener('paste', function () {
+                document.getElementById("guardaserver").disabled = false;
+            });
+
+        });
+    }
+
+    if (document.getElementById('argmanualfinal') !== null) {
+
+        document.getElementById("argmanualfinal").addEventListener('paste', function () {
+            document.getElementById("guardaserver").disabled = false;
+            document.getElementById("result").innerHTML = "";
+        });
+    }
+
 
     if (document.getElementById('modomantenimiento') !== null) {
         $("#modomantenimiento").change(function () {

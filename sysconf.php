@@ -121,6 +121,9 @@ require_once("template/header.php");
 
                                                     $recmantenimiento = CONFIGMANTENIMIENTO;
 
+                                                    $recargmanualinicio = CONFIGARGMANUALINI;
+                                                    $recargmanualfinal = CONFIGARGMANUALFINAL;
+
                                                     //OBTENER TIPO SERVIDOR WEB
                                                     $servidorweb = $_SERVER["SERVER_SOFTWARE"];
 
@@ -493,41 +496,41 @@ require_once("template/header.php");
                                                         if ($_SESSION['CONFIGUSER']['rango'] == 1 || array_key_exists('psystemconffoldersize', $_SESSION['CONFIGUSER']) && $_SESSION['CONFIGUSER']['psystemconffoldersize'] == 1) {
                                                         ?>
                                                             <hr>
+                                                            <div class="row">
+                                                                <div class="col-md-12">
+                                                                    <label class="negrita">Limite Almacenamiento:</label>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="">
+
                                                                 <div class="row">
-                                                                    <div class="col-md-12">
-                                                                        <label class="negrita">Limite Almacenamiento:</label>
+                                                                    <div class="col-md-4">
+                                                                        <label>Carpeta Backups</label>
+                                                                    </div>
+                                                                    <div class="col-md-8">
+                                                                        <label>Carpeta Minecraft</label>
+                                                                    </div>
+                                                                    <div class="col-md-3">
+                                                                        <div class="form-group">
+                                                                            <input type="number" class="form-control  text-right" id="limitbackupgb" name="limitbackupgb" required="required" min="0" max="100" value="<?php echo $recbackuplimitgb; ?>">
+                                                                            <label> 0 = Ilimitado</label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-1">
+                                                                        <p class="lead">GB</p>
+                                                                    </div>
+                                                                    <div class="col-md-3">
+                                                                        <div class="form-group">
+                                                                            <input type="number" class="form-control text-right" id="limitminecraftgb" name="limitminecraftgb" required="required" min="0" max="100" value="<?php echo $recminecraftlimitgb; ?>">
+                                                                            <label> 0 = Ilimitado</label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-1">
+                                                                        <p class="lead">GB</p>
                                                                     </div>
                                                                 </div>
-                                                            
-                                                            <div class="">
-                                                                
-                                                                    <div class="row">
-                                                                        <div class="col-md-4">
-                                                                            <label>Carpeta Backups</label>
-                                                                        </div>
-                                                                        <div class="col-md-8">
-                                                                            <label>Carpeta Minecraft</label>
-                                                                        </div>
-                                                                        <div class="col-md-3">
-                                                                            <div class="form-group">
-                                                                                <input type="number" class="form-control  text-right" id="limitbackupgb" name="limitbackupgb" required="required" min="0" max="100" value="<?php echo $recbackuplimitgb; ?>">
-                                                                                <label> 0 = Ilimitado</label>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="col-md-1">
-                                                                            <p class="lead">GB</p>
-                                                                        </div>
-                                                                        <div class="col-md-3">
-                                                                            <div class="form-group">
-                                                                                <input type="number" class="form-control text-right" id="limitminecraftgb" name="limitminecraftgb" required="required" min="0" max="100" value="<?php echo $recminecraftlimitgb; ?>">
-                                                                                <label> 0 = Ilimitado</label>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="col-md-1">
-                                                                            <p class="lead">GB</p>
-                                                                        </div>
-                                                                    </div>
-                                                                
+
                                                             </div>
                                                         <?php
                                                         }
@@ -622,28 +625,53 @@ require_once("template/header.php");
                                                         <hr>
 
                                                         <?php
+                                                        //ARGUMENTOS JAVA
+                                                        if ($_SESSION['CONFIGUSER']['rango'] == 1) {
+                                                        ?>
+                                                            <div class="form-row">
+                                                                <div class="form-group col-md-8">
+                                                                    <label class="negrita">Añadir Lineas argumentos java:</label>
+                                                                    <br>
+                                                                    <label for="argmanualinicio">Argumentos al inicio:</label>
+                                                                    <input type="text" class="form-control" id="argmanualinicio" name="argmanualinicio" value="<?php echo $recargmanualinicio; ?>">
+                                                                    <p>Ejemplo: java (<strong>Argumentos</strong>) - jar server.jar nogui</p>
+                                                                    <label for="argmanualfinal">Argumentos al final:</label>
+                                                                    <input type="text" class="form-control" id="argmanualfinal" name="argmanualfinal" value="<?php echo $recargmanualfinal; ?>">
+                                                                    <p>Ejemplo: java -jar server.jar nogui (<strong>Argumentos</strong>)</p>
+                                                                </div>
+                                                            </div>
+
+                                                        <?php
+                                                        }
+                                                        ?>
+
+                                                        <hr>
+
+                                                        <?php
                                                         //MODO MANTENIMIENTO
                                                         if ($_SESSION['CONFIGUSER']['rango'] == 1) {
                                                         ?>
-                                                            <div class="form-group col-md-8">
-                                                                <label class="negrita" for="modomantenimiento">Modo Mantenimiento</label>
-                                                                <select id="modomantenimiento" name="modomantenimiento" class="form-control" required="required">
-                                                                    <?php
-                                                                    $opcmantenimiento = array('Desactivado', 'Activado');
+                                                            <div class="form-row">
+                                                                <div class="form-group col-md-8">
+                                                                    <label class="negrita" for="modomantenimiento">Modo Mantenimiento</label>
+                                                                    <select id="modomantenimiento" name="modomantenimiento" class="form-control" required="required">
+                                                                        <?php
+                                                                        $opcmantenimiento = array('Desactivado', 'Activado');
 
-                                                                    for ($i = 0; $i < count($opcmantenimiento); $i++) {
+                                                                        for ($i = 0; $i < count($opcmantenimiento); $i++) {
 
-                                                                        if ($recmantenimiento == $opcmantenimiento[$i]) {
-                                                                            echo '<option selected value="' . $opcmantenimiento[$i] . '">' . $opcmantenimiento[$i] . '</option>';
-                                                                        } else {
-                                                                            echo '<option value="' . $opcmantenimiento[$i] . '">' . $opcmantenimiento[$i] . '</option>';
+                                                                            if ($recmantenimiento == $opcmantenimiento[$i]) {
+                                                                                echo '<option selected value="' . $opcmantenimiento[$i] . '">' . $opcmantenimiento[$i] . '</option>';
+                                                                            } else {
+                                                                                echo '<option value="' . $opcmantenimiento[$i] . '">' . $opcmantenimiento[$i] . '</option>';
+                                                                            }
                                                                         }
-                                                                    }
 
-                                                                    ?>
+                                                                        ?>
 
-                                                                </select>
-                                                                <p class="">- Se cierra la sesión de todos los admins y usuarios activos.<br>- No permitirá iniciar sesión excepto el Superusuario. <br>- Se requiere su activación para actualizar el servidor.</p>
+                                                                    </select>
+                                                                    <p class="">- Se cierra la sesión de todos los admins y usuarios activos.<br>- No permitirá iniciar sesión excepto el Superusuario. <br>- Se requiere su activación para actualizar el servidor.</p>
+                                                                </div>
                                                             </div>
 
                                                         <?php
