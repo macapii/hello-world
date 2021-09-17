@@ -151,6 +151,9 @@ if ($elerror == 0) {
 
             $recignoreramlimit = CONFIGIGNORERAMLIMIT;
 
+            $recargmanualinicio = CONFIGARGMANUALINI;
+            $recargmanualfinal = CONFIGARGMANUALFINAL;
+
             $javaruta = "";
 
             $rutacarpetamine = "";
@@ -512,12 +515,20 @@ if ($elerror == 0) {
 
               $comandoserver .= "-Dfile.encoding=UTF8 ";
 
+              if ($recargmanualinicio != "") {
+                $comandoserver .= $recargmanualinicio . " ";
+              }
+
               $comandoserver .= "-jar '" . $rutacarpetamine . "' ";
 
               $comandoserver .= "nogui";
 
+              if ($recargmanualfinal != "") {
+                $comandoserver .= " " . $recargmanualfinal;
+              }
+
               //RESTART
-              $cominiciostart = "screen -c '" . $rutascreenconf . "' -dmS " . $reccarpmine . " -L -Logfile 'logs/screen.log' " . $javaruta . " -Xms1G -Xmx" . $recram . "G " . $inigc . " -Dfile.encoding=UTF8" . " -jar '" . $rutacarpetamine . "' nogui";
+              $cominiciostart = "screen -c '" . $rutascreenconf . "' -dmS " . $reccarpmine . " -L -Logfile 'logs/screen.log' " . $javaruta . " -Xms1G -Xmx" . $recram . "G " . $inigc . " -Dfile.encoding=UTF8 " . $recargmanualinicio . " -jar '" . $rutacarpetamine . "' nogui " . $recargmanualfinal;
               if ($rectiposerv == "spigot") {
                 guardareinicio($larutash, $cominiciostart, $larutascrrenlog);
               } elseif ($rectiposerv == "paper") {
