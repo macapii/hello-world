@@ -74,6 +74,9 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
 
         $elmantenimiento = CONFIGMANTENIMIENTO;
 
+        $elargmanualinicio = CONFIGARGMANUALINI;
+        $elargmanualfinal = CONFIGARGMANUALFINAL;
+
         //OBTENER RUTA DONDE TIENE QUE ESTAR LA CARPETA CONFIG
         $dirconfig = "";
         $dirconfig = dirname(getcwd()) . PHP_EOL;
@@ -116,6 +119,8 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                 fwrite($file, 'define("CONFIGIGNORERAMLIMIT", "' . $elignorarlimitram . '");' . PHP_EOL);
                 fwrite($file, 'define("CONFIGMANTENIMIENTO", "' . $elmantenimiento . '");' . PHP_EOL);
                 fwrite($file, 'define("CONFIGBUFFERLIMIT", "' . $elbufferlimit . '");' . PHP_EOL);
+                fwrite($file, 'define("CONFIGARGMANUALINI", "' . $elargmanualinicio . '");' . PHP_EOL);
+                fwrite($file, 'define("CONFIGARGMANUALFINAL", "' . $elargmanualfinal . '");' . PHP_EOL);
                 fwrite($file, "?>" . PHP_EOL);
                 fclose($file);
 
