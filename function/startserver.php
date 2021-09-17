@@ -85,6 +85,9 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
 
             $recignoreramlimit = CONFIGIGNORERAMLIMIT;
 
+            $recargmanualinicio = CONFIGARGMANUALINI;
+            $recargmanualfinal = CONFIGARGMANUALFINAL;
+
             $javaruta = "";
 
             $rutacarpetamine = "";
@@ -462,6 +465,10 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
 
                 $comandoserver .= "-Dfile.encoding=UTF8 ";
 
+                if ($recargmanualinicio != "") {
+                    $comandoserver .= $recargmanualinicio . " ";
+                }
+
                 $comandoserver .= "-jar '" . $rutacarpetamine . "' ";
 
                 //FORCEUPGRADE MAPA
@@ -484,8 +491,12 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
 
                 $comandoserver .= "nogui";
 
+                if ($recargmanualfinal != "") {
+                    $comandoserver .= " " . $recargmanualfinal;
+                }
+
                 //RESTART
-                $cominiciostart = "screen -c '" . $rutascreenconf . "' -dmS " . $reccarpmine . " -L -Logfile 'logs/screen.log' " . $javaruta . " -Xms1G -Xmx" . $recram . "G " . $inigc . " -Dfile.encoding=UTF8" . " -jar '" . $rutacarpetamine . "' nogui";
+                $cominiciostart = "screen -c '" . $rutascreenconf . "' -dmS " . $reccarpmine . " -L -Logfile 'logs/screen.log' " . $javaruta . " -Xms1G -Xmx" . $recram . "G " . $inigc . " -Dfile.encoding=UTF8 " . $recargmanualinicio . " -jar '" . $rutacarpetamine . "' nogui " . $recargmanualfinal;
                 if ($rectiposerv == "spigot") {
                     guardareinicio($larutash, $cominiciostart, $larutascrrenlog);
                 } elseif ($rectiposerv == "paper") {
