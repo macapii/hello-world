@@ -321,6 +321,8 @@ require_once("../template/errorreport.php");
         fwrite($file, 'define("CONFIGIGNORERAMLIMIT", "");' . PHP_EOL);
         fwrite($file, 'define("CONFIGMANTENIMIENTO", "Desactivado");' . PHP_EOL);
         fwrite($file, 'define("CONFIGBUFFERLIMIT", "100");' . PHP_EOL);
+        fwrite($file, 'define("CONFIGARGMANUALINI", "");' . PHP_EOL);
+        fwrite($file, 'define("CONFIGARGMANUALFINAL", "");' . PHP_EOL);
         fwrite($file, "?>" . PHP_EOL);
         fclose($file);
 
