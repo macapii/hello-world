@@ -352,7 +352,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
         if ($elerror == 0) {
           if ($_SESSION['CONFIGUSER']['rango'] == 1) {
             $cogercheck = 0;
-            $checkarg = array('..', '...', '~', '../', './', ';', '>', '<', '\\', '&&', '#', "|", '$', '%', '!', '`', '&', '*', '{', '}', '?', '@', "'", '"', "'\'", '-Xms', '-Xmx', '-Dfile.encoding=UTF8', '-jar', 'java', 'cd ..');
+            $checkarg = array('..', '...', '~', '../', './', ';', '>', '<', '\\', '&&', '#', "|", '$', '%', '!', '`', '&', '*', '{', '}', '?', '@', "'", '"', "'\'", '-Xms', '-Xmx', '-port', 'Dfile.encoding=UTF8', '-jar', 'java', 'cd ..');
 
             //ARGUMENTO INICIO
             if (isset($_POST['argmanualinicio'])) {
@@ -362,7 +362,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
 
               for ($i = 0; $i < count($checkarg); $i++) {
 
-                $cogercheck = substr_count($elargmanualinicio, $checkarg[$i]);
+                $cogercheck = substr_count(strtolower($elargmanualinicio), strtolower($checkarg[$i]));
 
                 if ($cogercheck >= 1) {
                   $retorno = "elargmanuininovalid";
@@ -383,7 +383,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
 
                 for ($i = 0; $i < count($checkarg); $i++) {
 
-                  $cogercheck = substr_count($elargmanualfinal, $checkarg[$i]);
+                  $cogercheck = substr_count(strtolower($elargmanualinicio), strtolower($checkarg[$i]));
 
                   if ($cogercheck >= 1) {
                     $retorno = "elargmanufinalnovalid";
