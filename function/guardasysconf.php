@@ -383,7 +383,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
 
                 for ($i = 0; $i < count($checkarg); $i++) {
 
-                  $cogercheck = substr_count(strtolower($elargmanualinicio), strtolower($checkarg[$i]));
+                  $cogercheck = substr_count(strtolower($elargmanualfinal), strtolower($checkarg[$i]));
 
                   if ($cogercheck >= 1) {
                     $retorno = "elargmanufinalnovalid";
