@@ -149,7 +149,6 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
 
                       if ($elindice < $bufflimite) {
                         //CUANDO NO SE SUPERA EL LIMITE
-                        //$arrayobtenido[$elindice]['comando'] = htmlspecialchars_decode(stripslashes(strval($paraejecutar)));
                         $arrayobtenido[$elindice]['comando'] = test_input2($_POST['action']);
                         $serialized = serialize($arrayobtenido);
                         file_put_contents($archbuffer, $serialized);
@@ -161,7 +160,6 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                           $elcontador++;
                         }
                         $elindice = count($auxarray);
-                        //$auxarray[$elindice]['comando'] = htmlspecialchars_decode(stripslashes(strval($paraejecutar)));
                         $auxarray[$elindice]['comando'] = test_input2($_POST['action']);
                         $serialized = serialize($auxarray);
                         file_put_contents($archbuffer, $serialized);
