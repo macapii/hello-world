@@ -30,6 +30,13 @@ function test_input($data)
   return $data;
 }
 
+function test_input2($data)
+{
+  $data = stripslashes($data);
+  $data = htmlspecialchars($data);
+  return $data;
+}
+
 //COMPROVAR SI SESSION EXISTE SINO CREARLA CON NO
 if (!isset($_SESSION['VALIDADO']) || !isset($_SESSION['KEYSECRETA'])) {
   $_SESSION['VALIDADO'] = "NO";
@@ -142,18 +149,20 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
 
                       if ($elindice < $bufflimite) {
                         //CUANDO NO SE SUPERA EL LIMITE
-                        $arrayobtenido[$elindice]['comando'] = strval($paraejecutar);
+                        //$arrayobtenido[$elindice]['comando'] = htmlspecialchars_decode(stripslashes(strval($paraejecutar)));
+                        $arrayobtenido[$elindice]['comando'] = test_input2($_POST['action']);
                         $serialized = serialize($arrayobtenido);
                         file_put_contents($archbuffer, $serialized);
                       } else {
                         //CUANDO SE SUPERA EL LIMITE
                         $elcontador = 0;
                         for ($i = 1; $i < $elindice; $i++) {
-                          $auxarray[$elcontador]['comando'] = $arrayobtenido[$i]['comando'];
+                          $auxarray[$elcontador]['comando'] = test_input2($_POST['action']);
                           $elcontador++;
                         }
                         $elindice = count($auxarray);
-                        $auxarray[$elindice]['comando'] = strval($paraejecutar);
+                        //$auxarray[$elindice]['comando'] = htmlspecialchars_decode(stripslashes(strval($paraejecutar)));
+                        $auxarray[$elindice]['comando'] = test_input2($_POST['action']);
                         $serialized = serialize($auxarray);
                         file_put_contents($archbuffer, $serialized);
                       }

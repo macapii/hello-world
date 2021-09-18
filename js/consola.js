@@ -139,7 +139,6 @@ $(function () {
     }
 
     function teclaupbuffer() {
-        //alert('Flecha Arriba');
 
         $.ajax({
             url: 'function/buffer.php',
@@ -149,16 +148,14 @@ $(function () {
             type: 'POST',
             success: function (data) {
 
-                //alert(data);
                 if (document.getElementById('elcomando') !== null) {
-                    document.getElementById('elcomando').value = String(data);
+                    document.getElementById('elcomando').value = data;
                 }
             }
         });
     }
 
     function tecladownbuffer(){
-        //alert('Flecha Abajo');
 
         $.ajax({
             url: 'function/buffer.php',
@@ -168,9 +165,8 @@ $(function () {
             type: 'POST',
             success: function (data) {
 
-                //alert(data);
                 if (document.getElementById('elcomando') !== null) {
-                    document.getElementById('elcomando').value = String(data);
+                    document.getElementById('elcomando').value = data;
                 }
             }
         });

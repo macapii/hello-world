@@ -73,7 +73,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
 
                 if (isset($_SESSION['BUFFER'])) {
                     if (defined('CONFIGBUFFERLIMIT')) {
-                        $laaction = test_input($_POST['action']);
+                        $laaction = $_POST['action'];
 
                         $bufflimite = CONFIGBUFFERLIMIT;
 
@@ -90,21 +90,21 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                             if ($laaction == "bufferarriba") {
                                 if ($indexbuffer == -1) {
                                     $indexbuffer = 0;
-                                    $retorno = $arrayobtenido[$indexbuffer]['comando'];
+                                    $retorno = stripslashes($arrayobtenido[$indexbuffer]['comando']);
                                     $_SESSION['BUFFER'] = $indexbuffer;
                                 } else {
                                     $indexbuffer++;
                                     if ($indexbuffer < $bufflimite) {
                                         if ($indexbuffer < $elindice) {
-                                            $retorno = $arrayobtenido[$indexbuffer]['comando'];
+                                            $retorno = stripslashes($arrayobtenido[$indexbuffer]['comando']);
                                             $_SESSION['BUFFER'] = $indexbuffer;
                                         } else {
                                             $indexbuffer--;
-                                            $retorno = $arrayobtenido[$indexbuffer]['comando'];
+                                            $retorno = stripslashes($arrayobtenido[$indexbuffer]['comando']);
                                         }
                                     } else {
                                         $indexbuffer--;
-                                        $retorno = $arrayobtenido[$indexbuffer]['comando'];
+                                        $retorno = stripslashes($arrayobtenido[$indexbuffer]['comando']);
                                     }
                                 }
                             } elseif ($laaction == "bufferabajo") {
@@ -116,14 +116,14 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                                             $_SESSION['BUFFER'] = -1;
                                             $retorno = "";
                                         } else {
-                                            $retorno = $arrayobtenido[$indexbuffer]['comando'];
+                                            $retorno = stripslashes($arrayobtenido[$indexbuffer]['comando']);
                                         }
                                     } else {
                                         if ($indexbuffer >= 0) {
                                             $indexbuffer--;
                                             $_SESSION['BUFFER'] = $indexbuffer;
                                         }
-                                        $retorno = $arrayobtenido[$indexbuffer]['comando'];
+                                        $retorno = stripslashes($arrayobtenido[$indexbuffer]['comando']);
                                         if ($indexbuffer == 0) {
                                             $_SESSION['BUFFER'] = -1;
                                         }
@@ -134,7 +134,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                     }
                 }
             }
-            echo test_input($retorno);
+            echo $retorno;
         }
     }
 }
