@@ -626,7 +626,7 @@ require_once("template/header.php");
 
                                                         <?php
                                                         //ARGUMENTOS JAVA
-                                                        if ($_SESSION['CONFIGUSER']['rango'] == 1) {
+                                                        if ($_SESSION['CONFIGUSER']['rango'] == 1 || array_key_exists('psystemcustomarg', $_SESSION['CONFIGUSER']) && $_SESSION['CONFIGUSER']['psystemcustomarg'] == 1) {
                                                         ?>
                                                             <div class="form-row">
                                                                 <div class="form-group col-md-8">

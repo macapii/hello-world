@@ -350,7 +350,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
 
         //ARGUMENTOS JAVA
         if ($elerror == 0) {
-          if ($_SESSION['CONFIGUSER']['rango'] == 1) {
+          if ($_SESSION['CONFIGUSER']['rango'] == 1 || array_key_exists('psystemcustomarg', $_SESSION['CONFIGUSER']) && $_SESSION['CONFIGUSER']['psystemcustomarg'] == 1) {
             $cogercheck = 0;
             $checkarg = array('..', '...', '~', '../', './', ';', '>', '<', '\\', '&&', '#', "|", '$', '%', '!', '`', '&', '*', '{', '}', '?', '@', "'", '"', "'\'", '-Xms', '-Xmx', '-port', 'Dfile.encoding=UTF8', '-jar', 'java', 'cd ..');
 
