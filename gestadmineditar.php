@@ -312,7 +312,6 @@ require_once("template/header.php");
                                                                                     <p>Permite configurar el máximo de líneas que guarda el buffer en la consola.</p>
                                                                                 </div>
 
-
                                                                                 <div class="form-group">
                                                                                     <div>
                                                                                         <input id="psystemstartonboot" name="psystemstartonboot" type="checkbox" value="1" <?php
@@ -327,6 +326,22 @@ require_once("template/header.php");
                                                                                         <label class="negrita mr-2" for="psystemstartonboot">Iniciar servidor Minecraft al arrancar Linux</label>
                                                                                     </div>
                                                                                     <p>Permite iniciar servidor Minecraft automáticamente al arrancar el servidor Linux.</p>
+                                                                                </div>
+
+                                                                                <div class="form-group">
+                                                                                    <div>
+                                                                                        <input id="psystemcustomarg" name="psystemcustomarg" type="checkbox" value="1" <?php
+
+                                                                                                                                                                                    if (array_key_exists('psystemcustomarg', $_SESSION['EDITARSUPER'])) {
+                                                                                                                                                                                        if ($_SESSION['EDITARSUPER']['psystemcustomarg'] == 1) {
+                                                                                                                                                                                            echo "checked";
+                                                                                                                                                                                        }
+                                                                                                                                                                                    }
+                                                                                                                                                                                    ?>>
+
+                                                                                        <label class="negrita mr-2" for="psystemcustomarg">Argumentos Java</label>
+                                                                                    </div>
+                                                                                    <p>Permite añadir argumentos personalizados en Java tanto al inicio como al final.</p>
                                                                                 </div>
 
                                                                                 <div class="form-group">

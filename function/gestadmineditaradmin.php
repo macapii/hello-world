@@ -296,6 +296,13 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                                 $arrayobtenido[$i]['psystemstartonboot'] = 0;
                             }
 
+                            //SYSTEM CONFIG ARGUMENTOS JAVA
+                            if (isset($_POST['psystemcustomarg'])) {
+                                $arrayobtenido[$i]['psystemcustomarg'] = 1;
+                            } else {
+                                $arrayobtenido[$i]['psystemcustomarg'] = 0;
+                            }
+
                             //SYSTEM CONFIG IGNORAR RAM SISTEMA AL INICIAR MINECRAFT
                             if (isset($_POST['psystemconfignoreramlimit'])) {
                                 $arrayobtenido[$i]['psystemconfignoreramlimit'] = 1;

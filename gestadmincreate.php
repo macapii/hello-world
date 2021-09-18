@@ -207,6 +207,14 @@ require_once("template/header.php");
 
                                                                             <div class="form-group">
                                                                                 <div>
+                                                                                    <input id="psystemcustomarg" name="psystemcustomarg" type="checkbox" value="1">
+                                                                                    <label class="negrita mr-2" for="psystemcustomarg">Argumentos Java</label>
+                                                                                </div>
+                                                                                <p>Permite añadir argumentos personalizados en Java tanto al inicio como al final.</p>
+                                                                            </div>
+
+                                                                            <div class="form-group">
+                                                                                <div>
                                                                                     <input id="psystemconfignoreramlimit" name="psystemconfignoreramlimit" type="checkbox" value="1">
                                                                                     <label class="negrita mr-2" for="psystemconfignoreramlimit">Ignorar limites RAM sistema</label>
                                                                                 </div>
