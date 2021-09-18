@@ -25,7 +25,7 @@ $(function () {
         var elerror = 0;
         var fileName = $(this).val().split("\\").pop();
         var res = fileName.substring(fileName.length - 4, fileName.length);
-        if (res == ".jar") {
+        if (res.toLowerCase() == ".jar") {
             $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
             var elarchivo = document.getElementById('fileName');
             var eltamano = elarchivo.files.item(0).size;
