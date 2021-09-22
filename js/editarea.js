@@ -126,6 +126,8 @@ $(function () {
                 document.getElementById("textotarearetorno").innerHTML = "<div class='alert alert-danger' role='alert'>Error: El archivo json no tiene permisos de escritura.</div>";
             } else if (data == "badchars") {
                 document.getElementById("textotarearetorno").innerHTML = "<div class='alert alert-danger' role='alert'>Error: El comando tiene caracteres no válidos.</div>";
+            } else if (data == "lenmax") {
+                document.getElementById("textotarearetorno").innerHTML = "<div class='alert alert-danger' role='alert'>Error: El comando supera los 4096 caracteres.</div>";
             } else if (data == "nofilexist") {
                 document.getElementById("textotarearetorno").innerHTML = "<div class='alert alert-danger' role='alert'>Error: No existe ninguna tarea para editar.</div>";
             } else if (data == "OK") {
