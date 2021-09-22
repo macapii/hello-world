@@ -736,7 +736,10 @@ if ($elerror == 0) {
                                                         case "acc4":
                                                             //ENVIAR COMANDO
 
-                                                            $paraejecutar = addslashes($arrayobtenido[$i]['comando']);
+
+                                                            //$paraejecutar = addslashes($arrayobtenido[$i]['comando']);
+                                                            $paraejecutar = htmlspecialchars_decode($arrayobtenido[$i]['comando']);
+                                                            $paraejecutar = addslashes($paraejecutar);
 
                                                             //OBTENER PID SABER SI ESTA EN EJECUCION
                                                             $elcomando = "";
