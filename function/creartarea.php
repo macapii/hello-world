@@ -98,10 +98,20 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                             $elerror = 1;
                         } else {
                             $getcommando = $_POST["elcomando"];
-                            $buscar = preg_match('/[\^][a-zA-Z]/', $getcommando);
-                            if ($buscar >= 1) {
-                                $retorno = "badchars";
-                                $elerror = 1;
+
+                            if ($elerror == 0) {
+                                if (strlen($getcommando) > 4096) {
+                                    $elerror = 1;
+                                    $retorno = "lenmax";
+                                }
+                            }
+
+                            if ($elerror == 0) {
+                                $buscar = preg_match('/[\^][a-zA-Z]/', $getcommando);
+                                if ($buscar >= 1) {
+                                    $retorno = "badchars";
+                                    $elerror = 1;
+                                }
                             }
                         }
                     } else {
@@ -238,7 +248,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                         $arrayfinal[0]['nombre'] = test_input($_POST["nombretarea"]);
                         $arrayfinal[0]['accion'] = test_input($_POST["laaccion"]);
                         $arrayfinal[0]['estado'] = test_input("activado");
-                        $arrayfinal[0]['comando'] = $getcommando;
+                        $arrayfinal[0]['comando'] = test_input($getcommando);
 
                         for ($i = 0; $i < 12; $i++) {
                             $arrayfinal[0][$i]["mes"] = $aresultmes['tmes'][$i];
@@ -292,7 +302,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                             $arrayobtenido[$elindice]['nombre'] = test_input($_POST["nombretarea"]);
                             $arrayobtenido[$elindice]['accion'] = test_input($_POST["laaccion"]);
                             $arrayobtenido[$elindice]['estado'] = test_input("activado");
-                            $arrayobtenido[$elindice]['comando'] = $getcommando;
+                            $arrayobtenido[$elindice]['comando'] = test_input($getcommando);
 
                             for ($i = 0; $i < 12; $i++) {
                                 $arrayobtenido[$elindice][$i]["mes"] = $aresultmes['tmes'][$i];

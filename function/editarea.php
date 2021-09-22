@@ -105,18 +105,26 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                             $elerror = 1;
                         } else {
                             $getcommando = $_POST["elcomando"];
-                            $buscar = preg_match('/[\^][a-zA-Z]/', $getcommando);
-                            if ($buscar >= 1) {
-                                $retorno = "badchars";
-                                $elerror = 1;
+
+                            if ($elerror == 0) {
+                                if (strlen($getcommando) > 4096) {
+                                    $elerror = 1;
+                                    $retorno = "lenmax";
+                                }
+                            }
+
+                            if ($elerror == 0) {
+                                $buscar = preg_match('/[\^][a-zA-Z]/', $getcommando);
+                                if ($buscar >= 1) {
+                                    $retorno = "badchars";
+                                    $elerror = 1;
+                                }
                             }
                         }
                     } else {
                         $getcommando = "";
                     }
                 }
-
-
 
                 if ($elerror == 0) {
                     //OBTENER Y GENERAR ARRAY MES
@@ -267,7 +275,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                                 if ($_SESSION['SETEDITARTAREA'] == $arrayobtenido[$x]['id']) {
                                     $arrayobtenido[$x]['nombre'] = test_input($_POST["nombretarea"]);
                                     $arrayobtenido[$x]['accion'] = test_input($_POST["laaccion"]);
-                                    $arrayobtenido[$x]['comando'] = $getcommando;
+                                    $arrayobtenido[$x]['comando'] = test_input($getcommando);
 
                                     for ($i = 0; $i < 12; $i++) {
                                         $arrayobtenido[$x][$i]["mes"] = $aresultmes['tmes'][$i];
