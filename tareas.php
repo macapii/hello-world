@@ -150,7 +150,7 @@ require_once("template/header.php");
                                                                         echo ('<tr class="menu-hover" id="' . $arrayobtenido[$i]["id"] . '">');
                                                                         echo ('<th scope="row">' . $arrayobtenido[$i]["nombre"] . '</th>');
                                                                         echo ('<td>' . devolver_accion($arrayobtenido[$i]["accion"]) . '</td>');
-                                                                        echo ('<td>' . test_input(addslashes($arrayobtenido[$i]["comando"])) . '</td>');
+                                                                        echo ('<td>' . $arrayobtenido[$i]["comando"] . '</td>');
                                                                         echo ('<td>' . $arrayobtenido[$i]["estado"] . '</td>');
                                                                         echo ('<td>');
 

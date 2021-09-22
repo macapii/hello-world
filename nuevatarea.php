@@ -481,7 +481,7 @@ require_once("template/header.php");
                                                         </div>
                                                         <br>
                                                         <label for="elcomando">Comando:</label>
-                                                        <textarea class="form-control" id="elcomando" name="elcomando" spellcheck="false" autocapitalize="none"></textarea>
+                                                        <textarea class="form-control" id="elcomando" name="elcomando" spellcheck="false" autocapitalize="none" maxlength="4096"></textarea>
                                                         <br>
                                                         <p class="lead" id="textotarearetorno"></p>
                                                         <hr>

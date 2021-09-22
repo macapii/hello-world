@@ -818,7 +818,7 @@ require_once("template/header.php");
                                                         </div>
                                                         <br>
                                                         <label for="elcomando">Comando:</label>
-                                                        <textarea class="form-control" id="elcomando" name="elcomando" spellcheck="false" autocapitalize="none"><?php echo $_SESSION['EDITARTAREA']['comando']; ?></textarea>
+                                                        <textarea class="form-control" id="elcomando" name="elcomando" spellcheck="false" autocapitalize="none" maxlength="4096"><?php echo $_SESSION['EDITARTAREA']['comando']; ?></textarea>
                                                         <br>
                                                         <p class="lead" id="textotarearetorno"></p>
                                                         <hr>
