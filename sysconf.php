@@ -622,12 +622,12 @@ require_once("template/header.php");
                                                         <?php
                                                         }
                                                         ?>
-                                                        <hr>
 
                                                         <?php
                                                         //ARGUMENTOS JAVA
                                                         if ($_SESSION['CONFIGUSER']['rango'] == 1 || array_key_exists('psystemcustomarg', $_SESSION['CONFIGUSER']) && $_SESSION['CONFIGUSER']['psystemcustomarg'] == 1) {
                                                         ?>
+                                                            <hr>
                                                             <div class="form-row">
                                                                 <div class="form-group col-md-8">
                                                                     <label class="negrita">Añadir Lineas argumentos java:</label>
@@ -645,12 +645,11 @@ require_once("template/header.php");
                                                         }
                                                         ?>
 
-                                                        <hr>
-
                                                         <?php
                                                         //MODO MANTENIMIENTO
                                                         if ($_SESSION['CONFIGUSER']['rango'] == 1) {
                                                         ?>
+                                                            <hr>
                                                             <div class="form-row">
                                                                 <div class="form-group col-md-8">
                                                                     <label class="negrita" for="modomantenimiento">Modo Mantenimiento</label>
