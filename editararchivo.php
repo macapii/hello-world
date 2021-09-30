@@ -162,7 +162,7 @@ function test_input($data)
                                                 <button class="btn btn-primary btn-block btn-lg" id="guardarfile" type="button" value="<?php echo $rutboton; ?>">Guardar</button>
                                             </div>
                                             <div class="col-md-6">
-                                                <button class="btn btn-secondary btn-block btn-lg" id="cancelar" type="button">Cancelarcaca</button>
+                                                <button class="btn btn-secondary btn-block btn-lg" id="cancelar" type="button">Cancelar</button>
                                             </div>
                                         </div>
                                     </div>
