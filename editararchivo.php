@@ -22,6 +22,15 @@ require_once("template/session.php");
 require_once("template/errorreport.php");
 require_once("config/confopciones.php");
 require_once("template/header.php");
+
+function test_input($data)
+{
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
+}
+
 ?>
 <!-- Custom styles for this template-->
 <link href="css/test.css" rel="stylesheet">
@@ -137,7 +146,7 @@ require_once("template/header.php");
                                                                                                                                                                     $gestor = @fopen($elarchivo, "r");
                                                                                                                                                                     if ($gestor) {
                                                                                                                                                                         while (($bufer = fgets($gestor, 4096)) !== false) {
-                                                                                                                                                                            echo $bufer;
+                                                                                                                                                                            echo test_input($bufer);
                                                                                                                                                                         }
                                                                                                                                                                         if (!feof($gestor)) {
                                                                                                                                                                             echo "Error: fallo inesperado de fgets()\n";
@@ -153,7 +162,7 @@ require_once("template/header.php");
                                                 <button class="btn btn-primary btn-block btn-lg" id="guardarfile" type="button" value="<?php echo $rutboton; ?>">Guardar</button>
                                             </div>
                                             <div class="col-md-6">
-                                                <button class="btn btn-secondary btn-block btn-lg" id="cancelar" type="button">Cancelar</button>
+                                                <button class="btn btn-secondary btn-block btn-lg" id="cancelar" type="button">Cancelarcaca</button>
                                             </div>
                                         </div>
                                     </div>
