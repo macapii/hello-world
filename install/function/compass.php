@@ -33,7 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $elerror = 0;
         $eltexto = "<div class='alert alert-danger' role='alert'>";
-        $pwd = $_POST['action'];
+        $pwd = test_input($_POST['action']);
 
         if (strlen($pwd) < 16) {
             $eltexto .= "¡La contraseña tiene que tener un mínimo de 16 caracteres!";
