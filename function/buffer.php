@@ -73,7 +73,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
 
                 if (isset($_SESSION['BUFFER'])) {
                     if (defined('CONFIGBUFFERLIMIT')) {
-                        $laaction = $_POST['action'];
+                        $laaction = test_input($_POST['action']);
 
                         $bufflimite = CONFIGBUFFERLIMIT;
 
