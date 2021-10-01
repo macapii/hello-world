@@ -104,6 +104,12 @@ require_once("template/header.php");
                                                                         <input type="password" class="form-control" id="elrepass" name="elrepass" placeholder="••••" required="required">
                                                                     </div>
 
+                                                                    <div class="col-md-6">
+                                                                        <label>
+                                                                            <input type="checkbox" name="verpassword" id="verpassword"> Mostrar contraseñas
+                                                                        </label>
+                                                                    </div>
+
                                                                     <div class="col-md-12">
                                                                         <p class="lead" id="textoretorno"></p>
                                                                     </div>

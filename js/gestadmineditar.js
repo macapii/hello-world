@@ -33,13 +33,28 @@ $(function () {
                 success: function (data) {
                     if (data.error == 1) {
                         document.getElementById("textoretorno").innerHTML = data.texto;
-                        document.getElementById("btcrearusuario").disabled = true;
                     } else {
                         document.getElementById("textoretorno").innerHTML = "";
-                        document.getElementById("btcrearusuario").disabled = false;
                     }
                 }
             });
+        }
+    });
+
+    $("#verpassword").click(function () {
+        var x = document.getElementById("elpass");
+        var y = document.getElementById("elrepass");
+
+        if (x.type === "password") {
+            x.type = "text";
+        } else {
+            x.type = "password";
+        }
+
+        if (y.type === "password") {
+            y.type = "text";
+        } else {
+            y.type = "password";
         }
     });
 
