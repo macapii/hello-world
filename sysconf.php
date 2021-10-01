@@ -111,7 +111,11 @@ require_once("template/header.php");
 
                                                     $recnumerolineaconsola = CONFIGLINEASCONSOLA;
 
-                                                    $recbuffer = CONFIGBUFFERLIMIT;
+                                                    if (!defined('CONFIGBUFFERLIMIT')) {
+                                                        $recbuffer = 100;
+                                                    }else{
+                                                        $recbuffer = CONFIGBUFFERLIMIT;
+                                                    }
 
                                                     $recshowsizefolder = CONFIGSHOWSIZEFOLDERS;
 
@@ -121,8 +125,17 @@ require_once("template/header.php");
 
                                                     $recmantenimiento = CONFIGMANTENIMIENTO;
 
-                                                    $recargmanualinicio = CONFIGARGMANUALINI;
-                                                    $recargmanualfinal = CONFIGARGMANUALFINAL;
+                                                    if (!defined('CONFIGARGMANUALINI')) {
+                                                        $recargmanualinicio = "";
+                                                    }else{
+                                                        $recargmanualinicio = CONFIGARGMANUALINI;
+                                                    }
+
+                                                    if (!defined('CONFIGARGMANUALFINAL')) {
+                                                        $recargmanualfinal = "";
+                                                    }else{
+                                                        $recargmanualfinal = CONFIGARGMANUALFINAL;
+                                                    }
 
                                                     //OBTENER TIPO SERVIDOR WEB
                                                     $servidorweb = $_SERVER["SERVER_SOFTWARE"];
