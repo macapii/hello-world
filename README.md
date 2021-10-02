@@ -19,7 +19,7 @@ Estos son los requisitos para que McWebPanel funcione
 
 ```
 Sistemas Operativos:
-Debian 10.5 | 10.6 | 10.7 | 10.8
+Debian 10.x | 11.x
 Ubuntu Server 18.04 LTS | 20.04 LTS
 
 Servidor Web:
@@ -67,22 +67,22 @@ Instalar
 
 ```
 Descargar:
-wget https://github.com/Konata400/McWebPanel/archive/refs/tags/0.13-pre.zip
+wget https://github.com/Konata400/McWebPanel/archive/refs/tags/0.14-pre.zip
 
 Descomprimir:
-unzip 0.13-pre.zip
+unzip 0.14-pre.zip
 
 Eliminar index.html por defecto de apache:
 sudo rm /var/www/html/index.html
 
 Copiar a la carpeta Apache:
-sudo cp -r McWebPanel-0.13-pre/. /var/www/html/
+sudo cp -r McWebPanel-0.14-pre/. /var/www/html/
 
 Cambiar Usuario Archivos:
 sudo chown -R www-data:www-data /var/www/html/
 ```
 
-Configurar zona horaria (Ubuntu)
+Configurar zona horaria (Ubuntu y Debian 11)
 ```
 sudo dpkg-reconfigure tzdata
 ```
