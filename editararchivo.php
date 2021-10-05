@@ -146,7 +146,7 @@ function test_input($data)
                                                                                                                                                                     $gestor = @fopen($elarchivo, "r");
                                                                                                                                                                     if ($gestor) {
                                                                                                                                                                         while (($bufer = fgets($gestor, 4096)) !== false) {
-                                                                                                                                                                            echo test_input($bufer);
+                                                                                                                                                                            echo $bufer;
                                                                                                                                                                         }
                                                                                                                                                                         if (!feof($gestor)) {
                                                                                                                                                                             echo "Error: fallo inesperado de fgets()\n";
