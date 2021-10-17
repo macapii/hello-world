@@ -192,6 +192,11 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                     }
                 }
 
+                //ASIGNAR PERMISOS CORRECTOS
+                if ($elerror == 0) {
+                    exec("chmod 664 " . $rutafichero);
+                }
+
                 //MOVER A LA CARPETA DE MINECRAFT
                 if ($elerror == 0) {
                     $rutadestino = $dirmine . "/" . $nombrefichero;

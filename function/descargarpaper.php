@@ -313,7 +313,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                             }
                         }
 
-                        //CHECKEAR CON SHA1
+                        //CHECKEAR CON SHA256
                         if ($elerror == 0) {
                             $verifisha256 = hash_file('sha256', $rutafichero);
                             $retorno = $verifisha256;
@@ -323,6 +323,11 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                                 $elerror = 1;
                                 $retorno = "nogoodsha256";
                             }
+                        }
+
+                        //ASIGNAR PERMISOS CORRECTOS
+                        if ($elerror == 0) {
+                            exec("chmod 664 " . $rutafichero);
                         }
 
                         //MOVER A LA CARPETA DE MINECRAFT
