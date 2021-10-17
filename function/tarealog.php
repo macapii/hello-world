@@ -51,7 +51,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
 
                 $rutaarchivo = dirname(getcwd()) . PHP_EOL;
                 $rutaarchivo = trim($rutaarchivo);
-                $rutaarchivo .= "/cron/cronlog.log";
+                $rutaarchivo .= "/cron/cronstat.log";
 
                 $laaccion = test_input($_POST['action']);
 

@@ -147,7 +147,7 @@ $(function () {
                     if (data == "ok") {
                         alert("Log borrado correctamente");
                     } else if (data == "nowritelog") {
-                        alert("El archivo cronlog.log no tiene permisos de escritura");
+                        alert("El archivo cronstat.log no tiene permisos de escritura");
                     }
                 }
             });
