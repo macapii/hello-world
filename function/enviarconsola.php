@@ -102,6 +102,23 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
           }
 
           if ($ignore == 0) {
+
+            $elprimer = htmlspecialchars_decode(substr($linea, 0, 4));
+            $elsecond = htmlspecialchars_decode(substr($linea, 0, 3));
+
+            if ($elprimer == ">") {
+              $linea = substr($linea, 1);
+              $linea = ltrim($linea, 'gt');
+              $linea = ltrim($linea, ';');
+            }
+
+            if ($elsecond == "=&g") {
+              $linea = substr($linea, 5);
+            }
+
+            $linea = str_replace("\e[?1l&gt;\e[?1000l\e[?2004l\e[?1h=\e[?2004h&gt;", "", $linea);
+            $linea = str_replace("\e[?1h=\e[?2004h&gt;", "", $linea);
+
             //añade color base
             $linea = str_replace("\e[K", "<span class='colbase textreset'>", $linea);
 
@@ -140,7 +157,6 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
             $linea = str_replace("\e[0;32;1m", "<span class='colverdeclaro textnegrita'>", $linea);
             $linea = str_replace("\e[0;32;2m", "<span class='colverdeoscuro'>", $linea);
             $linea = str_replace("\e[0;32;4m", "<span class='colverde textnegrita'>", $linea);
-
 
             //color amarillo terminal
             $linea = str_replace("\e[33m", "<span class='colamarillo'>", $linea);
@@ -300,10 +316,9 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
             $linea = str_replace("\e[0;97;4m", "<span class='colbrillanteblanco textsubrayado'>", $linea);
 
             //LIMPIA TEXTO RESTANTE
-            $linea = ltrim($linea, '&gt;');
             $linea = preg_replace('#\\x1b[[][^A-Za-z]*[A-Za-z]#', '', $linea);
             $linea = preg_replace('/[\x00-\x1F\x80-\xFF]/', '', $linea);
-            $linea = ltrim($linea, '=&gt;');
+
             $linea = $linea . "<span class='colbase textreset'><br>";
             $devolucion .= $linea;
           }
