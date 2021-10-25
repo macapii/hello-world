@@ -18,6 +18,11 @@ Copyright (C) 2020 Cristina Ibañez, Konata400
 
 $(function () {
 
+    var uncheckalinicio = document.getElementsByClassName('laseleccion');
+    for (var i = 0; i < uncheckalinicio.length; i++) {
+        uncheckalinicio[i].checked = false;
+    }
+
     if (document.getElementsByClassName('entrar') !== null) {
         var entrarbuttons = document.getElementsByClassName('entrar');
         for (var i = 0; i < entrarbuttons.length; i++) {
