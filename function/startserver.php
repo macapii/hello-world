@@ -503,7 +503,20 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                     guardareinicio($larutash, $cominiciostart, $larutascrrenlog);
                 }
 
-                $elpid = shell_exec($comandoserver);
+                //CREAR SH
+                $rutastartsh = dirname(getcwd()) . PHP_EOL;
+                $rutastartsh = trim($rutastartsh);
+                $startsh = $rutastartsh . "/temp";
+                $startsh .= "/" . $reccarpmine . ".sh";
+
+                $file = fopen($startsh, "w");
+                fwrite($file, "#!/bin/sh" . PHP_EOL);
+                fwrite($file, $comandoserver . PHP_EOL);
+                fclose($file);
+
+                $comandoperm = "chmod 744 " . $startsh;
+                exec($comandoperm);
+                exec("sh " . $startsh ." &");
                 $retorno = "ok";
             }
             echo $retorno;
