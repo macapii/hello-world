@@ -646,10 +646,10 @@ require_once("template/header.php");
                                                                     <label class="negrita">Añadir Lineas argumentos java:</label>
                                                                     <br>
                                                                     <label for="argmanualinicio">Argumentos al inicio:</label>
-                                                                    <textarea class="form-control" id="argmanualinicio" name="argmanualinicio" spellcheck="false" autocapitalize="none" value="<?php echo $recargmanualinicio; ?>"></textarea>
+                                                                    <textarea class="form-control" id="argmanualinicio" name="argmanualinicio" spellcheck="false" autocapitalize="none"><?php echo $recargmanualinicio; ?></textarea>
                                                                     <p>Ejemplo: java (<strong>Argumentos</strong>) - jar server.jar nogui</p>
                                                                     <label for="argmanualfinal">Argumentos al final:</label>
-                                                                    <textarea class="form-control" id="argmanualfinal" name="argmanualfinal" spellcheck="false" autocapitalize="none" value="<?php echo $recargmanualfinal; ?>"></textarea>
+                                                                    <textarea class="form-control" id="argmanualfinal" name="argmanualfinal" spellcheck="false" autocapitalize="none"><?php echo $recargmanualfinal; ?></textarea>
                                                                     <p>Ejemplo: java -jar server.jar nogui (<strong>Argumentos</strong>)</p>
                                                                 </div>
                                                             </div>
