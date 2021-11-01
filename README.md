@@ -36,7 +36,7 @@ php-cli             (Libreria cli php)
 php-json            (Librerua json php)
 zip                 (Info-ZIP)
 unzip               (De-archiver)
-gawk                (GNU awk)
+gawk                (GNU gawk)
 wget                (GNU Wget)
 ```
 

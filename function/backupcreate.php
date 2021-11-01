@@ -114,7 +114,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                 $procesorestore = $dirraiz . "/restaurar";
                 $procesorestore = str_replace("/", "", $procesorestore);
 
-                $elcomando = "screen -ls | awk '/\." . $procesorestore . "\t/ {print strtonum($1)'}";
+                $elcomando = "screen -ls | gawk '/\." . $procesorestore . "\t/ {print strtonum($1)'}";
                 $elpid = shell_exec($elcomando);
 
                 if ($elpid != "") {
@@ -125,7 +125,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
 
             //VER SI HAY UN PROCESO YA EN BACKUP
             if ($elerror == 0) {
-                $elcomando = "screen -ls | awk '/\." . $nombrescreen . "\t/ {print strtonum($1)'}";
+                $elcomando = "screen -ls | gawk '/\." . $nombrescreen . "\t/ {print strtonum($1)'}";
                 $elpid = shell_exec($elcomando);
 
                 if ($elpid != "") {

@@ -235,7 +235,7 @@ require_once("template/header.php");
                                                                     <select id="elram" name="elram" class="form-control" required="required">
                                                                         <?php
 
-                                                                        $salida = shell_exec("free -g | grep Mem | awk '{ print $2 }'");
+                                                                        $salida = shell_exec("free -g | grep Mem | gawk '{ print $2 }'");
                                                                         $totalram = trim($salida);
                                                                         $totalram = intval($totalram);
                                                                         if ($totalram == 0) {
@@ -422,7 +422,7 @@ require_once("template/header.php");
                                                                                                                                                                 echo "checked";
                                                                                                                                                             } ?>>
                                                                             <label for="configjavaselect0">Usar JAVA defecto sistema</label>
-                                                                            <p><?php echo exec("java -version 2>&1 | head -n 1 | awk '{ print $1 $3 }'"); ?></p>
+                                                                            <p><?php echo exec("java -version 2>&1 | head -n 1 | gawk '{ print $1 $3 }'"); ?></p>
                                                                         </div>
 
                                                                         <div class="col-md-6">
@@ -435,8 +435,8 @@ require_once("template/header.php");
                                                                                 <?php
                                                                                 $javalist = "";
                                                                                 $javaruta = "";
-                                                                                $javalist = shell_exec("update-java-alternatives -l | awk '{ print $1 }'");
-                                                                                $javaruta = shell_exec("update-java-alternatives -l | awk '{ print $3 }'");
+                                                                                $javalist = shell_exec("update-java-alternatives -l | gawk '{ print $1 }'");
+                                                                                $javaruta = shell_exec("update-java-alternatives -l | gawk '{ print $3 }'");
                                                                                 $javalist = trim($javalist);
                                                                                 $javaruta = trim($javaruta);
                                                                                 $javalist = (explode("\n", $javalist));

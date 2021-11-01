@@ -57,7 +57,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                 $procesorestore = $dirraiz . "/restaurar";
                 $procesorestore = str_replace("/", "", $procesorestore);
 
-                $elcomando = "screen -ls | awk '/\." . $procesorestore . "\t/ {print strtonum($1)'}";
+                $elcomando = "screen -ls | gawk '/\." . $procesorestore . "\t/ {print strtonum($1)'}";
                 $elpid = shell_exec($elcomando);
 
                 if ($elpid != "") {

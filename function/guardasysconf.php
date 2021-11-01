@@ -154,7 +154,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
               }
 
               if ($elerror == 0) {
-                $salida = shell_exec("free -g | grep Mem | awk '{ print $2 }'");
+                $salida = shell_exec("free -g | grep Mem | gawk '{ print $2 }'");
                 $totalram = trim($salida);
                 $totalram = intval($totalram);
 
@@ -467,7 +467,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                 $eljavaname = test_input($_POST["selectedjavaver"]);
 
                 //OBTENER DIRECTORIOS JAVA
-                $existjavaruta = shell_exec("update-java-alternatives -l | awk '{ print $3 }'");
+                $existjavaruta = shell_exec("update-java-alternatives -l | gawk '{ print $3 }'");
                 $existjavaruta = trim($existjavaruta);
                 $existjavaruta = (explode("\n", $existjavaruta));
                 $sijavaexist = 0;

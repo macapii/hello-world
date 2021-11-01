@@ -149,7 +149,7 @@ if ($elerror == 0) {
                                                             //OBTENER PID SABER SI ESTA EN EJECUCION
                                                             $elcomando = "";
                                                             $elnombrescreen = CONFIGDIRECTORIO;
-                                                            $elcomando = "screen -ls | awk '/\." . $elnombrescreen . "\t/ {print strtonum($1)'}";
+                                                            $elcomando = "screen -ls | gawk '/\." . $elnombrescreen . "\t/ {print strtonum($1)'}";
                                                             $elpid = shell_exec($elcomando);
 
                                                             //SI ESTA EN EJECUCION ENVIAR COMANDO APAGAR
@@ -169,7 +169,7 @@ if ($elerror == 0) {
                                                             //OBTENER PID SABER SI ESTA EN EJECUCION
                                                             $elcomando = "";
                                                             $elnombrescreen = CONFIGDIRECTORIO;
-                                                            $elcomando = "screen -ls | awk '/\." . $elnombrescreen . "\t/ {print strtonum($1)'}";
+                                                            $elcomando = "screen -ls | gawk '/\." . $elnombrescreen . "\t/ {print strtonum($1)'}";
                                                             $elpid = shell_exec($elcomando);
 
                                                             if ($elpid == "") {
@@ -400,11 +400,11 @@ if ($elerror == 0) {
                                                                 if ($recignoreramlimit != 1) {
                                                                     //COMPROVAR MEMORIA RAM
                                                                     if ($elerror == 0) {
-                                                                        $totalramsys = shell_exec("free -g | grep Mem | awk '{ print $2 }'");
+                                                                        $totalramsys = shell_exec("free -g | grep Mem | gawk '{ print $2 }'");
                                                                         $totalramsys = trim($totalramsys);
                                                                         $totalramsys = intval($totalramsys);
 
-                                                                        $getramavaliable = shell_exec("free -g | grep Mem | awk '{ print $7 }'");
+                                                                        $getramavaliable = shell_exec("free -g | grep Mem | gawk '{ print $7 }'");
                                                                         $getramavaliable = trim($getramavaliable);
                                                                         $getramavaliable = intval($getramavaliable);
 
@@ -741,7 +741,7 @@ if ($elerror == 0) {
                                                             //OBTENER PID SABER SI ESTA EN EJECUCION
                                                             $elcomando = "";
                                                             $elnombrescreen = CONFIGDIRECTORIO;
-                                                            $elcomando = "screen -ls | awk '/\." . $elnombrescreen . "\t/ {print strtonum($1)'}";
+                                                            $elcomando = "screen -ls | gawk '/\." . $elnombrescreen . "\t/ {print strtonum($1)'}";
                                                             $elpid = shell_exec($elcomando);
 
                                                             //SI ESTA EN EJECUCION ENVIAR COMANDO

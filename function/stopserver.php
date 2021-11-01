@@ -57,7 +57,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
             //OBTENER PID SABER SI ESTA EN EJECUCION
             $elcomando = "";
             $elnombrescreen = CONFIGDIRECTORIO;
-            $elcomando = "screen -ls | awk '/\." . $elnombrescreen . "\t/ {print strtonum($1)'}";
+            $elcomando = "screen -ls | gawk '/\." . $elnombrescreen . "\t/ {print strtonum($1)'}";
             $elpid = shell_exec($elcomando);
 
             //SI ESTA EN EJECUCION ENVIAR COMANDO APAGAR

@@ -90,7 +90,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
 
             //VER SI ESTA EL SERVIDOR ENCENDIDO
             if ($elerror == 0) {
-                $elcomando = "screen -ls | awk '/\." . $reccarpmine . "\t/ {print strtonum($1)'}";
+                $elcomando = "screen -ls | gawk '/\." . $reccarpmine . "\t/ {print strtonum($1)'}";
                 $elpid = shell_exec($elcomando);
 
                 if ($elpid != "") {
@@ -104,7 +104,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                 $procesobackup = $rutaraiz . "/losbackups";
                 $procesobackup = str_replace("/", "", $procesobackup);
 
-                $elcomando = "screen -ls | awk '/\." . $procesobackup . "\t/ {print strtonum($1)'}";
+                $elcomando = "screen -ls | gawk '/\." . $procesobackup . "\t/ {print strtonum($1)'}";
                 $elpid = shell_exec($elcomando);
 
                 if ($elpid != "") {
@@ -115,7 +115,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
 
             //VER SI HAY UN PROCESO YA EN RESTAURAR
             if ($elerror == 0) {
-                $elcomando = "screen -ls | awk '/\." . $nombrescreen . "\t/ {print strtonum($1)'}";
+                $elcomando = "screen -ls | gawk '/\." . $nombrescreen . "\t/ {print strtonum($1)'}";
                 $elpid = shell_exec($elcomando);
 
                 if ($elpid != "") {

@@ -144,7 +144,7 @@ require_once("../template/errorreport.php");
                   <select id="elram" name="elram" class="form-control" required="required">
                     <?php
 
-                    $salida = shell_exec("free -g | grep Mem | awk '{ print $2 }'");
+                    $salida = shell_exec("free -g | grep Mem | gawk '{ print $2 }'");
                     $totalram = trim($salida);
                     $totalram = intval($totalram);
 

@@ -110,7 +110,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
             //OBTENER PID SABER SI ESTA EN EJECUCION
             if ($elerror == 0) {
                 $elcomando = "";
-                $elcomando = "screen -ls | awk '/\." . $reccarpmine . "\t/ {print strtonum($1)'}";
+                $elcomando = "screen -ls | gawk '/\." . $reccarpmine . "\t/ {print strtonum($1)'}";
                 $elpid = shell_exec($elcomando);
 
                 //SI ESTA EN EJECUCION ENVIAR ERROR
@@ -283,11 +283,11 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
             if ($recignoreramlimit != 1) {
                 //COMPROVAR MEMORIA RAM
                 if ($elerror == 0) {
-                    $totalramsys = shell_exec("free -g | grep Mem | awk '{ print $2 }'");
+                    $totalramsys = shell_exec("free -g | grep Mem | gawk '{ print $2 }'");
                     $totalramsys = trim($totalramsys);
                     $totalramsys = intval($totalramsys);
 
-                    $getramavaliable = shell_exec("free -g | grep Mem | awk '{ print $7 }'");
+                    $getramavaliable = shell_exec("free -g | grep Mem | gawk '{ print $7 }'");
                     $getramavaliable = trim($getramavaliable);
                     $getramavaliable = intval($getramavaliable);
 

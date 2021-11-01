@@ -64,7 +64,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
             $processdescomzip = str_replace("/", "", $processdescomzip);
 
             //VER SI HAY UN PROCESO YA EN USO
-            $elcomando = "screen -ls | awk '/\." . $processdescomzip . "\t/ {print strtonum($1)'}";
+            $elcomando = "screen -ls | gawk '/\." . $processdescomzip . "\t/ {print strtonum($1)'}";
             $retornodeszip = shell_exec($elcomando);
 
 

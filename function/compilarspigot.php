@@ -142,7 +142,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
               //SABER SI ESTA EN EJECUCION
               $elcomando = "";
               $nombresession = str_replace("/", "", $carpcompilar);
-              $elcomando = "screen -ls | awk '/\." . $nombresession . "\t/ {print strtonum($1)'}";
+              $elcomando = "screen -ls | gawk '/\." . $nombresession . "\t/ {print strtonum($1)'}";
               $elpid = shell_exec($elcomando);
 
               if ($elpid == "") {
@@ -281,11 +281,11 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
 
             //COMPROVAR MEMORIA RAM
             if ($elerror == 0) {
-              $totalramsys = shell_exec("free -g | grep Mem | awk '{ print $2 }'");
+              $totalramsys = shell_exec("free -g | grep Mem | gawk '{ print $2 }'");
               $totalramsys = trim($totalramsys);
               $totalramsys = intval($totalramsys);
 
-              $getramavaliable = shell_exec("free -g | grep Mem | awk '{ print $7 }'");
+              $getramavaliable = shell_exec("free -g | grep Mem | gawk '{ print $7 }'");
               $getramavaliable = trim($getramavaliable);
               $getramavaliable = intval($getramavaliable);
 
@@ -371,7 +371,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
             //SABER SI ESTA EN EJECUCION
             $elcomando = "";
             $nombresession = str_replace("/", "", $carpcompilar);
-            $elcomando = "screen -ls | awk '/\." . $nombresession . "\t/ {print strtonum($1)'}";
+            $elcomando = "screen -ls | gawk '/\." . $nombresession . "\t/ {print strtonum($1)'}";
             $elpid = shell_exec($elcomando);
 
             if ($elpid == "") {
@@ -384,7 +384,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
             //SABER SI ESTA EN EJECUCION
             $elcomando = "";
             $nombresession = str_replace("/", "", $carpcompilar);
-            $elcomando = "screen -ls | awk '/\." . $nombresession . "\t/ {print strtonum($1)'}";
+            $elcomando = "screen -ls | gawk '/\." . $nombresession . "\t/ {print strtonum($1)'}";
             $elpid = shell_exec($elcomando);
 
             if ($elpid == "") {
@@ -393,7 +393,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
 
               //OBTENER PID COMPILADOR BUILDTOOLS
               $tipserver = trim(exec('whoami'));
-              $elpid = "ps au | grep '" . $tipserver . "' | grep '" . $carpcompilar . "/BuildTools.jar' | awk '{print $2}'";
+              $elpid = "ps au | grep '" . $tipserver . "' | grep '" . $carpcompilar . "/BuildTools.jar' | gawk '{print $2}'";
               $elpid = shell_exec($elpid);
               $elpid = trim($elpid);
 

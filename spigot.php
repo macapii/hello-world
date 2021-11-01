@@ -246,7 +246,7 @@ function test_input($data)
 
                                                             if ($elerror == 0) {
                                                             ?>
-                                                                <p>Se compilara usando JAVA: <?php echo exec($javaruta . " -version 2>&1 | head -n 1 | awk '{ print $1 $3 }'"); ?></p>
+                                                                <p>Se compilara usando JAVA: <?php echo exec($javaruta . " -version 2>&1 | head -n 1 | gawk '{ print $1 $3 }'"); ?></p>
                                                                 <button class="btn btn-primary btn-block mt-2" id="compilar" name="compilar">Compilar</button>
                                                                 <button class="btn btn-danger btn-block mt-2" id="killcompilar" name="killcompilar">Matar Compilar</button>
                                                             <?php

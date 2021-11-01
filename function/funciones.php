@@ -119,7 +119,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
 		//OBTENER PID SABER SI ESTA EN EJECUCION
 		$elcomando = "";
 		$elnombrescreen = CONFIGDIRECTORIO;
-		$elcomando = "screen -ls | awk '/\." . $elnombrescreen . "\t/ {print strtonum($1)'}";
+		$elcomando = "screen -ls | gawk '/\." . $elnombrescreen . "\t/ {print strtonum($1)'}";
 		$elpid = shell_exec($elcomando);
 
 		if ($elpid == "") {
@@ -137,7 +137,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
 			$tipserver = trim(exec('whoami'));
 
 			//OBTENER PID y RAM
-			$elpid = "ps au | grep '" . $tipserver . "' | grep '" . $elnombrescreen . "'" . " | awk '{ print $2 ";
+			$elpid = "ps au | grep '" . $tipserver . "' | grep '" . $elnombrescreen . "'" . " | gawk '{ print $2 ";
 			$elpid .= '"="' . " $6 }'";
 			$elpid = shell_exec($elpid);
 			$elpid = trim($elpid);

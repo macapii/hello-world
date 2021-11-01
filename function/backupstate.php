@@ -67,11 +67,11 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
             $procesorestore = str_replace("/", "", $procesorestore);
 
             //VER SI HAY UN PROCESO YA EN BACKUP
-            $elcomando = "screen -ls | awk '/\." . $nombrescreen . "\t/ {print strtonum($1)'}";
+            $elcomando = "screen -ls | gawk '/\." . $nombrescreen . "\t/ {print strtonum($1)'}";
             $elpid = shell_exec($elcomando);
 
             //VER SI HAY UN PROCESO YA EN RESTAURAR
-            $elcomando = "screen -ls | awk '/\." . $procesorestore . "\t/ {print strtonum($1)'}";
+            $elcomando = "screen -ls | gawk '/\." . $procesorestore . "\t/ {print strtonum($1)'}";
             $elpid2 = shell_exec($elcomando);
 
 
