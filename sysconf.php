@@ -113,7 +113,7 @@ require_once("template/header.php");
 
                                                     if (!defined('CONFIGBUFFERLIMIT')) {
                                                         $recbuffer = 100;
-                                                    }else{
+                                                    } else {
                                                         $recbuffer = CONFIGBUFFERLIMIT;
                                                     }
 
@@ -127,25 +127,14 @@ require_once("template/header.php");
 
                                                     if (!defined('CONFIGARGMANUALINI')) {
                                                         $recargmanualinicio = "";
-                                                    }else{
+                                                    } else {
                                                         $recargmanualinicio = CONFIGARGMANUALINI;
                                                     }
 
                                                     if (!defined('CONFIGARGMANUALFINAL')) {
                                                         $recargmanualfinal = "";
-                                                    }else{
-                                                        $recargmanualfinal = CONFIGARGMANUALFINAL;
-                                                    }
-
-                                                    //OBTENER TIPO SERVIDOR WEB
-                                                    $servidorweb = $_SERVER["SERVER_SOFTWARE"];
-
-                                                    if (substr($servidorweb, 0, 6) == "Apache") {
-                                                        $servidorweb = "Apache";
-                                                    } else if (substr($servidorweb, 0, 5) == "Nginx") {
-                                                        $servidorweb = "Nginx";
                                                     } else {
-                                                        $servidorweb = "Otros";
+                                                        $recargmanualfinal = CONFIGARGMANUALFINAL;
                                                     }
 
                                                     $elnombredirectorio = $reccarpmine;
@@ -311,8 +300,10 @@ require_once("template/header.php");
                                                                     <select id="elmaxupload" name="elmaxupload" class="form-control" required="required">
                                                                         <?php
 
+                                                                        $servidorweb = php_sapi_name();
+
                                                                         //COMPROBAR TIPO DE SERVIDOR WEB
-                                                                        if ($servidorweb == "Apache") {
+                                                                        if ($servidorweb == "apache" || $servidorweb == "apache2handler") {
                                                                             $opcionesserver = array('128', '256', '386', '512', '640', '768', '896', '1024', '2048', '3072', '4096', '5120');
 
                                                                             for ($i = 0; $i < count($opcionesserver); $i++) {
@@ -324,10 +315,7 @@ require_once("template/header.php");
                                                                                 }
                                                                             }
                                                                         } else {
-                                                                            $maxdeupload = ini_get("upload_max_filesize");
-                                                                            $maxdeupload = substr($maxdeupload, 0, -1);
-                                                                            $maxdeupload = trim($maxdeupload);
-                                                                            echo '<option value="' . $maxdeupload . '">' . "Solo disponible en Apache" . '</option>';
+                                                                            echo '<option value="128">Solo disponible en Apache (mod_php)</option>';
                                                                         }
 
                                                                         ?>
