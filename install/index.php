@@ -145,13 +145,13 @@ $estamodulo = "";
 
                 </tr>
                 <tr>
-                  <td class="text-center">GNU AWK</td>
+                  <td class="text-center">GNU GAWK</td>
                   <td></td>
 
                   <?php
 
-                  //REQUISITO GNU AWK
-                  $comreq = shell_exec('command -v awk >/dev/null && echo "yes" || echo "no"');
+                  //REQUISITO GNU GAWK
+                  $comreq = shell_exec('command -v gawk >/dev/null && echo "yes" || echo "no"');
                   $comreq = trim($comreq);
                   if ($comreq == "no") {
                     $losrequisitos = 1;
