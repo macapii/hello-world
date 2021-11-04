@@ -123,18 +123,19 @@ require_once("../template/errorreport.php");
                 <div class="form-group col-md-6">
                   <label for="maxupload">Subida Archivos (Limite MB):</label>
                   <select id="maxupload" name="maxupload" class="form-control" required="required">
-                    <option value="128">128 MB</option>
-                    <option value="256">256 MB</option>
-                    <option value="384">384 MB</option>
-                    <option value="512">512 MB</option>
-                    <option value="640">640 MB</option>
-                    <option value="768">768 MB</option>
-                    <option value="896">896 MB</option>
-                    <option value="1024">1024 MB</option>
-                    <option value="2048">2048 MB</option>
-                    <option value="3072">3072 MB</option>
-                    <option value="4096">4096 MB</option>
-                    <option value="5120">5120 MB</option>
+                    <?php
+
+                    $servidorweb = php_sapi_name();
+
+                    if ($servidorweb == "apache" || $servidorweb == "apache2handler") {
+                      $opcionesserver = array('128', '256', '386', '512', '640', '768', '896', '1024', '2048', '3072', '4096', '5120');
+                      for ($i = 0; $i < count($opcionesserver); $i++) {
+                        echo '<option value="' . $opcionesserver[$i] . '">' . $opcionesserver[$i] . " MB" . '</option>';
+                      }
+                    } else {
+                      echo '<option value="128">Solo en Apache (mod_php)</option>';
+                    }
+                    ?>
                   </select>
                 </div>
               </div>
