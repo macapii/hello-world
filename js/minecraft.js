@@ -2163,7 +2163,7 @@ $(function () {
                         } else if (data == "nowriteconfig") {
                             alert("La carpeta config no tiene permisos de escritura");
                         } else if (data == "nowriteproperties") {
-                            alert("El archivo /config/serverproperties.txt no tiene permisos de escritura");
+                            alert("El archivo server.properties no tiene permisos de escritura");
                         }
 
                     }
