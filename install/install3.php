@@ -335,9 +335,9 @@ require_once("../template/errorreport.php");
         fwrite($file, "log on" . PHP_EOL);
         fclose($file);
 
-        //GUARDAR FICHERO serverproperties.txt
-        $rutaescrivir = $dirconfig;
-        $rutaescrivir .= "/serverproperties.txt";
+        //GUARDAR FICHERO SERVER.PROPERTIES
+        $rutaescrivir = $dircarpserver;
+        $rutaescrivir .= "/server.properties";
 
         $file = fopen($rutaescrivir, "w");
         fwrite($file, "enable-jmx-monitoring=false" . PHP_EOL);
