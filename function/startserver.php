@@ -99,13 +99,9 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
 
             $rutaminecraffijo = $rutacarpetamine;
 
-            //VARIABLE RUTA CARPETA CONFIG
-            $rutacarpetaconfig = dirname(getcwd()) . PHP_EOL;
-            $rutacarpetaconfig = trim($rutacarpetaconfig);
-            $rutacarpetaconfig .= "/config";
-
-            //VARIABLE RUTA SERVERPROPERTIES.TXT
-            $rutaconfigproperties = $rutacarpetaconfig . "/serverproperties.txt";
+            //VARIABLE RUTA SERVER.PROPERTIES
+            $rutaconfigproperties = $rutaminecraffijo;
+            $rutaconfigproperties .= "/server.properties";
 
             //OBTENER PID SABER SI ESTA EN EJECUCION
             if ($elerror == 0) {
@@ -156,16 +152,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                 }
             }
 
-            //VERIFICAR SI HAY ESCRITURA EN CARPETA CONFIG
-            if ($elerror == 0) {
-                clearstatcache();
-                if (!is_writable($rutacarpetaconfig)) {
-                    $elerror = 1;
-                    $retorno = "noconfigwrite";
-                }
-            }
-
-            //VERIFICAR SI EXISTE ARCHIVO /CONFIG/SERVERPROPERTIES
+            //VERIFICAR SI EXISTE ARCHIVO SERVER.PROPERTIES
             if ($elerror == 0) {
                 if (!file_exists($rutaconfigproperties)) {
                     $elerror = 1;
@@ -173,7 +160,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                 }
             }
 
-            //VERIFICAR SI HAY ESCRITURA EN ARCHIVO /CONFIG/SERVERPROPERTIES
+            //VERIFICAR SI HAY ESCRITURA EN ARCHIVO SERVER.PROPERTIES
             if ($elerror == 0) {
                 clearstatcache();
                 if (!is_writable($rutaconfigproperties)) {
@@ -316,15 +303,12 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
 
             //COMPROVAR SERVER.PROPERTIES
             if ($elerror == 0) {
-                $rutacarpetamine = dirname(getcwd()) . PHP_EOL;
-                $rutacarpetamine = trim($rutacarpetamine);
-                $rutatemp = $rutacarpetamine;
-                $rutafinal = $rutacarpetamine;
-                $rutacarpetamine .= "/config/serverproperties.txt";
-                $rutatemp .= "/config/serverproperties.tmp";
-                $rutafinal .= "/" . $reccarpmine . "/server.properties";
+                $rutatemp = $rutaminecraffijo;
+                $rutafinal = $rutaminecraffijo;
+                $rutatemp .= "/serverproperties.tmp";
+                $rutafinal .= "/server.properties";
 
-                $gestor = @fopen($rutacarpetamine, "r");
+                $gestor = @fopen($rutafinal, "r");
                 $file = fopen($rutatemp, "w");
 
                 while (($búfer = fgets($gestor, 4096)) !== false) {
@@ -345,8 +329,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
 
                 fclose($gestor);
                 fclose($file);
-                rename($rutatemp, $rutacarpetamine);
-                copy($rutacarpetamine, $rutafinal);
+                rename($rutatemp, $rutafinal);
             }
 
             //INSERTAR SERVER-ICON EN CASO QUE NO EXISTA
