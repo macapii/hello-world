@@ -426,11 +426,6 @@ if ($elerror == 0) {
                                                                         fwrite($file, "server-port=" . $recpuerto . PHP_EOL);
                                                                     }
 
-                                                                    if (!feof($gestor)) {
-                                                                        $elerror = 1;
-                                                                        $retorno = "Error Tarea Iniciar Servidor, ocurrió un error al guardar server.properties.";
-                                                                    }
-
                                                                     fclose($gestor);
                                                                     fclose($file);
                                                                     rename($rutatemp, $rutafinal);

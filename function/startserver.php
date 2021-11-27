@@ -311,11 +311,6 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                     fwrite($file, "server-port=" . $recpuerto . PHP_EOL);
                 }
 
-                if (!feof($gestor)) {
-                    $elerror = 1;
-                    $retorno = "fallofgets";
-                }
-
                 fclose($gestor);
                 fclose($file);
                 rename($rutatemp, $rutafinal);
