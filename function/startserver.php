@@ -307,6 +307,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                 $rutafinal = $rutaminecraffijo;
                 $rutatemp .= "/serverproperties.tmp";
                 $rutafinal .= "/server.properties";
+                $contador = 0;
 
                 $gestor = @fopen($rutafinal, "r");
                 $file = fopen($rutatemp, "w");
@@ -317,9 +318,14 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
 
                     if ($array[0] == "server-port") {
                         fwrite($file, 'server-port=' . $recpuerto . PHP_EOL);
+                        $contador = 1;
                     } else {
                         fwrite($file, $búfer);
                     }
+                }
+
+                if ($contador == 0) {
+                    fwrite($file, "server-port=" . $recpuerto . PHP_EOL);
                 }
 
                 if (!feof($gestor)) {
@@ -499,7 +505,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
 
                 $comandoperm = "chmod 744 " . $startsh;
                 exec($comandoperm);
-                exec("sh " . $startsh ." &");
+                exec("sh " . $startsh . " &");
                 $retorno = "ok";
             }
             echo $retorno;
