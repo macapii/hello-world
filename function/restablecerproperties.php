@@ -53,14 +53,17 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                 //OBTENER PUERTO DE LA CONFIGURACION
                 $recpuerto = CONFIGPUERTO;
 
+                //OBTENER CARPETA MINECRAFT
+                $reccarpmine= CONFIGDIRECTORIO;
+
                 //OBTENER RUTA DONDE TIENE QUE ESTAR LA CARPETA CONFIG
                 $dirconfig = dirname(getcwd()) . PHP_EOL;
                 $dirconfig = trim($dirconfig);
-                $dirconfig .= "/config";
+                $dirconfig .= "/" . $reccarpmine;
 
                 //ASIGNAR DIRECTORIO A RUTAESCRIVIR
                 $rutaescrivir = $dirconfig;
-                $rutaescrivir .= "/serverproperties.txt";
+                $rutaescrivir .= "/server.properties";
 
                 //SI HAY PERMISOS ESCRITURA EN CONFIG
                 clearstatcache();
