@@ -20,6 +20,7 @@ Copyright (C) 2020 Cristina Ibañez, Konata400
 
 require_once("../template/session.php");
 require_once("../template/errorreport.php");
+require_once("../config/confopciones.php");
 
 $retorno = "";
 
@@ -45,12 +46,17 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
 
       function escribir($lakey, $elvalor)
       {
-        $errorfuncion = 0;
+
+        //OBTENER CARPETA MINECRAFT
+        $reccarpmine = CONFIGDIRECTORIO;
+
+        //ASIGNAR RUTAS
         $rutacarpetamine = dirname(getcwd()) . PHP_EOL;
         $rutacarpetamine = trim($rutacarpetamine);
+        $rutacarpetamine .= "/" . $reccarpmine;
         $rutatemp = $rutacarpetamine;
-        $rutacarpetamine .= "/config/serverproperties.txt";
-        $rutatemp .= "/config/serverproperties.tmp";
+        $rutacarpetamine .="/server.properties";
+        $rutatemp .= "/serverproperties.tmp";
         $contador = 0;
 
         clearstatcache();
