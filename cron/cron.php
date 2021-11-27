@@ -268,24 +268,6 @@ if ($elerror == 0) {
                                                                     }
                                                                 }
 
-                                                                //VERIFICAR SI EXISTE SERVER.PROPERTIES
-                                                                if ($elerror == 0) {
-                                                                    clearstatcache();
-                                                                    if (!file_exists($rutaconfigproperties)) {
-                                                                        $elerror = 1;
-                                                                        $retorno = "Error Tarea Iniciar Servidor, no existe el archivo SERVER.PROPERTIES";
-                                                                    }
-                                                                }
-
-                                                                //VERIFICAR SI HAY ESCRITURA EN ARCHIVO SERVER.PROPERTIES
-                                                                if ($elerror == 0) {
-                                                                    clearstatcache();
-                                                                    if (!is_writable($rutaconfigproperties)) {
-                                                                        $elerror = 1;
-                                                                        $retorno = "Error Tarea Iniciar Servidor, no hay permisos de escritura en SERVER.PROPERTIES";
-                                                                    }
-                                                                }
-
                                                                 if ($elerror == 0) {
                                                                     if ($rectiposerv == "forge") {
                                                                         $libforge = $rutacarpetamine . "/libraries";
@@ -424,6 +406,7 @@ if ($elerror == 0) {
                                                                     $rutafinal = $rutaminecraffijo;
                                                                     $rutatemp .= "/serverproperties.tmp";
                                                                     $rutafinal .= "/server.properties";
+                                                                    $contador = 0;
 
                                                                     $gestor = @fopen($rutafinal, "r");
                                                                     $file = fopen($rutatemp, "w");
@@ -433,9 +416,14 @@ if ($elerror == 0) {
                                                                         $array = explode("=", $str);
                                                                         if ($array[0] == "server-port") {
                                                                             fwrite($file, 'server-port=' . $recpuerto . PHP_EOL);
+                                                                            $contador = 1;
                                                                         } else {
                                                                             fwrite($file, $búfer);
                                                                         }
+                                                                    }
+
+                                                                    if ($contador == 0) {
+                                                                        fwrite($file, "server-port=" . $recpuerto . PHP_EOL);
                                                                     }
 
                                                                     if (!feof($gestor)) {
