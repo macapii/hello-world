@@ -210,7 +210,7 @@ function test_input($data)
                                                         $obtener = leerlineas('gamemode');
 
                                                         if ($obtener == "") {
-                                                            echo '<option selected hidden>No hay ningúna opción seleccionada</option>';
+                                                            echo '<option selected hidden>No hay ninguna opción seleccionada</option>';
                                                         }
 
                                                         for ($i = 0; $i < count($lostextos); $i++) {
@@ -259,7 +259,7 @@ function test_input($data)
                                                         $obtener = leerlineas('force-gamemode');
 
                                                         if ($obtener == "") {
-                                                            echo '<option selected hidden>No hay ningúna opción seleccionada</option>';
+                                                            echo '<option selected hidden>No hay ninguna opción seleccionada</option>';
                                                         }
 
                                                         for ($i = 0; $i < count($lostextos); $i++) {
@@ -308,7 +308,7 @@ function test_input($data)
                                                         $obtener = leerlineas('difficulty');
 
                                                         if ($obtener == "") {
-                                                            echo '<option selected hidden>No hay ningúna opción seleccionada</option>';
+                                                            echo '<option selected hidden>No hay ninguna opción seleccionada</option>';
                                                         }
 
                                                         for ($i = 0; $i < count($lostextos); $i++) {
@@ -357,7 +357,7 @@ function test_input($data)
                                                         $obtener = leerlineas('hardcore');
 
                                                         if ($obtener == "") {
-                                                            echo '<option selected hidden>No hay ningúna opción seleccionada</option>';
+                                                            echo '<option selected hidden>No hay ninguna opción seleccionada</option>';
                                                         }
 
                                                         for ($i = 0; $i < count($lostextos); $i++) {
@@ -406,7 +406,7 @@ function test_input($data)
                                                         $obtener = leerlineas('pvp');
 
                                                         if ($obtener == "") {
-                                                            echo '<option selected hidden>No hay ningúna opción seleccionada</option>';
+                                                            echo '<option selected hidden>No hay ninguna opción seleccionada</option>';
                                                         }
 
                                                         for ($i = 0; $i < count($lostextos); $i++) {
@@ -455,7 +455,7 @@ function test_input($data)
                                                         $obtener = leerlineas('spawn-npcs');
 
                                                         if ($obtener == "") {
-                                                            echo '<option selected hidden>No hay ningúna opción seleccionada</option>';
+                                                            echo '<option selected hidden>No hay ninguna opción seleccionada</option>';
                                                         }
 
                                                         for ($i = 0; $i < count($lostextos); $i++) {
@@ -504,7 +504,7 @@ function test_input($data)
                                                         $obtener = leerlineas('spawn-animals');
 
                                                         if ($obtener == "") {
-                                                            echo '<option selected hidden>No hay ningúna opción seleccionada</option>';
+                                                            echo '<option selected hidden>No hay ninguna opción seleccionada</option>';
                                                         }
 
                                                         for ($i = 0; $i < count($lostextos); $i++) {
@@ -553,7 +553,7 @@ function test_input($data)
                                                         $obtener = leerlineas('spawn-monsters');
 
                                                         if ($obtener == "") {
-                                                            echo '<option selected hidden>No hay ningúna opción seleccionada</option>';
+                                                            echo '<option selected hidden>No hay ninguna opción seleccionada</option>';
                                                         }
 
                                                         for ($i = 0; $i < count($lostextos); $i++) {
@@ -602,7 +602,7 @@ function test_input($data)
                                                         $obtener = leerlineas('allow-flight');
 
                                                         if ($obtener == "") {
-                                                            echo '<option selected hidden>No hay ningúna opción seleccionada</option>';
+                                                            echo '<option selected hidden>No hay ninguna opción seleccionada</option>';
                                                         }
 
                                                         for ($i = 0; $i < count($lostextos); $i++) {
@@ -734,7 +734,7 @@ function test_input($data)
                                                         $obtener = leerlineas('require-resource-pack');
 
                                                         if ($obtener == "") {
-                                                            echo '<option selected hidden>No hay ningúna opción seleccionada</option>';
+                                                            echo '<option selected hidden>No hay ninguna opción seleccionada</option>';
                                                         }
 
                                                         for ($i = 0; $i < count($lostextos); $i++) {
@@ -880,7 +880,7 @@ function test_input($data)
                                                         $obtener = leerlineas('level-type');
 
                                                         if ($obtener == "") {
-                                                            echo '<option selected hidden>No hay ningúna opción seleccionada</option>';
+                                                            echo '<option selected hidden>No hay ninguna opción seleccionada</option>';
                                                         }
 
                                                         for ($i = 0; $i < count($lostextos); $i++) {
@@ -984,7 +984,7 @@ function test_input($data)
                                                         $obtener = leerlineas('generate-structures');
 
                                                         if ($obtener == "") {
-                                                            echo '<option selected hidden>No hay ningúna opción seleccionada</option>';
+                                                            echo '<option selected hidden>No hay ninguna opción seleccionada</option>';
                                                         }
 
                                                         for ($i = 0; $i < count($lostextos); $i++) {
@@ -1032,7 +1032,7 @@ function test_input($data)
                                                         $obtener = leerlineas('allow-nether');
 
                                                         if ($obtener == "") {
-                                                            echo '<option selected hidden>No hay ningúna opción seleccionada</option>';
+                                                            echo '<option selected hidden>No hay ninguna opción seleccionada</option>';
                                                         }
 
                                                         for ($i = 0; $i < count($lostextos); $i++) {
@@ -1176,7 +1176,7 @@ function test_input($data)
                                                         $obtener = leerlineas('online-mode');
 
                                                         if ($obtener == "") {
-                                                            echo '<option selected hidden>No hay ningúna opción seleccionada</option>';
+                                                            echo '<option selected hidden>No hay ninguna opción seleccionada</option>';
                                                         }
 
                                                         for ($i = 0; $i < count($lostextos); $i++) {
@@ -1252,7 +1252,7 @@ function test_input($data)
                                                         $obtener = leerlineas('enable-command-block');
 
                                                         if ($obtener == "") {
-                                                            echo '<option selected hidden>No hay ningúna opción seleccionada</option>';
+                                                            echo '<option selected hidden>No hay ninguna opción seleccionada</option>';
                                                         }
 
                                                         for ($i = 0; $i < count($lostextos); $i++) {
@@ -1300,7 +1300,7 @@ function test_input($data)
                                                         $obtener = leerlineas('enable-query');
 
                                                         if ($obtener == "") {
-                                                            echo '<option selected hidden>No hay ningúna opción seleccionada</option>';
+                                                            echo '<option selected hidden>No hay ninguna opción seleccionada</option>';
                                                         }
 
                                                         for ($i = 0; $i < count($lostextos); $i++) {
@@ -1376,7 +1376,7 @@ function test_input($data)
                                                         $obtener = leerlineas('enable-rcon');
 
                                                         if ($obtener == "") {
-                                                            echo '<option selected hidden>No hay ningúna opción seleccionada</option>';
+                                                            echo '<option selected hidden>No hay ninguna opción seleccionada</option>';
                                                         }
 
                                                         for ($i = 0; $i < count($lostextos); $i++) {
@@ -1480,7 +1480,7 @@ function test_input($data)
                                                         $obtener = leerlineas('white-list');
 
                                                         if ($obtener == "") {
-                                                            echo '<option selected hidden>No hay ningúna opción seleccionada</option>';
+                                                            echo '<option selected hidden>No hay ninguna opción seleccionada</option>';
                                                         }
 
                                                         for ($i = 0; $i < count($lostextos); $i++) {
@@ -1528,7 +1528,7 @@ function test_input($data)
                                                         $obtener = leerlineas('enforce-whitelist');
 
                                                         if ($obtener == "") {
-                                                            echo '<option selected hidden>No hay ningúna opción seleccionada</option>';
+                                                            echo '<option selected hidden>No hay ninguna opción seleccionada</option>';
                                                         }
 
                                                         for ($i = 0; $i < count($lostextos); $i++) {
@@ -1604,7 +1604,7 @@ function test_input($data)
                                                         $obtener = leerlineas('enable-status');
 
                                                         if ($obtener == "") {
-                                                            echo '<option selected hidden>No hay ningúna opción seleccionada</option>';
+                                                            echo '<option selected hidden>No hay ninguna opción seleccionada</option>';
                                                         }
 
                                                         for ($i = 0; $i < count($lostextos); $i++) {
@@ -1652,7 +1652,7 @@ function test_input($data)
                                                         $obtener = leerlineas('broadcast-console-to-ops');
 
                                                         if ($obtener == "") {
-                                                            echo '<option selected hidden>No hay ningúna opción seleccionada</option>';
+                                                            echo '<option selected hidden>No hay ninguna opción seleccionada</option>';
                                                         }
 
                                                         for ($i = 0; $i < count($lostextos); $i++) {
@@ -1700,7 +1700,7 @@ function test_input($data)
                                                         $obtener = leerlineas('broadcast-rcon-to-ops');
 
                                                         if ($obtener == "") {
-                                                            echo '<option selected hidden>No hay ningúna opción seleccionada</option>';
+                                                            echo '<option selected hidden>No hay ninguna opción seleccionada</option>';
                                                         }
 
                                                         for ($i = 0; $i < count($lostextos); $i++) {
@@ -1748,7 +1748,7 @@ function test_input($data)
                                                         $obtener = leerlineas('use-native-transport');
 
                                                         if ($obtener == "") {
-                                                            echo '<option selected hidden>No hay ningúna opción seleccionada</option>';
+                                                            echo '<option selected hidden>No hay ninguna opción seleccionada</option>';
                                                         }
 
                                                         for ($i = 0; $i < count($lostextos); $i++) {
@@ -1796,7 +1796,7 @@ function test_input($data)
                                                         $obtener = leerlineas('prevent-proxy-connections');
 
                                                         if ($obtener == "") {
-                                                            echo '<option selected hidden>No hay ningúna opción seleccionada</option>';
+                                                            echo '<option selected hidden>No hay ninguna opción seleccionada</option>';
                                                         }
 
                                                         for ($i = 0; $i < count($lostextos); $i++) {
@@ -1844,7 +1844,7 @@ function test_input($data)
                                                         $obtener = leerlineas('enable-jmx-monitoring');
 
                                                         if ($obtener == "") {
-                                                            echo '<option selected hidden>No hay ningúna opción seleccionada</option>';
+                                                            echo '<option selected hidden>No hay ninguna opción seleccionada</option>';
                                                         }
 
                                                         for ($i = 0; $i < count($lostextos); $i++) {
@@ -1892,7 +1892,7 @@ function test_input($data)
                                                         $obtener = leerlineas('snooper-enabled');
 
                                                         if ($obtener == "") {
-                                                            echo '<option selected hidden>No hay ningúna opción seleccionada</option>';
+                                                            echo '<option selected hidden>No hay ninguna opción seleccionada</option>';
                                                         }
 
                                                         for ($i = 0; $i < count($lostextos); $i++) {
@@ -1940,7 +1940,7 @@ function test_input($data)
                                                         $obtener = leerlineas('sync-chunk-writes');
 
                                                         if ($obtener == "") {
-                                                            echo '<option selected hidden>No hay ningúna opción seleccionada</option>';
+                                                            echo '<option selected hidden>No hay ninguna opción seleccionada</option>';
                                                         }
 
                                                         for ($i = 0; $i < count($lostextos); $i++) {
