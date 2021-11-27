@@ -60,10 +60,6 @@ require_once("template/header.php");
     $iniverificonfopcionesphp = trim($iniverificonfopcionesphp);
     $iniverificonfopcionesphp .= "/config/confopciones.php";
 
-    $iniverificonfserverpropertiestxt = getcwd();
-    $iniverificonfserverpropertiestxt = trim($iniverificonfserverpropertiestxt);
-    $iniverificonfserverpropertiestxt .= "/config/serverproperties.txt";
-
     //VERIFICAR LECTURA CARPETA RAIZ
     clearstatcache();
     if (!is_readable($iniverificarpraiz)) {
@@ -192,32 +188,13 @@ require_once("template/header.php");
     }
 
 
-    if ($yainstall == 0 && $elerror == 0) {
-
-      //VERIFICAR /config/serverproperties.txt";
-      clearstatcache();
-      if (file_exists($iniverificonfserverpropertiestxt)) {
-
-        clearstatcache();
-        if (!is_readable($iniverificonfserverpropertiestxt)) {
-          $showerrors .= 'Error: No tienes permisos de lectura en el archivo /config/serverproperties.txt, revisa los permisos de linux.<br><br>';
-          $elerror = 1;
-        }
-
-        clearstatcache();
-        if (!is_writable($iniverificonfserverpropertiestxt)) {
-          $showerrors .= 'Error: No tienes permisos de escritura en el archivo /config/serverproperties.txt, revisa los permisos de linux.<br><br>';
-          $elerror = 1;
-        }
-      }
-    }
+    //if ($yainstall == 0 && $elerror == 0) {
+    //}
 
     if ($elerror == 1) {
       echo '<div class="alert alert-danger" role="alert">' . $showerrors . '</div>';
       exit;
     }
-
-
 
     //CARGA VARIABLES
     $sumaconfig = 0;
