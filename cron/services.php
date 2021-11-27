@@ -165,13 +165,9 @@ if ($elerror == 0) {
 
             $rutaminecraffijo = $rutacarpetamine;
 
-            //VARIABLE RUTA CARPETA CONFIG
-            $rutacarpetaconfig = $RUTAPRINCIPAL;
-            $rutacarpetaconfig = trim($rutacarpetaconfig);
-            $rutacarpetaconfig .= "/config";
-
-            //VARIABLE RUTA SERVERPROPERTIES.TXT
-            $rutaconfigproperties = $rutacarpetaconfig . "/serverproperties.txt";
+            //VARIABLE RUTA SERVER.PROPERTIES
+            $rutaconfigproperties = $rutaminecraffijo;
+            $rutaconfigproperties .= "/server.properties";
 
             //VERIFICAR CARPETA MINECRAFT
             if ($elerror == 0) {
@@ -209,30 +205,21 @@ if ($elerror == 0) {
               }
             }
 
-            //VERIFICAR SI HAY ESCRITURA EN CARPETA CONFIG
-            if ($elerror == 0) {
-              clearstatcache();
-              if (!is_writable($rutacarpetaconfig)) {
-                $elerror = 1;
-                $retorno = "Error Tarea Iniciar Servidor, no hay permisos de escritura en la carpeta Config.";
-              }
-            }
-
-            //VERIFICAR SI EXISTE ARCHIVO /CONFIG/SERVERPROPERTIES
+            //VERIFICAR SI EXISTE ARCHIVO SERVER.PROPERTIES
             if ($elerror == 0) {
               clearstatcache();
               if (!file_exists($rutaconfigproperties)) {
                 $elerror = 1;
-                $retorno = "Error Tarea Iniciar Servidor, no existe el archivo /config/serverproperties.txt";
+                $retorno = "Error Tarea Iniciar Servidor, no existe el archivo SERVER.PROPERTIES";
               }
             }
 
-            //VERIFICAR SI HAY ESCRITURA EN ARCHIVO /CONFIG/SERVERPROPERTIES
+            //VERIFICAR SI HAY ESCRITURA EN ARCHIVO SERVER.PROPERTIES
             if ($elerror == 0) {
               clearstatcache();
               if (!is_writable($rutaconfigproperties)) {
                 $elerror = 1;
-                $retorno = "Error Tarea Iniciar Servidor, no hay permisos de escritura en /config/serverproperties.txt";
+                $retorno = "Error Tarea Iniciar Servidor, no hay permisos de escritura en SERVER.PROPERTIES";
               }
             }
 
@@ -370,15 +357,12 @@ if ($elerror == 0) {
 
             //COMPROVAR SERVER.PROPERTIES
             if ($elerror == 0) {
-              $rutacarpetamine = $RUTAPRINCIPAL;
-              $rutacarpetamine = trim($rutacarpetamine);
-              $rutatemp = $rutacarpetamine;
-              $rutafinal = $rutacarpetamine;
-              $rutacarpetamine .= "/config/serverproperties.txt";
-              $rutatemp .= "/config/serverproperties.tmp";
-              $rutafinal .= "/" . $reccarpmine . "/server.properties";
+              $rutatemp = $rutaminecraffijo;
+              $rutafinal = $rutaminecraffijo;
+              $rutatemp .= "/serverproperties.tmp";
+              $rutafinal .= "/server.properties";
 
-              $gestor = @fopen($rutacarpetamine, "r");
+              $gestor = @fopen($rutafinal, "r");
               $file = fopen($rutatemp, "w");
 
               while (($búfer = fgets($gestor, 4096)) !== false) {
@@ -398,8 +382,7 @@ if ($elerror == 0) {
 
               fclose($gestor);
               fclose($file);
-              rename($rutatemp, $rutacarpetamine);
-              copy($rutacarpetamine, $rutafinal);
+              rename($rutatemp, $rutafinal);
             }
 
             //INSERTAR SERVER-ICON EN CASO QUE NO EXISTA
@@ -535,7 +518,20 @@ if ($elerror == 0) {
                 guardareinicio($larutash, $cominiciostart, $larutascrrenlog);
               }
 
-              $elpid = shell_exec($comandoserver);
+              //CREAR SH
+              $rutastartsh = $RUTAPRINCIPAL;
+              $startsh = $rutastartsh . "/temp";
+              $startsh .= "/" . $reccarpmine . ".sh";
+
+              $file = fopen($startsh, "w");
+              fwrite($file, "#!/bin/sh" . PHP_EOL);
+              fwrite($file, $comandoserver . PHP_EOL);
+              fclose($file);
+
+              $comandoperm = "chmod 744 " . $startsh;
+              exec($comandoperm);
+              exec("sh " . $startsh . " &");
+
               $retorno = "Tarea Iniciar Servidor, ejecutado correctamente.";
             }
           } else {
