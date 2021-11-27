@@ -152,23 +152,6 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                 }
             }
 
-            //VERIFICAR SI EXISTE ARCHIVO SERVER.PROPERTIES
-            if ($elerror == 0) {
-                if (!file_exists($rutaconfigproperties)) {
-                    $elerror = 1;
-                    $retorno = "noserverpropertiestxt";
-                }
-            }
-
-            //VERIFICAR SI HAY ESCRITURA EN ARCHIVO SERVER.PROPERTIES
-            if ($elerror == 0) {
-                clearstatcache();
-                if (!is_writable($rutaconfigproperties)) {
-                    $elerror = 1;
-                    $retorno = "noconfservpropergwrite";
-                }
-            }
-
             if ($elerror == 0) {
                 if ($rectiposerv == "forge") {
                     $libforge = $rutacarpetamine . "/libraries";
