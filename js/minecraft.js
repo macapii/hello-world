@@ -46,6 +46,14 @@ $(function () {
         }
     });
 
+    $("#form-simulation-distance").keypress(function (e) {
+        if (e.keyCode < 48 || e.keyCode > 57) {
+            return false;
+        } else {
+            return true;
+        }
+    });
+
     $("#form-spawn-protection").keypress(function (e) {
         if (e.keyCode < 48 || e.keyCode > 57) {
             return false;
@@ -282,6 +290,12 @@ $(function () {
         }
     }
 
+    if (document.getElementById("label-simulation-distance") !== null) {
+        if (document.getElementById("form-simulation-distance") !== null) {
+            document.getElementById("label-simulation-distance").innerHTML = htmlEntities("simulation-distance=" + document.getElementById("form-simulation-distance").value);
+        }
+    }
+
     if (document.getElementById("label-spawn-protection") !== null) {
         if (document.getElementById("form-spawn-protection") !== null) {
             document.getElementById("label-spawn-protection").innerHTML = htmlEntities("spawn-protection=" + document.getElementById("form-spawn-protection").value);
@@ -303,6 +317,12 @@ $(function () {
     if (document.getElementById("label-max-players") !== null) {
         if (document.getElementById("form-max-players") !== null) {
             document.getElementById("label-max-players").innerHTML = htmlEntities("max-players=" + document.getElementById("form-max-players").value);
+        }
+    }
+
+    if (document.getElementById("label-hide-online-players") !== null) {
+        if (document.getElementById("form-hide-online-players") !== null) {
+            document.getElementById("label-hide-online-players").innerHTML = htmlEntities("hide-online-players=" + document.getElementById("form-hide-online-players").value);
         }
     }
 
@@ -1230,6 +1250,38 @@ $(function () {
         }
     });
 
+    $("#form-simulation-distance").change(function () {
+        var errores = 0;
+        var envioaction = "simulation-distance";
+        var enviovalor = document.getElementById("form-simulation-distance").value;
+
+        if (enviovalor > 32 || enviovalor < 5) {
+            errores = 1;
+        }
+
+        if (errores == 0) {
+
+            $.ajax({
+                type: "POST",
+                url: "function/guardarproperties.php",
+                data: {
+                    action: envioaction,
+                    valor: enviovalor
+                },
+                success: function (data) {
+                    var getdebug = 0;
+                    if (getdebug == 1) {
+                        alert(data);
+                    }
+                }
+            });
+
+            if (document.getElementById("label-simulation-distance") !== null) {
+                document.getElementById("label-simulation-distance").innerHTML = htmlEntities("simulation-distance=" + document.getElementById("form-simulation-distance").value);
+            }
+        }
+    });
+
     $("#form-spawn-protection").change(function () {
         var errores = 0;
         var envioaction = "spawn-protection";
@@ -1348,6 +1400,30 @@ $(function () {
                 document.getElementById("label-max-players").innerHTML = htmlEntities("max-players=" + document.getElementById("form-max-players").value);
             }
         }
+    });
+
+    $("#form-hide-online-players").change(function () {
+        var envioaction = "hide-online-players";
+        var enviovalor = document.getElementById("form-hide-online-players").value;
+        $.ajax({
+            type: "POST",
+            url: "function/guardarproperties.php",
+            data: {
+                action: envioaction,
+                valor: enviovalor
+            },
+            success: function (data) {
+                var getdebug = 0;
+                if (getdebug == 1) {
+                    alert(data);
+                }
+            }
+        });
+
+        if (document.getElementById("label-hide-online-players") !== null) {
+            document.getElementById("label-hide-online-players").innerHTML = htmlEntities("hide-online-players=" + document.getElementById("form-hide-online-players").value);
+        }
+
     });
 
     $("#form-enable-command-block").change(function () {

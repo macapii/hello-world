@@ -1089,6 +1089,30 @@ function test_input($data)
                                         <div class="container">
                                             <div class="row">
                                                 <div class="col-md-8">
+                                                    <h3 class=""><b>Distancia Simulación</b></h3>
+                                                    <p class="lead">Distancia en chunks en la que los objetos como hornos, granjas, plantas quedan cargados y funcionando aunque no estés cerca.</p>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <p class="">Valor Defecto: 10<br>Valor Min: 5 - Valor Max: 32<br>Requiere Versión: 1.18 o superior</p>
+                                                    <input id="form-simulation-distance" type="number" class="form-control" min="5" max="32" value="<?php echo (leerlineas('simulation-distance')); ?>">
+                                                    <br>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p id="label-simulation-distance" class="lead text-center text-white mt-2 bg-primary">simulation-distance</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Separacion Fin -->
+                                    <hr>
+                                    <!-- Separacion Inicio -->
+                                    <div class="">
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="col-md-8">
                                                     <h3 class=""><b>Protección Spawn</b></h3>
                                                 </div>
                                                 <div class="col-md-4">
@@ -1222,6 +1246,54 @@ function test_input($data)
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     <p id="label-max-players" class="lead text-center text-white mt-2 bg-primary">max-players</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Separacion Fin -->
+                                    <hr>
+                                    <!-- Separacion Inicio -->
+                                    <div class="">
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="col-md-8">
+                                                    <h3 class=""><b>Ocultar Jugadores Online</b></h3>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <p class="">Valor Defecto: false</p>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-8">
+                                                    <p class="lead">El servidor no devuelve la lista de jugadores online.</p>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <select id="form-hide-online-players" class="form-control w-100">
+                                                        <?php
+                                                        $lostextos = array('False', 'True (Requiere 1.18 o superior)');
+                                                        $losvalues = array('false', 'true');
+
+                                                        $obtener = leerlineas('hide-online-players');
+
+                                                        if ($obtener == "") {
+                                                            echo '<option selected hidden>No hay ninguna opción seleccionada</option>';
+                                                        }
+
+                                                        for ($i = 0; $i < count($lostextos); $i++) {
+
+                                                            if ($obtener == $losvalues[$i]) {
+                                                                echo '<option selected value="' . $losvalues[$i] . '">' . $lostextos[$i] . '</option>';
+                                                            } else {
+                                                                echo '<option value="' . $losvalues[$i] . '">' . $lostextos[$i] . '</option>';
+                                                            }
+                                                        }
+                                                        ?>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p id="label-hide-online-players" class="lead text-center text-white mt-2 bg-primary">hide-online-players</p>
                                                 </div>
                                             </div>
                                         </div>
