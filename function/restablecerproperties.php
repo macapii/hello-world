@@ -138,6 +138,8 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                     fwrite($file, "spawn-protection=16" . PHP_EOL);
                     fwrite($file, "max-world-size=29999984" . PHP_EOL);
                     fwrite($file, "text-filtering-config=" . PHP_EOL);
+                    fwrite($file, "hide-online-players=false" . PHP_EOL);
+                    fwrite($file, "simulation-distance=10" . PHP_EOL);
                     fclose($file);
                     $retorno = "OK";
                 }
