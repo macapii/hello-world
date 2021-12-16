@@ -1679,8 +1679,16 @@ $(function () {
     });
 
     $("#form-server-ip").keyup(function () {
+        const regexipExp = /^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/gi;
         var envioaction = "server-ip";
         var enviovalor = document.getElementById("form-server-ip").value;
+
+        const validarIP = regexipExp.test(enviovalor);
+
+        if (validarIP == false) {
+            enviovalor = "";
+        }
+
         $.ajax({
             type: "POST",
             url: "function/guardarproperties.php",
@@ -1704,6 +1712,7 @@ $(function () {
 
     if (document.getElementById("form-server-ip") !== null) {
         document.getElementById("form-server-ip").addEventListener('paste', function (event) {
+            const regexipExp = /^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/gi;
             var envioaction = "server-ip";
             var enviovalor = event.clipboardData.getData('text');
 
@@ -1724,6 +1733,12 @@ $(function () {
 
             enviar = textini + event.clipboardData.getData('text') + textfinal;
             enviovalor = enviar;
+
+            const validarIP = regexipExp.test(enviovalor);
+
+            if (validarIP == false) {
+                enviovalor = "";
+            }
 
             $.ajax({
                 type: "POST",
