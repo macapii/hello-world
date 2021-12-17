@@ -371,13 +371,12 @@ require_once("template/header.php");
                                                             <?php
                                                             }
                                                             ?>
-
                                                         </div>
-                                                        <hr>
                                                         <?php
                                                         //SECCION CONSOLA
                                                         if ($_SESSION['CONFIGUSER']['rango'] == 1 || array_key_exists('psystemconflinconsole', $_SESSION['CONFIGUSER']) && $_SESSION['CONFIGUSER']['psystemconflinconsole'] == 1 || array_key_exists('psystemconfbuffer', $_SESSION['CONFIGUSER']) && $_SESSION['CONFIGUSER']['psystemconfbuffer'] == 1) {
                                                         ?>
+                                                            <hr>
                                                             <div class="row">
                                                                 <div class="col-md-12">
                                                                     <label class="negrita">Configurar Consola:</label>
@@ -408,11 +407,9 @@ require_once("template/header.php");
                                                                 }
                                                                 ?>
                                                             </div>
+                                                            <hr>
                                                         <?php
                                                         }
-                                                        ?>
-
-                                                        <?php
                                                         //SELECTOR DE JAVA
                                                         if ($_SESSION['CONFIGUSER']['rango'] == 1 || array_key_exists('psystemconfjavaselect', $_SESSION['CONFIGUSER']) && $_SESSION['CONFIGUSER']['psystemconfjavaselect'] == 1) {
                                                         ?>
