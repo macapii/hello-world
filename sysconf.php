@@ -373,37 +373,41 @@ require_once("template/header.php");
                                                             ?>
 
                                                         </div>
-
+                                                        <hr>
                                                         <?php
-                                                        //LINEAS CONSOLA
-                                                        if ($_SESSION['CONFIGUSER']['rango'] == 1 || array_key_exists('psystemconflinconsole', $_SESSION['CONFIGUSER']) && $_SESSION['CONFIGUSER']['psystemconflinconsole'] == 1) {
+                                                        //SECCION CONSOLA
+                                                        if ($_SESSION['CONFIGUSER']['rango'] == 1 || array_key_exists('psystemconflinconsole', $_SESSION['CONFIGUSER']) && $_SESSION['CONFIGUSER']['psystemconflinconsole'] == 1 || array_key_exists('psystemconfbuffer', $_SESSION['CONFIGUSER']) && $_SESSION['CONFIGUSER']['psystemconfbuffer'] == 1) {
                                                         ?>
-                                                            <hr>
                                                             <div class="row">
-                                                                <div class="col-md-3">
-                                                                    <label class="negrita" for="linconsola">Líneas Mostradas por Consola:</label>
-                                                                    <input type="number" class="form-control" id="linconsola" name="linconsola" required="required" min="0" max="1000" value="<?php echo $recnumerolineaconsola; ?>">
-                                                                    <label> 0 = Ilimitado</label>
+                                                                <div class="col-md-12">
+                                                                    <label class="negrita">Configurar Consola:</label>
                                                                 </div>
                                                             </div>
 
-                                                        <?php
-                                                        }
-                                                        ?>
-
-                                                        <?php
-                                                        //LINEAS BUFFER
-                                                        if ($_SESSION['CONFIGUSER']['rango'] == 1 || array_key_exists('psystemconfbuffer', $_SESSION['CONFIGUSER']) && $_SESSION['CONFIGUSER']['psystemconfbuffer'] == 1) {
-                                                        ?>
-                                                            <hr>
                                                             <div class="row">
-                                                                <div class="col-md-3">
-                                                                    <label class="negrita" for="bufferlimit">Lineas Buffer Consola:</label>
-                                                                    <input type="number" class="form-control" id="bufferlimit" name="bufferlimit" required="required" min="0" max="500" value="<?php echo $recbuffer; ?>">
-                                                                    <label> 0 = Desactivado</label>
-                                                                </div>
+                                                                <?php
+                                                                //LINEAS CONSOLA
+                                                                if ($_SESSION['CONFIGUSER']['rango'] == 1 || array_key_exists('psystemconflinconsole', $_SESSION['CONFIGUSER']) && $_SESSION['CONFIGUSER']['psystemconflinconsole'] == 1) {
+                                                                ?>
+                                                                    <div class="col-md-3">
+                                                                        <label class="negrita" for="linconsola">Líneas Mostradas por Consola:</label>
+                                                                        <input type="number" class="form-control" id="linconsola" name="linconsola" required="required" min="0" max="1000" value="<?php echo $recnumerolineaconsola; ?>">
+                                                                        <label> 0 = Ilimitado</label>
+                                                                    </div>
+                                                                <?php
+                                                                }
+                                                                //LINEAS BUFFER CONSOLA
+                                                                if ($_SESSION['CONFIGUSER']['rango'] == 1 || array_key_exists('psystemconfbuffer', $_SESSION['CONFIGUSER']) && $_SESSION['CONFIGUSER']['psystemconfbuffer'] == 1) {
+                                                                ?>
+                                                                    <div class="col-md-3">
+                                                                        <label class="negrita" for="bufferlimit">Lineas Buffer Consola:</label>
+                                                                        <input type="number" class="form-control" id="bufferlimit" name="bufferlimit" required="required" min="0" max="500" value="<?php echo $recbuffer; ?>">
+                                                                        <label> 0 = Desactivado</label>
+                                                                    </div>
+                                                                <?php
+                                                                }
+                                                                ?>
                                                             </div>
-
                                                         <?php
                                                         }
                                                         ?>
