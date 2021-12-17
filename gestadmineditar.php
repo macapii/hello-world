@@ -233,7 +233,7 @@ require_once("template/header.php");
                                                                                                                                                                             }
                                                                                                                                                                             ?>>
 
-                                                                                        <label class="negrita mr-2" for="psystemconfavanzados">Nombre Servidor</label>
+                                                                                        <label class="negrita mr-2" for="psystemconfnombre">Nombre Servidor</label>
                                                                                     </div>
                                                                                     <p>Permite cambiar el nombre del servidor.</p>
                                                                                 </div>
