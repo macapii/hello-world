@@ -312,6 +312,41 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
           }
         }
 
+        //TIPO CONSOLA
+        if ($elerror == 0) {
+
+          if ($_SESSION['CONFIGUSER']['rango'] == 1) {
+            if (isset($_POST["eltipoconsola"])) {
+              $eltypeconsola = test_input($_POST["eltipoconsola"]);
+
+              //ES NUMERICO
+              if ($elerror == 0) {
+                if (!is_numeric($eltypeconsola)) {
+                  $retorno = "typenonumero";
+                  $elerror = 1;
+                }
+              }
+
+              //RANGO
+              if ($elerror == 0) {
+                if ($eltypeconsola < 0 || $eltypeconsola > 2) {
+                  $retorno = "typeoutrango";
+                  $elerror = 1;
+                }
+              }
+            } else {
+              $retorno = "typeconsolavacio";
+              $elerror = 1;
+            }
+          } else {
+            if (!defined('CONFIGCONSOLETYPE')) {
+              $eltypeconsola = 2;
+            } else {
+              $eltypeconsola = CONFIGCONSOLETYPE;
+            }
+          }
+        }
+
         //EXTRAS TAMAÑO CARPETAS
         if ($elerror == 0) {
           if ($_SESSION['CONFIGUSER']['rango'] == 1 || $_SESSION['CONFIGUSER']['rango'] == 2) {
@@ -692,6 +727,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
           fwrite($file, 'define("CONFIGBUFFERLIMIT", "' . $elbufferlimit . '");' . PHP_EOL);
           fwrite($file, 'define("CONFIGARGMANUALINI", "' . $elargmanualinicio . '");' . PHP_EOL);
           fwrite($file, 'define("CONFIGARGMANUALFINAL", "' . $elargmanualfinal . '");' . PHP_EOL);
+          fwrite($file, 'define("CONFIGCONSOLETYPE", "' . $eltypeconsola . '");' . PHP_EOL);
           fwrite($file, "?>" . PHP_EOL);
           fclose($file);
 
