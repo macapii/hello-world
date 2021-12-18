@@ -273,6 +273,11 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                     $arrayobtenido[$elindice]['psystemconfbuffer'] = 1;
                 }
 
+                //SYSTEM CONFIG TIPO CONSOLA
+                if (isset($_POST['psystemconftypeconsole'])) {
+                    $arrayobtenido[$elindice]['psystemconftypeconsole'] = 1;
+                }
+
                 //SYSTEM CONFIG INICIAR MINECRAFT AL ARRANCAR LINUX
                 if (isset($_POST['psystemstartonboot'])) {
                     $arrayobtenido[$elindice]['psystemstartonboot'] = 1;

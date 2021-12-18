@@ -238,8 +238,6 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                                 $arrayobtenido[$i]['psystemconftipo'] = 0;
                             }
 
-
-
                             //SYSTEM CONFIG SUBIDA
                             if (isset($_POST['psystemconfsubida'])) {
                                 $arrayobtenido[$i]['psystemconfsubida'] = 1;
@@ -287,6 +285,13 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                                 $arrayobtenido[$i]['psystemconfbuffer'] = 1;
                             } else {
                                 $arrayobtenido[$i]['psystemconfbuffer'] = 0;
+                            }
+
+                            //SYSTEM CONFIG TIPO CONSOLA
+                            if (isset($_POST['psystemconftypeconsole'])) {
+                                $arrayobtenido[$i]['psystemconftypeconsole'] = 1;
+                            } else {
+                                $arrayobtenido[$i]['psystemconftypeconsole'] = 0;
                             }
 
                             //SYSTEM CONFIG INICIAR MINECRAFT AL ARRANCAR LINUX

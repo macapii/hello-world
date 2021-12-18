@@ -320,6 +320,22 @@ require_once("template/header.php");
 
                                                                                 <div class="form-group">
                                                                                     <div>
+                                                                                        <input id="psystemconftypeconsole" name="psystemconftypeconsole" type="checkbox" value="1" <?php
+
+                                                                                                                                                                                    if (array_key_exists('psystemconftypeconsole', $_SESSION['EDITARSUPER'])) {
+                                                                                                                                                                                        if ($_SESSION['EDITARSUPER']['psystemconftypeconsole'] == 1) {
+                                                                                                                                                                                            echo "checked";
+                                                                                                                                                                                        }
+                                                                                                                                                                                    }
+                                                                                                                                                                                    ?>>
+
+                                                                                        <label class="negrita mr-2" for="psystemconftypeconsole">Tipo Consola</label>
+                                                                                    </div>
+                                                                                    <p>Permite configurar el tipo de output de la consola.</p>
+                                                                                </div>
+
+                                                                                <div class="form-group">
+                                                                                    <div>
                                                                                         <input id="psystemstartonboot" name="psystemstartonboot" type="checkbox" value="1" <?php
 
                                                                                                                                                                                     if (array_key_exists('psystemstartonboot', $_SESSION['EDITARSUPER'])) {

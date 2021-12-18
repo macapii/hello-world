@@ -205,6 +205,14 @@ require_once("template/header.php");
 
                                                                             <div class="form-group">
                                                                                 <div>
+                                                                                    <input id="psystemconftypeconsole" name="psystemconftypeconsole" type="checkbox" value="1">
+                                                                                    <label class="negrita mr-2" for="psystemconftypeconsole">Tipo Consola</label>
+                                                                                </div>
+                                                                                <p>Permite configurar el tipo de output de la consola.</p>
+                                                                            </div>
+
+                                                                            <div class="form-group">
+                                                                                <div>
                                                                                     <input id="psystemstartonboot" name="psystemstartonboot" type="checkbox" value="1">
                                                                                     <label class="negrita mr-2" for="psystemstartonboot">Iniciar servidor Minecraft al arrancar Linux</label>
                                                                                 </div>
