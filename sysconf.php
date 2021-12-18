@@ -380,7 +380,7 @@ require_once("template/header.php");
                                                         </div>
                                                         <?php
                                                         //SECCION CONSOLA
-                                                        if ($_SESSION['CONFIGUSER']['rango'] == 1 || array_key_exists('psystemconflinconsole', $_SESSION['CONFIGUSER']) && $_SESSION['CONFIGUSER']['psystemconflinconsole'] == 1 || array_key_exists('psystemconfbuffer', $_SESSION['CONFIGUSER']) && $_SESSION['CONFIGUSER']['psystemconfbuffer'] == 1) {
+                                                        if ($_SESSION['CONFIGUSER']['rango'] == 1 || array_key_exists('psystemconflinconsole', $_SESSION['CONFIGUSER']) && $_SESSION['CONFIGUSER']['psystemconflinconsole'] == 1 || array_key_exists('psystemconfbuffer', $_SESSION['CONFIGUSER']) && $_SESSION['CONFIGUSER']['psystemconfbuffer'] == 1 || array_key_exists('psystemconftypeconsole', $_SESSION['CONFIGUSER']) && $_SESSION['CONFIGUSER']['psystemconftypeconsole'] == 1) {
                                                         ?>
                                                             <hr>
                                                             <div class="row">
@@ -412,7 +412,7 @@ require_once("template/header.php");
                                                                 <?php
                                                                 }
                                                                 //EL TIPO DE CONSOLA
-                                                                if ($_SESSION['CONFIGUSER']['rango'] == 1) {
+                                                                if ($_SESSION['CONFIGUSER']['rango'] == 1 || array_key_exists('psystemconftypeconsole', $_SESSION['CONFIGUSER']) && $_SESSION['CONFIGUSER']['psystemconftypeconsole'] == 1) {
                                                                 ?>
                                                                     <div class="col-md-3">
                                                                         <label class="negrita" for="eltipoconsola">Tipo Consola:</label>

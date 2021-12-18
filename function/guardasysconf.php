@@ -315,7 +315,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
         //TIPO CONSOLA
         if ($elerror == 0) {
 
-          if ($_SESSION['CONFIGUSER']['rango'] == 1) {
+          if ($_SESSION['CONFIGUSER']['rango'] == 1 || array_key_exists('psystemconftypeconsole', $_SESSION['CONFIGUSER']) && $_SESSION['CONFIGUSER']['psystemconftypeconsole'] == 1) {
             if (isset($_POST["eltipoconsola"])) {
               $eltypeconsola = test_input($_POST["eltipoconsola"]);
 
