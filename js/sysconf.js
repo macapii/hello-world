@@ -71,6 +71,12 @@ $(function () {
                 document.getElementById("result").innerHTML = "<div class='alert alert-danger' role='alert'>Error: Buffer fuera de rango (0-500).</div>";
             } else if (data == "buffervacio") {
                 document.getElementById("result").innerHTML = "<div class='alert alert-danger' role='alert'>Error: El campo Buffer esta vacío.</div>";
+            } else if (data == "typenonumero") {
+                document.getElementById("result").innerHTML = "<div class='alert alert-danger' role='alert'>Error: El campo tipo consola no es numérico.</div>";
+            } else if (data == "typeoutrango") {
+                document.getElementById("result").innerHTML = "<div class='alert alert-danger' role='alert'>Error: El campo tipo consola fuera de rango (0-2).</div>";
+            } else if (data == "typeconsolavacio") {
+                document.getElementById("result").innerHTML = "<div class='alert alert-danger' role='alert'>Error: El campo tipo consola esta vacío.</div>";
             } else if (data == "nowriteconf") {
                 document.getElementById("result").innerHTML = "<div class='alert alert-danger' role='alert'>Error: La carpeta config no tiene permisos de escritura.</div>";
             } else if (data == "nocarpetaconf") {
@@ -409,6 +415,13 @@ $(function () {
             } else {
                 return true;
             }
+        });
+    }
+
+    if (document.getElementById('eltipoconsola') !== null) {
+        $("#eltipoconsola").change(function () {
+            document.getElementById("guardaserver").disabled = false;
+            document.getElementById("result").innerHTML = "";
         });
     }
 

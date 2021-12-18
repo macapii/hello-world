@@ -137,6 +137,12 @@ require_once("template/header.php");
                                                         $recargmanualfinal = CONFIGARGMANUALFINAL;
                                                     }
 
+                                                    if (!defined('CONFIGCONSOLETYPE')) {
+                                                        $recconsoletype = 2;
+                                                    } else {
+                                                        $recconsoletype = CONFIGCONSOLETYPE;
+                                                    }
+
                                                     $elnombredirectorio = $reccarpmine;
                                                     $rutaarchivo = getcwd();
                                                     $rutaarchivo = trim($rutaarchivo);
@@ -405,6 +411,29 @@ require_once("template/header.php");
                                                                     </div>
                                                                 <?php
                                                                 }
+                                                                //EL TIPO DE CONSOLA
+                                                                if ($_SESSION['CONFIGUSER']['rango'] == 1) {
+                                                                ?>
+                                                                    <div class="col-md-3">
+                                                                        <label class="negrita" for="eltipoconsola">Tipo Consola:</label>
+                                                                        <select id="eltipoconsola" name="eltipoconsola" class="form-control" required="required">
+                                                                            <?php
+                                                                            $eltipoconsola = array('RAW', 'SIN COLOR', 'COLOR');
+
+                                                                            for ($i = 0; $i < count($eltipoconsola); $i++) {
+
+                                                                                if ($recconsoletype == $i) {
+                                                                                    echo '<option selected value="' . $i . '">' . $eltipoconsola[$i] . '</option>';
+                                                                                } else {
+                                                                                    echo '<option value="' . $i . '">' . $eltipoconsola[$i] . '</option>';
+                                                                                }
+                                                                            }
+
+                                                                            ?>
+                                                                        </select>
+                                                                    </div>
+                                                                <?php
+                                                                }
                                                                 ?>
                                                             </div>
                                                             <hr>
@@ -413,7 +442,6 @@ require_once("template/header.php");
                                                         //SELECTOR DE JAVA
                                                         if ($_SESSION['CONFIGUSER']['rango'] == 1 || array_key_exists('psystemconfjavaselect', $_SESSION['CONFIGUSER']) && $_SESSION['CONFIGUSER']['psystemconfjavaselect'] == 1) {
                                                         ?>
-                                                            <hr>
                                                             <div class="form-group">
                                                                 <div class="form-row">
                                                                     <div class="form-group col-md-8">
