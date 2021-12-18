@@ -323,6 +323,7 @@ require_once("../template/errorreport.php");
         fwrite($file, 'define("CONFIGBUFFERLIMIT", "100");' . PHP_EOL);
         fwrite($file, 'define("CONFIGARGMANUALINI", "");' . PHP_EOL);
         fwrite($file, 'define("CONFIGARGMANUALFINAL", "");' . PHP_EOL);
+        fwrite($file, 'define("CONFIGCONSOLETYPE", "2");' . PHP_EOL);
         fwrite($file, "?>" . PHP_EOL);
         fclose($file);
 
