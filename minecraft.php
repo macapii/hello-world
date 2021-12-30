@@ -864,7 +864,7 @@ function test_input($data)
                                                     <h3 class=""><b>Tipo Mapa</b></h3>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <p class="">Valor Defecto: default</p>
+                                                    <p class="">Valor Defecto: default<br>Requiere Versión: 1.15 o superior</p>
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -1260,7 +1260,7 @@ function test_input($data)
                                                     <h3 class=""><b>Ocultar Jugadores Online</b></h3>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <p class="">Valor Defecto: false</p>
+                                                    <p class="">Valor Defecto: false<br>Requiere Versión: 1.18 o superior</p>
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -1900,7 +1900,7 @@ function test_input($data)
                                                     <h3 class=""><b>Activar Monitoreo JMX</b></h3>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <p class="">Valor Defecto: false</p>
+                                                    <p class="">Valor Defecto: false<br>Requiere Versión: 1.16 o superior</p>
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -1996,7 +1996,7 @@ function test_input($data)
                                                     <h3 class=""><b>Activar Modo Guardado Syncronizado Chunks</b></h3>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <p class="">Valor Defecto: true</p>
+                                                    <p class="">Valor Defecto: true<br>Requiere Versión: 1.16 o superior</p>
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -2045,7 +2045,7 @@ function test_input($data)
                                                     <p class="lead">Los segundos que tardara en cerrar el servidor si no responde en X segundos.<br> (60000 = 60 segundos).</p>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <p class="">Valor Defecto: 60000<br>Valor Min: 1000 - Valor Max: 300000<br>Valor Deshabilitar: -1<br>Deshabilitar Requiere Versión: 1.8 o superior</p>
+                                                    <p class="">Valor Defecto: 60000<br>Valor Min: 1000 - Valor Max: 300000<br>Valor Deshabilitar: -1</p>
                                                 </div>
                                             </div>
                                             <div class="row">
