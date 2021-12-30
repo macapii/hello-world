@@ -53,6 +53,8 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
             $archivo = $_POST['action'];
             $renombre = $_POST['renombre'];
 
+            $renombre = trim($renombre);
+
             //COMPROVAR SI ESTA VACIO RENOMBRE
             if ($elerror == 0) {
                 if ($renombre == "") {
@@ -74,11 +76,12 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
 
                 $verificar = array('phtml', 'php', 'php3', 'php4', 'php5', 'php6', 'php7', 'phps', 'cgi', 'exe', 'pl', 'asp', 'aspx', 'shtml', 'shtm', 'fcgi', 'fpl', 'jsp', 'htm', 'html', 'wml', 'js', 'xhtml', 'xht', 'asa', 'cer', 'asax', 'swf', 'xap', 'css', 'sh', 'ksh', 'bash', 'zsh', 'py', 'pdf');
 
+                $fileNameCmps = explode(".", $renombre);
+                $fileExtension = strtolower(end($fileNameCmps));
+
                 for ($i = 0; $i < count($verificar); $i++) {
 
-                    $test = substr_count(strtolower($renombre), $verificar[$i]);
-
-                    if ($test >= 1) {
+                    if ($fileExtension == $verificar[$i]) {
                         $retorno = "renomnovalido";
                         $elerror = 1;
                     }
@@ -96,6 +99,8 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
             //COMPOBAR SI HAY ".." "..." EN ARCHIVO
             if ($elerror == 0) {
 
+                $test = 0;
+
                 $verificar = array('..', '...', '~', '../', './', '&&');
 
                 for ($i = 0; $i < count($verificar); $i++) {
@@ -112,7 +117,9 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
             //COMPOBAR SI HAY ".." "..." EN RENOMBRE
             if ($elerror == 0) {
 
-                $verificar = array('..', '...', '/.', '~', '../', './', ';', ':', '>', '<', '/', '\\', '&&','#', "|", '$','%','!','`','&','*','{','}', '?','=','@',"'",'"',"'\'");
+                $test = 0;
+
+                $verificar = array('..', '...', '/.', '~', '../', './', ';', ':', '>', '<', '/', '\\', '&&', '#', "|", '$', '%', '!', '`', '&', '*', '{', '}', '?', '=', '@', "'", '"', "'\'");
 
                 for ($i = 0; $i < count($verificar); $i++) {
 
