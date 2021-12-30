@@ -248,6 +248,8 @@ $(function () {
                                 alert("Ruta no válida");
                             } else if (data == "novalido") {
                                 alert("Ruta no válida");
+                            } else if (data == "extensionnovalid") {
+                                alert("No se permite modificar o cambiar el nombre de archivo a esta extensión");
                             } else if (data == "renomnovalido") {
                                 alert("Renombre no válido");
                             } else if (data == "noexiste") {

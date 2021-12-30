@@ -82,7 +82,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                 for ($i = 0; $i < count($verificar); $i++) {
 
                     if ($fileExtension == $verificar[$i]) {
-                        $retorno = "renomnovalido";
+                        $retorno = "extensionnovalid";
                         $elerror = 1;
                     }
                 }
