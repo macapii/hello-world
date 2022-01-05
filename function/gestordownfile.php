@@ -17,7 +17,7 @@ Copyright (C) 2020 Cristina Ibañez, Konata400
     along with McWebPanel.  If not, see <https://www.gnu.org/licenses/>.
 */
 header("Content-Security-Policy: default-src 'none'; style-src 'self'; img-src 'self'; script-src 'self'; form-action 'self'; base-uri 'none'; connect-src 'self'; frame-ancestors 'none'");
-header('X-Content-Type-Options: nosniff'); 
+header('X-Content-Type-Options: nosniff');
 header('Strict-Transport-Security: max-age=63072000; includeSubDomains; preload');
 header("X-XSS-Protection: 1; mode=block");
 header("Referrer-Policy: no-referrer");
@@ -69,7 +69,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                     exit;
                 }
 
-                //COMPOBAR SI HAY ".." "..."
+                //COMPROBAR SI HAY ".." "..."
                 if ($elerror == 0) {
 
                     $verificar = array('..', '...', '/.', '~', '../', './', '&&');
@@ -103,15 +103,21 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                     //COMPROVAR SI SE PUEDE LEER
                     clearstatcache();
                     if (is_readable($dirconfig)) {
-                        header('Content-Description: File Transfer');
-                        header('Content-Type: application/octet-stream');
-                        header('Content-Disposition: attachment; filename="' . basename($dirconfig) . '"');
-                        header('Expires: 0');
-                        header('Cache-Control: must-revalidate');
-                        header('Pragma: public');
-                        header('Content-Length: ' . filesize($dirconfig));
-                        readfile($dirconfig);
-                        exit;
+                        //COMPROVAR SI NO ES UN DIRECTORIO
+                        clearstatcache();
+                        if (is_dir($dirconfig)) {
+                            exit;
+                        } else {
+                            header('Content-Description: File Transfer');
+                            header('Content-Type: application/octet-stream');
+                            header('Content-Disposition: attachment; filename="' . basename($dirconfig) . '"');
+                            header('Expires: 0');
+                            header('Cache-Control: must-revalidate');
+                            header('Pragma: public');
+                            header('Content-Length: ' . filesize($dirconfig));
+                            readfile($dirconfig);
+                            exit;
+                        }
                     } else {
                         echo ('<!doctype html><html lang="es"><head><title>Descargas</title><link rel="stylesheet" href="../css/bootstrap.min.css"></head><body>');
                         echo '<div class="alert alert-danger" role="alert">Error: El archivo no tiene permisos de lectura.</div>';

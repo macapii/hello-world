@@ -17,7 +17,7 @@ Copyright (C) 2020 Cristina Ibañez, Konata400
     along with McWebPanel.  If not, see <https://www.gnu.org/licenses/>.
 */
 header("Content-Security-Policy: default-src 'none'; style-src 'self'; img-src 'self'; script-src 'self'; form-action 'self'; base-uri 'none'; connect-src 'self'; frame-ancestors 'none'");
-header('X-Content-Type-Options: nosniff'); 
+header('X-Content-Type-Options: nosniff');
 header('Strict-Transport-Security: max-age=63072000; includeSubDomains; preload');
 header("X-XSS-Protection: 1; mode=block");
 header("Referrer-Policy: no-referrer");
@@ -52,12 +52,33 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
 
             $retorno = "";
             $verificarex = "";
+            $test = 0;
 
             $archivo = test_input($_GET['action']);
 
             //Evitar poder ir a una ruta hacia atras
             if (strpos($archivo, '..') !== false || strpos($archivo, '*.*') !== false || strpos($archivo, '*/*.*') !== false) {
                 exit;
+            }
+
+            //EVITAR Descargar .htaccess
+            if ($archivo == ".htaccess") {
+                exit;
+            }
+
+            //COMPROBAR SI HAY ".." "..."
+            if ($elerror == 0) {
+
+                $verificar = array('..', '...', '/.', '~', '../', './', '&&');
+
+                for ($i = 0; $i < count($verificar); $i++) {
+
+                    $test = substr_count($archivo, $verificar[$i]);
+
+                    if ($test >= 1) {
+                        exit;
+                    }
+                }
             }
 
             //VERIFICAR EXTENSION
@@ -80,15 +101,21 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                 //COMPROVAR SI SE PUEDE LEER
                 clearstatcache();
                 if (is_readable($dirconfig)) {
-                    header('Content-Description: File Transfer');
-                    header('Content-Type: application/octet-stream');
-                    header('Content-Disposition: attachment; filename="' . basename($dirconfig) . '"');
-                    header('Expires: 0');
-                    header('Cache-Control: must-revalidate');
-                    header('Pragma: public');
-                    header('Content-Length: ' . filesize($dirconfig));
-                    readfile($dirconfig);
-                    exit;
+                    //COMPROVAR SI NO ES UN DIRECTORIO
+                    clearstatcache();
+                    if (is_dir($dirconfig)) {
+                        exit;
+                    } else {
+                        header('Content-Description: File Transfer');
+                        header('Content-Type: application/octet-stream');
+                        header('Content-Disposition: attachment; filename="' . basename($dirconfig) . '"');
+                        header('Expires: 0');
+                        header('Cache-Control: must-revalidate');
+                        header('Pragma: public');
+                        header('Content-Length: ' . filesize($dirconfig));
+                        readfile($dirconfig);
+                        exit;
+                    }
                 } else {
                     echo ('<!doctype html><html lang="es"><head><title>Backups</title><link rel="stylesheet" href="../css/bootstrap.min.css"></head><body>');
                     echo '<div class="alert alert-danger" role="alert">Error: El backup no tiene permisos de lectura.</div>';
