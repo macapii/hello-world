@@ -86,7 +86,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                 $fileNameCmps = explode(".", $archivo);
                 $fileExtension = strtolower(end($fileNameCmps));
 
-                if ($fileExtension != "txt" && $fileExtension != "json" && $fileExtension != "log" && $fileExtension != "mcmeta" && $fileExtension != "yml" && $fileExtension != "cfg" && $fileExtension != "toml" && $fileExtension != "sk" && $fileExtension != "properties") {
+                if ($fileExtension != "txt" && $fileExtension != "json" && $fileExtension != "log" && $fileExtension != "mcmeta" && $fileExtension != "yml" && $fileExtension != "cfg" && $fileExtension != "conf" && $fileExtension != "toml" && $fileExtension != "sk" && $fileExtension != "properties") {
                     $retorno = "noextvalid";
                     $elerror = 1;
                 }

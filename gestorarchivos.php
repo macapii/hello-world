@@ -490,7 +490,7 @@ function obtenersizecarpeta($dir)
 
                                                                         //BOTON EDITAR ARCHIVO
                                                                         if ($_SESSION['CONFIGUSER']['rango'] == 1 || $_SESSION['CONFIGUSER']['rango'] == 2 || array_key_exists('pgestorarchivoseditar', $_SESSION['CONFIGUSER']) && $_SESSION['CONFIGUSER']['pgestorarchivoseditar'] == 1) {
-                                                                            if ($tipoarchivo == ".txt" || $tipoarchivo == ".json" || $tipoarchivo == ".log" || $tipoarchivo == ".mcmeta" || $tipoarchivo == ".yml" || $tipoarchivo == ".cfg" || $tipoarchivo == ".toml" || $tipoarchivo == ".sk" || $tipoarchivo == ".properties") {
+                                                                            if ($tipoarchivo == ".txt" || $tipoarchivo == ".json" || $tipoarchivo == ".log" || $tipoarchivo == ".mcmeta" || $tipoarchivo == ".yml" || $tipoarchivo == ".cfg" || $tipoarchivo == ".conf" || $tipoarchivo == ".toml" || $tipoarchivo == ".sk" || $tipoarchivo == ".properties") {
                                                                                 echo '<button type="button" class="editarfile btn btn-info text-white mr-1" value="' . $fcarpetas[$i] . '" title="Editar"><img src="img/botones/editar.png" alt="Editar"></button>';
                                                                             }
                                                                         }
