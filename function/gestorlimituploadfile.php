@@ -111,30 +111,32 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
 
         //COMPROBAR SI LO QUE SE SUBE ES MAYOR AL LIMITE CARPETA MINECRAFT
         if ($elerror == 0) {
-            if ($limitmine >= 1) {
-                if ($archivosizegb > $limitmine) {
-                    $elerror = 1;
-                    $retorno = "OUTLIMITE";
+            if ($_SESSION['CONFIGUSER']['rango'] == 2 || $_SESSION['CONFIGUSER']['rango'] == 3) {
+
+                if ($limitmine >= 1) {
+                    if ($archivosizegb > $limitmine) {
+                        $elerror = 1;
+                        $retorno = "OUTLIMITE";
+                    }
                 }
             }
         }
 
         //LIMITE ALMACENAMIENTO
         if ($elerror == 0) {
-
-            //OBTENER CARPETA SERVIDOR MINECRAFT
-            $rutacarpetamine = dirname(getcwd()) . PHP_EOL;
-            $rutacarpetamine = trim($rutacarpetamine);
-            $rutacarpetamine .= "/" . $reccarpmine;
-
-            $getgigasmine = converdatoscarpmineGB(obtenersizecarpeta($rutacarpetamine), 0, 2);
-
-            if (!is_numeric($getgigasmine)) {
-                $retorno = "ERRORGETSIZE";
-                $elerror = 1;
-            }
-
             if ($_SESSION['CONFIGUSER']['rango'] == 2 || $_SESSION['CONFIGUSER']['rango'] == 3) {
+
+                //OBTENER CARPETA SERVIDOR MINECRAFT
+                $rutacarpetamine = dirname(getcwd()) . PHP_EOL;
+                $rutacarpetamine = trim($rutacarpetamine);
+                $rutacarpetamine .= "/" . $reccarpmine;
+
+                $getgigasmine = converdatoscarpmineGB(obtenersizecarpeta($rutacarpetamine), 0, 2);
+
+                if (!is_numeric($getgigasmine)) {
+                    $retorno = "ERRORGETSIZE";
+                    $elerror = 1;
+                }
 
                 //MIRAR SI ES ILIMITADO
                 if ($limitmine >= 1) {
@@ -151,12 +153,14 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
 
         //COMPROVAR SI LO QUE SE SUBE ES MAYOR AL TAMAÑO RESTANTE DISPONIBLE
         if ($elerror == 0) {
-            if ($limitmine >= 1) {
-                $laresta = $getgigasmine;
-                $espaciolibre = $limitmine - $laresta;
-                if ($archivosizegb > $espaciolibre) {
-                    $retorno = "NOFREESPACE";
-                    $elerror = 1;
+            if ($_SESSION['CONFIGUSER']['rango'] == 2 || $_SESSION['CONFIGUSER']['rango'] == 3) {
+                if ($limitmine >= 1) {
+                    $laresta = $getgigasmine;
+                    $espaciolibre = $limitmine - $laresta;
+                    if ($archivosizegb > $espaciolibre) {
+                        $retorno = "NOFREESPACE";
+                        $elerror = 1;
+                    }
                 }
             }
         }
