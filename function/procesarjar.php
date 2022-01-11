@@ -51,8 +51,11 @@ function obtenersizecarpeta($dir)
     );
 
     $totalSize = 0;
-    foreach ($iterator as $file) {
-        $totalSize += $file->getSize();
+    try {
+        foreach ($iterator as $file) {
+            $totalSize += $file->getSize();
+        }
+    } catch (Throwable $t) {
     }
     return $totalSize;
 }
