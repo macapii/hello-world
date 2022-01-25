@@ -21,6 +21,9 @@ Copyright (C) 2020 Cristina Ibañez, Konata400
     font-size: 12pt !important;
     text-align: left !important;
     padding-left: 5px;
+    border-style: solid;
+    border-color: #fff;
+    border-width: 1px;
 }
 
 .bgconsolanegra{
