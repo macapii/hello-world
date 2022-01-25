@@ -81,7 +81,7 @@ require_once("template/header.php");
                         <!-- Page Heading -->
                         <div class="row">
                             <div class="col-md-2">
-                                <h1 class="h3 text-gray-800 pt-2">Consola</h1>
+                                <h1 class="h3 pt-2">Consola</h1>
                             </div>
                             <div class="col-md-10">
                                 <button class="btn btn-primary mt-2 float-right" id="descroll" type="button">Desactivar Scroll</button>
