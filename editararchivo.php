@@ -33,7 +33,17 @@ function test_input($data)
 
 ?>
 <!-- Custom styles for this template-->
-<link href="css/test.css" rel="stylesheet">
+<?php
+if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
+    if ($_SESSION['CONFIGUSER']['psystemconftemaweb'] == 2) {
+        echo '<link href="css/dark.css" rel="stylesheet">';
+    } else {
+        echo '<link href="css/light.css" rel="stylesheet">';
+    }
+} else {
+    echo '<link href="css/light.css" rel="stylesheet">';
+}
+?>
 <link href="css/editararchivo.css" rel="stylesheet">
 
 </head>

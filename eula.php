@@ -23,8 +23,18 @@ require_once("template/errorreport.php");
 require_once("config/confopciones.php");
 require_once("template/header.php");
 ?>
-
-<link href="css/test.css" rel="stylesheet">
+<!-- Custom styles for this template-->
+<?php
+if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
+    if ($_SESSION['CONFIGUSER']['psystemconftemaweb'] == 2) {
+        echo '<link href="css/dark.css" rel="stylesheet">';
+    } else {
+        echo '<link href="css/light.css" rel="stylesheet">';
+    }
+} else {
+    echo '<link href="css/light.css" rel="stylesheet">';
+}
+?>
 <link href="css/eula.css" rel="stylesheet">
 
 </head>
