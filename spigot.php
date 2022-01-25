@@ -268,7 +268,7 @@ function test_input($data)
                                                     <div class="row">
                                                         <div class="col-md-12">
                                                             <h2 class="">Consola</h2>
-                                                            <textarea readonly id="laconsola" name="laconsola" class="form-control textoconsola bgconsolablanca textconsolanegro mb-1" rows="15"></textarea>
+                                                            <textarea readonly id="laconsola" name="laconsola" class="form-control textoconsola mb-1" rows="15"></textarea>
                                                         </div>
                                                     </div>
                                                 </div>
