@@ -223,6 +223,17 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                 $arrayobtenido[$elindice]['rango'] = 3;
                 $arrayobtenido[$elindice]['estado'] = "activado";
 
+                //GUARDAR TEMA WEB
+                if (isset($_POST['selectemaweb'])) {
+                    if($_POST['selectemaweb'] == 2){
+                        $arrayobtenido[$elindice]['psystemconftemaweb'] = 2;
+                    }else{
+                        $arrayobtenido[$elindice]['psystemconftemaweb'] = 1;
+                    }
+                }else{
+                    $arrayobtenido[$elindice]['psystemconftemaweb'] = 1;
+                }
+
                 //PERMISOS STATUS
                 if (isset($_POST['pstatusstarserver'])) {
                     $arrayobtenido[$elindice]['pstatusstarserver'] = 1;

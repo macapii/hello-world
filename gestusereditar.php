@@ -119,7 +119,7 @@ require_once("template/header.php");
                                                                         <input type="password" class="form-control" id="elrepass" name="elrepass" placeholder="••••">
                                                                     </div>
 
-                                                                    <div class="col-md-6">
+                                                                    <div class="col-md-12">
                                                                         <label>
                                                                             <input type="checkbox" name="verpassword" id="verpassword"> Mostrar contraseñas
                                                                         </label>
@@ -127,6 +127,32 @@ require_once("template/header.php");
 
                                                                     <div class="col-md-12">
                                                                         <p class="lead" id="textoretorno"></p>
+                                                                    </div>
+
+                                                                    <div class="col-md-6">
+                                                                        <label class="negrita">Seleccionar Tema Web:</label>
+                                                                            <select id="selectemaweb" name="selectemaweb" class="form-control">
+                                                                                <?php
+                                                                                if (array_key_exists('psystemconftemaweb', $_SESSION['EDITARUSUARIO'])) {
+                                                                                    if ($_SESSION['EDITARUSUARIO']['psystemconftemaweb'] == 2) {
+                                                                                ?>
+                                                                                        <option value="1">Claro</option>
+                                                                                        <option selected value="2">Oscuro</option>
+                                                                                    <?php
+                                                                                    } else {
+                                                                                    ?>
+                                                                                        <option selected="1">Claro</option>
+                                                                                        <option value="2">Oscuro</option>
+                                                                                    <?php
+                                                                                    }
+                                                                                } else {
+                                                                                    ?>
+                                                                                    <option selected="1">Claro</option>
+                                                                                    <option value="2">Oscuro</option>
+                                                                                <?php
+                                                                                }
+                                                                                ?>
+                                                                            </select>
                                                                     </div>
 
                                                                     <div class="col-md-12">

@@ -219,6 +219,17 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                                 $arrayobtenido[$i]['hash'] = $hashed;
                             }
 
+                            //GUARDAR TEMA WEB
+                            if (isset($_POST['selectemaweb'])) {
+                                if ($_POST['selectemaweb'] == 2) {
+                                    $arrayobtenido[$i]['psystemconftemaweb'] = 2;
+                                } else {
+                                    $arrayobtenido[$i]['psystemconftemaweb'] = 1;
+                                }
+                            } else {
+                                $arrayobtenido[$i]['psystemconftemaweb'] = 1;
+                            }
+
                             //PERMISOS STATUS
                             if (isset($_POST['pstatusstarserver'])) {
                                 $arrayobtenido[$i]['pstatusstarserver'] = 1;
