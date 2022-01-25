@@ -222,6 +222,17 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                 $arrayobtenido[$elindice]['hash'] = $hashed;
                 $arrayobtenido[$elindice]['rango'] = 2;
                 $arrayobtenido[$elindice]['estado'] = "activado";
+                
+                //GUARDAR TEMA WEB
+                if (isset($_POST['selectemaweb'])) {
+                    if($_POST['selectemaweb'] == 2){
+                        $arrayobtenido[$elindice]['psystemconftemaweb'] = 2;
+                    }else{
+                        $arrayobtenido[$elindice]['psystemconftemaweb'] = 1;
+                    }
+                }else{
+                    $arrayobtenido[$elindice]['psystemconftemaweb'] = 1;
+                }
 
                 //SYSTEM CONFIG PUERTO
                 if (isset($_POST['psystemconfpuerto'])) {

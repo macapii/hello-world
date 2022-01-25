@@ -119,22 +119,14 @@ require_once("template/header.php");
 
                                                                     <div class="col-md-6">
                                                                         <label class="negrita" for="elpass">Cambiar Contraseña</label>
-                                                                        <input type="password" class="form-control" id="elpass" name="elpass" placeholder="••••" <?php
-                                                                                                                                                                    if ($_SESSION['EDITARSUPER']['rango'] == 1) {
-                                                                                                                                                                        echo ('required="required"');
-                                                                                                                                                                    }
-                                                                                                                                                                    ?>>
+                                                                        <input type="password" class="form-control" id="elpass" name="elpass" placeholder="••••">
                                                                     </div>
                                                                     <div class="col-md-6">
                                                                         <label class="negrita" for="elrepass">Confirmar</label>
-                                                                        <input type="password" class="form-control" id="elrepass" name="elrepass" placeholder="••••" <?php
-                                                                                                                                                                        if ($_SESSION['EDITARSUPER']['rango'] == 1) {
-                                                                                                                                                                            echo ('required="required"');
-                                                                                                                                                                        }
-                                                                                                                                                                        ?>>
+                                                                        <input type="password" class="form-control" id="elrepass" name="elrepass" placeholder="••••">
                                                                     </div>
 
-                                                                    <div class="col-md-6">
+                                                                    <div class="col-md-12">
                                                                         <label>
                                                                             <input type="checkbox" name="verpassword" id="verpassword"> Mostrar contraseñas
                                                                         </label>
@@ -142,6 +134,32 @@ require_once("template/header.php");
 
                                                                     <div class="col-md-12">
                                                                         <p class="lead" id="textoretorno"></p>
+                                                                    </div>
+
+                                                                    <div class="col-md-6">
+                                                                        <label class="negrita">Seleccionar Tema Web:</label>
+                                                                            <select id="selectemaweb" name="selectemaweb" class="form-control">
+                                                                                <?php
+                                                                                if (array_key_exists('psystemconftemaweb', $_SESSION['EDITARSUPER'])) {
+                                                                                    if ($_SESSION['EDITARSUPER']['psystemconftemaweb'] == 2) {
+                                                                                ?>
+                                                                                        <option value="1">Claro</option>
+                                                                                        <option selected value="2">Oscuro</option>
+                                                                                    <?php
+                                                                                    } else {
+                                                                                    ?>
+                                                                                        <option selected="1">Claro</option>
+                                                                                        <option value="2">Oscuro</option>
+                                                                                    <?php
+                                                                                    }
+                                                                                } else {
+                                                                                    ?>
+                                                                                    <option selected="1">Claro</option>
+                                                                                    <option value="2">Oscuro</option>
+                                                                                <?php
+                                                                                }
+                                                                                ?>
+                                                                            </select>
                                                                     </div>
 
                                                                     <?php
@@ -306,12 +324,12 @@ require_once("template/header.php");
                                                                                     <div>
                                                                                         <input id="psystemconfbuffer" name="psystemconfbuffer" type="checkbox" value="1" <?php
 
-                                                                                                                                                                                    if (array_key_exists('psystemconfbuffer', $_SESSION['EDITARSUPER'])) {
-                                                                                                                                                                                        if ($_SESSION['EDITARSUPER']['psystemconfbuffer'] == 1) {
-                                                                                                                                                                                            echo "checked";
-                                                                                                                                                                                        }
-                                                                                                                                                                                    }
-                                                                                                                                                                                    ?>>
+                                                                                                                                                                            if (array_key_exists('psystemconfbuffer', $_SESSION['EDITARSUPER'])) {
+                                                                                                                                                                                if ($_SESSION['EDITARSUPER']['psystemconfbuffer'] == 1) {
+                                                                                                                                                                                    echo "checked";
+                                                                                                                                                                                }
+                                                                                                                                                                            }
+                                                                                                                                                                            ?>>
 
                                                                                         <label class="negrita mr-2" for="psystemconfbuffer">Buffer Consola</label>
                                                                                     </div>
@@ -338,12 +356,12 @@ require_once("template/header.php");
                                                                                     <div>
                                                                                         <input id="psystemstartonboot" name="psystemstartonboot" type="checkbox" value="1" <?php
 
-                                                                                                                                                                                    if (array_key_exists('psystemstartonboot', $_SESSION['EDITARSUPER'])) {
-                                                                                                                                                                                        if ($_SESSION['EDITARSUPER']['psystemstartonboot'] == 1) {
-                                                                                                                                                                                            echo "checked";
-                                                                                                                                                                                        }
-                                                                                                                                                                                    }
-                                                                                                                                                                                    ?>>
+                                                                                                                                                                            if (array_key_exists('psystemstartonboot', $_SESSION['EDITARSUPER'])) {
+                                                                                                                                                                                if ($_SESSION['EDITARSUPER']['psystemstartonboot'] == 1) {
+                                                                                                                                                                                    echo "checked";
+                                                                                                                                                                                }
+                                                                                                                                                                            }
+                                                                                                                                                                            ?>>
 
                                                                                         <label class="negrita mr-2" for="psystemstartonboot">Iniciar servidor Minecraft al arrancar Linux</label>
                                                                                     </div>
@@ -354,12 +372,12 @@ require_once("template/header.php");
                                                                                     <div>
                                                                                         <input id="psystemcustomarg" name="psystemcustomarg" type="checkbox" value="1" <?php
 
-                                                                                                                                                                                    if (array_key_exists('psystemcustomarg', $_SESSION['EDITARSUPER'])) {
-                                                                                                                                                                                        if ($_SESSION['EDITARSUPER']['psystemcustomarg'] == 1) {
-                                                                                                                                                                                            echo "checked";
-                                                                                                                                                                                        }
-                                                                                                                                                                                    }
-                                                                                                                                                                                    ?>>
+                                                                                                                                                                        if (array_key_exists('psystemcustomarg', $_SESSION['EDITARSUPER'])) {
+                                                                                                                                                                            if ($_SESSION['EDITARSUPER']['psystemcustomarg'] == 1) {
+                                                                                                                                                                                echo "checked";
+                                                                                                                                                                            }
+                                                                                                                                                                        }
+                                                                                                                                                                        ?>>
 
                                                                                         <label class="negrita mr-2" for="psystemcustomarg">Argumentos Java</label>
                                                                                     </div>
@@ -370,12 +388,12 @@ require_once("template/header.php");
                                                                                     <div>
                                                                                         <input id="psystemconfignoreramlimit" name="psystemconfignoreramlimit" type="checkbox" value="1" <?php
 
-                                                                                                                                                                                    if (array_key_exists('psystemconfignoreramlimit', $_SESSION['EDITARSUPER'])) {
-                                                                                                                                                                                        if ($_SESSION['EDITARSUPER']['psystemconfignoreramlimit'] == 1) {
-                                                                                                                                                                                            echo "checked";
-                                                                                                                                                                                        }
-                                                                                                                                                                                    }
-                                                                                                                                                                                    ?>>
+                                                                                                                                                                                            if (array_key_exists('psystemconfignoreramlimit', $_SESSION['EDITARSUPER'])) {
+                                                                                                                                                                                                if ($_SESSION['EDITARSUPER']['psystemconfignoreramlimit'] == 1) {
+                                                                                                                                                                                                    echo "checked";
+                                                                                                                                                                                                }
+                                                                                                                                                                                            }
+                                                                                                                                                                                            ?>>
 
                                                                                         <label class="negrita mr-2" for="psystemconfignoreramlimit">Ignorar limites RAM sistema</label>
                                                                                     </div>

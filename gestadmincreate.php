@@ -104,7 +104,7 @@ require_once("template/header.php");
                                                                         <input type="password" class="form-control" id="elrepass" name="elrepass" placeholder="••••" required="required">
                                                                     </div>
 
-                                                                    <div class="col-md-6">
+                                                                    <div class="col-md-12">
                                                                         <label>
                                                                             <input type="checkbox" name="verpassword" id="verpassword"> Mostrar contraseñas
                                                                         </label>
@@ -112,6 +112,14 @@ require_once("template/header.php");
 
                                                                     <div class="col-md-12">
                                                                         <p class="lead" id="textoretorno"></p>
+                                                                    </div>
+
+                                                                    <div class="col-md-6">
+                                                                        <label class="negrita">Seleccionar Tema Web:</label>
+                                                                        <select id="selectemaweb" name="selectemaweb" class="form-control">
+                                                                            <option selected="1">Claro</option>
+                                                                            <option value="2">Oscuro</option>
+                                                                        </select>
                                                                     </div>
 
                                                                     <div class="col-md-12">
