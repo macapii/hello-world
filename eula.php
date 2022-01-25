@@ -28,14 +28,16 @@ require_once("template/header.php");
 if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
     if ($_SESSION['CONFIGUSER']['psystemconftemaweb'] == 2) {
         echo '<link href="css/dark.css" rel="stylesheet">';
+        echo '<link href="css/euladark.css" rel="stylesheet">';
     } else {
         echo '<link href="css/light.css" rel="stylesheet">';
+        echo '<link href="css/eula.css" rel="stylesheet">';
     }
 } else {
     echo '<link href="css/light.css" rel="stylesheet">';
+    echo '<link href="css/eula.css" rel="stylesheet">';
 }
 ?>
-<link href="css/eula.css" rel="stylesheet">
 
 </head>
 
