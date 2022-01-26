@@ -222,16 +222,28 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                 $arrayobtenido[$elindice]['hash'] = $hashed;
                 $arrayobtenido[$elindice]['rango'] = 2;
                 $arrayobtenido[$elindice]['estado'] = "activado";
-                
+
                 //GUARDAR TEMA WEB
                 if (isset($_POST['selectemaweb'])) {
-                    if($_POST['selectemaweb'] == 2){
+                    if ($_POST['selectemaweb'] == 2) {
                         $arrayobtenido[$elindice]['psystemconftemaweb'] = 2;
-                    }else{
+                        //APLICAR SI ES MISMO USUARIO
+                        if ($_SESSION['CONFIGUSER']['usuario'] == $arrayobtenido[$elindice]['usuario']) {
+                            $_SESSION['CONFIGUSER']['psystemconftemaweb'] = 2;
+                        }
+                    } else {
                         $arrayobtenido[$elindice]['psystemconftemaweb'] = 1;
+                        //APLICAR SI ES MISMO USUARIO
+                        if ($_SESSION['CONFIGUSER']['usuario'] == $arrayobtenido[$elindice]['usuario']) {
+                            $_SESSION['CONFIGUSER']['psystemconftemaweb'] = 1;
+                        }
                     }
-                }else{
+                } else {
                     $arrayobtenido[$elindice]['psystemconftemaweb'] = 1;
+                    //APLICAR SI ES MISMO USUARIO
+                    if ($_SESSION['CONFIGUSER']['usuario'] == $arrayobtenido[$elindice]['usuario']) {
+                        $_SESSION['CONFIGUSER']['psystemconftemaweb'] = 1;
+                    }
                 }
 
                 //SYSTEM CONFIG PUERTO

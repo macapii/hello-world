@@ -216,16 +216,25 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
 
                         //GUARDAR TEMA WEB
                         if (isset($_POST['selectemaweb'])) {
-                            if($_POST['selectemaweb'] == 2){
+                            if ($_POST['selectemaweb'] == 2) {
                                 $arrayobtenido[$i]['psystemconftemaweb'] = 2;
-                                $_SESSION['CONFIGUSER']['psystemconftemaweb'] = 2;
-                            }else{
+                                //APLICAR SI ES MISMO USUARIO
+                                if ($_SESSION['CONFIGUSER']['usuario'] == $arrayobtenido[$i]['usuario']) {
+                                    $_SESSION['CONFIGUSER']['psystemconftemaweb'] = 2;
+                                }
+                            } else {
                                 $arrayobtenido[$i]['psystemconftemaweb'] = 1;
+                                //APLICAR SI ES MISMO USUARIO
+                                if ($_SESSION['CONFIGUSER']['usuario'] == $arrayobtenido[$i]['usuario']) {
+                                    $_SESSION['CONFIGUSER']['psystemconftemaweb'] = 1;
+                                }
+                            }
+                        } else {
+                            $arrayobtenido[$i]['psystemconftemaweb'] = 1;
+                            //APLICAR SI ES MISMO USUARIO
+                            if ($_SESSION['CONFIGUSER']['usuario'] == $arrayobtenido[$i]['usuario']) {
                                 $_SESSION['CONFIGUSER']['psystemconftemaweb'] = 1;
                             }
-                        }else{
-                            $arrayobtenido[$i]['psystemconftemaweb'] = 1;
-                            $_SESSION['CONFIGUSER']['psystemconftemaweb'] = 1;
                         }
 
                         //MODIFICAR PERMISOS SOLO ADMINS
@@ -328,7 +337,6 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                             } else {
                                 $arrayobtenido[$i]['psystemconfignoreramlimit'] = 0;
                             }
-
                         }
 
                         $nuevoarray[] = $arrayobtenido[$i];
