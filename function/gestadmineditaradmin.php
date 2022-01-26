@@ -218,11 +218,14 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                         if (isset($_POST['selectemaweb'])) {
                             if($_POST['selectemaweb'] == 2){
                                 $arrayobtenido[$i]['psystemconftemaweb'] = 2;
+                                $_SESSION['CONFIGUSER']['psystemconftemaweb'] = 2;
                             }else{
                                 $arrayobtenido[$i]['psystemconftemaweb'] = 1;
+                                $_SESSION['CONFIGUSER']['psystemconftemaweb'] = 1;
                             }
                         }else{
                             $arrayobtenido[$i]['psystemconftemaweb'] = 1;
+                            $_SESSION['CONFIGUSER']['psystemconftemaweb'] = 1;
                         }
 
                         //MODIFICAR PERMISOS SOLO ADMINS
