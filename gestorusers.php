@@ -171,6 +171,11 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                                                                             echo '<button type="button" class="actdesuser btn btn-info text-white mr-1" value="' . $arrayobtenido[$i]['usuario'] . '" title="Activar/Desactivar Usuario">Activar/Desactivar</button>';
                                                                                         }
                                                                                         echo '<button type="button" class="edituser btn btn-warning text-white mr-1" value="' . $arrayobtenido[$i]['usuario'] . '" title="Editar Usuario">Editar</button>';
+
+                                                                                        if ($arrayobtenido[$i]['rango'] == 1 && $arrayobtenido[$i]['usuario'] == $_SESSION['CONFIGUSER']['usuario']) {
+                                                                                            echo '<button type="button" class="cambiartema btn btn-success text-white mr-1" value="' . $arrayobtenido[$i]['usuario'] . '" title="Cambiar Tema">Cambiar Tema</button>';
+                                                                                        }
+
                                                                                         if ($arrayobtenido[$i]['rango'] != 1) {
                                                                                             echo '<button type="button" class="deluser btn btn-danger text-white mr-1" value="' . $arrayobtenido[$i]['usuario'] . '" title="Eliminar Usuario">Eliminar</button>';
                                                                                         }
@@ -180,6 +185,30 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
 
                                                                                 //LEER USUARIOS COMO ADMIN
                                                                                 if ($_SESSION['CONFIGUSER']['rango'] == 2) {
+                                                                                    for ($i = 1; $i < count($arrayobtenido); $i++) {
+                                                                                        if ($arrayobtenido[$i]['rango'] == 2 && $arrayobtenido[$i]['usuario'] == $_SESSION['CONFIGUSER']['usuario']) {
+                                                                                            echo '<tr class = "menu-hover">';
+                                                                                            echo '<th scope="row">' . $arrayobtenido[$i]['usuario'] . '</th>';
+                                                                                            echo '<td>';
+
+                                                                                            if ($arrayobtenido[$i]['rango'] == 1) {
+                                                                                                echo "Superusuario";
+                                                                                            } elseif ($arrayobtenido[$i]['rango'] == 2) {
+                                                                                                echo "Administrador";
+                                                                                            } elseif ($arrayobtenido[$i]['rango'] == 3) {
+                                                                                                echo "Usuario";
+                                                                                            }
+
+                                                                                            echo '</td>';
+
+                                                                                            echo '<td>' . $arrayobtenido[$i]['estado'] . '</td>';
+
+                                                                                            echo '<td>';
+                                                                                            echo '<button type="button" class="cambiartema btn btn-success text-white mr-1" value="' . $arrayobtenido[$i]['usuario'] . '" title="Cambiar Tema">Cambiar Tema</button>';
+                                                                                            echo '</td>';
+                                                                                        }
+                                                                                    }
+
                                                                                     for ($i = 1; $i < count($arrayobtenido); $i++) {
                                                                                         if ($arrayobtenido[$i]['rango'] == 3) {
                                                                                             echo '<tr class = "menu-hover">';

@@ -55,8 +55,40 @@ $(function () {
                     } else if (data == "OK") {
                         location.href = "gestorusers.php";
                     }
+                }
+            });
+        });
+    }
 
+    var cambiartemabuttons = document.getElementsByClassName('cambiartema');
+    for (var i = 0; i < cambiartemabuttons.length; i++) {
+        cambiartemabuttons[i].addEventListener("click", function () {
+            var indexarray = String(this.value);
+            $.ajax({
+                url: 'function/gestusercambiartema.php',
+                data: {
+                    action: indexarray
+                },
+                type: 'POST',
+                success: function (data) {
 
+                    if (data == "nohayusuario") {
+                        alert("No has introducido ningun usuario");
+                    } else if (data == "errarchnoconfig") {
+                        alert("Carpeta Config no existe");
+                    } else if (data == "errconfignoread") {
+                        alert("Carpeta Config no tiene permisos de lectura");
+                    } else if (data == "errconfignowrite") {
+                        alert("Carpeta Config no tiene permisos de escritura");
+                    } else if (data == "errjsonnoexist") {
+                        alert("El archivo de usuarios no existe");
+                    } else if (data == "errjsonnoread") {
+                        alert("El archivo de usuarios no tiene permisos de lectura");
+                    } else if (data == "errjsonnowrite") {
+                        alert("El archivo de usuarios no tiene permisos de escritura");
+                    } else if (data == "OK") {
+                        location.reload();
+                    }
                 }
             });
         });
@@ -95,8 +127,6 @@ $(function () {
                     } else if (data == "OKADMIN") {
                         location.href = "gestusereditar.php";
                     }
-
-
                 }
             });
         });
@@ -131,8 +161,6 @@ $(function () {
                     } else if (data == "OK") {
                         location.href = "gestorusers.php";
                     }
-
-
                 }
             });
         });
@@ -150,8 +178,6 @@ $(function () {
                 if (data == "SALIR") {
                     location.href = "index.php";
                 }
-
-
             }
         });
     }
