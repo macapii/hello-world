@@ -187,7 +187,7 @@ Copyright (C) 2020 Cristina Ibañez, Konata400
 
     <?php
     if (array_key_exists('rango', $_SESSION['CONFIGUSER'])) {
-        if ($_SESSION['CONFIGUSER']['rango'] == 1 || $_SESSION['CONFIGUSER']['rango'] == 2) {
+        if ($_SESSION['CONFIGUSER']['rango'] == 1 || $_SESSION['CONFIGUSER']['rango'] == 2 || $_SESSION['CONFIGUSER']['rango'] == 3) {
     ?>
 
             <!-- Nav Item - Gestor Usuarios -->

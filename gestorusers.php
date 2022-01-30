@@ -54,7 +54,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
 
     //COMPROVAR SI ES EL SUPERADMIN O ADMIN
     if (array_key_exists('rango', $_SESSION['CONFIGUSER'])) {
-        if ($_SESSION['CONFIGUSER']['rango'] == 1 || $_SESSION['CONFIGUSER']['rango'] == 2) {
+        if ($_SESSION['CONFIGUSER']['rango'] == 1 || $_SESSION['CONFIGUSER']['rango'] == 2 || $_SESSION['CONFIGUSER']['rango'] == 3) {
             $expulsar = 1;
         }
     }
@@ -102,10 +102,16 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                                             </div>
                                                         <?php
                                                         }
+
+                                                        if ($_SESSION['CONFIGUSER']['rango'] == 1 || $_SESSION['CONFIGUSER']['rango'] == 2) {
                                                         ?>
-                                                        <div class="col-md-6">
-                                                            <button type="button" class="btn btn-primary btn-block btn-lg text-white" id="crearuser">Crear Nuevo Usuario</button>
-                                                        </div>
+                                                            <div class="col-md-6">
+                                                                <button type="button" class="btn btn-primary btn-block btn-lg text-white" id="crearuser">Crear Nuevo Usuario</button>
+                                                            </div>
+                                                            <hr>
+                                                        <?php
+                                                        }
+                                                        ?>
                                                     </div>
 
                                                     <?php
@@ -123,7 +129,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                                     $arrayobtenido = unserialize($getarray);
 
                                                     ?>
-                                                    <hr>
+                                                   
                                                     <div class="py-1">
                                                         <div class="container">
                                                             <div class="row">
@@ -231,6 +237,33 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                                                                             echo '<button type="button" class="actdesuser btn btn-info text-white mr-1" value="' . $arrayobtenido[$i]['usuario'] . '" title="Activar/Desactivar Usuario">Activar/Desactivar</button>';
                                                                                             echo '<button type="button" class="edituser btn btn-warning text-white mr-1" value="' . $arrayobtenido[$i]['usuario'] . '" title="Editar Usuario">Editar</button>';
                                                                                             echo '<button type="button" class="deluser btn btn-danger text-white mr-1" value="' . $arrayobtenido[$i]['usuario'] . '" title="Eliminar Usuario">Eliminar</button>';
+                                                                                            echo '</td>';
+                                                                                        }
+                                                                                    }
+                                                                                }
+
+                                                                                if ($_SESSION['CONFIGUSER']['rango'] == 3) {
+
+                                                                                    for ($i = 1; $i < count($arrayobtenido); $i++) {
+                                                                                        if ($arrayobtenido[$i]['rango'] == 3 && $arrayobtenido[$i]['usuario'] == $_SESSION['CONFIGUSER']['usuario']) {
+                                                                                            echo '<tr class = "menu-hover">';
+                                                                                            echo '<th scope="row">' . $arrayobtenido[$i]['usuario'] . '</th>';
+                                                                                            echo '<td>';
+
+                                                                                            if ($arrayobtenido[$i]['rango'] == 1) {
+                                                                                                echo "Superusuario";
+                                                                                            } elseif ($arrayobtenido[$i]['rango'] == 2) {
+                                                                                                echo "Administrador";
+                                                                                            } elseif ($arrayobtenido[$i]['rango'] == 3) {
+                                                                                                echo "Usuario";
+                                                                                            }
+
+                                                                                            echo '</td>';
+
+                                                                                            echo '<td>' . $arrayobtenido[$i]['estado'] . '</td>';
+
+                                                                                            echo '<td>';
+                                                                                            echo '<button type="button" class="cambiartema btn btn-success text-white mr-1" value="' . $arrayobtenido[$i]['usuario'] . '" title="Cambiar Tema">Cambiar Tema</button>';
                                                                                             echo '</td>';
                                                                                         }
                                                                                     }
