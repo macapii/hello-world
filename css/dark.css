@@ -5188,9 +5188,9 @@ a.badge-dark:focus {
 }
 
 .alert-success {
-    color: #0f6848;
-    background-color: #d2f4e8;
-    border-color: #bff0de
+    color: #d2f4e8;
+    background-color: #0f6848;
+    border-color: #0f6848
 }
 
 .alert-success hr {
@@ -5230,9 +5230,9 @@ a.badge-dark:focus {
 }
 
 .alert-danger {
-    color: #78261f;
-    background-color: #fadbd8;
-    border-color: #f8ccc8
+    color: #fadbd8;
+    background-color: #78261f;
+    border-color: #78261f
 }
 
 .alert-danger hr {
