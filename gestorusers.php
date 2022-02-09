@@ -103,13 +103,18 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                                         <?php
                                                         }
 
-                                                        if ($_SESSION['CONFIGUSER']['rango'] == 1 || $_SESSION['CONFIGUSER']['rango'] == 2) {
-                                                        ?>
-                                                            <div class="col-md-6">
-                                                                <button type="button" class="btn btn-primary btn-block btn-lg text-white" id="crearuser">Crear Nuevo Usuario</button>
-                                                            </div>
-                                                            <hr>
-                                                        <?php
+                                                        if ($_SESSION['CONFIGUSER']['rango'] == 1) {
+                                                            echo '<div class="col-md-6">';
+                                                            echo '<button type="button" class="btn btn-primary btn-block btn-lg text-white" id="crearuser">Crear Nuevo Usuario</button>';
+                                                            echo '</div>';
+                                                            echo '<hr>';
+                                                        } elseif ($_SESSION['CONFIGUSER']['rango'] == 2) {
+                                                            if (array_key_exists('psystemcreateuser', $_SESSION['CONFIGUSER']) && $_SESSION['CONFIGUSER']['psystemcreateuser'] == 1) {
+                                                                echo '<div class="col-md-6">';
+                                                                echo '<button type="button" class="btn btn-primary btn-block btn-lg text-white" id="crearuser">Crear Nuevo Usuario</button>';
+                                                                echo '</div>';
+                                                                echo '<hr>';
+                                                            }
                                                         }
                                                         ?>
                                                     </div>
@@ -129,7 +134,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                                     $arrayobtenido = unserialize($getarray);
 
                                                     ?>
-                                                   
+
                                                     <div class="py-1">
                                                         <div class="container">
                                                             <div class="row">
@@ -215,29 +220,31 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                                                                         }
                                                                                     }
 
-                                                                                    for ($i = 1; $i < count($arrayobtenido); $i++) {
-                                                                                        if ($arrayobtenido[$i]['rango'] == 3) {
-                                                                                            echo '<tr class = "menu-hover">';
-                                                                                            echo '<th scope="row">' . $arrayobtenido[$i]['usuario'] . '</th>';
-                                                                                            echo '<td>';
+                                                                                    if ($_SESSION['CONFIGUSER']['rango'] == 2 && array_key_exists('psystemcreateuser', $_SESSION['CONFIGUSER']) && $_SESSION['CONFIGUSER']['psystemcreateuser'] == 1) {
+                                                                                        for ($i = 1; $i < count($arrayobtenido); $i++) {
+                                                                                            if ($arrayobtenido[$i]['rango'] == 3) {
+                                                                                                echo '<tr class = "menu-hover">';
+                                                                                                echo '<th scope="row">' . $arrayobtenido[$i]['usuario'] . '</th>';
+                                                                                                echo '<td>';
 
-                                                                                            if ($arrayobtenido[$i]['rango'] == 1) {
-                                                                                                echo "Superusuario";
-                                                                                            } elseif ($arrayobtenido[$i]['rango'] == 2) {
-                                                                                                echo "Administrador";
-                                                                                            } elseif ($arrayobtenido[$i]['rango'] == 3) {
-                                                                                                echo "Usuario";
+                                                                                                if ($arrayobtenido[$i]['rango'] == 1) {
+                                                                                                    echo "Superusuario";
+                                                                                                } elseif ($arrayobtenido[$i]['rango'] == 2) {
+                                                                                                    echo "Administrador";
+                                                                                                } elseif ($arrayobtenido[$i]['rango'] == 3) {
+                                                                                                    echo "Usuario";
+                                                                                                }
+
+                                                                                                echo '</td>';
+
+                                                                                                echo '<td>' . $arrayobtenido[$i]['estado'] . '</td>';
+
+                                                                                                echo '<td>';
+                                                                                                echo '<button type="button" class="actdesuser btn btn-info text-white mr-1" value="' . $arrayobtenido[$i]['usuario'] . '" title="Activar/Desactivar Usuario">Activar/Desactivar</button>';
+                                                                                                echo '<button type="button" class="edituser btn btn-warning text-white mr-1" value="' . $arrayobtenido[$i]['usuario'] . '" title="Editar Usuario">Editar</button>';
+                                                                                                echo '<button type="button" class="deluser btn btn-danger text-white mr-1" value="' . $arrayobtenido[$i]['usuario'] . '" title="Eliminar Usuario">Eliminar</button>';
+                                                                                                echo '</td>';
                                                                                             }
-
-                                                                                            echo '</td>';
-
-                                                                                            echo '<td>' . $arrayobtenido[$i]['estado'] . '</td>';
-
-                                                                                            echo '<td>';
-                                                                                            echo '<button type="button" class="actdesuser btn btn-info text-white mr-1" value="' . $arrayobtenido[$i]['usuario'] . '" title="Activar/Desactivar Usuario">Activar/Desactivar</button>';
-                                                                                            echo '<button type="button" class="edituser btn btn-warning text-white mr-1" value="' . $arrayobtenido[$i]['usuario'] . '" title="Editar Usuario">Editar</button>';
-                                                                                            echo '<button type="button" class="deluser btn btn-danger text-white mr-1" value="' . $arrayobtenido[$i]['usuario'] . '" title="Eliminar Usuario">Eliminar</button>';
-                                                                                            echo '</td>';
                                                                                         }
                                                                                     }
                                                                                 }
