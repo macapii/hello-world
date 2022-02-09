@@ -41,7 +41,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
     //COMPROVAR SI ES EL SUPERADMIN O ADMIN
     if (array_key_exists('rango', $_SESSION['CONFIGUSER'])) {
 
-        if ($_SESSION['CONFIGUSER']['rango'] == 1 || $_SESSION['CONFIGUSER']['rango'] == 2) {
+        if ($_SESSION['CONFIGUSER']['rango'] == 1 || $_SESSION['CONFIGUSER']['rango'] == 2 && array_key_exists('psystemcreateuser', $_SESSION['CONFIGUSER']) && $_SESSION['CONFIGUSER']['psystemcreateuser'] == 1) {
 
             $archivo = "";
             $retorno = "";
@@ -131,7 +131,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                 $elindice = count($arrayobtenido);
             }
 
-            //BORRAR USUARIO
+            //ACTIVAR DESACTIVAR USUARIO
             if ($elerror == 0) {
 
                 if ($_SESSION['CONFIGUSER']['rango'] == 1) {
@@ -162,7 +162,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                     $serialized = serialize($nuevoarray);
                     file_put_contents($elarchivo, $serialized);
                     $retorno = "OK";
-                } elseif ($_SESSION['CONFIGUSER']['rango'] == 2) {
+                } elseif ($_SESSION['CONFIGUSER']['rango'] == 2 && array_key_exists('psystemcreateuser', $_SESSION['CONFIGUSER']) && $_SESSION['CONFIGUSER']['psystemcreateuser'] == 1) {
 
                     for ($i = 0; $i < count($arrayobtenido); $i++) {
 
