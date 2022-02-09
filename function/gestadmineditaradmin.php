@@ -214,6 +214,17 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                             $arrayobtenido[$i]['hash'] = $hashed;
                         }
 
+                        //GUARDAR PERMISOS CREAR USUARIOS
+                        if (isset($_POST['psystemcreateuser'])) {
+                            if ($_POST['psystemcreateuser'] == 2) {
+                                $arrayobtenido[$i]['psystemcreateuser'] = 1;
+                            } else {
+                                $arrayobtenido[$i]['psystemcreateuser'] = 0;
+                            }
+                        } else {
+                            $arrayobtenido[$i]['psystemcreateuser'] = 0;
+                        }
+
                         //GUARDAR TEMA WEB
                         if (isset($_POST['selectemaweb'])) {
                             if ($_POST['selectemaweb'] == 2) {

@@ -196,7 +196,6 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                 }
             }
 
-
             //CARGAR ARRAY
             if ($elerror == 0) {
                 $getarray = file_get_contents($elarchivo);
@@ -222,6 +221,14 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                 $arrayobtenido[$elindice]['hash'] = $hashed;
                 $arrayobtenido[$elindice]['rango'] = 2;
                 $arrayobtenido[$elindice]['estado'] = "activado";
+
+
+                //GUARDAR PERMISOS CREAR USUARIOS
+                if (isset($_POST['psystemcreateuser'])) {
+                    if ($_POST['psystemcreateuser'] == 2) {
+                        $arrayobtenido[$elindice]['psystemcreateuser'] = 1;
+                    }
+                }
 
                 //GUARDAR TEMA WEB
                 if (isset($_POST['selectemaweb'])) {
