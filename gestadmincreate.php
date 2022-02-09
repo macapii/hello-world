@@ -132,6 +132,14 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                                                         </select>
                                                                     </div>
 
+                                                                    <div class="col-md-6">
+                                                                        <label class="negrita">Permiso creación/edición usuarios:</label>
+                                                                        <select id="psystemcreateuser" name="psystemcreateuser" class="form-control">
+                                                                            <option selected="1">No</option>
+                                                                            <option value="2">Si</option>
+                                                                        </select>
+                                                                    </div>
+
                                                                     <div class="col-md-12">
                                                                         <br>
                                                                         <label class="negrita">Asignar Permisos:</label>

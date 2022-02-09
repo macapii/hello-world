@@ -148,28 +148,43 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
 
                                                                     <div class="col-md-6">
                                                                         <label class="negrita">Seleccionar Tema Web:</label>
-                                                                            <select id="selectemaweb" name="selectemaweb" class="form-control">
+                                                                        <select id="selectemaweb" name="selectemaweb" class="form-control">
+                                                                            <?php
+                                                                            if (array_key_exists('psystemconftemaweb', $_SESSION['EDITARSUPER'])) {
+                                                                                if ($_SESSION['EDITARSUPER']['psystemconftemaweb'] == 2) {
+                                                                            ?>
+                                                                                    <option value="1">Claro</option>
+                                                                                    <option selected value="2">Oscuro</option>
                                                                                 <?php
-                                                                                if (array_key_exists('psystemconftemaweb', $_SESSION['EDITARSUPER'])) {
-                                                                                    if ($_SESSION['EDITARSUPER']['psystemconftemaweb'] == 2) {
-                                                                                ?>
-                                                                                        <option value="1">Claro</option>
-                                                                                        <option selected value="2">Oscuro</option>
-                                                                                    <?php
-                                                                                    } else {
-                                                                                    ?>
-                                                                                        <option selected="1">Claro</option>
-                                                                                        <option value="2">Oscuro</option>
-                                                                                    <?php
-                                                                                    }
                                                                                 } else {
-                                                                                    ?>
+                                                                                ?>
                                                                                     <option selected="1">Claro</option>
                                                                                     <option value="2">Oscuro</option>
                                                                                 <?php
                                                                                 }
+                                                                            } else {
                                                                                 ?>
-                                                                            </select>
+                                                                                <option selected="1">Claro</option>
+                                                                                <option value="2">Oscuro</option>
+                                                                            <?php
+                                                                            }
+                                                                            ?>
+                                                                        </select>
+                                                                    </div>
+
+                                                                    <div class="col-md-6">
+                                                                        <label class="negrita">Permiso creación usuarios:</label>
+                                                                        <select id="psystemcreateuser" name="psystemcreateuser" class="form-control">
+                                                                            <?php
+                                                                            if (array_key_exists('psystemcreateuser', $_SESSION['EDITARSUPER']) && $_SESSION['EDITARSUPER']['psystemcreateuser'] == 1) {
+                                                                                echo '<option value="1">No</option>';
+                                                                                echo '<option selected="2">Si</option>';
+                                                                            } else {
+                                                                                echo '<option selected="1">No</option>';
+                                                                                echo '<option value="2">Si</option>';
+                                                                            }
+                                                                            ?>
+                                                                        </select>
                                                                     </div>
 
                                                                     <?php
