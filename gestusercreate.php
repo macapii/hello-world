@@ -44,7 +44,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
 
     $expulsar = 0;
 
-    //COMPROVAR SI SESSION EXISTE SINO CREARLA CON NO
+    //COMPROBAR SI SESSION EXISTE SINO CREARLA CON NO
     if (!isset($_SESSION['VALIDADO']) || !isset($_SESSION['KEYSECRETA'])) {
         $_SESSION['VALIDADO'] = "NO";
         $_SESSION['KEYSECRETA'] = "0";
@@ -52,9 +52,9 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
         exit;
     }
 
-    //COMPROVAR SI ES EL SUPERADMIN O ADMIN
+    //COMPROBAR SI ES EL SUPERADMIN O ADMIN
     if (array_key_exists('rango', $_SESSION['CONFIGUSER'])) {
-        if ($_SESSION['CONFIGUSER']['rango'] == 1 || $_SESSION['CONFIGUSER']['rango'] == 2) {
+        if ($_SESSION['CONFIGUSER']['rango'] == 1 || $_SESSION['CONFIGUSER']['rango'] == 2 && array_key_exists('psystemcreateuser', $_SESSION['CONFIGUSER']) && $_SESSION['CONFIGUSER']['psystemcreateuser'] == 1) {
             $expulsar = 1;
         }
     }
@@ -293,7 +293,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                                                         <div class="negrita card-header text-white bg-primary">Página Descargar Servidor</div>
                                                                         <div class="card-body border">
 
-                                                                        <div class="form-group">
+                                                                            <div class="form-group">
                                                                                 <div>
                                                                                     <input id="ppagedownserver" name="ppagedownserver" type="checkbox" value="1">
                                                                                     <label class="negrita mr-2" for="ppagedownserver">Acceder</label>

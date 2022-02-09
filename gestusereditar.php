@@ -54,7 +54,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
 
     //COMPROVAR SI ES EL SUPERADMIN O ADMIN
     if (array_key_exists('rango', $_SESSION['CONFIGUSER'])) {
-        if ($_SESSION['CONFIGUSER']['rango'] == 1 || $_SESSION['CONFIGUSER']['rango'] == 2) {
+        if ($_SESSION['CONFIGUSER']['rango'] == 1 || $_SESSION['CONFIGUSER']['rango'] == 2 && array_key_exists('psystemcreateuser', $_SESSION['CONFIGUSER']) && $_SESSION['CONFIGUSER']['psystemcreateuser'] == 1) {
             $expulsar = 1;
         }
     }
