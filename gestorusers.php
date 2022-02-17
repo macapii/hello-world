@@ -107,13 +107,11 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                                             echo '<div class="col-md-6">';
                                                             echo '<button type="button" class="btn btn-primary btn-block btn-lg text-white" id="crearuser">Crear Nuevo Usuario</button>';
                                                             echo '</div>';
-                                                            echo '<hr>';
                                                         } elseif ($_SESSION['CONFIGUSER']['rango'] == 2) {
                                                             if (array_key_exists('psystemcreateuser', $_SESSION['CONFIGUSER']) && $_SESSION['CONFIGUSER']['psystemcreateuser'] == 1) {
                                                                 echo '<div class="col-md-6">';
                                                                 echo '<button type="button" class="btn btn-primary btn-block btn-lg text-white" id="crearuser">Crear Nuevo Usuario</button>';
                                                                 echo '</div>';
-                                                                echo '<hr>';
                                                             }
                                                         }
                                                         ?>
@@ -135,7 +133,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
 
                                                     ?>
 
-                                                    <div class="py-1">
+                                                    <div class="py-3">
                                                         <div class="container">
                                                             <div class="row">
                                                                 <div class="col-md-12">
