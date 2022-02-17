@@ -2,7 +2,7 @@
 
 /*
 This file is part of McWebPanel.
-Copyright (C) 2020 Cristina Ibañez, Konata400
+Copyright (C) 2020-2022 Cristina Ibañez, Konata400
 
     McWebPanel is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -52,7 +52,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
 
     <?php
 
-    //COMPROVAR SI SESSION EXISTE SINO CREARLA CON NO
+    //COMPROBAR SI SESSION EXISTE SINO CREARLA CON NO
     if (!isset($_SESSION['VALIDADO']) || !isset($_SESSION['KEYSECRETA'])) {
         $_SESSION['VALIDADO'] = "NO";
         $_SESSION['KEYSECRETA'] = "0";
@@ -60,7 +60,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
         exit;
     }
 
-    //COMPROVAR SI ES EL SUPERADMIN O ADMIN O USER CON PERMISOS
+    //COMPROBAR SI ES EL SUPERADMIN O ADMIN O USER CON PERMISOS
     if ($_SESSION['CONFIGUSER']['rango'] == 1 || $_SESSION['CONFIGUSER']['rango'] == 2 || array_key_exists('pgestorarchivoseditar', $_SESSION['CONFIGUSER']) && $_SESSION['CONFIGUSER']['pgestorarchivoseditar'] == 1) {
         $expulsar = 1;
     }

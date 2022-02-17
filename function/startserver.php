@@ -2,7 +2,7 @@
 
 /*
 This file is part of McWebPanel.
-Copyright (C) 2020 Cristina Ibañez, Konata400
+Copyright (C) 2020-2022 Cristina Ibañez, Konata400
 
     McWebPanel is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -30,7 +30,7 @@ function test_input($data)
     return $data;
 }
 
-//COMPROVAR SI SESSION EXISTE SINO CREARLA CON NO
+//COMPROBAR SI SESSION EXISTE SINO CREARLA CON NO
 if (!isset($_SESSION['VALIDADO']) || !isset($_SESSION['KEYSECRETA'])) {
     $_SESSION['VALIDADO'] = "NO";
     $_SESSION['KEYSECRETA'] = "0";
@@ -239,7 +239,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                 }
             }
 
-            //COMPROVAR PUERTO EN USO
+            //COMPROBAR PUERTO EN USO
             if ($elerror == 0) {
                 $comandopuerto = "netstat -tulpn 2>/dev/null | grep :" . $recpuerto;
                 $obtener = exec($comandopuerto);
@@ -251,7 +251,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
 
             //COMPROBAR IGNORAR LIMITE RAM
             if ($recignoreramlimit != 1) {
-                //COMPROVAR MEMORIA RAM
+                //COMPROBAR MEMORIA RAM
                 if ($elerror == 0) {
                     $totalramsys = shell_exec("free -g | grep Mem | gawk '{ print $2 }'");
                     $totalramsys = trim($totalramsys);
@@ -284,7 +284,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                 }
             }
 
-            //COMPROVAR SERVER.PROPERTIES
+            //COMPROBAR SERVER.PROPERTIES
             if ($elerror == 0) {
                 $rutatemp = $rutaminecraffijo;
                 $rutafinal = $rutaminecraffijo;
@@ -325,7 +325,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                 $rutaiconofinal = $rutacarpetamine . "/" . $reccarpmine . "/server-icon.png";
                 $rutacarpetamine .= "/" . $reccarpmine;
 
-                //COMPROVAR SI EXISTE EN CARPETA IMG Y COPIARLA EN CASO QUE EL SERVIDOR NO LA TENGA
+                //COMPROBAR SI EXISTE EN CARPETA IMG Y COPIARLA EN CASO QUE EL SERVIDOR NO LA TENGA
                 clearstatcache();
                 if (file_exists($rutaiconoimg)) {
                     clearstatcache();

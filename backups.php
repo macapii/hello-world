@@ -2,7 +2,7 @@
 
 /*
 This file is part of McWebPanel.
-Copyright (C) 2020 Cristina Ibañez, Konata400
+Copyright (C) 2020-2022 Cristina Ibañez, Konata400
 
     McWebPanel is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -44,7 +44,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
 
     $expulsar = 0;
 
-    //COMPROVAR SI SESSION EXISTE SINO CREARLA CON NO
+    //COMPROBAR SI SESSION EXISTE SINO CREARLA CON NO
     if (!isset($_SESSION['VALIDADO']) || !isset($_SESSION['KEYSECRETA'])) {
         $_SESSION['VALIDADO'] = "NO";
         $_SESSION['KEYSECRETA'] = "0";
@@ -52,7 +52,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
         exit;
     }
 
-    //COMPROVAR SI ES EL SUPERADMIN O ADMIN O USER CON PERMISOS
+    //COMPROBAR SI ES EL SUPERADMIN O ADMIN O USER CON PERMISOS
     if ($_SESSION['CONFIGUSER']['rango'] == 1 || $_SESSION['CONFIGUSER']['rango'] == 2 || array_key_exists('pbackups', $_SESSION['CONFIGUSER']) && $_SESSION['CONFIGUSER']['pbackups'] == 1) {
         $expulsar = 1;
     }
@@ -185,21 +185,21 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                                                     $_SESSION['BACKUPSTATUS'] = 0;
                                                                 }
 
-                                                                //COMPROVAR SI EXISTE CARPETA BACKUP
+                                                                //COMPROBAR SI EXISTE CARPETA BACKUP
                                                                 clearstatcache();
                                                                 if (!file_exists($rutaarchivo)) {
                                                                     echo "<div class='alert alert-danger' role='alert'>Error: No existe la carpeta backup.</div>";
                                                                     exit;
                                                                 }
 
-                                                                //COMPROVAR SI SE PUEDE LEER CARPETA BACKUP
+                                                                //COMPROBAR SI SE PUEDE LEER CARPETA BACKUP
                                                                 clearstatcache();
                                                                 if (!is_readable($rutaarchivo)) {
                                                                     echo "<div class='alert alert-danger' role='alert'>Error: La carpeta backup no tiene permisos de lectura.</div>";
                                                                     exit;
                                                                 }
 
-                                                                //COMPROVAR SI SE PUEDE ESCRIVIR EN CARPETA BACKUP
+                                                                //COMPROBAR SI SE PUEDE ESCRIVIR EN CARPETA BACKUP
                                                                 clearstatcache();
                                                                 if (!is_writable($rutaarchivo)) {
                                                                     echo "<div class='alert alert-danger' role='alert'>Error: La carpeta backup no tiene permisos de escritura.</div>";

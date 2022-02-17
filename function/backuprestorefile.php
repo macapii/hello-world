@@ -2,7 +2,7 @@
 
 /*
 This file is part of McWebPanel.
-Copyright (C) 2020 Cristina Ibañez, Konata400
+Copyright (C) 2020-2022 Cristina Ibañez, Konata400
 
     McWebPanel is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -30,7 +30,7 @@ function test_input($data)
     return $data;
 }
 
-//COMPROVAR SI SESSION EXISTE SINO CREARLA CON NO
+//COMPROBAR SI SESSION EXISTE SINO CREARLA CON NO
 if (!isset($_SESSION['VALIDADO']) || !isset($_SESSION['KEYSECRETA'])) {
     $_SESSION['VALIDADO'] = "NO";
     $_SESSION['KEYSECRETA'] = "0";
@@ -139,7 +139,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                 }
             }
 
-            //COMPROVAR SI LA RAIZ SE PUEDE ESCRIVIR
+            //COMPROBAR SI LA RAIZ SE PUEDE ESCRIVIR
             if ($elerror == 0) {
                 clearstatcache();
                 if (!is_writable($rutaraiz)) {
@@ -148,7 +148,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                 }
             }
 
-            //COMPROVAR SI EXISTE LA CARPETA SERVIDOR MINECRAFT
+            //COMPROBAR SI EXISTE LA CARPETA SERVIDOR MINECRAFT
             if ($elerror == 0) {
                 clearstatcache();
                 if (!file_exists($dirminecraft)) {
@@ -157,7 +157,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                 }
             }
 
-            //COMPROVAR SI SE PUEDE ESCRIBIR LA CARPETA SERVIDOR MINECRAFT
+            //COMPROBAR SI SE PUEDE ESCRIBIR LA CARPETA SERVIDOR MINECRAFT
             if ($elerror == 0) {
                 clearstatcache();
                 if (!is_writable($dirminecraft)) {
@@ -184,7 +184,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                 }
             }
 
-            //COMPROVAR SI EXISTE EL ARCHIVO TAR
+            //COMPROBAR SI EXISTE EL ARCHIVO TAR
             if ($elerror == 0) {
                 clearstatcache();
                 if (!file_exists($comproarchivo)) {
@@ -193,7 +193,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                 }
             }
 
-            //COMPROVAR SI SE PUEDE ESCRIVIR EN ARCHIVO TAR
+            //COMPROBAR SI SE PUEDE ESCRIVIR EN ARCHIVO TAR
             if ($elerror == 0) {
                 clearstatcache();
                 if (!is_readable($comproarchivo)) {

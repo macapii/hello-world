@@ -2,7 +2,7 @@
 
 /*
 This file is part of McWebPanel.
-Copyright (C) 2020 Cristina Ibañez, Konata400
+Copyright (C) 2020-2022 Cristina Ibañez, Konata400
 
     McWebPanel is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -32,7 +32,7 @@ $rutaarchivo = $RUTAPRINCIPAL;
 $rutaarchivo = trim($rutaarchivo);
 $rutaarchivo .= "/config";
 
-//COMPROVAR SI EXISTE CARPETA CONFIG
+//COMPROBAR SI EXISTE CARPETA CONFIG
 if ($elerror == 0) {
   clearstatcache();
   if (!file_exists($rutaarchivo)) {
@@ -40,7 +40,7 @@ if ($elerror == 0) {
   }
 }
 
-//COMPROVAR SI CONFIG TIENE PERMISOS DE LECTURA
+//COMPROBAR SI CONFIG TIENE PERMISOS DE LECTURA
 if ($elerror == 0) {
   clearstatcache();
   if (!is_readable($rutaarchivo)) {
@@ -49,7 +49,7 @@ if ($elerror == 0) {
   }
 }
 
-//COMPROVAR SI CONFIG TIENE PERMISOS DE ESCRITURA
+//COMPROBAR SI CONFIG TIENE PERMISOS DE ESCRITURA
 if ($elerror == 0) {
   clearstatcache();
   if (!is_writable($rutaarchivo)) {
@@ -58,7 +58,7 @@ if ($elerror == 0) {
   }
 }
 
-//COMPROVAR SI EXISTE CARPETA CONFIG
+//COMPROBAR SI EXISTE CARPETA CONFIG
 if ($elerror == 0) {
   clearstatcache();
   if (!file_exists($rutaarchivo)) {
@@ -67,7 +67,7 @@ if ($elerror == 0) {
 }
 
 
-//COMPROVAR SI EXISTE ARCHIVO CONFIGURACION
+//COMPROBAR SI EXISTE ARCHIVO CONFIGURACION
 if ($elerror == 0) {
   clearstatcache();
   if (!file_exists($RUTACONFIG)) {
@@ -75,7 +75,7 @@ if ($elerror == 0) {
   }
 }
 
-//COMPROVAR SI ARCHIVO CONFIGURACION TIENE PERMISOS DE LECTURA
+//COMPROBAR SI ARCHIVO CONFIGURACION TIENE PERMISOS DE LECTURA
 if ($elerror == 0) {
   clearstatcache();
   if (!is_readable($RUTACONFIG)) {
@@ -292,7 +292,7 @@ if ($elerror == 0) {
               }
             }
 
-            //COMPROVAR PUERTO EN USO
+            //COMPROBAR PUERTO EN USO
             if ($elerror == 0) {
               $comandopuerto = "netstat -tulpn 2>/dev/null | grep :" . $recpuerto;
               $obtener = exec($comandopuerto);
@@ -304,7 +304,7 @@ if ($elerror == 0) {
 
             //COMPROBAR IGNORAR LIMITE RAM
             if ($recignoreramlimit != 1) {
-              //COMPROVAR MEMORIA RAM
+              //COMPROBAR MEMORIA RAM
               if ($elerror == 0) {
                 $totalramsys = shell_exec("free -g | grep Mem | gawk '{ print $2 }'");
                 $totalramsys = trim($totalramsys);
@@ -337,7 +337,7 @@ if ($elerror == 0) {
               }
             }
 
-            //COMPROVAR SERVER.PROPERTIES
+            //COMPROBAR SERVER.PROPERTIES
             if ($elerror == 0) {
               $rutatemp = $rutaminecraffijo;
               $rutafinal = $rutaminecraffijo;
@@ -377,7 +377,7 @@ if ($elerror == 0) {
               $rutaiconofinal = $rutacarpetamine . "/" . $reccarpmine . "/server-icon.png";
               $rutacarpetamine .= "/" . $reccarpmine;
 
-              //COMPROVAR SI EXISTE EN CARPETA IMG Y COPIARLA EN CASO QUE EL SERVIDOR NO LA TENGA
+              //COMPROBAR SI EXISTE EN CARPETA IMG Y COPIARLA EN CASO QUE EL SERVIDOR NO LA TENGA
               clearstatcache();
               if (file_exists($rutaiconoimg)) {
                 clearstatcache();

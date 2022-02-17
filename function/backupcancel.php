@@ -30,7 +30,7 @@ function test_input($data)
     return $data;
 }
 
-//COMPROVAR SI SESSION EXISTE SINO CREARLA CON NO
+//COMPROBAR SI SESSION EXISTE SINO CREARLA CON NO
 if (!isset($_SESSION['VALIDADO']) || !isset($_SESSION['KEYSECRETA'])) {
     $_SESSION['VALIDADO'] = "NO";
     $_SESSION['KEYSECRETA'] = "0";

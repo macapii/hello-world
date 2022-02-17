@@ -2,7 +2,7 @@
 
 /*
 This file is part of McWebPanel.
-Copyright (C) 2020 Cristina Ibañez, Konata400
+Copyright (C) 2020-2022 Cristina Ibañez, Konata400
 
     McWebPanel is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -30,7 +30,7 @@ function test_input($data)
     return $data;
 }
 
-//COMPROVAR SI SESSION EXISTE SINO CREARLA CON NO
+//COMPROBAR SI SESSION EXISTE SINO CREARLA CON NO
 if (!isset($_SESSION['VALIDADO']) || !isset($_SESSION['KEYSECRETA'])) {
     $_SESSION['VALIDADO'] = "NO";
     $_SESSION['KEYSECRETA'] = "0";
@@ -76,7 +76,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
             }
 
 
-            //COMPROVAR QUE EL INICIO DE RUTA SEA IGUAL A LA SESSION
+            //COMPROBAR QUE EL INICIO DE RUTA SEA IGUAL A LA SESSION
             if ($elerror == 0) {
                 if ($_SESSION['RUTALIMITE'] != substr($archivo, 0, strlen($_SESSION['RUTALIMITE']))) {
                     $retorno = "rutacambiada";
@@ -100,7 +100,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                 }
             }
 
-            //COMPROVAR SI ARCHIVO EXISTE
+            //COMPROBAR SI ARCHIVO EXISTE
             if ($elerror == 0) {
                 clearstatcache();
                 if (!file_exists($archivo)) {
@@ -142,7 +142,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                 }
             }
 
-            //COMPROVAR SI SE PUEDE ESCRIBIR EN CONFIG
+            //COMPROBAR SI SE PUEDE ESCRIBIR EN CONFIG
             if ($elerror == 0) {
                 clearstatcache();
                 if (!is_writable($rutaconfig)) {

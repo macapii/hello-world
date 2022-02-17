@@ -1,7 +1,7 @@
 <?php
 /*
 This file is part of McWebPanel.
-Copyright (C) 2020 Cristina Ibañez, Konata400
+Copyright (C) 2020-2022 Cristina Ibañez, Konata400
 
     McWebPanel is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -37,7 +37,7 @@ function test_input($data)
     return $data;
 }
 
-//COMPROVAR SI SESSION EXISTE SINO CREARLA CON NO
+//COMPROBAR SI SESSION EXISTE SINO CREARLA CON NO
 if (!isset($_SESSION['VALIDADO']) || !isset($_SESSION['KEYSECRETA'])) {
     $_SESSION['VALIDADO'] = "NO";
     $_SESSION['KEYSECRETA'] = "0";
@@ -95,13 +95,13 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
             $dirconfig = $dirconfig . "/" . $archivo;
 
             session_write_close();
-            //COMPROVAR SI EXISTE
+            //COMPROBAR SI EXISTE
             clearstatcache();
             if (file_exists($dirconfig)) {
-                //COMPROVAR SI SE PUEDE LEER
+                //COMPROBAR SI SE PUEDE LEER
                 clearstatcache();
                 if (is_readable($dirconfig)) {
-                    //COMPROVAR SI NO ES UN DIRECTORIO
+                    //COMPROBAR SI NO ES UN DIRECTORIO
                     clearstatcache();
                     if (is_dir($dirconfig)) {
                         exit;

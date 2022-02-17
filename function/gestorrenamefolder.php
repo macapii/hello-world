@@ -2,7 +2,7 @@
 
 /*
 This file is part of McWebPanel.
-Copyright (C) 2020 Cristina Ibañez, Konata400
+Copyright (C) 2020-2022 Cristina Ibañez, Konata400
 
     McWebPanel is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -29,7 +29,7 @@ function test_input($data)
     return $data;
 }
 
-//COMPROVAR SI SESSION EXISTE SINO CREARLA CON NO
+//COMPROBAR SI SESSION EXISTE SINO CREARLA CON NO
 if (!isset($_SESSION['VALIDADO']) || !isset($_SESSION['KEYSECRETA'])) {
     $_SESSION['VALIDADO'] = "NO";
     $_SESSION['KEYSECRETA'] = "0";
@@ -53,7 +53,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
             $archivo = test_input($_POST['action']);
             $renombre = test_input($_POST['renombre']);
 
-            //COMPROVAR SI ESTA VACIO RENOMBRE
+            //COMPROBAR SI ESTA VACIO RENOMBRE
             if ($elerror == 0) {
                 if ($renombre == "") {
                     $retorno = "revacio";
@@ -61,7 +61,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                 }
             }
 
-            //COMPROVAR SI ESTA VACIO ARCHIVO
+            //COMPROBAR SI ESTA VACIO ARCHIVO
             if ($elerror == 0) {
                 if ($archivo == "") {
                     $retorno = "archvacio";
@@ -75,7 +75,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                 $nuevofile = $_SESSION['RUTACTUAL'] . "/" . $renombre;
             }
 
-            //COMPROVAR QUE EL INICIO DE RUTA SEA IGUAL A LA SESSION
+            //COMPROBAR QUE EL INICIO DE RUTA SEA IGUAL A LA SESSION
             if ($elerror == 0) {
                 if ($_SESSION['RUTALIMITE'] != substr($archivo, 0, strlen($_SESSION['RUTALIMITE']))) {
                     $retorno = "rutacambiada";
@@ -124,7 +124,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                 }
             }
 
-            //COMPROVAR SI EL NUEVO A CREAR EXISTE
+            //COMPROBAR SI EL NUEVO A CREAR EXISTE
             if ($elerror == 0) {
                 clearstatcache();
                 if (file_exists($nuevofile)) {
@@ -133,7 +133,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                 }
             }
 
-            //COMPROVAR SI SE PUEDE ESCRIVIR
+            //COMPROBAR SI SE PUEDE ESCRIVIR
             if ($elerror == 0) {
                 clearstatcache();
                 if (!is_writable($archivo)) {

@@ -2,7 +2,7 @@
 
 /*
 This file is part of McWebPanel.
-Copyright (C) 2020 Cristina Ibañez, Konata400
+Copyright (C) 2020-2022 Cristina Ibañez, Konata400
 
     McWebPanel is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -141,7 +141,7 @@ require_once("../template/errorreport.php");
         $elmaxupload = test_input($_POST["maxupload"]);
         $elpostmax = $elmaxupload + 1;
 
-        //COMPROVAR NO ESTEN VACIOS
+        //COMPROBAR NO ESTEN VACIOS
         if ($elusuario == "" || $elpassword == "" || $elrepassword == "" || $elnombreservidor == "" || $eldirectorio == "" || $elpuerto == "" || $laram == "" || $eltiposerver == "" || $elmaxupload == "") {
             exit;
         }
@@ -162,7 +162,7 @@ require_once("../template/errorreport.php");
             exit;
         }
 
-        //COMPROVAR SI EL PASSWORD COINCIDE
+        //COMPROBAR SI EL PASSWORD COINCIDE
         if ($elpassword != $elrepassword) {
             echo "El password no coincide";
             exit;

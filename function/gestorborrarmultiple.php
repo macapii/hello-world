@@ -2,7 +2,7 @@
 
 /*
 This file is part of McWebPanel.
-Copyright (C) 2020 Cristina Ibañez, Konata400
+Copyright (C) 2020-2022 Cristina Ibañez, Konata400
 
     McWebPanel is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -29,7 +29,7 @@ function test_input($data)
     return $data;
 }
 
-//COMPROVAR SI SESSION EXISTE SINO CREARLA CON NO
+//COMPROBAR SI SESSION EXISTE SINO CREARLA CON NO
 if (!isset($_SESSION['VALIDADO']) || !isset($_SESSION['KEYSECRETA'])) {
     $_SESSION['VALIDADO'] = "NO";
     $_SESSION['KEYSECRETA'] = "0";
@@ -94,7 +94,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                 }
             }
 
-            //COMPROVAR QUE EL INICIO DE RUTA SEA IGUAL A LA SESSION
+            //COMPROBAR QUE EL INICIO DE RUTA SEA IGUAL A LA SESSION
             if ($elerror == 0) {
                 for ($a = 0; $a < count($archivos); $a++) {
                     $test = substr($archivos[$a], 0, strlen($_SESSION['RUTALIMITE']));
@@ -123,7 +123,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                 }
             }
 
-            //COMPROVAR QUE EXISTAN TODOS
+            //COMPROBAR QUE EXISTAN TODOS
             if ($elerror == 0) {
                 for ($a = 0; $a < count($archivos); $a++) {
                     clearstatcache();
@@ -134,7 +134,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                 }
             }
 
-            //COMPROVAR SI SE PUEDEN ESCRIVIR
+            //COMPROBAR SI SE PUEDEN ESCRIVIR
             if ($elerror == 0) {
                 for ($a = 0; $a < count($archivos); $a++) {
                     clearstatcache();
@@ -145,7 +145,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                 }
             }
 
-            //COMPROVAR SI SE PUEDEN ENTER/EJECUTAR
+            //COMPROBAR SI SE PUEDEN ENTER/EJECUTAR
             if ($elerror == 0) {
                 for ($a = 0; $a < count($archivos); $a++) {
                     clearstatcache();

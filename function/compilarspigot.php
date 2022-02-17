@@ -2,7 +2,7 @@
 
 /*
 This file is part of McWebPanel.
-Copyright (C) 2020 Cristina Ibañez, Konata400
+Copyright (C) 2020-2022 Cristina Ibañez, Konata400
 
     McWebPanel is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -60,7 +60,7 @@ function obtenersizecarpeta($dir)
   return $totalSize;
 }
 
-//COMPROVAR SI SESSION EXISTE SINO CREARLA CON NO
+//COMPROBAR SI SESSION EXISTE SINO CREARLA CON NO
 if (!isset($_SESSION['VALIDADO']) || !isset($_SESSION['KEYSECRETA'])) {
   $_SESSION['VALIDADO'] = "NO";
   $_SESSION['KEYSECRETA'] = "0";
@@ -282,7 +282,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
               }
             }
 
-            //COMPROVAR MEMORIA RAM
+            //COMPROBAR MEMORIA RAM
             if ($elerror == 0) {
               $totalramsys = shell_exec("free -g | grep Mem | gawk '{ print $2 }'");
               $totalramsys = trim($totalramsys);
@@ -356,10 +356,10 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
             }
           } elseif ($laaction == "consola") {
 
-            //COMPROVAR SI EXISTE LA RUTA
+            //COMPROBAR SI EXISTE LA RUTA
             clearstatcache();
             if (file_exists($archivolog)) {
-              //COMPROVAR SI SE PUEDE LEER
+              //COMPROBAR SI SE PUEDE LEER
               clearstatcache();
               if (is_readable($archivolog)) {
                 //LEER ARCHIVO
@@ -400,7 +400,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
               $elpid = shell_exec($elpid);
               $elpid = trim($elpid);
 
-              //COMPROVAR QUE SEA NUMERICO
+              //COMPROBAR QUE SEA NUMERICO
               if (is_numeric($elpid)) {
                 $elcomando = "kill -9 " . $elpid;
                 $elcomando = trim($elcomando);

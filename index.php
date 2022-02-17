@@ -2,7 +2,7 @@
 
 /*
 This file is part of McWebPanel.
-Copyright (C) 2020 Cristina Ibañez, Konata400
+Copyright (C) 2020-2022 Cristina Ibañez, Konata400
 
     McWebPanel is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -202,7 +202,7 @@ require_once("template/header.php");
     $rutaarchivo = "";
     $rutainstall = "";
 
-    //COMPROVAR SI EXISTE LA CONFIG
+    //COMPROBAR SI EXISTE LA CONFIG
     $rutaarchivo = getcwd();
     $rutaarchivo = trim($rutaarchivo);
     $rutaarchivo .= "/config/confuser.json";
@@ -221,7 +221,7 @@ require_once("template/header.php");
       $sumaconfig++;
     }
 
-    //COMPROVAR SI EXISTE INSTALL Y REDIRECCIONAR
+    //COMPROBAR SI EXISTE INSTALL Y REDIRECCIONAR
     $rutainstall = getcwd();
     $rutainstall = trim($rutainstall);
     $rutainstall .= "/install";
@@ -231,7 +231,7 @@ require_once("template/header.php");
       $sumainstall++;
     }
 
-    //COMPROVAR RESULTADOS
+    //COMPROBAR RESULTADOS
     if ($sumaconfig == 2 && $sumainstall == 1) {
       echo '<div class="alert alert-danger" role="alert">Error: Borra la carpeta install.</div>';
       exit;

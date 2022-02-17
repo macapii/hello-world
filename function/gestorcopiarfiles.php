@@ -2,7 +2,7 @@
 
 /*
 This file is part of McWebPanel.
-Copyright (C) 2020 Cristina Ibañez, Konata400
+Copyright (C) 2020-2022 Cristina Ibañez, Konata400
 
     McWebPanel is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -22,7 +22,7 @@ require_once("../template/session.php");
 require_once("../template/errorreport.php");
 require_once("../config/confopciones.php");
 
-//COMPROVAR SI SESSION EXISTE SINO CREARLA CON NO
+//COMPROBAR SI SESSION EXISTE SINO CREARLA CON NO
 if (!isset($_SESSION['VALIDADO']) || !isset($_SESSION['KEYSECRETA'])) {
     $_SESSION['VALIDADO'] = "NO";
     $_SESSION['KEYSECRETA'] = "0";
@@ -72,7 +72,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                 }
             }
 
-            //COMPROVAR QUE EL INICIO DE RUTA SEA IGUAL A LA SESSION
+            //COMPROBAR QUE EL INICIO DE RUTA SEA IGUAL A LA SESSION
             if ($elerror == 0) {
 
                 for ($a = 0; $a < count($copiados); $a++) {
@@ -114,7 +114,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                 }
             }
 
-            //COMPROVAR SI SE PUEDEN ENTER/EJECUTAR
+            //COMPROBAR SI SE PUEDEN ENTER/EJECUTAR
             if ($elerror == 0) {
                 for ($a = 0; $a < count($copiados); $a++) {
                     clearstatcache();

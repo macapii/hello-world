@@ -2,7 +2,7 @@
 
 /*
 This file is part of McWebPanel.
-Copyright (C) 2020 Cristina Ibañez, Konata400
+Copyright (C) 2020-2022 Cristina Ibañez, Konata400
 
     McWebPanel is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -108,7 +108,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
 
     $expulsar = 0;
 
-    //COMPROVAR SI SESSION EXISTE SINO CREARLA CON NO
+    //COMPROBAR SI SESSION EXISTE SINO CREARLA CON NO
     if (!isset($_SESSION['VALIDADO']) || !isset($_SESSION['KEYSECRETA'])) {
         $_SESSION['VALIDADO'] = "NO";
         $_SESSION['KEYSECRETA'] = "0";
@@ -116,7 +116,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
         exit;
     }
 
-    //COMPROVAR SI ES EL SUPERADMIN O ADMIN O USER CON PERMISOS
+    //COMPROBAR SI ES EL SUPERADMIN O ADMIN O USER CON PERMISOS
     if ($_SESSION['CONFIGUSER']['rango'] == 1 || $_SESSION['CONFIGUSER']['rango'] == 2 || array_key_exists('pgestorarchivos', $_SESSION['CONFIGUSER']) && $_SESSION['CONFIGUSER']['pgestorarchivos'] == 1) {
         $expulsar = 1;
     }
@@ -234,28 +234,28 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                                         $rutaarchivo = $_SESSION['RUTALIMITE'];
                                                     }
 
-                                                    //COMPROVAR SI EXISTE CARPETA SERVIDOR MINECRAF
+                                                    //COMPROBAR SI EXISTE CARPETA SERVIDOR MINECRAF
                                                     clearstatcache();
                                                     if (!file_exists($_SESSION['RUTALIMITE'])) {
                                                         echo "<div class='alert alert-danger' role='alert'>Error: No existe la carpeta servidor minecraft.</div>";
                                                         exit;
                                                     }
 
-                                                    //COMPROVAR SI SE PUEDE LEER CARPETA
+                                                    //COMPROBAR SI SE PUEDE LEER CARPETA
                                                     clearstatcache();
                                                     if (!is_readable($_SESSION['RUTALIMITE'])) {
                                                         echo "<div class='alert alert-danger' role='alert'>Error: La carpeta servidor minecraft no tiene permisos de lectura.</div>";
                                                         exit;
                                                     }
 
-                                                    //COMPROVAR SI SE PUEDE ESCRIVIR EN CARPETA
+                                                    //COMPROBAR SI SE PUEDE ESCRIVIR EN CARPETA
                                                     clearstatcache();
                                                     if (!is_writable($_SESSION['RUTALIMITE'])) {
                                                         echo "<div class='alert alert-danger' role='alert'>Error: La carpeta servidor minecraft no tiene permisos de escritura.</div>";
                                                         exit;
                                                     }
 
-                                                    //COMPROVAR SI SE PUEDE EJECUTAR EN CARPETA
+                                                    //COMPROBAR SI SE PUEDE EJECUTAR EN CARPETA
                                                     clearstatcache();
                                                     if (!is_executable($_SESSION['RUTALIMITE'])) {
                                                         echo "<div class='alert alert-danger' role='alert'>Error: La carpeta servidor minecraft no tiene permisos de ejecucion.</div>";

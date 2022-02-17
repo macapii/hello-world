@@ -2,7 +2,7 @@
 
 /*
 This file is part of McWebPanel.
-Copyright (C) 2020 Cristina Ibañez, Konata400
+Copyright (C) 2020-2022 Cristina Ibañez, Konata400
 
     McWebPanel is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -29,7 +29,7 @@ function test_input($data)
     return $data;
 }
 
-//COMPROVAR SI SESSION EXISTE SINO CREARLA CON NO
+//COMPROBAR SI SESSION EXISTE SINO CREARLA CON NO
 if (!isset($_SESSION['VALIDADO']) || !isset($_SESSION['KEYSECRETA'])) {
     $_SESSION['VALIDADO'] = "NO";
     $_SESSION['KEYSECRETA'] = "0";
@@ -38,7 +38,7 @@ if (!isset($_SESSION['VALIDADO']) || !isset($_SESSION['KEYSECRETA'])) {
 //VALIDAMOS SESSION
 if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
 
-    //COMPROVAR SI ES EL SUPERADMIN O ADMIN
+    //COMPROBAR SI ES EL SUPERADMIN O ADMIN
     if (array_key_exists('rango', $_SESSION['CONFIGUSER'])) {
 
         if ($_SESSION['CONFIGUSER']['rango'] == 1 || $_SESSION['CONFIGUSER']['rango'] == 2 && array_key_exists('psystemcreateuser', $_SESSION['CONFIGUSER']) && $_SESSION['CONFIGUSER']['psystemcreateuser'] == 1) {
@@ -82,7 +82,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                 }
             }
 
-            //COMPROVAR SI LOS PASSWORS SON IGUALES
+            //COMPROBAR SI LOS PASSWORS SON IGUALES
             if ($elerror == 0) {
                 if ($sinpass == 0 || $sinrepass == 0) {
                     if (test_input($_POST['elpass']) != test_input($_POST['elrepass'])) {
@@ -92,7 +92,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                 }
             }
 
-            //COMPROVAR REQUISITOS DEL PASSWORD
+            //COMPROBAR REQUISITOS DEL PASSWORD
             if ($elerror == 0) {
                 if ($sinpass == 0 || $sinrepass == 0) {
                     $pwd = test_input($_POST['elpass']);
@@ -137,7 +137,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
             }
 
 
-            //COMPROVAR SI EXISTE CARPETA CONFIG
+            //COMPROBAR SI EXISTE CARPETA CONFIG
             if ($elerror == 0) {
                 clearstatcache();
                 if (!file_exists($rutaarchivo)) {
@@ -146,7 +146,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                 }
             }
 
-            //COMPROVAR SI CONFIG TIENE PERMISOS DE LECTURA
+            //COMPROBAR SI CONFIG TIENE PERMISOS DE LECTURA
             if ($elerror == 0) {
                 clearstatcache();
                 if (!is_readable($rutaarchivo)) {
@@ -155,7 +155,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                 }
             }
 
-            //COMPROVAR SI CONFIG TIENE PERMISOS DE ESCRITURA
+            //COMPROBAR SI CONFIG TIENE PERMISOS DE ESCRITURA
             if ($elerror == 0) {
                 clearstatcache();
                 if (!is_writable($rutaarchivo)) {
@@ -164,7 +164,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                 }
             }
 
-            //COMPROVAR SI EXISTE EL JSON
+            //COMPROBAR SI EXISTE EL JSON
             if ($elerror == 0) {
                 clearstatcache();
                 if (!file_exists($elarchivo)) {
@@ -173,7 +173,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                 }
             }
 
-            //COMPROVAR SI SE PUEDE LEER EL JSON
+            //COMPROBAR SI SE PUEDE LEER EL JSON
             if ($elerror == 0) {
                 clearstatcache();
                 if (!is_readable($elarchivo)) {
@@ -182,7 +182,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                 }
             }
 
-            //COMPROVAR SI SE PUEDE ESCRIVIR EL JSON
+            //COMPROBAR SI SE PUEDE ESCRIVIR EL JSON
             if ($elerror == 0) {
                 clearstatcache();
                 if (!is_writable($elarchivo)) {

@@ -2,7 +2,7 @@
 
 /*
 This file is part of McWebPanel.
-Copyright (C) 2020 Cristina Ibañez, Konata400
+Copyright (C) 2020-2022 Cristina Ibañez, Konata400
 
     McWebPanel is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -60,7 +60,7 @@ function obtenersizecarpeta($dir)
     return $totalSize;
 }
 
-//COMPROVAR SI SESSION EXISTE SINO CREARLA CON NO
+//COMPROBAR SI SESSION EXISTE SINO CREARLA CON NO
 if (!isset($_SESSION['VALIDADO']) || !isset($_SESSION['KEYSECRETA'])) {
     $_SESSION['VALIDADO'] = "NO";
     $_SESSION['KEYSECRETA'] = "0";
@@ -89,7 +89,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
 
             $tmp = $_FILES['uploadedFile']['tmp_name'];
 
-            //COMPROVAR SI ES .JAR
+            //COMPROBAR SI ES .JAR
             if ($elerror == 0) {
                 $fileName = $_FILES['uploadedFile']['name'];
                 $fileNameCmps = explode(".", $fileName);
@@ -148,7 +148,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                 }
             }
 
-            //COMPROVAR SI EXISTE LA CARPETA MINECRAFT
+            //COMPROBAR SI EXISTE LA CARPETA MINECRAFT
             if ($elerror == 0) {
                 $elnombredirectorio = CONFIGDIRECTORIO;
                 $rutacarpetamine = dirname(getcwd()) . PHP_EOL;
@@ -181,7 +181,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                 }
             }
 
-            //COMPROVAR SI EXISTE EL ARCHIVO A SUBIR EN LA CARPETA MINECRAFT
+            //COMPROBAR SI EXISTE EL ARCHIVO A SUBIR EN LA CARPETA MINECRAFT
             if ($elerror == 0) {
                 $rutacarpetamine .= "/" . $_FILES['uploadedFile']['name'];
                 clearstatcache();
