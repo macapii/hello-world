@@ -185,24 +185,7 @@ $estamodulo = "";
                 </tr>
 
                 <tr>
-                  <td class="text-center">PHP mbstring</td>
-                  <td></td>
-
-                  <?php
-
-                  //REQUISITO MBSTRING
-                  if (!extension_loaded('mbstring')) {
-                    $losrequisitos = 1;
-                    echo '<td class="text-danger">Instalado - NO</td>';
-                  } else {
-                    echo '<td class="text-success">Instalado - SI</td>';
-                  }
-
-                  ?>
-                </tr>
-
-                <tr>
-                  <td class="text-center">PHP json</td>
+                  <td class="text-center">PHP JSON</td>
                   <td></td>
 
                   <?php
