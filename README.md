@@ -1,5 +1,5 @@
 # McWebPanel (Versión Desarrollo)
-McWebPanel es un panel de administración de Software Libre exclusivo para Servidores Minecraft, creado para PHP7 para ser utilizado en servidores Apache.
+McWebPanel es un panel de administración de Software Libre exclusivo para Servidores Minecraft, creado para PHP7 para ser utilizado en servidores Apache y Nginx.
 
 Diseñado pensando en usuarios con conocimientos limitados a la hora de crear servidores y con el objetivo de utilizar el menor número de dependencias posibles.
 
@@ -23,7 +23,7 @@ Debian 10.x | 11.x
 Ubuntu Server 18.04 LTS | 20.04 LTS
 
 Servidor Web:
-Apache2
+Apache2 / Nginx
 
 Versiones PHP compatibles:
 PHP 7.2 | PHP 7.3 | PHP 7.4 | PHP 8.0
@@ -54,7 +54,7 @@ sudo apt upgrade
 Instalar Paquetes Requisitos (Ubuntu Server / Debian)
 
 ```
-sudo apt install apache2 php libapache2-mod-php default-jdk screen php-mbstring php-zip php-cli php-json gawk wget zip unzip 
+sudo apt install apache2 php libapache2-mod-php default-jdk screen php-cli php-json gawk wget zip unzip 
 ```
 
 Instalar Paquetes Requisitos (Debian)
@@ -67,16 +67,16 @@ Instalar
 
 ```
 Descargar:
-wget https://github.com/Konata400/McWebPanel/archive/refs/tags/0.16-pre.zip
+wget https://github.com/Konata400/McWebPanel/archive/refs/tags/0.17-pre.zip
 
 Descomprimir:
-unzip 0.16-pre.zip
+unzip 0.17-pre.zip
 
 Eliminar index.html por defecto de apache:
 sudo rm /var/www/html/index.html
 
 Copiar a la carpeta Apache:
-sudo cp -r McWebPanel-0.16-pre/. /var/www/html/
+sudo cp -r McWebPanel-0.17-pre/. /var/www/html/
 
 Cambiar Usuario Archivos:
 sudo chown -R www-data:www-data /var/www/html/
