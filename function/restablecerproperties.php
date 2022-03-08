@@ -54,7 +54,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                 $recpuerto = CONFIGPUERTO;
 
                 //OBTENER CARPETA MINECRAFT
-                $reccarpmine= CONFIGDIRECTORIO;
+                $reccarpmine = CONFIGDIRECTORIO;
 
                 //OBTENER RUTA DONDE TIENE QUE ESTAR
                 $dirconfig = dirname(getcwd()) . PHP_EOL;
@@ -111,7 +111,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                     fwrite($file, "max-build-height=256" . PHP_EOL);
                     fwrite($file, "server-ip=" . PHP_EOL);
                     fwrite($file, "allow-nether=true" . PHP_EOL);
-                    fwrite($file, "server-port=" .$recpuerto . PHP_EOL);
+                    fwrite($file, "server-port=" . $recpuerto . PHP_EOL);
                     fwrite($file, "enable-rcon=false" . PHP_EOL);
                     fwrite($file, "sync-chunk-writes=true" . PHP_EOL);
                     fwrite($file, "op-permission-level=4" . PHP_EOL);
@@ -141,6 +141,11 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                     fwrite($file, "hide-online-players=false" . PHP_EOL);
                     fwrite($file, "simulation-distance=10" . PHP_EOL);
                     fclose($file);
+
+                    //PERMISO SERVER.PROPERTIES
+                    $elcommando = "chmod 664 " . $rutaescrivir;
+                    exec($elcommando);
+
                     $retorno = "OK";
                 }
 
