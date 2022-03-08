@@ -433,9 +433,9 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                                                                                                                                                         }
                                                                                                                                                                     }
                                                                                                                                                                     ?>>
-                                                                                    <label class="negrita mr-2" for="ppagedownvanilla">Descargar Vanilla</label>
+                                                                                    <label class="negrita mr-2" for="ppagedownvanilla">Obtener Vanilla</label>
                                                                                 </div>
-                                                                                <p>Permite descargar el servidor vanilla.</p>
+                                                                                <p>Permite descargar el servidor Vanilla.</p>
                                                                             </div>
 
                                                                             <div class="form-group">
@@ -447,9 +447,9 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                                                                                                                                                         }
                                                                                                                                                                     }
                                                                                                                                                                     ?>>
-                                                                                    <label class="negrita mr-2" for="pcompilarspigot">Compilar Spigot</label>
+                                                                                    <label class="negrita mr-2" for="pcompilarspigot">Compilar y obtener Spigot</label>
                                                                                 </div>
-                                                                                <p>Permite compilar el servidor spigot.</p>
+                                                                                <p>Permite compilar y obtener el servidor Spigot.</p>
                                                                             </div>
 
                                                                             <div class="form-group">
@@ -461,9 +461,9 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                                                                                                                                                         }
                                                                                                                                                                     }
                                                                                                                                                                     ?>>
-                                                                                    <label class="negrita mr-2" for="ppagedownpaper">Descargar Paper</label>
+                                                                                    <label class="negrita mr-2" for="ppagedownpaper">Obtener Paper</label>
                                                                                 </div>
-                                                                                <p>Permite descargar el servidor paper.</p>
+                                                                                <p>Permite descargar el servidor Paper.</p>
                                                                             </div>
 
                                                                         </div>
