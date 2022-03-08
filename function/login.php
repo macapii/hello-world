@@ -33,15 +33,12 @@ function test_input($data)
 function generarkey()
 {
     $secretkey = "";
-    $gethash = "";
 
     for ($a = 1; $a <= 32; $a++) {
         $secretkey .= strval(random_int(0, 9));
     }
 
-    $gethash = hash("sha3-512", $secretkey);
-
-    return $gethash;
+    return hash("sha3-512", $secretkey);
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -145,7 +142,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         session_regenerate_id();
         $getconflakey = CONFIGSESSIONKEY;
 
-        $lakey = generarkey($lakey);
+        $lakey = generarkey();
 
         $_SESSION['KEYSECRETA'] = $lakey;
         $_SESSION['VALIDADO'] = $lakey;
