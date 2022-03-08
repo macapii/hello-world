@@ -103,9 +103,9 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                         <div class="container">
                                             <?php
                                             if ($_SESSION['EDITARSUPER']['rango'] == 1) {
-                                                echo ('<h1 class="mb-5">Editar Superusuario</h1>');
+                                                echo '<h1 class="mb-5">Editar Superusuario</h1>';
                                             } elseif ($_SESSION['EDITARSUPER']['rango'] == 2) {
-                                                echo ('<h1 class="mb-5">Editar Administrador</h1>');
+                                                echo '<h1 class="mb-5">Editar Administrador</h1>';
                                             }
                                             ?>
                                             <div class="row">
@@ -172,8 +172,13 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                                                         </select>
                                                                     </div>
 
+                                                                    <?php
+                                                                    //SOLO MUESTRA LAS OPCIONES SI EDITAS UN ADMIN
+                                                                    if ($_SESSION['EDITARSUPER']['rango'] == 2) {
+                                                                    ?>
+
                                                                     <div class="col-md-6">
-                                                                        <label class="negrita">Permiso creación usuarios:</label>
+                                                                        <label class="negrita">Permiso creación/edición usuarios:</label>
                                                                         <select id="psystemcreateuser" name="psystemcreateuser" class="form-control">
                                                                             <?php
                                                                             if (array_key_exists('psystemcreateuser', $_SESSION['EDITARSUPER']) && $_SESSION['EDITARSUPER']['psystemcreateuser'] == 1) {
@@ -186,11 +191,6 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                                                             ?>
                                                                         </select>
                                                                     </div>
-
-                                                                    <?php
-                                                                    //SOLO MUESTRA LAS OPCIONES SI EDITAS UN ADMIN
-                                                                    if ($_SESSION['EDITARSUPER']['rango'] == 2) {
-                                                                    ?>
 
                                                                         <div class="col-md-12">
                                                                             <br>
