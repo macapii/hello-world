@@ -366,6 +366,10 @@ if ($elerror == 0) {
               fclose($gestor);
               fclose($file);
               rename($rutatemp, $rutafinal);
+
+              //PERMISO SERVER.PROPERTIES
+              $elcommando = "cd " . $rutaminecraffijo . " && chmod 664 server.properties";
+              exec($elcommando);
             }
 
             //INSERTAR SERVER-ICON EN CASO QUE NO EXISTA
