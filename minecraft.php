@@ -652,7 +652,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                                     <p class="lead">Si el jugador no se mueve en el tiempo asignado (minutos), el servidor lo expulsara.</p>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <input id="form-player-idle-timeout" type="number" class="form-control" min="0" max="2147483647" value="<?php echo (leerlineas('player-idle-timeout')); ?>">
+                                                    <input id="form-player-idle-timeout" type="number" class="form-control" min="0" max="2147483647" value="<?php echo leerlineas('player-idle-timeout'); ?>">
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -670,14 +670,15 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                             <div class="row">
                                                 <div class="col-md-8">
                                                     <h3 class=""><b>Paquete de recursos</b></h3>
+                                                    <p class="lead">Asignar URL al paquete de recursos.</p>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <p class="">Valor Defecto: Vacío</p>
+                                                    <p class="">Valor Defecto: Vacío<br><br>Tamaño Resource:<br>1.0-1.14.4 = 50 MB<br>1.15-1.17.1 = 100 MB<br>1.18 > = 250 MB</p>
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-md-8">
-                                                    <p class="lead">Asignar URL al paquete de recursos.</p>
+                                                    <br><br>
                                                 </div>
                                                 <div class="col-md-4">
                                                     <input id="form-resource-pack" type="text" class="form-control" spellcheck="false" autocapitalize="none" value="<?php echo htmlentities(leerlineas('resource-pack')); ?>">
@@ -948,17 +949,18 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                             <div class="row">
                                                 <div class="col-md-8">
                                                     <h3 class=""><b>Altura Máxima Construir</b></h3>
+                                                    <p class="lead">Determina la altura máxima que se podrá construir.</p>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <p class="">Valor Defecto: 256<br>Valor Min: 8 Valor Max: 256</p>
+                                                    <p class="">Valor Defecto: 256<br>Valor Min: 8 Valor Max: 256<br>Opción eliminada en Minecraft 1.17</p>
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-md-8">
-                                                    <p class="lead">Determina la altura máxima que se podrá construir.</p>
+                                                    <br><br>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <input id="form-max-build-height" type="number" class="form-control" min="8" max="256" value="<?php echo (leerlineas('max-build-height')); ?>">
+                                                    <input id="form-max-build-height" type="number" class="form-control" min="8" max="256" value="<?php echo leerlineas('max-build-height'); ?>">
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -1082,7 +1084,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                                     <p class="lead">Ajustar la distancia de renderizado de entidades, si es muy lejano puede causar lag.</p>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <input id="form-entity-broadcast-range-percentage" type="number" class="form-control" min="10" max="1000" value="<?php echo (leerlineas('entity-broadcast-range-percentage')); ?>">
+                                                    <input id="form-entity-broadcast-range-percentage" type="number" class="form-control" min="10" max="1000" value="<?php echo leerlineas('entity-broadcast-range-percentage'); ?>">
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -1104,7 +1106,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                                 </div>
                                                 <div class="col-md-4">
                                                     <p class="">Valor Defecto: 10<br>Valor Min: 5 - Valor Max: 32<br>Requiere Versión: 1.18 o superior</p>
-                                                    <input id="form-simulation-distance" type="number" class="form-control" min="5" max="32" value="<?php echo (leerlineas('simulation-distance')); ?>">
+                                                    <input id="form-simulation-distance" type="number" class="form-control" min="5" max="32" value="<?php echo leerlineas('simulation-distance'); ?>">
                                                     <br>
                                                 </div>
                                             </div>
@@ -1124,17 +1126,18 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                             <div class="row">
                                                 <div class="col-md-8">
                                                     <h3 class=""><b>Protección Spawn</b></h3>
+                                                    <p class="lead">Asignas el radio de protección al punto spawn del mapa.</p>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <p class="">Valor Defecto: 16<br>Valor Min: 0 - Valor Max: 16</p>
+                                                    <p class="">Valor Defecto: 16<br>Valor Min: 0 - Valor Max: 16<br>Valor 0: Deshabilitar protección</p>
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-md-8">
-                                                    <p class="lead">Asignas el radio de protección al punto spawn del mapa.</p>
+                                                    <br><br>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <input id="form-spawn-protection" type="number" class="form-control" min="0" max="16" value="<?php echo (leerlineas('spawn-protection')); ?>">
+                                                    <input id="form-spawn-protection" type="number" class="form-control" min="0" max="16" value="<?php echo leerlineas('spawn-protection'); ?>">
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -1162,7 +1165,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                                     <p class="lead">Asignas el tamaño máximo del mundo, no se podrá caminar al llegar al límite</p>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <input id="form-max-world-size" type="number" class="form-control" min="1" max="29999984" value="<?php echo (leerlineas('max-world-size')); ?>">
+                                                    <input id="form-max-world-size" type="number" class="form-control" min="1" max="29999984" value="<?php echo leerlineas('max-world-size'); ?>">
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -1250,7 +1253,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                                     <p class="lead">Asignas el máximo de jugadores que podrán entrar al servidor.</p>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <input id="form-max-players" type="number" class="form-control" min="1" max="2147483647" value="<?php echo (leerlineas('max-players')); ?>">
+                                                    <input id="form-max-players" type="number" class="form-control" min="1" max="2147483647" value="<?php echo leerlineas('max-players'); ?>">
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -1422,7 +1425,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                                     <p class="lead">Establece el puerto para Query.</p>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <input id="form-query-port" type="number" class="form-control" min="1025" max="65535" value="<?php echo (leerlineas('query.port')); ?>">
+                                                    <input id="form-query-port" type="number" class="form-control" min="1025" max="65535" value="<?php echo leerlineas('query.port'); ?>">
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -1498,7 +1501,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                                     <p class="lead">Establece el puerto de red RCON.</p>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <input id="form-rconport" type="number" class="form-control" min="1025" max="65535" value="<?php echo (leerlineas('rcon.port')); ?>">
+                                                    <input id="form-rconport" type="number" class="form-control" min="1025" max="65535" value="<?php echo leerlineas('rcon.port'); ?>">
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -1958,7 +1961,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                                     <h3 class=""><b>Estadísticas Mojang</b></h3>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <p class="">Valor Defecto: True</p>
+                                                    <p class="">Valor Defecto: True<br>Opción eliminada en Minecraft 1.18</p>
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -2063,7 +2066,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                                     <br><br>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <input id="form-max-tick-time" type="number" class="form-control" min="-1" max="60000" value="<?php echo (leerlineas('max-tick-time')); ?>">
+                                                    <input id="form-max-tick-time" type="number" class="form-control" min="-1" max="60000" value="<?php echo leerlineas('max-tick-time'); ?>">
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -2090,7 +2093,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                                 </div>
                                                 <div class="col-md-4">
                                                     <p class="">Valor Defecto: 4<br>Valor Min: 1 - Valor Max: 4</p>
-                                                    <input id="form-op-permission-level" type="number" class="form-control" min="1" max="4" value="<?php echo (leerlineas('op-permission-level')); ?>">
+                                                    <input id="form-op-permission-level" type="number" class="form-control" min="1" max="4" value="<?php echo leerlineas('op-permission-level'); ?>">
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -2126,7 +2129,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                                     <p class="lead">Asigna el permiso por defecto para funciones.</p>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <input id="form-function-permission-level" type="number" class="form-control" min="1" max="4" value="<?php echo (leerlineas('function-permission-level')); ?>">
+                                                    <input id="form-function-permission-level" type="number" class="form-control" min="1" max="4" value="<?php echo leerlineas('function-permission-level'); ?>">
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -2154,7 +2157,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                                     <p class="lead">Permite kikear jugadores que constantemente están enviando demasiados paquetes en cuestión de segundos.</p>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <input id="form-rate-limit" type="number" class="form-control" min="0" value="<?php echo (leerlineas('rate-limit')); ?>">
+                                                    <input id="form-rate-limit" type="number" class="form-control" min="0" value="<?php echo leerlineas('rate-limit'); ?>">
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -2183,7 +2186,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                                     <br><br>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <input id="form-network-compression-threshold" type="number" class="form-control" min="-1" max="256" value="<?php echo (leerlineas('network-compression-threshold')); ?>">
+                                                    <input id="form-network-compression-threshold" type="number" class="form-control" min="-1" max="256" value="<?php echo leerlineas('network-compression-threshold'); ?>">
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -2211,7 +2214,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                                     <p class="lead">Aumentará la distancia de visionado cargando más chunks desde la posición donde mira el jugador.</p>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <input id="form-view-distance" type="number" class="form-control" min="3" max="32" value="<?php echo (leerlineas('view-distance')); ?>">
+                                                    <input id="form-view-distance" type="number" class="form-control" min="3" max="32" value="<?php echo leerlineas('view-distance'); ?>">
                                                 </div>
                                             </div>
                                             <div class="row">
