@@ -138,7 +138,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                         <div class="container">
                                             <div class="row">
                                                 <div class="col-md-12">
-                                                    <h2 class=""><b>Configuración Minecraft</b></h2>
+                                                    <h2 class=""><strong>Configuración Minecraft</strong></h2>
                                                     <hr>
                                                     <p class="lead">Nota: Los cambios en la configuración no se aplican hasta que se reinicia el servidor de Minecraft.</p>
                                                     <br>
@@ -189,7 +189,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                         <div class="container">
                                             <div class="row">
                                                 <div class="col-md-12">
-                                                    <h2 class=""><b>Opciones Juego</b></h2>
+                                                    <h2 class=""><strong>Opciones Juego</strong></h2>
                                                 </div>
                                             </div>
                                         </div>
@@ -201,7 +201,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                         <div class="container">
                                             <div class="row">
                                                 <div class="col-md-8">
-                                                    <h3 class=""><b>Modo Juego</b></h3>
+                                                    <h3 class=""><strong>Modo Juego</strong></h3>
                                                 </div>
                                                 <div class="col-md-4">
                                                     <p class="">Valor Defecto: Supervivencia (survival)</p>
@@ -250,7 +250,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                         <div class="container">
                                             <div class="row">
                                                 <div class="col-md-8">
-                                                    <h3 class=""><b>Forzar Modo de juego</b></h3>
+                                                    <h3 class=""><strong>Forzar Modo de juego</strong></h3>
                                                 </div>
                                                 <div class="col-md-4">
                                                     <p class="">Valor Defecto: false</p>
@@ -299,7 +299,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                         <div class="container">
                                             <div class="row">
                                                 <div class="col-md-8">
-                                                    <h3 class=""><b>Dificultad</b></h3>
+                                                    <h3 class=""><strong>Dificultad</strong></h3>
                                                 </div>
                                                 <div class="col-md-4">
                                                     <p class="">Valor Defecto: Fácil (easy)</p>
@@ -348,7 +348,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                         <div class="container">
                                             <div class="row">
                                                 <div class="col-md-8">
-                                                    <h3 class=""><b>Modo Hardcore</b></h3>
+                                                    <h3 class=""><strong>Modo Hardcore</strong></h3>
                                                 </div>
                                                 <div class="col-md-4">
                                                     <p class="">Valor Defecto: false</p>
@@ -397,7 +397,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                         <div class="container">
                                             <div class="row">
                                                 <div class="col-md-8">
-                                                    <h3 class=""><b>PVP</b></h3>
+                                                    <h3 class=""><strong>PVP</strong></h3>
                                                 </div>
                                                 <div class="col-md-4">
                                                     <p class="">Valor Defecto: true</p>
@@ -446,7 +446,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                         <div class="container">
                                             <div class="row">
                                                 <div class="col-md-8">
-                                                    <h3 class=""><b>Spawnear NPCs</b></h3>
+                                                    <h3 class=""><strong>Spawnear NPCs</strong></h3>
                                                 </div>
                                                 <div class="col-md-4">
                                                     <p class="">Valor Defecto: true</p>
@@ -495,7 +495,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                         <div class="container">
                                             <div class="row">
                                                 <div class="col-md-8">
-                                                    <h3 class=""><b>Spawnear Animales</b></h3>
+                                                    <h3 class=""><strong>Spawnear Animales</strong></h3>
                                                 </div>
                                                 <div class="col-md-4">
                                                     <p class="">Valor Defecto: true</p>
@@ -544,7 +544,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                         <div class="container">
                                             <div class="row">
                                                 <div class="col-md-8">
-                                                    <h3 class=""><b>Spawnear Monstruos</b></h3>
+                                                    <h3 class=""><strong>Spawnear Monstruos</strong></h3>
                                                 </div>
                                                 <div class="col-md-4">
                                                     <p class="">Valor Defecto: true</p>
@@ -593,7 +593,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                         <div class="container">
                                             <div class="row">
                                                 <div class="col-md-8">
-                                                    <h3 class=""><b>Activar Vuelo</b></h3>
+                                                    <h3 class=""><strong>Activar Vuelo</strong></h3>
                                                 </div>
                                                 <div class="col-md-4">
                                                     <p class="">Valor Defecto: false</p>
@@ -641,7 +641,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                         <div class="container">
                                             <div class="row">
                                                 <div class="col-md-8">
-                                                    <h3 class=""><b>Jugador AFK</b></h3>
+                                                    <h3 class=""><strong>Jugador AFK</strong></h3>
                                                 </div>
                                                 <div class="col-md-4">
                                                     <p class="">Valor Defecto: 0 (Desactivado)<br>Valor Min: 0 - Valor Max: 2147483647</p>
@@ -669,7 +669,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                         <div class="container">
                                             <div class="row">
                                                 <div class="col-md-8">
-                                                    <h3 class=""><b>Paquete de recursos</b></h3>
+                                                    <h3 class=""><strong>Paquete de recursos</strong></h3>
                                                     <p class="lead">Asignar URL al paquete de recursos.</p>
                                                 </div>
                                                 <div class="col-md-4">
@@ -698,7 +698,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                         <div class="container">
                                             <div class="row">
                                                 <div class="col-md-8">
-                                                    <h3 class=""><b>Verificar Paquete de recursos usando SHA1</b></h3>
+                                                    <h3 class=""><strong>Verificar Paquete de recursos usando SHA1</strong></h3>
                                                 </div>
                                                 <div class="col-md-4">
                                                     <p class="">Valor Defecto: Vacío</p>
@@ -726,7 +726,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                         <div class="container">
                                             <div class="row">
                                                 <div class="col-md-8">
-                                                    <h3 class=""><b>Requerir Paquete de recursos</b></h3>
+                                                    <h3 class=""><strong>Requerir Paquete de recursos</strong></h3>
                                                 </div>
                                                 <div class="col-md-4">
                                                     <p class="">Valor Defecto: false<br>Requiere Versión: 1.17 o superior</p>
@@ -775,7 +775,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                         <div class="container">
                                             <div class="row">
                                                 <div class="col-md-8">
-                                                    <h3 class=""><b>Dialogo Paquete de recursos</b></h3>
+                                                    <h3 class=""><strong>Dialogo Paquete de recursos</strong></h3>
                                                     <p class="lead">Añade un dialogo personalizado que se mostrara al solicitar el paquete de recursos cuando está activado (Opcional).</p>
                                                 </div>
                                                 <div class="col-md-4">
@@ -804,7 +804,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                         <div class="container">
                                             <div class="row">
                                                 <div class="col-md-12">
-                                                    <h2 class=""><b>Opciones Mapa</b></h2>
+                                                    <h2 class=""><strong>Opciones Mapa</strong></h2>
                                                 </div>
                                             </div>
                                         </div>
@@ -816,7 +816,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                         <div class="container">
                                             <div class="row">
                                                 <div class="col-md-8">
-                                                    <h3 class=""><b>Nombre Mapa</b></h3>
+                                                    <h3 class=""><strong>Nombre Mapa</strong></h3>
                                                 </div>
                                                 <div class="col-md-4">
                                                     <p class="">Valor Defecto: world</p>
@@ -844,7 +844,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                         <div class="container">
                                             <div class="row">
                                                 <div class="col-md-8">
-                                                    <h3 class=""><b>Semilla del mapa</b></h3>
+                                                    <h3 class=""><strong>Semilla del mapa</strong></h3>
                                                 </div>
                                                 <div class="col-md-4">
                                                     <p class="">Valor Defecto: aleatorio</p>
@@ -872,7 +872,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                         <div class="container">
                                             <div class="row">
                                                 <div class="col-md-8">
-                                                    <h3 class=""><b>Tipo Mapa</b></h3>
+                                                    <h3 class=""><strong>Tipo Mapa</strong></h3>
                                                 </div>
                                                 <div class="col-md-4">
                                                     <p class="">Valor Defecto: default<br>Requiere Versión: 1.15 o superior</p>
@@ -920,7 +920,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                         <div class="container">
                                             <div class="row">
                                                 <div class="col-md-8">
-                                                    <h3 class=""><b>Configuración Generación Mapa</b></h3>
+                                                    <h3 class=""><strong>Configuración Generación Mapa</strong></h3>
                                                 </div>
                                                 <div class="col-md-4">
                                                     <p class="">Valor Defecto: Vacío</p>
@@ -948,7 +948,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                         <div class="container">
                                             <div class="row">
                                                 <div class="col-md-8">
-                                                    <h3 class=""><b>Altura Máxima Construir</b></h3>
+                                                    <h3 class=""><strong>Altura Máxima Construir</strong></h3>
                                                     <p class="lead">Determina la altura máxima que se podrá construir.</p>
                                                 </div>
                                                 <div class="col-md-4">
@@ -977,7 +977,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                         <div class="container">
                                             <div class="row">
                                                 <div class="col-md-8">
-                                                    <h3 class=""><b>Generar Estructuras</b></h3>
+                                                    <h3 class=""><strong>Generar Estructuras</strong></h3>
                                                 </div>
                                                 <div class="col-md-4">
                                                     <p class="">Valor Defecto: true</p>
@@ -1025,7 +1025,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                         <div class="container">
                                             <div class="row">
                                                 <div class="col-md-8">
-                                                    <h3 class=""><b>Habilitar Nether</b></h3>
+                                                    <h3 class=""><strong>Habilitar Nether</strong></h3>
                                                 </div>
                                                 <div class="col-md-4">
                                                     <p class="">Valor Defecto: true</p>
@@ -1073,7 +1073,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                         <div class="container">
                                             <div class="row">
                                                 <div class="col-md-8">
-                                                    <h3 class=""><b>Distancia para renderizar entidades</b></h3>
+                                                    <h3 class=""><strong>Distancia para renderizar entidades</strong></h3>
                                                 </div>
                                                 <div class="col-md-4">
                                                     <p class="">Valor Defecto: 100<br>Valor Min: 10 - Valor Max: 1000</p>
@@ -1101,7 +1101,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                         <div class="container">
                                             <div class="row">
                                                 <div class="col-md-8">
-                                                    <h3 class=""><b>Distancia Simulación</b></h3>
+                                                    <h3 class=""><strong>Distancia Simulación</strong></h3>
                                                     <p class="lead">Distancia en chunks en la que los objetos como hornos, granjas, plantas quedan cargados y funcionando aunque no estés cerca.</p>
                                                 </div>
                                                 <div class="col-md-4">
@@ -1125,7 +1125,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                         <div class="container">
                                             <div class="row">
                                                 <div class="col-md-8">
-                                                    <h3 class=""><b>Protección Spawn</b></h3>
+                                                    <h3 class=""><strong>Protección Spawn</strong></h3>
                                                     <p class="lead">Asignas el radio de protección al punto spawn del mapa.</p>
                                                 </div>
                                                 <div class="col-md-4">
@@ -1154,7 +1154,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                         <div class="container">
                                             <div class="row">
                                                 <div class="col-md-8">
-                                                    <h3 class=""><b>Tamaño Máximo Mundo (en bloques)</b></h3>
+                                                    <h3 class=""><strong>Tamaño Máximo Mundo (en bloques)</strong></h3>
                                                 </div>
                                                 <div class="col-md-4">
                                                     <p class="">Valor Defecto: 29999984<br>Valor Min: 1 - Valor Max: 29999984</p>
@@ -1182,7 +1182,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                         <div class="container">
                                             <div class="row">
                                                 <div class="col-md-12">
-                                                    <h2 class=""><b>Opciones Servidor</b></h2>
+                                                    <h2 class=""><strong>Opciones Servidor</strong></h2>
                                                 </div>
                                             </div>
                                         </div>
@@ -1194,7 +1194,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                         <div class="container">
                                             <div class="row">
                                                 <div class="col-md-8">
-                                                    <h3 class=""><b>Modo Online (PREMIUM)</b></h3>
+                                                    <h3 class=""><strong>Modo Online (PREMIUM)</strong></h3>
                                                 </div>
                                                 <div class="col-md-4">
                                                     <p class="">Valor Defecto: true</p>
@@ -1242,7 +1242,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                         <div class="container">
                                             <div class="row">
                                                 <div class="col-md-8">
-                                                    <h3 class=""><b>Máximo Jugadores</b></h3>
+                                                    <h3 class=""><strong>Máximo Jugadores</strong></h3>
                                                 </div>
                                                 <div class="col-md-4">
                                                     <p class="">Valor Defecto: 20<br>Valor Min: 1 - Valor Max: 2147483647</p>
@@ -1270,7 +1270,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                         <div class="container">
                                             <div class="row">
                                                 <div class="col-md-8">
-                                                    <h3 class=""><b>Ocultar Jugadores Online</b></h3>
+                                                    <h3 class=""><strong>Ocultar Jugadores Online</strong></h3>
                                                 </div>
                                                 <div class="col-md-4">
                                                     <p class="">Valor Defecto: false<br>Requiere Versión: 1.18 o superior</p>
@@ -1318,7 +1318,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                         <div class="container">
                                             <div class="row">
                                                 <div class="col-md-8">
-                                                    <h3 class=""><b>Activar bloque de comandos</b></h3>
+                                                    <h3 class=""><strong>Activar bloque de comandos</strong></h3>
                                                 </div>
                                                 <div class="col-md-4">
                                                     <p class="">Valor Defecto: false</p>
@@ -1366,7 +1366,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                         <div class="container">
                                             <div class="row">
                                                 <div class="col-md-8">
-                                                    <h3 class=""><b>Activar Solicitudes Query</b></h3>
+                                                    <h3 class=""><strong>Activar Solicitudes Query</strong></h3>
                                                 </div>
                                                 <div class="col-md-4">
                                                     <p class="">Valor Defecto: false</p>
@@ -1414,7 +1414,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                         <div class="container">
                                             <div class="row">
                                                 <div class="col-md-8">
-                                                    <h3 class=""><b>Puerto Query</b></h3>
+                                                    <h3 class=""><strong>Puerto Query</strong></h3>
                                                 </div>
                                                 <div class="col-md-4">
                                                     <p class="">Valor Defecto: 25565<br>Valor Min: 1025 - Valor Max: 65535</p>
@@ -1442,7 +1442,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                         <div class="container">
                                             <div class="row">
                                                 <div class="col-md-8">
-                                                    <h3 class=""><b>Activar RCON</b></h3>
+                                                    <h3 class=""><strong>Activar RCON</strong></h3>
                                                 </div>
                                                 <div class="col-md-4">
                                                     <p class="">Valor Defecto: false</p>
@@ -1490,7 +1490,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                         <div class="container">
                                             <div class="row">
                                                 <div class="col-md-8">
-                                                    <h3 class=""><b>Puerto RCON</b></h3>
+                                                    <h3 class=""><strong>Puerto RCON</strong></h3>
                                                 </div>
                                                 <div class="col-md-4">
                                                     <p class="">Valor Defecto: 25575<br>Valor Min: 1025 - Valor Max: 65535</p>
@@ -1518,7 +1518,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                         <div class="container">
                                             <div class="row">
                                                 <div class="col-md-8">
-                                                    <h3 class=""><b>Password RCON</b></h3>
+                                                    <h3 class=""><strong>Password RCON</strong></h3>
                                                 </div>
                                                 <div class="col-md-4">
                                                     <p class="">Valor Defecto: Vacío</p>
@@ -1546,7 +1546,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                         <div class="container">
                                             <div class="row">
                                                 <div class="col-md-8">
-                                                    <h3 class=""><b>Activar Lista Blanca</b></h3>
+                                                    <h3 class=""><strong>Activar Lista Blanca</strong></h3>
                                                 </div>
                                                 <div class="col-md-4">
                                                     <p class="">Valor Defecto: false</p>
@@ -1594,7 +1594,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                         <div class="container">
                                             <div class="row">
                                                 <div class="col-md-8">
-                                                    <h3 class=""><b>Forzar Lista Blanca</b></h3>
+                                                    <h3 class=""><strong>Forzar Lista Blanca</strong></h3>
                                                 </div>
                                                 <div class="col-md-4">
                                                     <p class="">Valor Defecto: false</p>
@@ -1642,7 +1642,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                         <div class="container">
                                             <div class="row">
                                                 <div class="col-md-8">
-                                                    <h3 class=""><b>Ip del Server</b></h3>
+                                                    <h3 class=""><strong>Ip del Server</strong></h3>
                                                 </div>
                                                 <div class="col-md-4">
                                                     <p class="">Valor Defecto: Vacío</p>
@@ -1670,7 +1670,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                         <div class="container">
                                             <div class="row">
                                                 <div class="col-md-8">
-                                                    <h3 class=""><b>Activar Estado</b></h3>
+                                                    <h3 class=""><strong>Activar Estado</strong></h3>
                                                 </div>
                                                 <div class="col-md-4">
                                                     <p class="">Valor Defecto: true</p>
@@ -1718,7 +1718,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                         <div class="container">
                                             <div class="row">
                                                 <div class="col-md-8">
-                                                    <h3 class=""><b>broadcast-console-to-ops</b></h3>
+                                                    <h3 class=""><strong>broadcast-console-to-ops</strong></h3>
                                                 </div>
                                                 <div class="col-md-4">
                                                     <p class="">Valor Defecto: true</p>
@@ -1766,7 +1766,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                         <div class="container">
                                             <div class="row">
                                                 <div class="col-md-8">
-                                                    <h3 class=""><b>broadcast-rcon-to-ops</b></h3>
+                                                    <h3 class=""><strong>broadcast-rcon-to-ops</strong></h3>
                                                 </div>
                                                 <div class="col-md-4">
                                                     <p class="">Valor Defecto: true</p>
@@ -1814,7 +1814,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                         <div class="container">
                                             <div class="row">
                                                 <div class="col-md-8">
-                                                    <h3 class=""><b>Usar Transporte Nativo</b></h3>
+                                                    <h3 class=""><strong>Usar Transporte Nativo</strong></h3>
                                                 </div>
                                                 <div class="col-md-4">
                                                     <p class="">Valor Defecto: true</p>
@@ -1862,7 +1862,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                         <div class="container">
                                             <div class="row">
                                                 <div class="col-md-8">
-                                                    <h3 class=""><b>Prevenir Conexiones Proxy</b></h3>
+                                                    <h3 class=""><strong>Prevenir Conexiones Proxy</strong></h3>
                                                 </div>
                                                 <div class="col-md-4">
                                                     <p class="">Valor Defecto: false</p>
@@ -1910,7 +1910,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                         <div class="container">
                                             <div class="row">
                                                 <div class="col-md-8">
-                                                    <h3 class=""><b>Activar Monitoreo JMX</b></h3>
+                                                    <h3 class=""><strong>Activar Monitoreo JMX</strong></h3>
                                                 </div>
                                                 <div class="col-md-4">
                                                     <p class="">Valor Defecto: false<br>Requiere Versión: 1.16 o superior</p>
@@ -1958,7 +1958,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                         <div class="container">
                                             <div class="row">
                                                 <div class="col-md-8">
-                                                    <h3 class=""><b>Estadísticas Mojang</b></h3>
+                                                    <h3 class=""><strong>Estadísticas Mojang</strong></h3>
                                                 </div>
                                                 <div class="col-md-4">
                                                     <p class="">Valor Defecto: True<br>Opción eliminada en Minecraft 1.18</p>
@@ -2006,7 +2006,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                         <div class="container">
                                             <div class="row">
                                                 <div class="col-md-8">
-                                                    <h3 class=""><b>Activar Modo Guardado Syncronizado Chunks</b></h3>
+                                                    <h3 class=""><strong>Activar Modo Guardado Syncronizado Chunks</strong></h3>
                                                 </div>
                                                 <div class="col-md-4">
                                                     <p class="">Valor Defecto: true<br>Requiere Versión: 1.16 o superior</p>
@@ -2054,7 +2054,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                         <div class="container">
                                             <div class="row">
                                                 <div class="col-md-8">
-                                                    <h3 class=""><b>Tiempo Máximo Respuesta</b></h3>
+                                                    <h3 class=""><strong>Tiempo Máximo Respuesta</strong></h3>
                                                     <p class="lead">Los segundos que tardara en cerrar el servidor si no responde en X segundos.<br> (60000 = 60 segundos).</p>
                                                 </div>
                                                 <div class="col-md-4">
@@ -2083,7 +2083,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                         <div class="container">
                                             <div class="row">
                                                 <div class="col-md-8">
-                                                    <h3 class=""><b>op-permission-level</b></h3>
+                                                    <h3 class=""><strong>op-permission-level</strong></h3>
                                                     <p class="lead">Asigna el permiso por defecto para operadores.</p>
                                                     <p class="">Valor 1: Ops pueden hacer bypass a la protección del spawn.
                                                         <br>Valor 2: Ops pueden usar todos los comandos de un jugador, /debug y bloques de comandos.
@@ -2118,7 +2118,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                         <div class="container">
                                             <div class="row">
                                                 <div class="col-md-8">
-                                                    <h3 class=""><b>function-permission-level</b></h3>
+                                                    <h3 class=""><strong>function-permission-level</strong></h3>
                                                 </div>
                                                 <div class="col-md-4">
                                                     <p class="">Valor Defecto: 2<br>Valor Min: 1 - Valor Max: 4</p>
@@ -2146,7 +2146,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                         <div class="container">
                                             <div class="row">
                                                 <div class="col-md-8">
-                                                    <h3 class=""><b>Limite de Paquetes</b></h3>
+                                                    <h3 class=""><strong>Limite de Paquetes</strong></h3>
                                                 </div>
                                                 <div class="col-md-4">
                                                     <p class="">Valor Defecto: 0 (Sin limité)<br>Requiere Versión: 1.16.2 o superior</p>
@@ -2174,7 +2174,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                         <div class="container">
                                             <div class="row">
                                                 <div class="col-md-8">
-                                                    <h3 class=""><b>Compresión de red</b></h3>
+                                                    <h3 class=""><strong>Compresión de red</strong></h3>
                                                     <p class="lead">Permite comprimir los paquetes de red del servidor.</p>
                                                 </div>
                                                 <div class="col-md-4">
@@ -2203,7 +2203,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                         <div class="container">
                                             <div class="row">
                                                 <div class="col-md-8">
-                                                    <h3 class=""><b>Distancia Visionado</b></h3>
+                                                    <h3 class=""><strong>Distancia Visionado</strong></h3>
                                                 </div>
                                                 <div class="col-md-4">
                                                     <p class="">Valor Defecto: 10<br>Valor Min: 3 - Valor Max: 32</p>
@@ -2231,7 +2231,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                         <div class="container">
                                             <div class="row">
                                                 <div class="col-md-8">
-                                                    <h3 class=""><b>MOTD</b></h3>
+                                                    <h3 class=""><strong>MOTD</strong></h3>
                                                 </div>
                                                 <div class="col-md-4">
                                                     <p class="">Valor Defecto: A Minecraft Server</p>
@@ -2264,7 +2264,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                         <div class="container">
                                             <div class="row">
                                                 <div class="col-md-8">
-                                                    <h3 class=""><b>Visor MOTD</b></h3>
+                                                    <h3 class=""><strong>Visor MOTD</strong></h3>
                                                 </div>
 
                                             </div>
