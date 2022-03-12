@@ -100,7 +100,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
 
                                                         <!-- CARD MES -->
                                                         <div class="card text-white bg-primary mb-3">
-                                                            <div class="card-header text-white bg-primary"><b>Mes</b></div>
+                                                            <div class="card-header text-white bg-primary"><strong>Mes</strong></div>
                                                             <div class="card-body">
                                                                 <input id="enero" name="mes[]" type="checkbox" value="1" checked>
                                                                 <label class="mr-2" for="enero">Enero</label>
@@ -149,7 +149,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
 
                                                         <!-- CARD SEMANA -->
                                                         <div class="card text-white bg-primary mb-3">
-                                                            <div class="card-header text-white bg-primary"><b>Semana:</b></div>
+                                                            <div class="card-header text-white bg-primary"><strong>Semana:</strong></div>
                                                             <div class="card-body">
                                                                 <input id="lunes" name="semana[]" type="checkbox" value="1" checked>
                                                                 <label class="mr-2" for="lunes">Lunes</label>
@@ -181,7 +181,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
 
                                                         <!-- CARD HORA -->
                                                         <div class="card text-white bg-primary mb-3">
-                                                            <div class="card-header text-white bg-primary"><b>Hora:</b><button class="btn btn-light float-right ml-2" id="deselecionarhoras" name="deselecionarhoras">Desactivar todo</button><button class="btn btn-light float-right" id="selectodashoras" name="selectodashoras">Activar todo</button></div>
+                                                            <div class="card-header text-white bg-primary"><strong>Hora:</strong><button class="btn btn-light float-right ml-2" id="deselecionarhoras" name="deselecionarhoras">Desactivar todo</button><button class="btn btn-light float-right" id="selectodashoras" name="selectodashoras">Activar todo</button></div>
                                                             <div class="card-body">
                                                                 <input id="h0" name="hora[]" type="checkbox" value="0">
                                                                 <label class="mr-2" for="h0">00:00</label>
@@ -265,7 +265,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
 
                                                         <!-- CARD MINUTO -->
                                                         <div class="card text-white bg-primary mb-3">
-                                                            <div class="card-header text-white bg-primary"><b>Minuto:</b><button class="btn btn-light float-right ml-2" id="deselecionarminutos" name="deselecionarminutos">Desactivar todo</button><button class="btn btn-light float-right ml-2" id="selectodosminutos" name="selectodosminutos">Activar todo</button>
+                                                            <div class="card-header text-white bg-primary"><strong>Minuto:</strong><button class="btn btn-light float-right ml-2" id="deselecionarminutos" name="deselecionarminutos">Desactivar todo</button><button class="btn btn-light float-right ml-2" id="selectodosminutos" name="selectodosminutos">Activar todo</button>
                                                             </div>
                                                             <div class="card-body">
                                                                 <div class="row">
@@ -287,7 +287,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                                                 </div>
 
                                                                 <br>
-                                                                
+
                                                                 <input id="m0" name="minuto[]" type="checkbox" value="00">
                                                                 <label class="mr-2" for="m0">00</label>
 
