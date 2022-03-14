@@ -217,6 +217,12 @@ if ($elerror == 0) {
                                                                 $recargmanualinicio = CONFIGARGMANUALINI;
                                                                 $recargmanualfinal = CONFIGARGMANUALFINAL;
 
+                                                                if (!defined('CONFIGXMSRAM')) {
+                                                                    $recxmsram = 1024;
+                                                                } else {
+                                                                    $recxmsram = CONFIGXMSRAM;
+                                                                }
+
                                                                 $javaruta = "";
 
                                                                 $rutacarpetamine = "";
@@ -369,11 +375,11 @@ if ($elerror == 0) {
                                                                 if ($recignoreramlimit != 1) {
                                                                     //COMPROBAR MEMORIA RAM
                                                                     if ($elerror == 0) {
-                                                                        $totalramsys = shell_exec("free -g | grep Mem | gawk '{ print $2 }'");
+                                                                        $totalramsys = shell_exec("free -m | grep Mem | gawk '{ print $2 }'");
                                                                         $totalramsys = trim($totalramsys);
                                                                         $totalramsys = intval($totalramsys);
 
-                                                                        $getramavaliable = shell_exec("free -g | grep Mem | gawk '{ print $7 }'");
+                                                                        $getramavaliable = shell_exec("free -m | grep Mem | gawk '{ print $7 }'");
                                                                         $getramavaliable = trim($getramavaliable);
                                                                         $getramavaliable = intval($getramavaliable);
 
@@ -533,7 +539,7 @@ if ($elerror == 0) {
                                                                         unlink($larutascrrenlog);
                                                                     }
 
-                                                                    $comandoserver .= "cd " . $RUTAPRINCIPAL . " && cd " . $reccarpmine . " && umask 002 && screen -c '" . $rutascreenconf . "' -dmS " . $reccarpmine . " -L -Logfile 'logs/screen.log' " . $javaruta . " -Xms1G -Xmx" . $recram . "G ";
+                                                                    $comandoserver .= "cd " . $RUTAPRINCIPAL . " && cd " . $reccarpmine . " && umask 002 && screen -c '" . $rutascreenconf . "' -dmS " . $reccarpmine . " -L -Logfile 'logs/screen.log' " . $javaruta . " -Xms" .$recxmsram ."M -Xmx" . $recram . "M ";
 
                                                                     //RECOLECTOR
                                                                     if ($recgarbagecolector == "1") {
@@ -561,7 +567,7 @@ if ($elerror == 0) {
                                                                     }
 
                                                                     //RESTART
-                                                                    $cominiciostart = "screen -c '" . $rutascreenconf . "' -dmS " . $reccarpmine . " -L -Logfile 'logs/screen.log' " . $javaruta . " -Xms1G -Xmx" . $recram . "G " . $inigc . " -Dfile.encoding=UTF8 " . $recargmanualinicio . " -jar '" . $rutacarpetamine . "' nogui " . $recargmanualfinal;
+                                                                    $cominiciostart = "screen -c '" . $rutascreenconf . "' -dmS " . $reccarpmine . " -L -Logfile 'logs/screen.log' " . $javaruta . " -Xms" .$recxmsram ."M -Xmx" . $recram . "M " . $inigc . " -Dfile.encoding=UTF8 " . $recargmanualinicio . " -jar '" . $rutacarpetamine . "' nogui " . $recargmanualfinal;
                                                                     if ($rectiposerv == "spigot") {
                                                                         guardareinicio($larutash, $cominiciostart, $larutascrrenlog);
                                                                     } elseif ($rectiposerv == "paper") {
