@@ -179,7 +179,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                                     }
 
                                                     ?>
-                                                    <form id="formconf" action="function/guardasysconf.php" method="post">
+                                                    <form id="formconf" action="function/guardasysconf.php" method="post" autocomplete="off">
                                                         <div class="form-group">
                                                             <label class="negrita" for="listadojars">Seleccione Servidor Minecraft:</label>
                                                             <select class="form-control mb-2" id="listadojars" name="listadojars">

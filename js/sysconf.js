@@ -18,13 +18,6 @@ Copyright (C) 2020-2022 Cristina Ibañez, Konata400
 
 $(function () {
 
-    $(document.body).on("keydown", this,
-        function (event) {
-            if (event.keyCode == 116) {
-                window.location.reload(true);
-            }
-        });
-
     $("#guardaserver").click(function () {
         document.getElementById("result").innerHTML = '<img src="img/guardando.gif" alt="Guardando">'
 
