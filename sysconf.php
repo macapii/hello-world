@@ -153,6 +153,12 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                                         $recconsoletype = CONFIGCONSOLETYPE;
                                                     }
 
+                                                    if (!defined('CONFIGXMSRAM')) {
+                                                        $recxmsram = 1024;
+                                                    } else {
+                                                        $recxmsram = CONFIGXMSRAM;
+                                                    }
+
                                                     $elnombredirectorio = $reccarpmine;
                                                     $rutaarchivo = getcwd();
                                                     $rutaarchivo = trim($rutaarchivo);
@@ -243,25 +249,46 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                                             ?>
 
                                                             <?php
-                                                            //MEMORIA RAM LIMITE
+                                                            //MEMORIA RAM INICIAL
                                                             if ($_SESSION['CONFIGUSER']['rango'] == 1 || array_key_exists('psystemconfmemoria', $_SESSION['CONFIGUSER']) && $_SESSION['CONFIGUSER']['psystemconfmemoria'] == 1) {
                                                             ?>
-                                                                <div class="form-group col-md-6">
-                                                                    <label for="elram" class="negrita">Memoria Ram Limite:</label>
-                                                                    <select id="elram" name="elram" class="form-control" required="required">
+                                                                <div class="form-group col-md-3">
+                                                                    <label for="elraminicial" class="negrita">Memoria Ram Inicial (Xms):</label>
+                                                                    <select id="elraminicial" name="elraminicial" class="form-control" required="required">
                                                                         <?php
-
                                                                         $salida = shell_exec("free -g | grep Mem | gawk '{ print $2 }'");
                                                                         $totalram = trim($salida);
+                                                                        $recxmsram = trim($recxmsram);
                                                                         $totalram = intval($totalram);
+                                                                        $recxmsram = intval($recxmsram);
+
                                                                         if ($totalram == 0) {
                                                                             echo '<option selected value="0">MEMORIA INSUFICIENTE / NO TIENES NI UN GB</option>';
                                                                         } elseif ($totalram >= 1) {
+                                                                            
+                                                                            if($recxmsram == 128){
+                                                                                echo '<option value="' . 128 . '" selected>' . 128 . ' MB</option>';
+                                                                            }else{
+                                                                                echo '<option value="' . 128 . '">' . 128 . ' MB</option>';
+                                                                            }
+
+                                                                            if($recxmsram == 256){
+                                                                                echo '<option value="' . 256 . '" selected>' . 256 . ' MB</option>';
+                                                                            }else{
+                                                                                echo '<option value="' . 256 . '">' . 256 . ' MB</option>';
+                                                                            }
+
+                                                                            if($recxmsram == 512){
+                                                                                echo '<option value="' . 512 . '" selected>' . 512 . ' MB</option>';
+                                                                            }else{
+                                                                                echo '<option value="' . 512 . '">' . 512 . ' MB</option>';
+                                                                            }
+
                                                                             for ($i = 1; $i <= $totalram; $i++) {
-                                                                                if ($recram == $i) {
-                                                                                    echo '<option selected value="' . $i . '">' . $i . ' GB</option>';
+                                                                                if ($recxmsram == 1024*$i) {
+                                                                                    echo '<option value="' . 1024*$i . '" selected>' . $i . ' GB</option>';
                                                                                 } else {
-                                                                                    echo '<option value="' . $i . '">' . $i . ' GB</option>';
+                                                                                    echo '<option value="' . 1024*$i . '">' . $i . ' GB</option>';
                                                                                 }
                                                                             }
                                                                         }
@@ -271,6 +298,37 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                                                 </div>
                                                             <?php
                                                             }
+
+                                                            //MEMORIA RAM LIMITE
+                                                            if ($_SESSION['CONFIGUSER']['rango'] == 1 || array_key_exists('psystemconfmemoria', $_SESSION['CONFIGUSER']) && $_SESSION['CONFIGUSER']['psystemconfmemoria'] == 1) {
+                                                                ?>
+                                                                    <div class="form-group col-md-3">
+                                                                        <label for="elram" class="negrita">Memoria Ram Limite (Xmx):</label>
+                                                                        <select id="elram" name="elram" class="form-control" required="required">
+                                                                            <?php
+    
+                                                                            $salida = shell_exec("free -g | grep Mem | gawk '{ print $2 }'");
+                                                                            $totalram = trim($salida);
+                                                                            $totalram = intval($totalram);
+                                                                            if ($totalram == 0) {
+                                                                                echo '<option selected value="0">MEMORIA INSUFICIENTE / NO TIENES NI UN GB</option>';
+                                                                            } elseif ($totalram >= 1) {
+                                                                                for ($i = 1; $i <= $totalram; $i++) {
+                                                                                    if ($recram == 1024*$i) {
+                                                                                        echo '<option selected value="' . 1024*$i . '">' . $i . ' GB</option>';
+                                                                                    } else {
+                                                                                        echo '<option value="' . 1024*$i . '">' . $i . ' GB</option>';
+                                                                                    }
+                                                                                }
+                                                                            }
+    
+                                                                            ?>
+                                                                        </select>
+                                                                    </div>
+                                                                <?php
+                                                                }
+
+
                                                             ?>
                                                         </div>
 

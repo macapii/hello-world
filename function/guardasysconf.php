@@ -139,6 +139,77 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
           }
         }
 
+        //INPUT XMS RAM
+        if ($elerror == 0) {
+          if ($_SESSION['CONFIGUSER']['rango'] == 1 || array_key_exists('psystemconfmemoria', $_SESSION['CONFIGUSER']) && $_SESSION['CONFIGUSER']['psystemconfmemoria'] == 1) {
+            if (isset($_POST['elraminicial'])) {
+              $laramxms = test_input($_POST["elraminicial"]);
+
+              //ES NUMERICO
+              if ($elerror == 0) {
+                if (!is_numeric($laramxms)) {
+                  $retorno = "ramnonumerico";
+                  $elerror = 1;
+                }
+              }
+
+              $salida = shell_exec("free -m | grep Mem | gawk '{ print $2 }'");
+              $salida2 = shell_exec("free -g | grep Mem | gawk '{ print $2 }'");
+
+              $totalram = trim($salida);
+              $salida2 = trim($salida2);
+
+              if ($totalram <= 0) {
+                $retorno = "raminsuficiente";
+                $elerror = 1;
+              } else {
+                if ($laramxms > $totalram) {
+                  $retorno = "ramxmsoutrange";
+                  $elerror = 1;
+                }
+              }
+
+              //COMPROBAR SI LA XMS NO ES MANIPULADA
+              if($elerror == 0){
+                $test = 0;
+
+                $validoxms = array(125, 256, 512);
+
+                for ($i = 1; $i <= $salida2; $i++) {
+                  array_push($validoxms, 1024*$i);
+                }
+
+                for ($i = 0; $i < count($validoxms); $i++) {
+                  if($validoxms[$i] == $laramxms){
+                    $test = 1;
+                  }
+                }
+
+                if($test == 0){
+                  $retorno = "xmsmodexternal";
+                  $elerror = 1;
+                }
+
+              }
+
+
+
+
+
+            } else {
+              $retorno = "ramvacia";
+              $elerror = 1;
+            }
+          } else {
+
+            if (!defined('CONFIGXMSRAM')) {
+              $laramxms  = 1024;
+            } else {
+              $laramxms = CONFIGXMSRAM;
+            }
+          }
+        }
+
         //INPUT RAM
         if ($elerror == 0) {
           if ($_SESSION['CONFIGUSER']['rango'] == 1 || array_key_exists('psystemconfmemoria', $_SESSION['CONFIGUSER']) && $_SESSION['CONFIGUSER']['psystemconfmemoria'] == 1) {
@@ -154,9 +225,11 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
               }
 
               if ($elerror == 0) {
-                $salida = shell_exec("free -g | grep Mem | gawk '{ print $2 }'");
+                $salida = shell_exec("free -m | grep Mem | gawk '{ print $2 }'");
+                $salida2 = shell_exec("free -g | grep Mem | gawk '{ print $2 }'");
+
                 $totalram = trim($salida);
-                $totalram = intval($totalram);
+                $salida2 = trim($salida2);
 
                 if ($totalram <= 0) {
                   $retorno = "raminsuficiente";
@@ -168,12 +241,44 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                   }
                 }
               }
+
+              //COMPROBAR SI LA XMS NO ES MANIPULADA
+              if($elerror == 0){
+                $test = 0;
+
+                $validoxmx = array(125, 256, 512);
+
+                for ($i = 1; $i <= $salida2; $i++) {
+                  array_push($validoxmx, 1024*$i);
+                }
+
+                for ($i = 0; $i < count($validoxmx); $i++) {
+                  if($validoxmx[$i] == $laram){
+                    $test = 1;
+                  }
+                }
+
+                if($test == 0){
+                  $retorno = "xmxmodexternal";
+                  $elerror = 1;
+                }
+
+              }
+
             } else {
               $retorno = "ramvacia";
               $elerror = 1;
             }
           } else {
             $laram = CONFIGRAM;
+          }
+        }
+
+        //VERIFICAR SI XMS ES SUPERIOR A XMX
+        if ($elerror == 0) {
+          if($laramxms > $laram){
+            $retorno = "xmsuperiorram";
+            $elerror = 1;
           }
         }
 
@@ -728,6 +833,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
           fwrite($file, 'define("CONFIGARGMANUALINI", "' . $elargmanualinicio . '");' . PHP_EOL);
           fwrite($file, 'define("CONFIGARGMANUALFINAL", "' . $elargmanualfinal . '");' . PHP_EOL);
           fwrite($file, 'define("CONFIGCONSOLETYPE", "' . $eltypeconsola . '");' . PHP_EOL);
+          fwrite($file, 'define("CONFIGXMSRAM", "' . $laramxms . '");' . PHP_EOL);
           fwrite($file, "?>" . PHP_EOL);
           fclose($file);
 

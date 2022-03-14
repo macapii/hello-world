@@ -18,6 +18,13 @@ Copyright (C) 2020-2022 Cristina Ibañez, Konata400
 
 $(function () {
 
+    $(document.body).on("keydown", this,
+        function (event) {
+            if (event.keyCode == 116) {
+                window.location.reload(true);
+            }
+        });
+
     $("#guardaserver").click(function () {
         document.getElementById("result").innerHTML = '<img src="img/guardando.gif" alt="Guardando">'
 
@@ -101,6 +108,14 @@ $(function () {
                 document.getElementById("result").innerHTML = "<div class='alert alert-danger' role='alert'>Error: El argumento del inicio no es válido.</div>";
             } else if (data == "elargmanufinalnovalid") {
                 document.getElementById("result").innerHTML = "<div class='alert alert-danger' role='alert'>Error: El argumento del final no es válido.</div>";
+            } else if (data == "ramxmsoutrange") {
+                document.getElementById("result").innerHTML = "<div class='alert alert-danger' role='alert'>Error: La ram introducida en Xms supera a la del sistema.</div>";
+            } else if (data == "xmsuperiorram") {
+                document.getElementById("result").innerHTML = "<div class='alert alert-danger' role='alert'>Error: La ram Xms no puede ser superior a la ram Xmx.</div>";
+            } else if (data == "xmsmodexternal") {
+                document.getElementById("result").innerHTML = "<div class='alert alert-danger' role='alert'>Error: La ram Xms introducida ha sido manipulada.</div>";
+            } else if (data == "xmxmodexternal") {
+                document.getElementById("result").innerHTML = "<div class='alert alert-danger' role='alert'>Error: La ram Xmx introducida ha sido manipulada.</div>";
             } else if (data == "saveconf") {
                 document.getElementById("result").innerHTML = "<div class='alert alert-success' role='alert'>Configuración Guardada.</div>";
                 document.getElementById("guardaserver").disabled = true;
@@ -143,6 +158,13 @@ $(function () {
 
     if (document.getElementById('elmaxupload') !== null) {
         $("#elmaxupload").change(function () {
+            document.getElementById("guardaserver").disabled = false;
+            document.getElementById("result").innerHTML = "";
+        });
+    }
+
+    if (document.getElementById('elraminicial') !== null) {
+        $("#elraminicial").change(function () {
             document.getElementById("guardaserver").disabled = false;
             document.getElementById("result").innerHTML = "";
         });
@@ -318,26 +340,7 @@ $(function () {
     }
 
     if (document.getElementById('javamanual') !== null) {
-        document.getElementById("javamanual").addEventListener('paste', function (event) {
-            var enviovalor = event.clipboardData.getData('text');
-
-            var eltext = "";
-            var textini = "";
-            var textfinal = "";
-            var enviar = "";
-
-            var text = document.getElementById("javamanual");
-
-            var startPosition = text.selectionStart;
-            var endPosition = text.selectionEnd;
-            var longitud = text.leng;
-
-            eltext = document.getElementById("javamanual").value;
-            textini = eltext.substring(0, startPosition);
-            textfinal = eltext.substring(endPosition, longitud);
-
-            enviar = textini + event.clipboardData.getData('text') + textfinal;
-            enviovalor = enviar;
+        document.getElementById("javamanual").addEventListener('paste', function () {
 
             if (document.getElementById('configjavaselect2') !== null) {
                 document.getElementById('configjavaselect2').checked = true;
