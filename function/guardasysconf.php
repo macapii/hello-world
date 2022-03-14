@@ -173,7 +173,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
               if($elerror == 0){
                 $test = 0;
 
-                $validoxms = array(125, 256, 512);
+                $validoxms = array(128, 256, 512);
 
                 for ($i = 1; $i <= $salida2; $i++) {
                   array_push($validoxms, 1024*$i);
