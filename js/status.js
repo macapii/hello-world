@@ -179,7 +179,7 @@ $(function () {
                     document.getElementById("textocpu").innerHTML = "Cpu: " + String(data.cpu) + "%";
 
                     if (data.memoria !== "") {
-                        document.getElementById("textoram").innerHTML = "Ram: " + String(data.memoria) + " / Total: " + String(data.ramconfig) + " GB";
+                        document.getElementById("textoram").innerHTML = "Ram: " + String(data.memoria) + " / Total: " + String(data.ramconfig/1024) + " GB";
                     }
 
                     document.getElementById("eluptime").innerHTML = "Uptime: " + String(data.uptime);
