@@ -108,7 +108,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                     fwrite($file, "allow-flight=false" . PHP_EOL);
                     fwrite($file, "broadcast-rcon-to-ops=true" . PHP_EOL);
                     fwrite($file, "view-distance=10" . PHP_EOL);
-                    fwrite($file, "max-build-height=256" . PHP_EOL);
+                    //eliminado en Minecraft 1.17 fwrite($file, "max-build-height=256" . PHP_EOL);
                     fwrite($file, "server-ip=" . PHP_EOL);
                     fwrite($file, "allow-nether=true" . PHP_EOL);
                     fwrite($file, "server-port=" . $recpuerto . PHP_EOL);
@@ -127,7 +127,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                     fwrite($file, "broadcast-console-to-ops=true" . PHP_EOL);
                     fwrite($file, "spawn-npcs=true" . PHP_EOL);
                     fwrite($file, "spawn-animals=true" . PHP_EOL);
-                    fwrite($file, "snooper-enabled=true" . PHP_EOL);
+                    //eliminado en Minecraft 1.18 fwrite($file, "snooper-enabled=true" . PHP_EOL);
                     fwrite($file, "function-permission-level=2" . PHP_EOL);
                     fwrite($file, "level-type=default" . PHP_EOL);
                     fwrite($file, "spawn-monsters=true" . PHP_EOL);
