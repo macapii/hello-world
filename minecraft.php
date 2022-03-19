@@ -226,7 +226,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                                         for ($i = 0; $i < count($lostextos); $i++) {
 
                                                             if ($obtener == $losvalues[$i]) {
-                                                                echo '<option selected value="' . $losvalues[$i] . '">' . $lostextos[$i] . '</option>';
+                                                                echo '<option value="' . $losvalues[$i] . '" selected>' . $lostextos[$i] . '</option>';
                                                             } else {
                                                                 echo '<option value="' . $losvalues[$i] . '">' . $lostextos[$i] . '</option>';
                                                             }
@@ -275,7 +275,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                                         for ($i = 0; $i < count($lostextos); $i++) {
 
                                                             if ($obtener == $losvalues[$i]) {
-                                                                echo '<option selected value="' . $losvalues[$i] . '">' . $lostextos[$i] . '</option>';
+                                                                echo '<option value="' . $losvalues[$i] . '" selected>' . $lostextos[$i] . '</option>';
                                                             } else {
                                                                 echo '<option value="' . $losvalues[$i] . '">' . $lostextos[$i] . '</option>';
                                                             }
@@ -324,7 +324,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                                         for ($i = 0; $i < count($lostextos); $i++) {
 
                                                             if ($obtener == $losvalues[$i]) {
-                                                                echo '<option selected value="' . $losvalues[$i] . '">' . $lostextos[$i] . '</option>';
+                                                                echo '<option value="' . $losvalues[$i] . '" selected>' . $lostextos[$i] . '</option>';
                                                             } else {
                                                                 echo '<option value="' . $losvalues[$i] . '">' . $lostextos[$i] . '</option>';
                                                             }
@@ -373,7 +373,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                                         for ($i = 0; $i < count($lostextos); $i++) {
 
                                                             if ($obtener == $losvalues[$i]) {
-                                                                echo '<option selected value="' . $losvalues[$i] . '">' . $lostextos[$i] . '</option>';
+                                                                echo '<option value="' . $losvalues[$i] . '" selected>' . $lostextos[$i] . '</option>';
                                                             } else {
                                                                 echo '<option value="' . $losvalues[$i] . '">' . $lostextos[$i] . '</option>';
                                                             }
@@ -422,7 +422,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                                         for ($i = 0; $i < count($lostextos); $i++) {
 
                                                             if ($obtener == $losvalues[$i]) {
-                                                                echo '<option selected value="' . $losvalues[$i] . '">' . $lostextos[$i] . '</option>';
+                                                                echo '<option value="' . $losvalues[$i] . '" selected>' . $lostextos[$i] . '</option>';
                                                             } else {
                                                                 echo '<option value="' . $losvalues[$i] . '">' . $lostextos[$i] . '</option>';
                                                             }
@@ -471,7 +471,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                                         for ($i = 0; $i < count($lostextos); $i++) {
 
                                                             if ($obtener == $losvalues[$i]) {
-                                                                echo '<option selected value="' . $losvalues[$i] . '">' . $lostextos[$i] . '</option>';
+                                                                echo '<option value="' . $losvalues[$i] . '" selected>' . $lostextos[$i] . '</option>';
                                                             } else {
                                                                 echo '<option value="' . $losvalues[$i] . '">' . $lostextos[$i] . '</option>';
                                                             }
@@ -520,7 +520,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                                         for ($i = 0; $i < count($lostextos); $i++) {
 
                                                             if ($obtener == $losvalues[$i]) {
-                                                                echo '<option selected value="' . $losvalues[$i] . '">' . $lostextos[$i] . '</option>';
+                                                                echo '<option value="' . $losvalues[$i] . '" selected>' . $lostextos[$i] . '</option>';
                                                             } else {
                                                                 echo '<option value="' . $losvalues[$i] . '">' . $lostextos[$i] . '</option>';
                                                             }
@@ -569,7 +569,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                                         for ($i = 0; $i < count($lostextos); $i++) {
 
                                                             if ($obtener == $losvalues[$i]) {
-                                                                echo '<option selected value="' . $losvalues[$i] . '">' . $lostextos[$i] . '</option>';
+                                                                echo '<option value="' . $losvalues[$i] . '" selected>' . $lostextos[$i] . '</option>';
                                                             } else {
                                                                 echo '<option value="' . $losvalues[$i] . '">' . $lostextos[$i] . '</option>';
                                                             }
@@ -618,7 +618,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                                         for ($i = 0; $i < count($lostextos); $i++) {
 
                                                             if ($obtener == $losvalues[$i]) {
-                                                                echo '<option selected value="' . $losvalues[$i] . '">' . $lostextos[$i] . '</option>';
+                                                                echo '<option value="' . $losvalues[$i] . '" selected>' . $lostextos[$i] . '</option>';
                                                             } else {
                                                                 echo '<option value="' . $losvalues[$i] . '">' . $lostextos[$i] . '</option>';
                                                             }
@@ -751,7 +751,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                                         for ($i = 0; $i < count($lostextos); $i++) {
 
                                                             if ($obtener == $losvalues[$i]) {
-                                                                echo '<option selected value="' . $losvalues[$i] . '">' . $lostextos[$i] . '</option>';
+                                                                echo '<option value="' . $losvalues[$i] . '" selected>' . $lostextos[$i] . '</option>';
                                                             } else {
                                                                 echo '<option value="' . $losvalues[$i] . '">' . $lostextos[$i] . '</option>';
                                                             }
@@ -897,7 +897,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                                         for ($i = 0; $i < count($lostextos); $i++) {
 
                                                             if ($obtener == $losvalues[$i]) {
-                                                                echo '<option selected value="' . $losvalues[$i] . '">' . $lostextos[$i] . '</option>';
+                                                                echo '<option value="' . $losvalues[$i] . '" selected>' . $lostextos[$i] . '</option>';
                                                             } else {
                                                                 echo '<option value="' . $losvalues[$i] . '">' . $lostextos[$i] . '</option>';
                                                             }
@@ -1002,7 +1002,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                                         for ($i = 0; $i < count($lostextos); $i++) {
 
                                                             if ($obtener == $losvalues[$i]) {
-                                                                echo '<option selected value="' . $losvalues[$i] . '">' . $lostextos[$i] . '</option>';
+                                                                echo '<option value="' . $losvalues[$i] . '" selected>' . $lostextos[$i] . '</option>';
                                                             } else {
                                                                 echo '<option value="' . $losvalues[$i] . '">' . $lostextos[$i] . '</option>';
                                                             }
@@ -1050,7 +1050,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                                         for ($i = 0; $i < count($lostextos); $i++) {
 
                                                             if ($obtener == $losvalues[$i]) {
-                                                                echo '<option selected value="' . $losvalues[$i] . '">' . $lostextos[$i] . '</option>';
+                                                                echo '<option value="' . $losvalues[$i] . '" selected>' . $lostextos[$i] . '</option>';
                                                             } else {
                                                                 echo '<option value="' . $losvalues[$i] . '">' . $lostextos[$i] . '</option>';
                                                             }
@@ -1219,7 +1219,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                                         for ($i = 0; $i < count($lostextos); $i++) {
 
                                                             if ($obtener == $losvalues[$i]) {
-                                                                echo '<option selected value="' . $losvalues[$i] . '">' . $lostextos[$i] . '</option>';
+                                                                echo '<option value="' . $losvalues[$i] . '" selected>' . $lostextos[$i] . '</option>';
                                                             } else {
                                                                 echo '<option value="' . $losvalues[$i] . '">' . $lostextos[$i] . '</option>';
                                                             }
@@ -1295,7 +1295,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                                         for ($i = 0; $i < count($lostextos); $i++) {
 
                                                             if ($obtener == $losvalues[$i]) {
-                                                                echo '<option selected value="' . $losvalues[$i] . '">' . $lostextos[$i] . '</option>';
+                                                                echo '<option value="' . $losvalues[$i] . '" selected>' . $lostextos[$i] . '</option>';
                                                             } else {
                                                                 echo '<option value="' . $losvalues[$i] . '">' . $lostextos[$i] . '</option>';
                                                             }
@@ -1343,7 +1343,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                                         for ($i = 0; $i < count($lostextos); $i++) {
 
                                                             if ($obtener == $losvalues[$i]) {
-                                                                echo '<option selected value="' . $losvalues[$i] . '">' . $lostextos[$i] . '</option>';
+                                                                echo '<option value="' . $losvalues[$i] . '" selected>' . $lostextos[$i] . '</option>';
                                                             } else {
                                                                 echo '<option value="' . $losvalues[$i] . '">' . $lostextos[$i] . '</option>';
                                                             }
@@ -1391,7 +1391,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                                         for ($i = 0; $i < count($lostextos); $i++) {
 
                                                             if ($obtener == $losvalues[$i]) {
-                                                                echo '<option selected value="' . $losvalues[$i] . '">' . $lostextos[$i] . '</option>';
+                                                                echo '<option value="' . $losvalues[$i] . '" selected>' . $lostextos[$i] . '</option>';
                                                             } else {
                                                                 echo '<option value="' . $losvalues[$i] . '">' . $lostextos[$i] . '</option>';
                                                             }
@@ -1467,7 +1467,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                                         for ($i = 0; $i < count($lostextos); $i++) {
 
                                                             if ($obtener == $losvalues[$i]) {
-                                                                echo '<option selected value="' . $losvalues[$i] . '">' . $lostextos[$i] . '</option>';
+                                                                echo '<option value="' . $losvalues[$i] . '" selected>' . $lostextos[$i] . '</option>';
                                                             } else {
                                                                 echo '<option value="' . $losvalues[$i] . '">' . $lostextos[$i] . '</option>';
                                                             }
@@ -1571,7 +1571,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                                         for ($i = 0; $i < count($lostextos); $i++) {
 
                                                             if ($obtener == $losvalues[$i]) {
-                                                                echo '<option selected value="' . $losvalues[$i] . '">' . $lostextos[$i] . '</option>';
+                                                                echo '<option value="' . $losvalues[$i] . '" selected>' . $lostextos[$i] . '</option>';
                                                             } else {
                                                                 echo '<option value="' . $losvalues[$i] . '">' . $lostextos[$i] . '</option>';
                                                             }
@@ -1619,7 +1619,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                                         for ($i = 0; $i < count($lostextos); $i++) {
 
                                                             if ($obtener == $losvalues[$i]) {
-                                                                echo '<option selected value="' . $losvalues[$i] . '">' . $lostextos[$i] . '</option>';
+                                                                echo '<option value="' . $losvalues[$i] . '" selected>' . $lostextos[$i] . '</option>';
                                                             } else {
                                                                 echo '<option value="' . $losvalues[$i] . '">' . $lostextos[$i] . '</option>';
                                                             }
@@ -1695,7 +1695,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                                         for ($i = 0; $i < count($lostextos); $i++) {
 
                                                             if ($obtener == $losvalues[$i]) {
-                                                                echo '<option selected value="' . $losvalues[$i] . '">' . $lostextos[$i] . '</option>';
+                                                                echo '<option value="' . $losvalues[$i] . '" selected>' . $lostextos[$i] . '</option>';
                                                             } else {
                                                                 echo '<option value="' . $losvalues[$i] . '">' . $lostextos[$i] . '</option>';
                                                             }
@@ -1743,7 +1743,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                                         for ($i = 0; $i < count($lostextos); $i++) {
 
                                                             if ($obtener == $losvalues[$i]) {
-                                                                echo '<option selected value="' . $losvalues[$i] . '">' . $lostextos[$i] . '</option>';
+                                                                echo '<option value="' . $losvalues[$i] . '" selected>' . $lostextos[$i] . '</option>';
                                                             } else {
                                                                 echo '<option value="' . $losvalues[$i] . '">' . $lostextos[$i] . '</option>';
                                                             }
@@ -1791,7 +1791,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                                         for ($i = 0; $i < count($lostextos); $i++) {
 
                                                             if ($obtener == $losvalues[$i]) {
-                                                                echo '<option selected value="' . $losvalues[$i] . '">' . $lostextos[$i] . '</option>';
+                                                                echo '<option value="' . $losvalues[$i] . '" selected>' . $lostextos[$i] . '</option>';
                                                             } else {
                                                                 echo '<option value="' . $losvalues[$i] . '">' . $lostextos[$i] . '</option>';
                                                             }
@@ -1839,7 +1839,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                                         for ($i = 0; $i < count($lostextos); $i++) {
 
                                                             if ($obtener == $losvalues[$i]) {
-                                                                echo '<option selected value="' . $losvalues[$i] . '">' . $lostextos[$i] . '</option>';
+                                                                echo '<option value="' . $losvalues[$i] . '" selected>' . $lostextos[$i] . '</option>';
                                                             } else {
                                                                 echo '<option value="' . $losvalues[$i] . '">' . $lostextos[$i] . '</option>';
                                                             }
@@ -1887,7 +1887,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                                         for ($i = 0; $i < count($lostextos); $i++) {
 
                                                             if ($obtener == $losvalues[$i]) {
-                                                                echo '<option selected value="' . $losvalues[$i] . '">' . $lostextos[$i] . '</option>';
+                                                                echo '<option value="' . $losvalues[$i] . '" selected>' . $lostextos[$i] . '</option>';
                                                             } else {
                                                                 echo '<option value="' . $losvalues[$i] . '">' . $lostextos[$i] . '</option>';
                                                             }
@@ -1935,7 +1935,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                                         for ($i = 0; $i < count($lostextos); $i++) {
 
                                                             if ($obtener == $losvalues[$i]) {
-                                                                echo '<option selected value="' . $losvalues[$i] . '">' . $lostextos[$i] . '</option>';
+                                                                echo '<option value="' . $losvalues[$i] . '" selected>' . $lostextos[$i] . '</option>';
                                                             } else {
                                                                 echo '<option value="' . $losvalues[$i] . '">' . $lostextos[$i] . '</option>';
                                                             }
@@ -1983,7 +1983,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                                         for ($i = 0; $i < count($lostextos); $i++) {
 
                                                             if ($obtener == $losvalues[$i]) {
-                                                                echo '<option selected value="' . $losvalues[$i] . '">' . $lostextos[$i] . '</option>';
+                                                                echo '<option value="' . $losvalues[$i] . '" selected>' . $lostextos[$i] . '</option>';
                                                             } else {
                                                                 echo '<option value="' . $losvalues[$i] . '">' . $lostextos[$i] . '</option>';
                                                             }
@@ -2031,7 +2031,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                                         for ($i = 0; $i < count($lostextos); $i++) {
 
                                                             if ($obtener == $losvalues[$i]) {
-                                                                echo '<option selected value="' . $losvalues[$i] . '">' . $lostextos[$i] . '</option>';
+                                                                echo '<option value="' . $losvalues[$i] . '" selected>' . $lostextos[$i] . '</option>';
                                                             } else {
                                                                 echo '<option value="' . $losvalues[$i] . '">' . $lostextos[$i] . '</option>';
                                                             }
