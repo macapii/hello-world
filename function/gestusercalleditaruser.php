@@ -147,6 +147,18 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                             $esadmin = 1;
                             $arrayuser = $arrayobtenido[$i];
                         }
+
+                        //EVITAR QUE UN ADMINISTRADOR EDITE UN SUPERADMIN
+                        if ($_SESSION['CONFIGUSER']['rango'] == 2 && $arrayobtenido[$i]['rango'] == 1) {
+                            $essuper = 0;
+                            $arrayuser = "";
+                        }
+
+                        //EVITAR QUE UN ADMINISTRADOR EDITE OTRO ADMINISTRADOR
+                        if ($_SESSION['CONFIGUSER']['rango'] == 2 && $arrayobtenido[$i]['rango'] == 2 && $_SESSION['CONFIGUSER']['usuario'] != $arrayobtenido[$i]['usuario']) {
+                            $essuper = 0;
+                            $arrayuser = "";
+                        }
                     }
                 }
             }
@@ -161,7 +173,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
 
             //GUARDAR SESSION
             if ($elerror == 0) {
-                if ($_SESSION['CONFIGUSER']['rango'] == 1) {
+                if ($_SESSION['CONFIGUSER']['rango'] == 1 || $_SESSION['CONFIGUSER']['rango'] == 2) {
                     if ($essuper == 1) {
                         $retorno = "OKSUPER";
                         $_SESSION['EDITARSUPER'] = $arrayuser;
@@ -169,9 +181,6 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                         $retorno = "OKADMIN";
                         $_SESSION['EDITARUSUARIO'] = $arrayuser;
                     }
-                } elseif ($_SESSION['CONFIGUSER']['rango'] == 2 && $esadmin == 1) {
-                    $retorno = "OKADMIN";
-                    $_SESSION['EDITARUSUARIO'] = $arrayuser;
                 }
             }
         }

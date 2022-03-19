@@ -213,6 +213,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                                                                             echo '<td>' . $arrayobtenido[$i]['estado'] . '</td>';
 
                                                                                             echo '<td>';
+                                                                                            echo '<button type="button" class="edituser btn btn-warning text-white mr-1" value="' . $arrayobtenido[$i]['usuario'] . '" title="Editar Usuario">Editar</button>';
                                                                                             echo '<button type="button" class="cambiartema btn btn-success text-white mr-1" value="' . $arrayobtenido[$i]['usuario'] . '" title="Cambiar Tema">Cambiar Tema</button>';
                                                                                             echo '</td>';
                                                                                         }
