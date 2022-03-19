@@ -127,7 +127,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                                                     <div class="col-md-6">
                                                                         <label class="negrita">Seleccionar Tema Web:</label>
                                                                         <select id="selectemaweb" name="selectemaweb" class="form-control">
-                                                                            <option selected="1">Claro</option>
+                                                                            <option value="1" selected>Claro</option>
                                                                             <option value="2">Oscuro</option>
                                                                         </select>
                                                                     </div>
