@@ -219,7 +219,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                                                             if ($fileExtension == "jar") {
 
                                                                                 if ($file == $recarchivojar) {
-                                                                                    echo '<option selected value="' . $file . '">' . $file . '</option>';
+                                                                                    echo '<option value="' . $file . '" selected>' . $file . '</option>';
                                                                                 } else {
                                                                                     echo '<option value="' . $file . '">' . $file . '</option>';
                                                                                 }
@@ -315,7 +315,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                                                             } elseif ($totalram >= 1) {
                                                                                 for ($i = 1; $i <= $totalram; $i++) {
                                                                                     if ($recram == 1024*$i) {
-                                                                                        echo '<option selected value="' . 1024*$i . '">' . $i . ' GB</option>';
+                                                                                        echo '<option value="' . 1024*$i . '" selected>' . $i . ' GB</option>';
                                                                                     } else {
                                                                                         echo '<option value="' . 1024*$i . '">' . $i . ' GB</option>';
                                                                                     }
@@ -349,7 +349,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                                                         for ($i = 0; $i < count($opcionesserver); $i++) {
 
                                                                             if ($rectiposerv == $opcionesserver[$i]) {
-                                                                                echo '<option selected value="' . $opcionesserver[$i] . '">' . $opcionesserver[$i] . '</option>';
+                                                                                echo '<option value="' . $opcionesserver[$i] . '" selected>' . $opcionesserver[$i] . '</option>';
                                                                             } else {
                                                                                 echo '<option value="' . $opcionesserver[$i] . '">' . $opcionesserver[$i] . '</option>';
                                                                             }
@@ -383,7 +383,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                                                             for ($i = 0; $i < count($opcionesserver); $i++) {
 
                                                                                 if ($recmaxupload == $opcionesserver[$i]) {
-                                                                                    echo '<option selected value="' . $opcionesserver[$i] . '">' . $opcionesserver[$i] . " MB" . '</option>';
+                                                                                    echo '<option value="' . $opcionesserver[$i] . '" selected>' . $opcionesserver[$i] . " MB" . '</option>';
                                                                                 } else {
                                                                                     echo '<option value="' . $opcionesserver[$i] . '">' . $opcionesserver[$i] . " MB" . '</option>';
                                                                                 }
@@ -430,9 +430,9 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                                                         //COMPROBAR OPCION BOOT
                                                                         if ($recbootconf == "SI") {
                                                                             echo '<option value="NO">NO</option>';
-                                                                            echo '<option selected value="SI">SI</option>';
+                                                                            echo '<option value="SI" selected>SI</option>';
                                                                         } else {
-                                                                            echo '<option selected value="NO">NO</option>';
+                                                                            echo '<option value="NO" selected>NO</option>';
                                                                             echo '<option value="SI">SI</option>';
                                                                         }
 
@@ -491,7 +491,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                                                             for ($i = 0; $i < count($eltipoconsola); $i++) {
 
                                                                                 if ($recconsoletype == $i) {
-                                                                                    echo '<option selected value="' . $i . '">' . $eltipoconsola[$i] . '</option>';
+                                                                                    echo '<option value="' . $i . '" selected>' . $eltipoconsola[$i] . '</option>';
                                                                                 } else {
                                                                                     echo '<option value="' . $i . '">' . $eltipoconsola[$i] . '</option>';
                                                                                 }
@@ -542,7 +542,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                                                                 for ($i = 0; $i < count($javalist); $i++) {
 
                                                                                     if ($javaruta[$i] . "/bin/java" == $recjavaname) {
-                                                                                        echo '<option selected value="' . $javaruta[$i] . '">' . $javalist[$i] . '</option>';
+                                                                                        echo '<option value="' . $javaruta[$i] . '" selected>' . $javalist[$i] . '</option>';
                                                                                     } else {
                                                                                         echo '<option value="' . $javaruta[$i] . '">' . $javalist[$i] . '</option>';
                                                                                     }
@@ -758,7 +758,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                                                         for ($i = 0; $i < count($opcmantenimiento); $i++) {
 
                                                                             if ($recmantenimiento == $opcmantenimiento[$i]) {
-                                                                                echo '<option selected value="' . $opcmantenimiento[$i] . '">' . $opcmantenimiento[$i] . '</option>';
+                                                                                echo '<option value="' . $opcmantenimiento[$i] . '" selected>' . $opcmantenimiento[$i] . '</option>';
                                                                             } else {
                                                                                 echo '<option value="' . $opcmantenimiento[$i] . '">' . $opcmantenimiento[$i] . '</option>';
                                                                             }
