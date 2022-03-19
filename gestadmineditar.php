@@ -54,7 +54,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
 
     //COMPROBAR SI ES EL SUPERADMIN O ADMIN
     if (array_key_exists('rango', $_SESSION['CONFIGUSER'])) {
-        if ($_SESSION['CONFIGUSER']['rango'] == 1) {
+        if ($_SESSION['CONFIGUSER']['rango'] == 1 || $_SESSION['CONFIGUSER']['rango'] == 2) {
             $expulsar = 1;
         }
     }
@@ -111,7 +111,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                             <div class="row">
                                                 <div class="col-md-12">
 
-                                                    <form action="function/gestadmineditaradmin.php" method="POST" id="form-createuser">
+                                                    <form action="function/gestadmineditaradmin.php" method="POST" id="form-createuser" autocomplete="off">
                                                         <div class="py-1">
                                                             <div class="container">
                                                                 <div class="row">
@@ -126,14 +126,27 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                                                             </h4>
                                                                         </div>
                                                                     </div>
-
+                                                                    <?php
+                                                                    if ($_SESSION['EDITARSUPER']['rango'] == 1 && $_SESSION['EDITARSUPER']['usuario'] == $_SESSION['CONFIGUSER']['usuario'] || $_SESSION['EDITARSUPER']['rango'] == 2 && $_SESSION['EDITARSUPER']['usuario'] == $_SESSION['CONFIGUSER']['usuario']) {
+                                                                    ?>
+                                                                        <div class="col-md-6">
+                                                                            <label class="negrita" for="eloldpass">Antigua Contraseña</label>
+                                                                            <input type="password" class="form-control" id="eloldpass" name="eloldpass" spellcheck="false" autocapitalize="none" placeholder="••••">
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                        </div>
+                                                                    <?php
+                                                                    }
+                                                                    ?>
                                                                     <div class="col-md-6">
-                                                                        <label class="negrita" for="elpass">Cambiar Contraseña</label>
-                                                                        <input type="password" class="form-control" id="elpass" name="elpass" placeholder="••••">
+                                                                        <br>
+                                                                        <label class="negrita" for="elpass">Nueva Contraseña</label>
+                                                                        <input type="password" class="form-control" id="elpass" name="elpass" spellcheck="false" autocapitalize="none" placeholder="••••">
                                                                     </div>
                                                                     <div class="col-md-6">
-                                                                        <label class="negrita" for="elrepass">Confirmar</label>
-                                                                        <input type="password" class="form-control" id="elrepass" name="elrepass" placeholder="••••">
+                                                                        <br>
+                                                                        <label class="negrita" for="elrepass">Confirmar Contraseña</label>
+                                                                        <input type="password" class="form-control" id="elrepass" name="elrepass" spellcheck="false" autocapitalize="none" placeholder="••••">
                                                                     </div>
 
                                                                     <div class="col-md-12">
@@ -174,23 +187,23 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
 
                                                                     <?php
                                                                     //SOLO MUESTRA LAS OPCIONES SI EDITAS UN ADMIN
-                                                                    if ($_SESSION['EDITARSUPER']['rango'] == 2) {
+                                                                    if ($_SESSION['EDITARSUPER']['rango'] == 2 &&  $_SESSION['CONFIGUSER']['rango'] == 1) {
                                                                     ?>
 
-                                                                    <div class="col-md-6">
-                                                                        <label class="negrita">Permiso creación/edición usuarios:</label>
-                                                                        <select id="psystemcreateuser" name="psystemcreateuser" class="form-control">
-                                                                            <?php
-                                                                            if (array_key_exists('psystemcreateuser', $_SESSION['EDITARSUPER']) && $_SESSION['EDITARSUPER']['psystemcreateuser'] == 1) {
-                                                                                echo '<option value="1">No</option>';
-                                                                                echo '<option selected="2">Si</option>';
-                                                                            } else {
-                                                                                echo '<option selected="1">No</option>';
-                                                                                echo '<option value="2">Si</option>';
-                                                                            }
-                                                                            ?>
-                                                                        </select>
-                                                                    </div>
+                                                                        <div class="col-md-6">
+                                                                            <label class="negrita">Permiso creación/edición usuarios:</label>
+                                                                            <select id="psystemcreateuser" name="psystemcreateuser" class="form-control">
+                                                                                <?php
+                                                                                if (array_key_exists('psystemcreateuser', $_SESSION['EDITARSUPER']) && $_SESSION['EDITARSUPER']['psystemcreateuser'] == 1) {
+                                                                                    echo '<option value="1">No</option>';
+                                                                                    echo '<option value="2" selected>Si</option>';
+                                                                                } else {
+                                                                                    echo '<option value="1" selected>No</option>';
+                                                                                    echo '<option value="2">Si</option>';
+                                                                                }
+                                                                                ?>
+                                                                            </select>
+                                                                        </div>
 
                                                                         <div class="col-md-12">
                                                                             <br>

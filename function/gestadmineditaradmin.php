@@ -41,15 +41,15 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
     //COMPROBAR SI ES EL SUPERADMIN O ADMIN
     if (array_key_exists('rango', $_SESSION['CONFIGUSER'])) {
 
-        if ($_SESSION['CONFIGUSER']['rango'] == 1) {
+        if ($_SESSION['CONFIGUSER']['rango'] == 1 || $_SESSION['CONFIGUSER']['rango'] == 2) {
 
-            $archivo = "";
             $retorno = "";
             $elerror = 0;
-            $sincambiarpass = 0;
+            $sinoldpass = 0;
             $sinpass = 0;
             $sinrepass = 0;
             $usuario = "";
+            $oldpasscheck = 0;
 
             //OBTENER VARIABLES Y PASARLO A ARRAY
 
@@ -63,6 +63,12 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
 
             if ($elerror == 0) {
                 $usuario = $_SESSION['SEGEDITARSUPER']['usuario'];
+            }
+
+            if ($_SESSION['SEGEDITARSUPER']['usuario'] == $_SESSION['CONFIGUSER']['usuario']) {
+                if (test_input($_POST['eloldpass']) == "") {
+                    $sinoldpass = 1;
+                }
             }
 
             if (test_input($_POST['elpass']) == "") {
@@ -208,30 +214,70 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                         $nuevoarray[] = $arrayobtenido[$i];
                     } else {
 
-                        //SOLO CAMBIAR PASSWORD SI ESTA INTRODUCIDO EN LOS 2
-                        if ($sinpass == 0 && $sinrepass == 0) {
-                            $hashed = hash("sha3-512", test_input($_POST["elpass"]));
-                            $arrayobtenido[$i]['hash'] = $hashed;
-                        }
-
-                        //GUARDAR PERMISOS CREAR USUARIOS
-                        if (isset($_POST['psystemcreateuser'])) {
-                            if ($_POST['psystemcreateuser'] == 2) {
-                                $arrayobtenido[$i]['psystemcreateuser'] = 1;
-                            } else {
-                                $arrayobtenido[$i]['psystemcreateuser'] = 0;
+                        //EVITAR QUE ADMINISTRADOR EDITE SUPERADMIN
+                        if ($elerror == 0) {
+                            if ($_SESSION['CONFIGUSER']['rango'] == 2 && $_SESSION['SEGEDITARSUPER']['rango'] == 1) {
+                                $elerror = 1;
                             }
-                        } else {
-                            $arrayobtenido[$i]['psystemcreateuser'] = 0;
                         }
 
-                        //GUARDAR TEMA WEB
-                        if (isset($_POST['selectemaweb'])) {
-                            if ($_POST['selectemaweb'] == 2) {
-                                $arrayobtenido[$i]['psystemconftemaweb'] = 2;
-                                //APLICAR SI ES MISMO USUARIO
-                                if ($_SESSION['CONFIGUSER']['usuario'] == $arrayobtenido[$i]['usuario']) {
-                                    $_SESSION['CONFIGUSER']['psystemconftemaweb'] = 2;
+                        //EVITAR QUE UN ADMINISTRADOR EDITE UN ADMINISTRADOR DIFERENTE
+                        if ($elerror == 0) {
+                            if ($_SESSION['CONFIGUSER']['rango'] == 2 && $_SESSION['SEGEDITARSUPER']['rango'] == 2 && $_SESSION['CONFIGUSER']['usuario'] != $_SESSION['SEGEDITARSUPER']['usuario']) {
+                                $elerror = 1;
+                            }
+                        }
+
+                        //COMPROBAR EL OLDPASS CON EL ACTUAL
+                        if ($elerror == 0) {
+                            if ($_SESSION['SEGEDITARSUPER']['usuario'] == $_SESSION['CONFIGUSER']['usuario']) {
+                                if ($sinoldpass == 0) {
+                                    $oldhashed = hash("sha3-512", test_input($_POST["eloldpass"]));
+
+                                    if ($arrayobtenido[$i]['hash'] == $oldhashed) {
+                                        $oldpasscheck = 1;
+                                    } else {
+                                        $elerror = 1;
+                                        $retorno = "oldpasserror";
+                                    }
+                                }
+                            }
+                        }
+
+                        if ($elerror == 0) {
+                            //SOLO CAMBIAR PASSWORD SI ESTA INTRODUCIDO EN LOS 2
+                            if ($sinpass == 0 && $sinrepass == 0 && $sinoldpass == 0 && $oldpasscheck == 1) {
+                                $hashed = hash("sha3-512", test_input($_POST["elpass"]));
+                                $arrayobtenido[$i]['hash'] = $hashed;
+                            }
+
+                            //GUARDAR PERMISOS CREAR USUARIOS SOLO ADMINS
+                            if ($_SESSION['CONFIGUSER']['rango'] == 1 && $_SESSION['SEGEDITARSUPER']['rango'] == 2) {
+                                if (isset($_POST['psystemcreateuser'])) {
+                                    if ($_POST['psystemcreateuser'] == 2) {
+                                        $arrayobtenido[$i]['psystemcreateuser'] = 1;
+                                    } else {
+                                        $arrayobtenido[$i]['psystemcreateuser'] = 0;
+                                    }
+                                } else {
+                                    $arrayobtenido[$i]['psystemcreateuser'] = 0;
+                                }
+                            }
+
+                            //GUARDAR TEMA WEB
+                            if (isset($_POST['selectemaweb'])) {
+                                if ($_POST['selectemaweb'] == 2) {
+                                    $arrayobtenido[$i]['psystemconftemaweb'] = 2;
+                                    //APLICAR SI ES MISMO USUARIO
+                                    if ($_SESSION['CONFIGUSER']['usuario'] == $arrayobtenido[$i]['usuario']) {
+                                        $_SESSION['CONFIGUSER']['psystemconftemaweb'] = 2;
+                                    }
+                                } else {
+                                    $arrayobtenido[$i]['psystemconftemaweb'] = 1;
+                                    //APLICAR SI ES MISMO USUARIO
+                                    if ($_SESSION['CONFIGUSER']['usuario'] == $arrayobtenido[$i]['usuario']) {
+                                        $_SESSION['CONFIGUSER']['psystemconftemaweb'] = 1;
+                                    }
                                 }
                             } else {
                                 $arrayobtenido[$i]['psystemconftemaweb'] = 1;
@@ -240,125 +286,121 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                                     $_SESSION['CONFIGUSER']['psystemconftemaweb'] = 1;
                                 }
                             }
-                        } else {
-                            $arrayobtenido[$i]['psystemconftemaweb'] = 1;
-                            //APLICAR SI ES MISMO USUARIO
-                            if ($_SESSION['CONFIGUSER']['usuario'] == $arrayobtenido[$i]['usuario']) {
-                                $_SESSION['CONFIGUSER']['psystemconftemaweb'] = 1;
+
+                            //MODIFICAR PERMISOS SOLO ADMINS
+                            if ($_SESSION['SEGEDITARSUPER']['rango'] == 2) {
+
+                                //SYSTEM CONFIG PUERTO
+                                if (isset($_POST['psystemconfpuerto'])) {
+                                    $arrayobtenido[$i]['psystemconfpuerto'] = 1;
+                                } else {
+                                    $arrayobtenido[$i]['psystemconfpuerto'] = 0;
+                                }
+
+                                //SYSTEM CONFIG MEMORIA
+                                if (isset($_POST['psystemconfmemoria'])) {
+                                    $arrayobtenido[$i]['psystemconfmemoria'] = 1;
+                                } else {
+                                    $arrayobtenido[$i]['psystemconfmemoria'] = 0;
+                                }
+
+                                //SYSTEM CONFIG TIPO
+                                if (isset($_POST['psystemconftipo'])) {
+                                    $arrayobtenido[$i]['psystemconftipo'] = 1;
+                                } else {
+                                    $arrayobtenido[$i]['psystemconftipo'] = 0;
+                                }
+
+                                //SYSTEM CONFIG SUBIDA
+                                if (isset($_POST['psystemconfsubida'])) {
+                                    $arrayobtenido[$i]['psystemconfsubida'] = 1;
+                                } else {
+                                    $arrayobtenido[$i]['psystemconfsubida'] = 0;
+                                }
+
+                                //SYSTEM CONFIG NOMBRE
+                                if (isset($_POST['psystemconfnombre'])) {
+                                    $arrayobtenido[$i]['psystemconfnombre'] = 1;
+                                } else {
+                                    $arrayobtenido[$i]['psystemconfnombre'] = 0;
+                                }
+
+                                //SYSTEM CONFIG PARAMETROS AVANZADOS
+                                if (isset($_POST['psystemconfavanzados'])) {
+                                    $arrayobtenido[$i]['psystemconfavanzados'] = 1;
+                                } else {
+                                    $arrayobtenido[$i]['psystemconfavanzados'] = 0;
+                                }
+
+                                //SYSTEM CONFIG SELECTOR JAVA
+                                if (isset($_POST['psystemconfjavaselect'])) {
+                                    $arrayobtenido[$i]['psystemconfjavaselect'] = 1;
+                                } else {
+                                    $arrayobtenido[$i]['psystemconfjavaselect'] = 0;
+                                }
+
+                                //SYSTEM CONFIG LIMITE ALMACENAMIENTO
+                                if (isset($_POST['psystemconffoldersize'])) {
+                                    $arrayobtenido[$i]['psystemconffoldersize'] = 1;
+                                } else {
+                                    $arrayobtenido[$i]['psystemconffoldersize'] = 0;
+                                }
+
+                                //SYSTEM CONFIG LIMITE LINEAS CONSOLA
+                                if (isset($_POST['psystemconflinconsole'])) {
+                                    $arrayobtenido[$i]['psystemconflinconsole'] = 1;
+                                } else {
+                                    $arrayobtenido[$i]['psystemconflinconsole'] = 0;
+                                }
+
+                                //SYSTEM CONFIG LIMITE BUFFER CONSOLA
+                                if (isset($_POST['psystemconfbuffer'])) {
+                                    $arrayobtenido[$i]['psystemconfbuffer'] = 1;
+                                } else {
+                                    $arrayobtenido[$i]['psystemconfbuffer'] = 0;
+                                }
+
+                                //SYSTEM CONFIG TIPO CONSOLA
+                                if (isset($_POST['psystemconftypeconsole'])) {
+                                    $arrayobtenido[$i]['psystemconftypeconsole'] = 1;
+                                } else {
+                                    $arrayobtenido[$i]['psystemconftypeconsole'] = 0;
+                                }
+
+                                //SYSTEM CONFIG INICIAR MINECRAFT AL ARRANCAR LINUX
+                                if (isset($_POST['psystemstartonboot'])) {
+                                    $arrayobtenido[$i]['psystemstartonboot'] = 1;
+                                } else {
+                                    $arrayobtenido[$i]['psystemstartonboot'] = 0;
+                                }
+
+                                //SYSTEM CONFIG ARGUMENTOS JAVA
+                                if (isset($_POST['psystemcustomarg'])) {
+                                    $arrayobtenido[$i]['psystemcustomarg'] = 1;
+                                } else {
+                                    $arrayobtenido[$i]['psystemcustomarg'] = 0;
+                                }
+
+                                //SYSTEM CONFIG IGNORAR RAM SISTEMA AL INICIAR MINECRAFT
+                                if (isset($_POST['psystemconfignoreramlimit'])) {
+                                    $arrayobtenido[$i]['psystemconfignoreramlimit'] = 1;
+                                } else {
+                                    $arrayobtenido[$i]['psystemconfignoreramlimit'] = 0;
+                                }
                             }
+
+                            $nuevoarray[] = $arrayobtenido[$i];
                         }
-
-                        //MODIFICAR PERMISOS SOLO ADMINS
-                        if ($_SESSION['SEGEDITARSUPER']['rango'] == 2) {
-
-                            //SYSTEM CONFIG PUERTO
-                            if (isset($_POST['psystemconfpuerto'])) {
-                                $arrayobtenido[$i]['psystemconfpuerto'] = 1;
-                            } else {
-                                $arrayobtenido[$i]['psystemconfpuerto'] = 0;
-                            }
-
-                            //SYSTEM CONFIG MEMORIA
-                            if (isset($_POST['psystemconfmemoria'])) {
-                                $arrayobtenido[$i]['psystemconfmemoria'] = 1;
-                            } else {
-                                $arrayobtenido[$i]['psystemconfmemoria'] = 0;
-                            }
-
-                            //SYSTEM CONFIG TIPO
-                            if (isset($_POST['psystemconftipo'])) {
-                                $arrayobtenido[$i]['psystemconftipo'] = 1;
-                            } else {
-                                $arrayobtenido[$i]['psystemconftipo'] = 0;
-                            }
-
-                            //SYSTEM CONFIG SUBIDA
-                            if (isset($_POST['psystemconfsubida'])) {
-                                $arrayobtenido[$i]['psystemconfsubida'] = 1;
-                            } else {
-                                $arrayobtenido[$i]['psystemconfsubida'] = 0;
-                            }
-
-                            //SYSTEM CONFIG NOMBRE
-                            if (isset($_POST['psystemconfnombre'])) {
-                                $arrayobtenido[$i]['psystemconfnombre'] = 1;
-                            } else {
-                                $arrayobtenido[$i]['psystemconfnombre'] = 0;
-                            }
-
-                            //SYSTEM CONFIG PARAMETROS AVANZADOS
-                            if (isset($_POST['psystemconfavanzados'])) {
-                                $arrayobtenido[$i]['psystemconfavanzados'] = 1;
-                            } else {
-                                $arrayobtenido[$i]['psystemconfavanzados'] = 0;
-                            }
-
-                            //SYSTEM CONFIG SELECTOR JAVA
-                            if (isset($_POST['psystemconfjavaselect'])) {
-                                $arrayobtenido[$i]['psystemconfjavaselect'] = 1;
-                            } else {
-                                $arrayobtenido[$i]['psystemconfjavaselect'] = 0;
-                            }
-
-                            //SYSTEM CONFIG LIMITE ALMACENAMIENTO
-                            if (isset($_POST['psystemconffoldersize'])) {
-                                $arrayobtenido[$i]['psystemconffoldersize'] = 1;
-                            } else {
-                                $arrayobtenido[$i]['psystemconffoldersize'] = 0;
-                            }
-
-                            //SYSTEM CONFIG LIMITE LINEAS CONSOLA
-                            if (isset($_POST['psystemconflinconsole'])) {
-                                $arrayobtenido[$i]['psystemconflinconsole'] = 1;
-                            } else {
-                                $arrayobtenido[$i]['psystemconflinconsole'] = 0;
-                            }
-
-                            //SYSTEM CONFIG LIMITE BUFFER CONSOLA
-                            if (isset($_POST['psystemconfbuffer'])) {
-                                $arrayobtenido[$i]['psystemconfbuffer'] = 1;
-                            } else {
-                                $arrayobtenido[$i]['psystemconfbuffer'] = 0;
-                            }
-
-                            //SYSTEM CONFIG TIPO CONSOLA
-                            if (isset($_POST['psystemconftypeconsole'])) {
-                                $arrayobtenido[$i]['psystemconftypeconsole'] = 1;
-                            } else {
-                                $arrayobtenido[$i]['psystemconftypeconsole'] = 0;
-                            }
-
-                            //SYSTEM CONFIG INICIAR MINECRAFT AL ARRANCAR LINUX
-                            if (isset($_POST['psystemstartonboot'])) {
-                                $arrayobtenido[$i]['psystemstartonboot'] = 1;
-                            } else {
-                                $arrayobtenido[$i]['psystemstartonboot'] = 0;
-                            }
-
-                            //SYSTEM CONFIG ARGUMENTOS JAVA
-                            if (isset($_POST['psystemcustomarg'])) {
-                                $arrayobtenido[$i]['psystemcustomarg'] = 1;
-                            } else {
-                                $arrayobtenido[$i]['psystemcustomarg'] = 0;
-                            }
-
-                            //SYSTEM CONFIG IGNORAR RAM SISTEMA AL INICIAR MINECRAFT
-                            if (isset($_POST['psystemconfignoreramlimit'])) {
-                                $arrayobtenido[$i]['psystemconfignoreramlimit'] = 1;
-                            } else {
-                                $arrayobtenido[$i]['psystemconfignoreramlimit'] = 0;
-                            }
-                        }
-
-                        $nuevoarray[] = $arrayobtenido[$i];
                     }
                 }
 
                 //GUARDAR EN ARCHIVO
-                $serialized = serialize($nuevoarray);
-                file_put_contents($elarchivo, $serialized);
-                $_SESSION['SEGEDITARSUPER'] = 0;
-                $retorno = "OK";
+                if ($elerror == 0) {
+                    $serialized = serialize($nuevoarray);
+                    file_put_contents($elarchivo, $serialized);
+                    $_SESSION['SEGEDITARSUPER'] = 0;
+                    $retorno = "OK";
+                }
             }
         }
     }

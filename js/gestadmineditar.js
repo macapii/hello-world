@@ -42,20 +42,37 @@ $(function () {
     });
 
     $("#verpassword").click(function () {
-        var x = document.getElementById("elpass");
-        var y = document.getElementById("elrepass");
 
-        if (x.type === "password") {
-            x.type = "text";
-        } else {
-            x.type = "password";
+        if (document.getElementById('eloldpass') !== null) {
+            var t = document.getElementById("eloldpass");
+
+            if (t.type === "password") {
+                t.type = "text";
+            } else {
+                t.type = "password";
+            }
         }
 
-        if (y.type === "password") {
-            y.type = "text";
-        } else {
-            y.type = "password";
+        if (document.getElementById('elpass') !== null) {
+            var x = document.getElementById("elpass");
+
+            if (x.type === "password") {
+                x.type = "text";
+            } else {
+                x.type = "password";
+            }
         }
+
+        if (document.getElementById('elrepass') !== null) {
+            var y = document.getElementById("elrepass");
+
+            if (y.type === "password") {
+                y.type = "text";
+            } else {
+                y.type = "password";
+            }
+        }
+
     });
 
     $("#form-createuser").on('submit', (function (e) {
@@ -87,6 +104,8 @@ $(function () {
                     alert("El archivo de usuarios no tiene permisos de lectura");
                 } else if (data == "errjsonnowrite") {
                     alert("El archivo de usuarios no tiene permisos de escritura");
+                } else if (data == "oldpasserror") {
+                    alert("La antigua contraseña no es válida");
                 } else if (data == "OK") {
                     alert("Para que se apliquen los cambios el admin editado tiene que cerrar sesión");
                     location.href = "gestorusers.php";
