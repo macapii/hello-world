@@ -147,17 +147,17 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                                                                     if ($_SESSION['EDITARUSUARIO']['psystemconftemaweb'] == 2) {
                                                                                 ?>
                                                                                         <option value="1">Claro</option>
-                                                                                        <option selected value="2">Oscuro</option>
+                                                                                        <option value="2" selected>Oscuro</option>
                                                                                     <?php
                                                                                     } else {
                                                                                     ?>
-                                                                                        <option selected="1">Claro</option>
+                                                                                        <option value="1" selected>Claro</option>
                                                                                         <option value="2">Oscuro</option>
                                                                                     <?php
                                                                                     }
                                                                                 } else {
                                                                                     ?>
-                                                                                    <option selected="1">Claro</option>
+                                                                                    <option value="1" selected>Claro</option>
                                                                                     <option value="2">Oscuro</option>
                                                                                 <?php
                                                                                 }
