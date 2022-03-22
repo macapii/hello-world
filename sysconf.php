@@ -410,7 +410,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
 
                                                                 <div class="form-group col-md-6">
                                                                     <label class="negrita" for="elnomserv">Nombre Servidor:</label>
-                                                                    <input type="text" class="form-control" id="elnomserv" name="elnomserv" required="required" value="<?php echo $recnombreserv; ?>">
+                                                                    <input type="text" class="form-control" id="elnomserv" name="elnomserv" spellcheck="false" autocapitalize="none" required="required" value="<?php echo $recnombreserv; ?>">
                                                                 </div>
 
                                                             <?php
@@ -561,7 +561,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                                                                                                                                                 } ?>>
                                                                                 <label for="configjavaselect2">Ruta manual JAVA</label>
                                                                                 <p>Ejemplo: /usr/lib/jvm/java-1.11.0-openjdk-amd64</p>
-                                                                                <input type="text" class="form-control" id="javamanual" name="javamanual" value="<?php echo $recjavamanual; ?>">
+                                                                                <input type="text" class="form-control" id="javamanual" name="javamanual" spellcheck="false" autocapitalize="none" value="<?php echo $recjavamanual; ?>">
                                                                             </div>
                                                                         <?php
                                                                         }
@@ -573,7 +573,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                                                                                                                                                 echo "checked";
                                                                                                                                                             } ?>>
                                                                                 <label for="configjavaselect2">Ruta manual JAVA (Configurado por Superusuario)</label>
-                                                                                <input readonly type="text" class="form-control" value="<?php echo $recjavamanual; ?>">
+                                                                                <input readonly type="text" class="form-control" spellcheck="false" autocapitalize="none" value="<?php echo $recjavamanual; ?>">
                                                                             </div>
                                                                         <?php
                                                                         }
