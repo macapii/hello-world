@@ -84,6 +84,14 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
     //VALIDAMOS SESSION SINO ERROR
     if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
 
+        //COMPRUEBA SI JAVA ESTA INSTALADO
+        $checkjavainst = shell_exec('command -v java >/dev/null && echo "yes" || echo "no"');
+        $checkjavainst = trim($checkjavainst);
+        if ($checkjavainst == "no") {
+            echo "<div class='alert alert-danger' role='alert'>Error: Java no encontrado en el servidor.</div>";
+            exit;
+        }
+
         $url = "https://hub.spigotmc.org/nexus/content/repositories/snapshots/org/spigotmc/spigot-api/maven-metadata.xml";
 
         $context = stream_context_create(
