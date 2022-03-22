@@ -153,7 +153,7 @@ require_once("../template/errorreport.php");
                       echo '<option value="0" selected>MEMORIA INSUFICIENTE / NO TIENES NI UN GB</option>';
                     } elseif ($totalram >= 1) {
                       for ($i = 1; $i <= $totalram; $i++) {
-                        echo '<option value="' . $i . '">' . $i . ' GB</option>';
+                        echo '<option value="' . 1024*$i . '">' . $i . ' GB</option>';
                       }
                     }
 
