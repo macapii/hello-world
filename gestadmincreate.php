@@ -101,17 +101,17 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                                                     <div class="col-md-12">
                                                                         <div class="form-group">
                                                                             <label class="negrita" for="eluser">Nombre Usuario</label>
-                                                                            <input type="text" class="form-control" id="eluser" name="eluser" required="required">
+                                                                            <input type="text" class="form-control" id="eluser" name="eluser" spellcheck="false" autocapitalize="none" required="required">
                                                                         </div>
                                                                     </div>
 
                                                                     <div class="col-md-6">
                                                                         <label class="negrita" for="elpass">Contraseña</label>
-                                                                        <input type="password" class="form-control" id="elpass" name="elpass" placeholder="••••" required="required">
+                                                                        <input type="password" class="form-control" id="elpass" name="elpass" spellcheck="false" autocapitalize="none" placeholder="••••" required="required">
                                                                     </div>
                                                                     <div class="col-md-6">
                                                                         <label class="negrita" for="elrepass">Confirmar Contraseña</label>
-                                                                        <input type="password" class="form-control" id="elrepass" name="elrepass" placeholder="••••" required="required">
+                                                                        <input type="password" class="form-control" id="elrepass" name="elrepass" spellcheck="false" autocapitalize="none" placeholder="••••" required="required">
                                                                     </div>
 
                                                                     <div class="col-md-12">
