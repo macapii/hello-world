@@ -326,7 +326,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                                         <div class="row">
                                                             <div class="col-md-4">
                                                                 <p class="lead">Nombre Backup</p>
-                                                                <input class="form-control" id="inputbackup" type="text" maxlength="100">
+                                                                <input class="form-control" id="inputbackup" type="text" spellcheck="false" autocapitalize="none" maxlength="100">
                                                                 <button type="button" class="btn btn-primary btn-block btn-lg text-white mt-2" id="crearbackup">Crear Backup</button>
                                                                 <button type="button" class="btn btn-danger btn-block btn-lg text-white mt-2" id="cancelarbakup">Cancelar Backup</button>
                                                             </div>
