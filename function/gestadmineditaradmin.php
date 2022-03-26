@@ -244,6 +244,14 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                             }
                         }
 
+                        //DAR ACCESO A SUPERADMIN PARA CAMBIAR EL PASS
+                        if ($elerror == 0) {
+                            if ($_SESSION['CONFIGUSER']['rango'] == 1 && $sinpass == 0 && $sinrepass == 0 && $oldpasscheck == 0) {
+                                $oldpasscheck = 1;
+                            }
+                        }
+
+
                         if ($elerror == 0) {
                             //SOLO CAMBIAR PASSWORD SI ESTA INTRODUCIDO EN LOS 2
                             if ($sinpass == 0 && $sinrepass == 0 && $sinoldpass == 0 && $oldpasscheck == 1) {
