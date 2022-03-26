@@ -143,6 +143,10 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                                         $arrayordenar = array_merge($arrayordenar, $arrayadmins, $arrayusers);
                                                         $arrayobtenido = $arrayordenar;
 
+                                                        unset($arrayordenar);
+                                                        unset($arrayadmins);
+                                                        unset($arrayusers);
+
                                                         if ($_SESSION['CONFIGUSER']['rango'] == 1) {
                                                         ?>
                                                             <div class="col-md-6">
