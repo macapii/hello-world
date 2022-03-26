@@ -95,6 +95,54 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                                 <div class="col-md-12">
                                                     <div class="row">
                                                         <?php
+
+                                                        $dirconfig = getcwd() . PHP_EOL;
+                                                        $dirconfig = trim($dirconfig);
+                                                        $dirconfig .= "/config/confuser.json";
+
+                                                        //COMPROBAR SI EXISTE EL JSON
+                                                        clearstatcache();
+                                                        if (!file_exists($dirconfig)) {
+                                                            echo "<div class='alert alert-danger' role='alert'>Error: El archivo de usuarios no existe.</div>";
+                                                            exit;
+                                                        }
+
+                                                        //COMPROBAR SI SE PUEDE LEER EL JSON
+                                                        clearstatcache();
+                                                        if (!is_readable($dirconfig)) {
+                                                            echo "<div class='alert alert-danger' role='alert'>Error: El archivo de usuarios no tiene permisos de lectura.</div>";
+                                                            exit;
+                                                        }
+
+                                                        //COMPROBAR SI SE PUEDE ESCRIBIR EL JSON
+                                                        clearstatcache();
+                                                        if (!is_writable($dirconfig)) {
+                                                            echo "<div class='alert alert-danger' role='alert'>Error: El archivo de usuarios no tiene permisos de escritura.</div>";
+                                                            exit;
+                                                        }
+
+                                                        //LEER ARRAY
+                                                        $getarray = file_get_contents($dirconfig);
+                                                        $arrayobtenido = unserialize($getarray);
+
+                                                        //ORDENAR ARRAY
+                                                        $arrayadmins = array();
+                                                        $arrayusers = array();
+                                                        $arrayordenar = array();
+
+                                                        $arrayordenar[] = $arrayobtenido[0];
+
+                                                        for ($i = 1; $i < count($arrayobtenido); $i++) {
+                                                            if ($arrayobtenido[$i]['rango'] == 2) {
+                                                                $arrayadmins[] = $arrayobtenido[$i];
+                                                            } elseif ($arrayobtenido[$i]['rango'] == 3) {
+                                                                $arrayusers[] = $arrayobtenido[$i];
+                                                            }
+                                                        }
+
+                                                        $arrayordenar = array_merge($arrayordenar, $arrayadmins, $arrayusers);
+                                                        $arrayobtenido = $arrayordenar;
+
                                                         if ($_SESSION['CONFIGUSER']['rango'] == 1) {
                                                         ?>
                                                             <div class="col-md-6">
@@ -116,22 +164,6 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                                         }
                                                         ?>
                                                     </div>
-
-                                                    <?php
-
-                                                    $dirconfig = getcwd() . PHP_EOL;
-                                                    $dirconfig = trim($dirconfig);
-                                                    $dirconfig .= "/config/confuser.json";
-
-                                                    //comprobar que exista
-
-                                                    //comprobar que tiene write
-
-                                                    //LEER ARRAY
-                                                    $getarray = file_get_contents($dirconfig);
-                                                    $arrayobtenido = unserialize($getarray);
-
-                                                    ?>
 
                                                     <div class="py-3">
                                                         <div class="container">
