@@ -773,13 +773,13 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
 
         //COMPROBAR SI SE PUEDE ESCRIBIR ARCHIVO .htaccess de la raiz
         if ($elerror == 0) {
-          $rutaescrivir = $rutaraiz;
-          $rutaescrivir .= "/.htaccess";
+          $rutaescribir = $rutaraiz;
+          $rutaescribir .= "/.htaccess";
 
           clearstatcache();
-          if (file_exists($rutaescrivir)) {
+          if (file_exists($rutaescribir)) {
             clearstatcache();
-            if (!is_writable($rutaescrivir)) {
+            if (!is_writable($rutaescribir)) {
               $retorno = "nowritehtaccess";
               $elerror = 1;
             }
@@ -788,20 +788,20 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
 
         if ($elerror == 0) {
           //CREAR RUTA FICHERO .htaccess en config
-          $rutaescrivir = $dirconfig;
-          $rutaescrivir .= "/.htaccess";
+          $rutaescribir = $dirconfig;
+          $rutaescribir .= "/.htaccess";
 
           //GUARDAR FICHERO .htaccess en config
-          $file = fopen($rutaescrivir, "w");
+          $file = fopen($rutaescribir, "w");
           fwrite($file, "deny from all" . PHP_EOL);
           fclose($file);
 
           //CREAR RUTA FICHERO CONFOPCIONES.PHP
-          $rutaescrivir = $dirconfig;
-          $rutaescrivir .= "/confopciones.php";
+          $rutaescribir = $dirconfig;
+          $rutaescribir .= "/confopciones.php";
 
           //GUARDAR FICHERO CONFOPCIONES.PHP
-          $file = fopen($rutaescrivir, "w");
+          $file = fopen($rutaescribir, "w");
           fwrite($file, "<?php " . PHP_EOL);
           fwrite($file, 'define("CONFIGSESSIONKEY", "' . $lakey . '");' . PHP_EOL);
           fwrite($file, 'define("CONFIGNOMBRESERVER", "' . $elnombreservidor . '");' . PHP_EOL);
@@ -833,8 +833,8 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
           fwrite($file, "?>" . PHP_EOL);
           fclose($file);
 
-          $rutaescrivir = $rutaraiz;
-          $rutaescrivir .= "/.htaccess";
+          $rutaescribir = $rutaraiz;
+          $rutaescribir .= "/.htaccess";
 
           $elpostmax = $eluploadmax + 1;
 
@@ -843,7 +843,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
           $linea3 = "php_value max_file_uploads 1";
 
           //GUARDAR FICHERO .HTACCESS EN RAIZ
-          $file = fopen($rutaescrivir, "w");
+          $file = fopen($rutaescribir, "w");
           fwrite($file, "<IfModule mod_php7.c>" . PHP_EOL);
           fwrite($file, $linea1 . PHP_EOL);
           fwrite($file, $linea2 . PHP_EOL);

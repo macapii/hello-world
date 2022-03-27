@@ -48,7 +48,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                 $elerror = 0;
                 $retorno = "";
                 $dirconfig = "";
-                $rutaescrivir = "";
+                $rutaescribir = "";
 
                 //OBTENER PUERTO DE LA CONFIGURACION
                 $recpuerto = CONFIGPUERTO;
@@ -62,8 +62,8 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                 $dirconfig .= "/" . $reccarpmine;
 
                 //ASIGNAR DIRECTORIO A RUTAESCRIBIR
-                $rutaescrivir = $dirconfig;
-                $rutaescrivir .= "/server.properties";
+                $rutaescribir = $dirconfig;
+                $rutaescribir .= "/server.properties";
 
                 //SI HAY PERMISOS ESCRITURA
                 clearstatcache();
@@ -75,9 +75,9 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                 if ($elerror == 0) {
                     //SI EXISTE EL ARCHIVO
                     clearstatcache();
-                    if (file_exists($rutaescrivir)) {
+                    if (file_exists($rutaescribir)) {
                         //SI SE PUEDE ESCRIBIR
-                        if (!is_writable($rutaescrivir)) {
+                        if (!is_writable($rutaescribir)) {
                             $retorno = "nowriteproperties";
                             $elerror = 1;
                         }
@@ -85,7 +85,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                 }
 
                 if ($elerror == 0) {
-                    $file = fopen($rutaescrivir, "w");
+                    $file = fopen($rutaescribir, "w");
                     fwrite($file, "enable-jmx-monitoring=false" . PHP_EOL);
                     fwrite($file, "rcon.port=25575" . PHP_EOL);
                     fwrite($file, "level-seed=" . PHP_EOL);
@@ -143,7 +143,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                     fclose($file);
 
                     //PERMISO SERVER.PROPERTIES
-                    $elcommando = "chmod 664 " . $rutaescrivir;
+                    $elcommando = "chmod 664 " . $rutaescribir;
                     exec($elcommando);
 
                     $retorno = "OK";

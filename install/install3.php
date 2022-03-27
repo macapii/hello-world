@@ -209,14 +209,14 @@ require_once("../template/errorreport.php");
         exec('rm mycron');
 
         //GUARDAR FICHERO .htaccess EN RAIZ
-        $rutaescrivir = $rutaraiz;
-        $rutaescrivir .= "/.htaccess";
+        $rutaescribir = $rutaraiz;
+        $rutaescribir .= "/.htaccess";
 
         $linea1 = "php_value upload_max_filesize " . $elmaxupload . "M";
         $linea2 = "php_value post_max_size " . $elpostmax . "M";
         $linea3 = "php_value max_file_uploads 1";
 
-        $file = fopen($rutaescrivir, "w");
+        $file = fopen($rutaescribir, "w");
         fwrite($file, "<IfModule mod_php7.c>" . PHP_EOL);
         fwrite($file, $linea1 . PHP_EOL);
         fwrite($file, $linea2 . PHP_EOL);
@@ -234,50 +234,50 @@ require_once("../template/errorreport.php");
         fclose($file);
 
         //GUARDAR FICHERO .htaccess EN CONFIG
-        $rutaescrivir = $dirconfig;
-        $rutaescrivir .= "/.htaccess";
+        $rutaescribir = $dirconfig;
+        $rutaescribir .= "/.htaccess";
 
-        $file = fopen($rutaescrivir, "w");
+        $file = fopen($rutaescribir, "w");
         fwrite($file, "deny from all" . PHP_EOL);
         fclose($file);
 
         //GUARDAR FICHERO .htaccess EN BACKUPS
-        $rutaescrivir = $dirbackups;
-        $rutaescrivir .= "/.htaccess";
+        $rutaescribir = $dirbackups;
+        $rutaescribir .= "/.htaccess";
 
-        $file = fopen($rutaescrivir, "w");
+        $file = fopen($rutaescribir, "w");
         fwrite($file, "deny from all" . PHP_EOL);
         fclose($file);
 
         //GUARDAR FICHERO .htaccess EN TEMP
-        $rutaescrivir = $dirtemp;
-        $rutaescrivir .= "/.htaccess";
+        $rutaescribir = $dirtemp;
+        $rutaescribir .= "/.htaccess";
 
-        $file = fopen($rutaescrivir, "w");
+        $file = fopen($rutaescribir, "w");
         fwrite($file, "deny from all" . PHP_EOL);
         fclose($file);
 
         //GUARDAR FICHERO .htaccess EN CRON
-        $rutaescrivir = $dircron;
-        $rutaescrivir .= "/.htaccess";
+        $rutaescribir = $dircron;
+        $rutaescribir .= "/.htaccess";
 
-        $file = fopen($rutaescrivir, "w");
+        $file = fopen($rutaescribir, "w");
         fwrite($file, "deny from all" . PHP_EOL);
         fclose($file);
 
         //GUARDAR FICHERO .htaccess EN MINECRAFT
-        $rutaescrivir = $dircarpserver;
-        $rutaescrivir .= "/.htaccess";
+        $rutaescribir = $dircarpserver;
+        $rutaescribir .= "/.htaccess";
 
-        $file = fopen($rutaescrivir, "w");
+        $file = fopen($rutaescribir, "w");
         fwrite($file, "deny from all" . PHP_EOL);
         fwrite($file, "php_flag engine off" . PHP_EOL);
         fwrite($file, "AllowOverride None" . PHP_EOL);
         fclose($file);
 
         //GUARDAR FICHERO CONFUSER.JSON
-        $rutaescrivir = $dirconfig;
-        $rutaescrivir .= "/confuser.json";
+        $rutaescribir = $dirconfig;
+        $rutaescribir .= "/confuser.json";
 
         $hashed = hash("sha3-512", $elpassword);
 
@@ -288,16 +288,16 @@ require_once("../template/errorreport.php");
         $arrayadmin[0]['psystemconftemaweb'] = 1;
 
         $serialized = serialize($arrayadmin);
-        file_put_contents($rutaescrivir, $serialized);
+        file_put_contents($rutaescribir, $serialized);
 
         //GUARDAR FICHERO CONFOPCIONES.PHP
-        $rutaescrivir = $dirconfig;
-        $rutaescrivir .= "/confopciones.php";
+        $rutaescribir = $dirconfig;
+        $rutaescribir .= "/confopciones.php";
 
         $lakey = generarkey($lakey);
         $lakey .= $t;
 
-        $file = fopen($rutaescrivir, "w");
+        $file = fopen($rutaescribir, "w");
         fwrite($file, "<?php " . PHP_EOL);
         fwrite($file, 'define("CONFIGSESSIONKEY", "' . $lakey . '");' . PHP_EOL);
         fwrite($file, 'define("CONFIGNOMBRESERVER", "' . $elnombreservidor . '");' . PHP_EOL);
@@ -330,19 +330,19 @@ require_once("../template/errorreport.php");
         fclose($file);
 
         //GUARDAR FICHERO SCREEN.CONF
-        $rutaescrivir = $dirconfig;
-        $rutaescrivir .= "/screen.conf";
+        $rutaescribir = $dirconfig;
+        $rutaescribir .= "/screen.conf";
 
-        $file = fopen($rutaescrivir, "w");
+        $file = fopen($rutaescribir, "w");
         fwrite($file, "logfile flush 0" . PHP_EOL);
         fwrite($file, "log on" . PHP_EOL);
         fclose($file);
 
         //GUARDAR FICHERO SERVER.PROPERTIES
-        $rutaescrivir = $dircarpserver;
-        $rutaescrivir .= "/server.properties";
+        $rutaescribir = $dircarpserver;
+        $rutaescribir .= "/server.properties";
 
-        $file = fopen($rutaescrivir, "w");
+        $file = fopen($rutaescribir, "w");
         fwrite($file, "enable-jmx-monitoring=false" . PHP_EOL);
         fwrite($file, "rcon.port=25575" . PHP_EOL);
         fwrite($file, "level-seed=" . PHP_EOL);

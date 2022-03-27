@@ -233,14 +233,14 @@ if ($elerror == 0) {
             //CREAR EULA FORZADO
             if ($elerror == 0) {
               if ($receulaminecraft == "1") {
-                $rutaescrivir = $rutacarpetamine;
-                $rutaescrivir .= "/eula.txt";
+                $rutaescribir = $rutacarpetamine;
+                $rutaescribir .= "/eula.txt";
 
                 clearstatcache();
-                if (file_exists($rutaescrivir)) {
+                if (file_exists($rutaescribir)) {
                   clearstatcache();
                   if (is_writable($rutaconfigproperties)) {
-                    $file = fopen($rutaescrivir, "w");
+                    $file = fopen($rutaescribir, "w");
                     fwrite($file, "eula=true" . PHP_EOL);
                     fclose($file);
                   } else {
@@ -248,7 +248,7 @@ if ($elerror == 0) {
                     $elerror = 1;
                   }
                 } else {
-                  $file = fopen($rutaescrivir, "w");
+                  $file = fopen($rutaescribir, "w");
                   fwrite($file, "eula=true" . PHP_EOL);
                   fclose($file);
                 }

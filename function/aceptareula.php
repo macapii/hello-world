@@ -94,11 +94,11 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
             if (is_writable($dirconfig)) {
 
                 //CREAR RUTA FICHERO CONFOPCIONES.PHP
-                $rutaescrivir = $dirconfig;
-                $rutaescrivir .= "/confopciones.php";
+                $rutaescribir = $dirconfig;
+                $rutaescribir .= "/confopciones.php";
 
                 //GUARDAR FICHERO CONFOPCIONES.PHP
-                $file = fopen($rutaescrivir, "w");
+                $file = fopen($rutaescribir, "w");
                 fwrite($file, "<?php " . PHP_EOL);
                 fwrite($file, 'define("CONFIGSESSIONKEY", "' . $lakey . '");' . PHP_EOL);
                 fwrite($file, 'define("CONFIGNOMBRESERVER", "' . $elnombreservidor . '");' . PHP_EOL);
