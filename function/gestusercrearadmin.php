@@ -71,6 +71,12 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                 if (test_input($_POST['eluser']) == "") {
                     $retorno = "nohayusuario";
                     $elerror = 1;
+                }else{
+                    $usuariolen = test_input($_POST['eluser']);
+                    if (strlen($usuariolen) > 255) {
+                        $retorno = "nolenuser";
+                        $elerror = 1;
+                    }
                 }
             }
 
@@ -187,7 +193,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                 }
             }
 
-            //COMPROBAR SI SE PUEDE ESCRIBIR EL JSON
+            //COMPROBAR SI SE PUEDE ESCRIVIR EL JSON
             if ($elerror == 0) {
                 clearstatcache();
                 if (!is_writable($elarchivo)) {

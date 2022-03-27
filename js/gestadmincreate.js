@@ -71,6 +71,8 @@ $(function () {
 
                 if (data == "nohayusuario") {
                     alert("No has introducido ningún usuario");
+                } else if (data == "nolenuser") {
+                    alert("El usuario tiene más de 255 caracteres");
                 } else if (data == "nohaypassword") {
                     alert("No has introducido ninguna contraseña");
                 } else if (data == "nohayrepass") {

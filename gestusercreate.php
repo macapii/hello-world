@@ -101,7 +101,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                                                     <div class="col-md-12">
                                                                         <div class="form-group">
                                                                             <label class="negrita" for="eluser">Nombre Usuario</label>
-                                                                            <input type="text" class="form-control" id="eluser" name="eluser" spellcheck="false" autocapitalize="none" required="required">
+                                                                            <input type="text" class="form-control" id="eluser" name="eluser" spellcheck="false" autocapitalize="none" required="required" maxlength="255">
                                                                         </div>
                                                                     </div>
 
