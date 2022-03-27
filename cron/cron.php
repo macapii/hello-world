@@ -108,7 +108,7 @@ if ($elerror == 0) {
             }
         }
 
-        //COMPROBAR SI SE PUEDE ESCRIVIR EL JSON
+        //COMPROBAR SI SE PUEDE ESCRIBIR EL JSON
         if ($elerror == 0) {
             clearstatcache();
             if (!is_writable($elarchivo)) {
@@ -664,7 +664,7 @@ if ($elerror == 0) {
                                                             if ($elerror == 0) {
                                                                 clearstatcache();
                                                                 if (file_exists($dirconfig)) {
-                                                                    //COMPROBAR SI SE PUEDE ESCRIVIR
+                                                                    //COMPROBAR SI SE PUEDE ESCRIBIR
                                                                     clearstatcache();
                                                                     if (is_writable($dirconfig)) {
                                                                         $rutaarchivo = $RUTAPRINCIPAL;

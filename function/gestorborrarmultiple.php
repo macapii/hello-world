@@ -134,7 +134,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                 }
             }
 
-            //COMPROBAR SI SE PUEDEN ESCRIVIR
+            //COMPROBAR SI SE PUEDEN ESCRIBIR
             if ($elerror == 0) {
                 for ($a = 0; $a < count($archivos); $a++) {
                     clearstatcache();

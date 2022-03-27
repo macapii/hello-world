@@ -183,7 +183,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                     }
                 }
 
-                //COMPROBAR SI SE PUEDE ESCRIVIR LA RUTA
+                //COMPROBAR SI SE PUEDE ESCRIBIR LA RUTA
                 if ($elerror == 0) {
                     clearstatcache();
                     if (!is_writable($target_dir)) {

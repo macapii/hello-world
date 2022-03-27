@@ -762,7 +762,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
           }
         }
 
-        //COMPROBAR SI SE PUEDE ESCRIVIR CARPETA CONF
+        //COMPROBAR SI SE PUEDE ESCRIBIR CARPETA CONF
         if ($elerror == 0) {
           clearstatcache();
           if (!is_writable($dirconfig)) {
@@ -771,7 +771,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
           }
         }
 
-        //COMPROBAR SI SE PUEDE ESCRIVIR ARCHIVO .htaccess de la raiz
+        //COMPROBAR SI SE PUEDE ESCRIBIR ARCHIVO .htaccess de la raiz
         if ($elerror == 0) {
           $rutaescrivir = $rutaraiz;
           $rutaescrivir .= "/.htaccess";

@@ -199,7 +199,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                                                     exit;
                                                                 }
 
-                                                                //COMPROBAR SI SE PUEDE ESCRIVIR EN CARPETA BACKUP
+                                                                //COMPROBAR SI SE PUEDE ESCRIBIR EN CARPETA BACKUP
                                                                 clearstatcache();
                                                                 if (!is_writable($rutaarchivo)) {
                                                                     echo "<div class='alert alert-danger' role='alert'>Error: La carpeta backup no tiene permisos de escritura.</div>";

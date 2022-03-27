@@ -133,7 +133,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                 }
             }
 
-            //COMPROBAR SI SE PUEDE ESCRIVIR
+            //COMPROBAR SI SE PUEDE ESCRIBIR
             if ($elerror == 0) {
                 clearstatcache();
                 if (!is_writable($archivo)) {

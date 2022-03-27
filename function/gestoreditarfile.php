@@ -114,7 +114,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                 }
             }
 
-            //MIRAR SI SE PUEDE SOBREESCRIVIR
+            //MIRAR SI SE PUEDE SOBREESCRIBIR
             if ($elerror == 0) {
                 clearstatcache();
                 if (!is_writable($archivo)) {

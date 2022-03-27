@@ -90,7 +90,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                 $dirconfig = $dirconfig . "/" . $archivo;
 
                 if (file_exists($dirconfig)) {
-                    //COMPROBAR SI SE PUEDE ESCRIVIR
+                    //COMPROBAR SI SE PUEDE ESCRIBIR
                     if (is_writable($dirconfig)) {
                         $retorno = unlink($dirconfig);
                     } else {

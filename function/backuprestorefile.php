@@ -139,7 +139,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                 }
             }
 
-            //COMPROBAR SI LA RAIZ SE PUEDE ESCRIVIR
+            //COMPROBAR SI LA RAIZ SE PUEDE ESCRIBIR
             if ($elerror == 0) {
                 clearstatcache();
                 if (!is_writable($rutaraiz)) {
@@ -175,7 +175,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                 }
             }
 
-            //MIRAR SI CARPETA TEMP SE PUEDE ESCRIVIR
+            //MIRAR SI CARPETA TEMP SE PUEDE ESCRIBIR
             if ($elerror == 0) {
                 clearstatcache();
                 if (!is_writable($dirtemp)) {
@@ -193,7 +193,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                 }
             }
 
-            //COMPROBAR SI SE PUEDE ESCRIVIR EN ARCHIVO TAR
+            //COMPROBAR SI SE PUEDE ESCRIBIR EN ARCHIVO TAR
             if ($elerror == 0) {
                 clearstatcache();
                 if (!is_readable($comproarchivo)) {

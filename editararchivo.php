@@ -89,7 +89,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
         exit;
     }
 
-    //MIRAR SI SE PUEDE SOBREESCRIVIR
+    //MIRAR SI SE PUEDE SOBREESCRIBIR
     clearstatcache();
     if (!is_writable($_SESSION['EDITARFILE'])) {
         $_SESSION['EDITARFILE'] == "";

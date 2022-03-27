@@ -281,7 +281,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                             }
                         }
 
-                        //COMPROBAR SI SE PUEDE ESCRIVIR EL JSON
+                        //COMPROBAR SI SE PUEDE ESCRIBIR EL JSON
                         if ($elerror == 0) {
                             clearstatcache();
                             if (!is_writable($elarchivo)) {

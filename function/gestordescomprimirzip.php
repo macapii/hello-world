@@ -175,7 +175,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                 }
             }
 
-            //MIRAR SI CARPETA TEMP SE PUEDE ESCRIVIR
+            //MIRAR SI CARPETA TEMP SE PUEDE ESCRIBIR
             if ($elerror == 0) {
                 clearstatcache();
                 if (!is_writable($dirtemp)) {

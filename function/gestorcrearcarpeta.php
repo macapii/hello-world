@@ -112,7 +112,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                 }
             }
 
-            //COMPROBAR si se puede escrivir
+            //COMPROBAR si se puede escribir
             if ($elerror == 0) {
                 clearstatcache();
                 if (!is_writable($archivo)) {

@@ -61,7 +61,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                 $dirconfig = trim($dirconfig);
                 $dirconfig .= "/" . $reccarpmine;
 
-                //ASIGNAR DIRECTORIO A RUTAESCRIVIR
+                //ASIGNAR DIRECTORIO A RUTAESCRIBIR
                 $rutaescrivir = $dirconfig;
                 $rutaescrivir .= "/server.properties";
 
@@ -76,7 +76,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                     //SI EXISTE EL ARCHIVO
                     clearstatcache();
                     if (file_exists($rutaescrivir)) {
-                        //SI SE PUEDE ESCRIVIR
+                        //SI SE PUEDE ESCRIBIR
                         if (!is_writable($rutaescrivir)) {
                             $retorno = "nowriteproperties";
                             $elerror = 1;

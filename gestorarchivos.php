@@ -248,7 +248,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                                         exit;
                                                     }
 
-                                                    //COMPROBAR SI SE PUEDE ESCRIVIR EN CARPETA
+                                                    //COMPROBAR SI SE PUEDE ESCRIBIR EN CARPETA
                                                     clearstatcache();
                                                     if (!is_writable($_SESSION['RUTALIMITE'])) {
                                                         echo "<div class='alert alert-danger' role='alert'>Error: La carpeta servidor minecraft no tiene permisos de escritura.</div>";
