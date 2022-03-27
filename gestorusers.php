@@ -173,7 +173,8 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                                         <div class="container">
                                                             <div class="row">
                                                                 <div class="col-md-12">
-                                                                    <p class="lead">Listado Usuarios</p>
+                                                                    <br>
+                                                                    <h3>Listado Usuarios</h3>
                                                                     <div class="table-responsive">
                                                                         <table class="table table-striped table-borderless">
                                                                             <thead>
