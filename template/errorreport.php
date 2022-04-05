@@ -17,6 +17,9 @@ Copyright (C) 2020-2022 Cristina Ibañez, Konata400
     along with McWebPanel.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+define("VERSIONPANEL", "0.18");
+define("VERSIONTIPO", "Develop");
+
 error_reporting(E_ALL);
 ini_set("display_errors", 0);
 ?>
