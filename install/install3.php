@@ -145,6 +145,11 @@ require_once("../template/errorreport.php");
         if ($elusuario == "" || $elpassword == "" || $elrepassword == "" || $elnombreservidor == "" || $eldirectorio == "" || $elpuerto == "" || $laram == "" || $eltiposerver == "" || $elmaxupload == "") {
             exit;
         }
+        
+        //COMPROBAR LONGITUD USUARIO
+        if (strlen($elusuario) > 255) {
+            exit;
+        }
 
         $rutaraiz = dirname(getcwd()) . PHP_EOL;
         $rutaraiz = trim($rutaraiz);
