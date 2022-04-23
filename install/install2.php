@@ -81,7 +81,7 @@ require_once("../template/errorreport.php");
 
               <div class="form-group">
                 <label for="eluser" class="">Nombre Usuario (SuperAdmin):</label>
-                <input type="text" class="form-control" id="eluser" name="eluser" spellcheck="false" autocapitalize="off" required="required">
+                <input type="text" class="form-control" id="eluser" name="eluser" spellcheck="false" autocapitalize="off" required="required" maxlength="255">
               </div>
 
               <div class="form-row">
