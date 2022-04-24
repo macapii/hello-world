@@ -19,3 +19,14 @@ Copyright (C) 2020-2022 Cristina Ibañez, Konata400
 .table td, .table th {
     padding: .25rem!important;
 }
+
+.cartel-blackgris {
+    font-weight: normal;
+    margin: 0 auto;
+    padding: 20px 20px 10px;
+    background: #f3f3f3;
+    color: rgb(0, 0, 0);
+    text-align: left;
+    display: inline-block;
+    border-radius: 5px;
+  }

@@ -40,7 +40,7 @@ require_once("../template/errorreport.php");
   <meta name="robots" content="noindex, nofollow">
   <meta name="description" content="Instalador">
   <meta name="author" content="Konata400">
-  <title>McWebPanel Install</title>
+  <title>Instalación McWebPanel</title>
 
   <!-- Bootstrap core CSS -->
   <link rel="stylesheet" href="../css/bootstrap.min.css">
@@ -60,13 +60,25 @@ require_once("../template/errorreport.php");
   <?php
   // No se aceptan metodos que no sean post
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+    $licencia = 0;
+    if (empty($_POST["confirmlicencia"])) {
+      echo "No has aceptado la licencia";
+      exit();
+    } else {
+      $licencia = $_POST["confirmlicencia"];
+      if ($licencia != 1) {
+        echo "No has aceptado la licencia";
+        exit();
+      }
+    }
   ?>
     <div class="pt-5">
       <div class="container">
         <div class="row">
           <div class="col-md-3"><img class="d-block float-right" src="logo.png" alt="Logo"></div>
           <div class="col-md-9">
-            <h1 class="display-4 text-left">McWebPanel (Instalación)</h1>
+            <h1 class="display-4 text-left">Instalación McWebPanel</h1>
           </div>
         </div>
         <hr>
@@ -153,7 +165,7 @@ require_once("../template/errorreport.php");
                       echo '<option value="0" selected>MEMORIA INSUFICIENTE / NO TIENES NI UN GB</option>';
                     } elseif ($totalram >= 1) {
                       for ($i = 1; $i <= $totalram; $i++) {
-                        echo '<option value="' . 1024*$i . '">' . $i . ' GB</option>';
+                        echo '<option value="' . 1024 * $i . '">' . $i . ' GB</option>';
                       }
                     }
 
