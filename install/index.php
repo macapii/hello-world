@@ -38,7 +38,7 @@ require_once("../template/errorreport.php");
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="robots" content="noindex, nofollow">
-  <meta name="description" content="Instalador">
+  <meta name="description" content="Instalación McWebPanel">
   <meta name="author" content="Konata400">
   <title>Instalación McWebPanel</title>
 
@@ -84,7 +84,7 @@ $estamodulo = "";
             </div>
           </div>
           <div class="container">
-            <h4 class="mb-4 text-left">Requisitos del sistema</h4>
+            <h4 class="mb-4 text-left"><u>Requisitos del sistema</u></h4>
             <div class="table-responsive">
               <table class="table table-borderless table-striped">
                 <thead>
@@ -292,14 +292,14 @@ $estamodulo = "";
                             echo 'install2.php';
                           } ?>" method="POST" id="login-install">
               <hr>
-              <h4 class="mb-4 text-left">Aceptar Licencia</h4>
+              <h4 class="mb-4 text-left"><u>Aceptar Licencia</u></h4>
               <div class="cartel-blackgris">
                 <p>McWebPanel is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.</p>
                 <p>McWebPanel is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.</p>
                 <p>You should have received a copy of the GNU General Public License along with McWebPanel. If not, see https: //www.gnu.org/licenses.</p>
               </div>
               <br><br>
-              <input type="checkbox" id="confirmlicencia" name="confirmlicencia" value="1" required> <label for="confirmlicencia">Confirmo que he léido y aceptado los términos y condiciones de uso.</label>
+              <input type="checkbox" id="confirmlicencia" name="confirmlicencia" value="1" required> <label class="lead" for="confirmlicencia">Confirmo que he léido y aceptado los términos y condiciones de uso.</label>
               <hr>
               <?php
 

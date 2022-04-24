@@ -38,7 +38,7 @@ require_once("../template/errorreport.php");
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="robots" content="noindex, nofollow">
-  <meta name="description" content="Instalador">
+  <meta name="description" content="Instalación McWebPanel">
   <meta name="author" content="Konata400">
   <title>Instalación McWebPanel</title>
 
@@ -88,7 +88,10 @@ require_once("../template/errorreport.php");
       <div class="container">
         <div class="row">
           <div class="mx-auto col-lg-6 col-10">
-            <h4 class="mb-4 text-left">Configuración</h4>
+      
+          <h4 class="mb-4"><u>Configurar Instalación Inicial</u></h4>
+            <p class="text-center">Completa los campos para terminar la instalación, los datos insertados podrán ser cambiados posteriormente desde System Config en el menú, recuerda no introducir datos personales ni contraseñas inseguras.</p>
+            <hr>
             <form class="text-left" action="install3.php" method="POST" id="login-install2">
 
               <div class="form-group">
@@ -185,7 +188,7 @@ require_once("../template/errorreport.php");
                 </div>
               </div>
               <p class="lead" id="errorsubmit"></p>
-              <button type="submit" id="binstalar" class="btn btn-primary btn-block">Instalar</button>
+              <button type="submit" id="binstalar" class="btn btn-primary btn-block">Finalizar Instalación</button>
             </form>
             <br>
           </div>
