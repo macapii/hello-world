@@ -170,28 +170,26 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
               }
 
               //COMPROBAR SI LA XMS NO ES MANIPULADA
-              if($elerror == 0){
+              if ($elerror == 0) {
                 $test = 0;
 
                 $validoxms = array(128, 256, 512);
 
                 for ($i = 1; $i <= $salida2; $i++) {
-                  array_push($validoxms, 1024*$i);
+                  array_push($validoxms, 1024 * $i);
                 }
 
                 for ($i = 0; $i < count($validoxms); $i++) {
-                  if($validoxms[$i] == $laramxms){
+                  if ($validoxms[$i] == $laramxms) {
                     $test = 1;
                   }
                 }
 
-                if($test == 0){
+                if ($test == 0) {
                   $retorno = "xmsmodexternal";
                   $elerror = 1;
                 }
-
               }
-
             } else {
               $retorno = "ramvacia";
               $elerror = 1;
@@ -239,28 +237,26 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
               }
 
               //COMPROBAR SI LA XMS NO ES MANIPULADA
-              if($elerror == 0){
+              if ($elerror == 0) {
                 $test = 0;
 
                 $validoxmx = array(125, 256, 512);
 
                 for ($i = 1; $i <= $salida2; $i++) {
-                  array_push($validoxmx, 1024*$i);
+                  array_push($validoxmx, 1024 * $i);
                 }
 
                 for ($i = 0; $i < count($validoxmx); $i++) {
-                  if($validoxmx[$i] == $laram){
+                  if ($validoxmx[$i] == $laram) {
                     $test = 1;
                   }
                 }
 
-                if($test == 0){
+                if ($test == 0) {
                   $retorno = "xmxmodexternal";
                   $elerror = 1;
                 }
-
               }
-
             } else {
               $retorno = "ramvacia";
               $elerror = 1;
@@ -272,7 +268,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
 
         //VERIFICAR SI XMS ES SUPERIOR A XMX
         if ($elerror == 0) {
-          if($laramxms > $laram){
+          if ($laramxms > $laram) {
             $retorno = "xmsuperiorram";
             $elerror = 1;
           }
@@ -737,6 +733,127 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
           }
         }
 
+        //CONFIG BACKUPS TIPO BACKUP
+        if ($elerror == 0) {
+          if ($_SESSION['CONFIGUSER']['rango'] == 1 || array_key_exists('psystemconffoldersize', $_SESSION['CONFIGUSER']) && $_SESSION['CONFIGUSER']['psystemconffoldersize'] == 1) {
+
+            if (isset($_POST["backupmulti"])) {
+              $elbackupmulti = test_input($_POST["backupmulti"]);
+
+              //ES NUMERICO
+              if ($elerror == 0) {
+                if (!is_numeric($elbackupmulti)) {
+                  $retorno = "backupmultinonumerico";
+                  $elerror = 1;
+                }
+              }
+
+              //RANGO
+              if ($elerror == 0) {
+                if ($elbackupmulti < 1 || $elbackupmulti > 2) {
+                  $retorno = "backupmultioutrango";
+                  $elerror = 1;
+                }
+              }
+
+              //COMPRUEBA SI PIGZ ESTA INSTALADO
+              if ($elerror == 0) {
+                if ($elbackupmulti == 2) {
+                  $comreq = shell_exec('command -v pigz >/dev/null && echo "yes" || echo "no"');
+                  $comreq = trim($comreq);
+                  if ($comreq == "no") {
+                    $retorno = "backupmultinopigz";
+                    $elerror = 1;
+                  }
+                }
+              }
+            } else {
+              $retorno = "backupmultivacio";
+              $elerror = 1;
+            }
+          } else {
+            $elbackupmulti = CONFIGBACKUPMULTI;
+          }
+        }
+
+        //CONFIG BACKUPS COMPRESION
+        if ($elerror == 0) {
+          if ($_SESSION['CONFIGUSER']['rango'] == 1 || array_key_exists('psystemconffoldersize', $_SESSION['CONFIGUSER']) && $_SESSION['CONFIGUSER']['psystemconffoldersize'] == 1) {
+
+            if (isset($_POST["backupcompress"])) {
+              $elbackupcompress = test_input($_POST["backupcompress"]);
+
+              //ES NUMERICO
+              if ($elerror == 0) {
+                if (!is_numeric($elbackupcompress)) {
+                  $retorno = "backupcompressnonumerico";
+                  $elerror = 1;
+                }
+              }
+
+              //RANGO
+              if ($elerror == 0) {
+                if ($elbackupcompress < 0 || $elbackupcompress > 9) {
+                  $retorno = "backupcompressoutrango";
+                  $elerror = 1;
+                }
+              }
+            } else {
+              $retorno = "backupcompressvacio";
+              $elerror = 1;
+            }
+          } else {
+            $elbackupcompress = CONFIGBACKUPHILOS;
+          }
+        }
+
+        //CONFIG BACKUPS HILOS
+        if ($elerror == 0) {
+          if ($_SESSION['CONFIGUSER']['rango'] == 1 || array_key_exists('psystemconffoldersize', $_SESSION['CONFIGUSER']) && $_SESSION['CONFIGUSER']['psystemconffoldersize'] == 1) {
+
+            if (isset($_POST["backuphilos"])) {
+              $elbackuphilos = test_input($_POST["backuphilos"]);
+
+              //ES NUMERICO
+              if ($elerror == 0) {
+                if (!is_numeric($elbackuphilos)) {
+                  $retorno = "backuphilosnonumerico";
+                  $elerror = 1;
+                }
+              }
+
+              //RANGO INFERIOR A 1
+              if ($elerror == 0) {
+                if ($elbackuphilos <= 0) {
+                  $retorno = "backuphilosoutrango";
+                  $elerror = 1;
+                }
+              }
+
+              //COMPROBAR SI EL TOTAL DE HILOS ES SUPERIOR AL DEL SERVIDOR
+              if ($elerror == 0) {
+                $getallcores = shell_exec('nproc --all');
+                $getallcores = trim($getallcores);
+
+                if (is_numeric($getallcores)) {
+                  if ($elbackuphilos > $getallcores) {
+                    $retorno = "backuphilosexceddcores";
+                    $elerror = 1;
+                  }
+                } else {
+                  //SI NO DEVUELVE LOS HILOS, SE COLOCA 1 HILO MANUALMENTE
+                  $elbackuphilos = 1;
+                }
+              }
+            } else {
+              $retorno = "backuphilosvacio";
+              $elerror = 1;
+            }
+          } else {
+            $elbackuphilos = CONFIGBACKUPCOMPRESS;
+          }
+        }
+
         //OPCIONES QUE NO SE CAMBIAN DESDE GUARDARSYSCONF
         $lakey = CONFIGSESSIONKEY;
         $eldirectorio = CONFIGDIRECTORIO;
@@ -830,6 +947,9 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
           fwrite($file, 'define("CONFIGARGMANUALFINAL", "' . $elargmanualfinal . '");' . PHP_EOL);
           fwrite($file, 'define("CONFIGCONSOLETYPE", "' . $eltypeconsola . '");' . PHP_EOL);
           fwrite($file, 'define("CONFIGXMSRAM", "' . $laramxms . '");' . PHP_EOL);
+          fwrite($file, 'define("CONFIGBACKUPMULTI", "' . $elbackupmulti . '");' . PHP_EOL);
+          fwrite($file, 'define("CONFIGBACKUPCOMPRESS", "' . $elbackupcompress . '");' . PHP_EOL);
+          fwrite($file, 'define("CONFIGBACKUPHILOS", "' . $elbackuphilos . '");' . PHP_EOL);
           fwrite($file, "?>" . PHP_EOL);
           fclose($file);
 

@@ -159,6 +159,25 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                                         $recxmsram = CONFIGXMSRAM;
                                                     }
 
+                                                    if (!defined('CONFIGBACKUPMULTI')) {
+                                                        $recbackupmulti = 1;
+                                                    } else {
+                                                        $recbackupmulti = CONFIGBACKUPMULTI;
+                                                    }
+
+                                                    if (!defined('CONFIGBACKUPCOMPRESS')) {
+                                                        $recbackupcompress = 6;
+                                                    } else {
+                                                        $recbackupcompress = CONFIGBACKUPCOMPRESS;
+                                                    }
+
+                                                    if (!defined('CONFIGBACKUPHILOS')) {
+                                                        $recbackuphilos = 1;
+                                                    } else {
+                                                        $recbackuphilos = CONFIGBACKUPHILOS;
+                                                    }
+
+
                                                     $elnombredirectorio = $reccarpmine;
                                                     $rutaarchivo = getcwd();
                                                     $rutaarchivo = trim($rutaarchivo);
@@ -638,6 +657,96 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                                                 </div>
 
                                                             </div>
+                                                        <?php
+                                                        }
+                                                        ?>
+
+                                                        <?php
+
+                                                        //CONFIG BACKUPS
+                                                        if ($_SESSION['CONFIGUSER']['rango'] == 1 || array_key_exists('psystemconffoldersize', $_SESSION['CONFIGUSER']) && $_SESSION['CONFIGUSER']['psystemconffoldersize'] == 1) {
+                                                        ?>
+                                                            <hr>
+                                                            <div class="row">
+                                                                <div class="col-md-12">
+                                                                    <label class="negrita">Configurar Backups:</label>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="row">
+
+
+                                                                <div class="col-md-3">
+                                                                    <label for="backupmulti">Uso de CPU:</label>
+                                                                    <select id="backupmulti" name="backupmulti" class="form-control" required="required">
+
+                                                                        <?php
+                                                                        if ($recbackupmulti == 1) {
+                                                                            echo '<option value="1" selected>Mononucleo</option>';
+                                                                            echo '<option value="2">Multinucleo</option>';
+                                                                        } elseif ($recbackupmulti == 2) {
+                                                                            echo '<option value="1">Mononucleo</option>';
+                                                                            echo '<option value="2" selected>Multinucleo</option>';
+                                                                        }
+
+                                                                        ?>
+                                                                    </select>
+                                                                </div>
+
+                                                                <div class="col-md-3">
+                                                                    <label for="backupcompress">Compresión:</label>
+                                                                    <select id="backupcompress" name="backupcompress" class="form-control" required="required">
+                                                                        <?php
+                                                                        for ($i = 9; $i >= 0; $i--) {
+
+                                                                            $textcompress = $i;
+
+                                                                            if ($i == 9) {
+                                                                                $textcompress = "9 (La Mejor)";
+                                                                            } elseif ($i == 6) {
+                                                                                $textcompress = "6 (Normal)";
+                                                                            } elseif ($i == 0) {
+                                                                                $textcompress = "0 (Sin compresión)";
+                                                                            }
+
+                                                                            if ($i == $recbackupcompress) {
+                                                                                echo '<option value="' . $i . '" selected>' . $textcompress . '</option>';
+                                                                            } else {
+                                                                                echo '<option value="' . $i . '">' . $textcompress . '</option>';
+                                                                            }
+                                                                        }
+                                                                        ?>
+                                                                    </select>
+                                                                </div>
+
+                                                                <?php
+                                                                $getallcores = shell_exec('nproc --all');
+                                                                $getallcores = trim($getallcores);
+
+                                                                if (is_numeric($getallcores)) {
+                                                                ?>
+                                                                    <div class="col-md-3">
+                                                                        <label for="backuphilos">Uso Hilos (Multinucleo):</label>
+                                                                        <select id="backuphilos" name="backuphilos" class="form-control" required="required">
+
+                                                                            <?php
+                                                                            for ($i = 1; $i <= $getallcores; $i++) {
+
+                                                                                if ($i == $recbackuphilos) {
+                                                                                    echo '<option value="' . $i . '" selected>' . $i . '</option>';
+                                                                                } else {
+                                                                                    echo '<option value="' . $i . '">' . $i . '</option>';
+                                                                                }
+                                                                            }
+                                                                            ?>
+                                                                        </select>
+                                                                    </div>
+                                                                <?php
+                                                                }
+                                                                ?>
+
+                                                            </div>
+
                                                         <?php
                                                         }
                                                         ?>
