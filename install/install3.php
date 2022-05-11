@@ -331,6 +331,9 @@ require_once("../template/errorreport.php");
         fwrite($file, 'define("CONFIGARGMANUALFINAL", "");' . PHP_EOL);
         fwrite($file, 'define("CONFIGCONSOLETYPE", "2");' . PHP_EOL);
         fwrite($file, 'define("CONFIGXMSRAM", "1024");' . PHP_EOL);
+        fwrite($file, 'define("CONFIGBACKUPMULTI", "1");' . PHP_EOL);
+        fwrite($file, 'define("CONFIGBACKUPCOMPRESS", "1");' . PHP_EOL);
+        fwrite($file, 'define("CONFIGBACKUPHILOS", "1");' . PHP_EOL);
         fwrite($file, "?>" . PHP_EOL);
         fclose($file);
 
