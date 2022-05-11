@@ -80,6 +80,10 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
         $eltypeconsola = CONFIGCONSOLETYPE;
 
         $elxmsram = CONFIGXMSRAM;
+        
+        $elbackupmulti = CONFIGBACKUPMULTI;
+        $elbackupcompress = CONFIGBACKUPCOMPRESS;
+        $elbackuphilos = CONFIGBACKUPHILOS;
 
         //OBTENER RUTA DONDE TIENE QUE ESTAR LA CARPETA CONFIG
         $dirconfig = "";
@@ -127,6 +131,9 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                 fwrite($file, 'define("CONFIGARGMANUALFINAL", "' . $elargmanualfinal . '");' . PHP_EOL);
                 fwrite($file, 'define("CONFIGCONSOLETYPE", "' . $eltypeconsola . '");' . PHP_EOL);
                 fwrite($file, 'define("CONFIGXMSRAM", "' . $elxmsram . '");' . PHP_EOL);
+                fwrite($file, 'define("CONFIGBACKUPMULTI", "' . $elbackupmulti . '");' . PHP_EOL);
+                fwrite($file, 'define("CONFIGBACKUPCOMPRESS", "' . $elbackupcompress . '");' . PHP_EOL);
+                fwrite($file, 'define("CONFIGBACKUPHILOS", "' . $elbackuphilos . '");' . PHP_EOL);
                 fwrite($file, "?>" . PHP_EOL);
                 fclose($file);
 
