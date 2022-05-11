@@ -76,6 +76,9 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
             $retorno = "";
             $reccarpmine = CONFIGDIRECTORIO;
             $limitbackupgb = CONFIGFOLDERBACKUPSIZE;
+            $recbackupmulti = CONFIGBACKUPMULTI;
+            $recbackupcompress = CONFIGBACKUPCOMPRESS;
+            $recbackuphilos = CONFIGBACKUPHILOS;
             $elerror = 0;
             $test = 0;
 
@@ -253,9 +256,25 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                 }
 
                 $rutaexcluidos = trim(dirname(getcwd()) . "/config" . "/excludeback.json" . PHP_EOL);
-                $t = date("Y-m-d-G:i:s");
+                $t = date("Y-m-d-G-i-s");
                 $rutacrearbackup = $dirtemp . "/" . $archivo . "-" . $t;
                 $rutaacomprimir = "'" . $dirminecraft . "/' .";
+
+                //SI ES MONONUCLEO Y NO ES LA MEJOR SE ASIGNA LA RAPIDA
+                if ($recbackupmulti == 1) {
+                    if ($recbackupcompress < 9) {
+                        $lacompression = 1;
+                    }
+                }
+
+                //COMPRUEBA SI PIGZ ESTA INSTALADO
+                if ($recbackupmulti == 2) {
+                    $comreq = shell_exec('command -v pigz >/dev/null && echo "yes" || echo "no"');
+                    $comreq = trim($comreq);
+                    if ($comreq == "no") {
+                        $recbackupmulti = 1;
+                    }
+                }
 
                 clearstatcache();
                 if (file_exists($rutaexcluidos)) {
@@ -273,12 +292,29 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                             }
                         }
 
-                        $elcomando .= "-czvf '" . $rutacrearbackup . ".tar.gz' -C " . $rutaacomprimir;
+                        if ($recbackupmulti == 1) {
+                            $elcomando .= '--warning=no-file-changed --use-compress-program="gzip -' . $lacompression . '"';
+                        } elseif ($recbackupmulti == 2) {
+                            $elcomando .= '--warning=no-file-changed --use-compress-program="pigz -k -' . $recbackupcompress . ' -p' . $recbackuphilos . '"';
+                        }
+
+                        $elcomando .= " -cf '" . $rutacrearbackup . ".tar.gz' -C " . $rutaacomprimir;
                     } else {
-                        $elcomando = "tar --warning=no-file-changed -czvf '" . $rutacrearbackup . ".tar.gz' -C " . $rutaacomprimir;
+                        if ($recbackupmulti == 1) {
+                            $elcomando = 'tar --warning=no-file-changed --use-compress-program="gzip -' . $lacompression . '"';
+                        } elseif ($recbackupmulti == 2) {
+                            $elcomando = 'tar --warning=no-file-changed --use-compress-program="pigz -k -' . $recbackupcompress . ' -p' . $recbackuphilos . '"';
+                        }
                     }
                 } else {
-                    $elcomando = "tar --warning=no-file-changed -czvf '" . $rutacrearbackup . ".tar.gz' -C " . $rutaacomprimir;
+
+                    if ($recbackupmulti == 1) {
+                        $elcomando = 'tar --warning=no-file-changed --use-compress-program="gzip -' . $lacompression . '"';
+                    } elseif ($recbackupmulti == 2) {
+                        $elcomando = 'tar --warning=no-file-changed --use-compress-program="pigz -k -' . $recbackupcompress . ' -p' . $recbackuphilos . '"';
+                    }
+
+                    $elcomando .= " -cf '" . $rutacrearbackup . ".tar.gz' -C " . $rutaacomprimir;
                 }
                 $moverabackups = "mv '" . $archivo . "-" . $t . ".tar.gz' '" . $dirbackups . "/" . $archivo . "-" . $t . ".tar.gz'";
                 $delsh = "rm backup.sh";
