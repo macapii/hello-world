@@ -539,7 +539,7 @@ if ($elerror == 0) {
                                                                         unlink($larutascrrenlog);
                                                                     }
 
-                                                                    $comandoserver .= "cd " . $RUTAPRINCIPAL . " && cd " . $reccarpmine . " && umask 002 && screen -c '" . $rutascreenconf . "' -dmS " . $reccarpmine . " -L -Logfile 'logs/screen.log' " . $javaruta . " -Xms" .$recxmsram ."M -Xmx" . $recram . "M ";
+                                                                    $comandoserver .= "cd " . $RUTAPRINCIPAL . " && cd " . $reccarpmine . " && umask 002 && screen -c '" . $rutascreenconf . "' -dmS " . $reccarpmine . " -L -Logfile 'logs/screen.log' " . $javaruta . " -Xms" . $recxmsram . "M -Xmx" . $recram . "M ";
 
                                                                     //RECOLECTOR
                                                                     if ($recgarbagecolector == "1") {
@@ -567,7 +567,7 @@ if ($elerror == 0) {
                                                                     }
 
                                                                     //RESTART
-                                                                    $cominiciostart = "screen -c '" . $rutascreenconf . "' -dmS " . $reccarpmine . " -L -Logfile 'logs/screen.log' " . $javaruta . " -Xms" .$recxmsram ."M -Xmx" . $recram . "M " . $inigc . " -Dfile.encoding=UTF8 " . $recargmanualinicio . " -jar '" . $rutacarpetamine . "' nogui " . $recargmanualfinal;
+                                                                    $cominiciostart = "screen -c '" . $rutascreenconf . "' -dmS " . $reccarpmine . " -L -Logfile 'logs/screen.log' " . $javaruta . " -Xms" . $recxmsram . "M -Xmx" . $recram . "M " . $inigc . " -Dfile.encoding=UTF8 " . $recargmanualinicio . " -jar '" . $rutacarpetamine . "' nogui " . $recargmanualfinal;
                                                                     if ($rectiposerv == "spigot") {
                                                                         guardareinicio($larutash, $cominiciostart, $larutascrrenlog);
                                                                     } elseif ($rectiposerv == "paper") {
@@ -633,6 +633,25 @@ if ($elerror == 0) {
                                                             $dirconfig = trim($dirconfig);
                                                             $dirconfig .= "/backups";
 
+                                                            //ASIGNAR CONSTANTES SI NO EXISTEN
+                                                            if (!defined('CONFIGBACKUPMULTI')) {
+                                                                $recbackupmulti = 1;
+                                                            } else {
+                                                                $recbackupmulti = CONFIGBACKUPMULTI;
+                                                            }
+
+                                                            if (!defined('CONFIGBACKUPCOMPRESS')) {
+                                                                $recbackupcompress = 1;
+                                                            } else {
+                                                                $recbackupcompress = CONFIGBACKUPCOMPRESS;
+                                                            }
+
+                                                            if (!defined('CONFIGBACKUPHILOS')) {
+                                                                $recbackuphilos = 1;
+                                                            } else {
+                                                                $recbackuphilos = CONFIGBACKUPHILOS;
+                                                            }
+
                                                             //LIMITE ALMACENAMIENTO
                                                             if ($elerror == 0) {
                                                                 //OBTENER GIGAS CARPETA BACKUPS
@@ -675,7 +694,23 @@ if ($elerror == 0) {
                                                                             $rutaarchivo = "'" . $rutaarchivo . "/" . $reccarpmine . "/'";
                                                                             $dirconfig = $dirconfig . "/" . $archivo . "-";
                                                                             $rutaexcluidos = trim($RUTAPRINCIPAL . "/config" . "/excludeback.json" . PHP_EOL);
-                                                                            $t = date("Y-m-d-G:i:s");
+                                                                            $t = date("Y-m-d-G-i-s");
+
+                                                                            //SI ES MONONUCLEO Y NO ES LA MEJOR SE ASIGNA LA RAPIDA
+                                                                            if ($recbackupmulti == 1) {
+                                                                                if ($recbackupcompress < 9) {
+                                                                                    $lacompression = 1;
+                                                                                }
+                                                                            }
+
+                                                                            //COMPRUEBA SI PIGZ ESTA INSTALADO
+                                                                            if ($recbackupmulti == 2) {
+                                                                                $comreq = shell_exec('command -v pigz >/dev/null && echo "yes" || echo "no"');
+                                                                                $comreq = trim($comreq);
+                                                                                if ($comreq == "no") {
+                                                                                    $recbackupmulti = 1;
+                                                                                }
+                                                                            }
 
                                                                             clearstatcache();
                                                                             if (file_exists($rutaexcluidos)) {
@@ -693,12 +728,28 @@ if ($elerror == 0) {
                                                                                         }
                                                                                     }
 
-                                                                                    $elcomando .= "-czvf '" . $dirconfig . $t . ".tar.gz' -C " . $rutaarchivo . " .";
+                                                                                    if ($recbackupmulti == 1) {
+                                                                                        $elcomando .= '--warning=no-file-changed --use-compress-program="gzip -' . $lacompression . '"';
+                                                                                    } elseif ($recbackupmulti == 2) {
+                                                                                        $elcomando .= '--warning=no-file-changed --use-compress-program="pigz -k -' . $recbackupcompress . ' -p' . $recbackuphilos . '"';
+                                                                                    }
+
+                                                                                    $elcomando .= " -cf '" . $dirconfig . $t . ".tar.gz' -C " . $rutaarchivo . " .";
                                                                                 } else {
-                                                                                    $elcomando = "tar --warning=no-file-changed -czvf '" . $dirconfig . $t . ".tar.gz' -C " . $rutaarchivo . " .";
+                                                                                    if ($recbackupmulti == 1) {
+                                                                                        $elcomando = 'tar --warning=no-file-changed --use-compress-program="gzip -' . $lacompression . '"';
+                                                                                    } elseif ($recbackupmulti == 2) {
+                                                                                        $elcomando = 'tar --warning=no-file-changed --use-compress-program="pigz -k -' . $recbackupcompress . ' -p' . $recbackuphilos . '"';
+                                                                                    }
                                                                                 }
                                                                             } else {
-                                                                                $elcomando = "tar --warning=no-file-changed -czvf '" . $dirconfig . $t . ".tar.gz' -C " . $rutaarchivo . " .";
+                                                                                if ($recbackupmulti == 1) {
+                                                                                    $elcomando = 'tar --warning=no-file-changed --use-compress-program="gzip -' . $lacompression . '"';
+                                                                                } elseif ($recbackupmulti == 2) {
+                                                                                    $elcomando = 'tar --warning=no-file-changed --use-compress-program="pigz -k -' . $recbackupcompress . ' -p' . $recbackuphilos . '"';
+                                                                                }
+
+                                                                                $elcomando .= " -cf '" . $dirconfig . $t . ".tar.gz' -C " . $rutaarchivo . " .";
                                                                             }
 
                                                                             clearstatcache();
