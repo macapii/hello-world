@@ -207,6 +207,10 @@ $(function () {
                         document.getElementById("inputbackup").disabled = true;
                     }
 
+                    if (document.getElementById('crearbackup') !== null) {
+                        document.getElementById("crearbackup").disabled = true;
+                    }
+
                     if (document.getElementById('gifloading') !== null) {
                         document.getElementById("gifloading").style.visibility = "visible";
                     }
@@ -214,6 +218,10 @@ $(function () {
 
                     if (document.getElementById('inputbackup') !== null) {
                         document.getElementById("inputbackup").disabled = false;
+                    }
+
+                    if (document.getElementById('crearbackup') !== null) {
+                        document.getElementById("crearbackup").disabled = false;
                     }
 
                     if (document.getElementById('gifloading') !== null) {
