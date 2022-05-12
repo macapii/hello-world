@@ -151,11 +151,12 @@ $(function () {
             element.addEventListener("click", function () {
                 var eleccion = confirm("¡ATENCIÓN!\n\n¿Estás seguro de eliminar el archivo: " + this.id + " ?");
                 if (eleccion == true) {
+                    const elarrayborrarfile = [String(this.value)];
                     $.ajax({
                         type: "POST",
                         url: "function/gestorborrarfile.php",
                         data: {
-                            action: this.value
+                            action: elarrayborrarfile
                         },
                         success: function (data) {
 
