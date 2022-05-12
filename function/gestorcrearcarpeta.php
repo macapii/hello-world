@@ -54,7 +54,9 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
             $rutacarpetamine = "";
             $getgigasmine = "";
 
-            $elnombre = test_input($_POST['action']);
+            $elarray = $_POST['action'];
+            $elnombre = $elarray[0];
+            $elnombre = test_input($elnombre);
 
             //COMPROBAR SI ESTA VACIO RENOMBRE
             if ($elerror == 0) {
