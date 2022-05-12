@@ -735,7 +735,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
 
         //CONFIG BACKUPS TIPO BACKUP
         if ($elerror == 0) {
-          if ($_SESSION['CONFIGUSER']['rango'] == 1 || array_key_exists('psystemconffoldersize', $_SESSION['CONFIGUSER']) && $_SESSION['CONFIGUSER']['psystemconffoldersize'] == 1) {
+          if ($_SESSION['CONFIGUSER']['rango'] == 1 || array_key_exists('psystemconfbackup', $_SESSION['CONFIGUSER']) && $_SESSION['CONFIGUSER']['psystemconfbackup'] == 1) {
 
             if (isset($_POST["backupmulti"])) {
               $elbackupmulti = test_input($_POST["backupmulti"]);
@@ -778,7 +778,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
 
         //CONFIG BACKUPS COMPRESION
         if ($elerror == 0) {
-          if ($_SESSION['CONFIGUSER']['rango'] == 1 || array_key_exists('psystemconffoldersize', $_SESSION['CONFIGUSER']) && $_SESSION['CONFIGUSER']['psystemconffoldersize'] == 1) {
+          if ($_SESSION['CONFIGUSER']['rango'] == 1 || array_key_exists('psystemconfbackup', $_SESSION['CONFIGUSER']) && $_SESSION['CONFIGUSER']['psystemconfbackup'] == 1) {
 
             if (isset($_POST["backupcompress"])) {
               $elbackupcompress = test_input($_POST["backupcompress"]);
@@ -809,7 +809,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
 
         //CONFIG BACKUPS HILOS
         if ($elerror == 0) {
-          if ($_SESSION['CONFIGUSER']['rango'] == 1 || array_key_exists('psystemconffoldersize', $_SESSION['CONFIGUSER']) && $_SESSION['CONFIGUSER']['psystemconffoldersize'] == 1) {
+          if ($_SESSION['CONFIGUSER']['rango'] == 1 || array_key_exists('psystemconfbackup', $_SESSION['CONFIGUSER']) && $_SESSION['CONFIGUSER']['psystemconfbackup'] == 1) {
 
             if (isset($_POST["backuphilos"])) {
               $elbackuphilos = test_input($_POST["backuphilos"]);
