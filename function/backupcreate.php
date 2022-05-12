@@ -76,9 +76,6 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
             $retorno = "";
             $reccarpmine = CONFIGDIRECTORIO;
             $limitbackupgb = CONFIGFOLDERBACKUPSIZE;
-            $recbackupmulti = CONFIGBACKUPMULTI;
-            $recbackupcompress = CONFIGBACKUPCOMPRESS;
-            $recbackuphilos = CONFIGBACKUPHILOS;
             $elerror = 0;
             $test = 0;
 
