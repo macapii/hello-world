@@ -84,6 +84,25 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
 
             $archivo = test_input($_POST['action']);
 
+            //ASIGNAR CONSTANTES SI NO EXISTEN
+            if (!defined('CONFIGBACKUPMULTI')) {
+                $recbackupmulti = 1;
+            } else {
+                $recbackupmulti = CONFIGBACKUPMULTI;
+            }
+
+            if (!defined('CONFIGBACKUPCOMPRESS')) {
+                $recbackupcompress = 1;
+            } else {
+                $recbackupcompress = CONFIGBACKUPCOMPRESS;
+            }
+
+            if (!defined('CONFIGBACKUPHILOS')) {
+                $recbackuphilos = 1;
+            } else {
+                $recbackuphilos = CONFIGBACKUPHILOS;
+            }
+
             //OBTENER RUTA RAIZ
             $dirraiz = dirname(getcwd()) . PHP_EOL;
             $dirraiz = trim($dirraiz);
