@@ -66,7 +66,9 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
             $elerror = 0;
             $test = 0;
 
-            $carpeta = test_input($_POST['action']);
+            $elarray = $_POST['action'];
+            $carpeta = $elarray[0];
+            $carpeta = test_input($carpeta);
 
             //COMPROBAR SI ESTA VACIO
             if ($elerror == 0) {

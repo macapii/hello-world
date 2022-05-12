@@ -188,11 +188,12 @@ $(function () {
             element.addEventListener("click", function () {
                 var eleccion = confirm("¡ATENCIÓN!\n\n¿Estás seguro de eliminar la carpeta: " + this.id + " ?");
                 if (eleccion == true) {
+                    const elarrayborrarcarp = [String(this.value)];
                     $.ajax({
                         type: "POST",
                         url: "function/gestorborrarcarpeta.php",
                         data: {
-                            action: this.value
+                            action: elarrayborrarcarp
                         },
                         success: function (data) {
 
@@ -570,8 +571,7 @@ $(function () {
     if (document.getElementById('bnnuevacarpeta') !== null) {
         $("#bnnuevacarpeta").click(function () {
             var renombrado = prompt("Nombre nueva carpeta:");
-            const elarraycrear = [];
-            elarraycrear[0] = String(renombrado);
+            const elarraycrear = [String(renombrado)];
             if (renombrado !== null) {
                 $.ajax({
                     url: 'function/gestorcrearcarpeta.php',
