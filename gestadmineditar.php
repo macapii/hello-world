@@ -392,6 +392,22 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
 
                                                                                 <div class="form-group">
                                                                                     <div>
+                                                                                        <input id="psystemconfbackup" name="psystemconfbackup" type="checkbox" value="1" <?php
+
+                                                                                                                                                                                    if (array_key_exists('psystemconfbackup', $_SESSION['EDITARSUPER'])) {
+                                                                                                                                                                                        if ($_SESSION['EDITARSUPER']['psystemconfbackup'] == 1) {
+                                                                                                                                                                                            echo "checked";
+                                                                                                                                                                                        }
+                                                                                                                                                                                    }
+                                                                                                                                                                                    ?>>
+
+                                                                                        <label class="negrita mr-2" for="psystemconfbackup">Configurar Opciones Backup</label>
+                                                                                    </div>
+                                                                                    <p>Permite configurar las opciones para la generación de los backups.</p>
+                                                                                </div>
+
+                                                                                <div class="form-group">
+                                                                                    <div>
                                                                                         <input id="psystemstartonboot" name="psystemstartonboot" type="checkbox" value="1" <?php
 
                                                                                                                                                                             if (array_key_exists('psystemstartonboot', $_SESSION['EDITARSUPER'])) {

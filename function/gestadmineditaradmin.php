@@ -375,6 +375,13 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                                     $arrayobtenido[$i]['psystemconftypeconsole'] = 0;
                                 }
 
+                                //SYSTEM CONFIG OPCIONES BACKUPS
+                                if (isset($_POST['psystemconfbackup'])) {
+                                    $arrayobtenido[$i]['psystemconfbackup'] = 1;
+                                } else {
+                                    $arrayobtenido[$i]['psystemconfbackup'] = 0;
+                                }
+
                                 //SYSTEM CONFIG INICIAR MINECRAFT AL ARRANCAR LINUX
                                 if (isset($_POST['psystemstartonboot'])) {
                                     $arrayobtenido[$i]['psystemstartonboot'] = 1;
