@@ -19,14 +19,14 @@ Copyright (C) 2020-2022 Cristina Ibañez, Konata400
 $(function () {
 
     var uncheckalinicio = document.getElementsByClassName('laseleccion');
-    for (var i = 0; i < uncheckalinicio.length; i++) {
-        uncheckalinicio[i].checked = false;
+    for (const element of uncheckalinicio) {
+        element.checked = false;
     }
 
     if (document.getElementsByClassName('entrar') !== null) {
         var entrarbuttons = document.getElementsByClassName('entrar');
-        for (var i = 0; i < entrarbuttons.length; i++) {
-            entrarbuttons[i].addEventListener("click", function () {
+        for (const element of entrarbuttons) {
+            element.addEventListener("click", function () {
                 $.ajax({
                     type: "POST",
                     url: "function/carpetaentrar.php",
@@ -51,8 +51,8 @@ $(function () {
 
     if (document.getElementsByClassName('atras') !== null) {
         var atrasbuttons = document.getElementsByClassName('atras');
-        for (var i = 0; i < atrasbuttons.length; i++) {
-            atrasbuttons[i].addEventListener("click", function () {
+        for (const element of atrasbuttons) {
+            element.addEventListener("click", function () {
                 $.ajax({
                     type: "POST",
                     url: "function/carpetatras.php",
@@ -77,8 +77,8 @@ $(function () {
 
     if (document.getElementsByClassName('excluirbackup') !== null) {
         var excluirbackupbuttons = document.getElementsByClassName('excluirbackup');
-        for (var i = 0; i < excluirbackupbuttons.length; i++) {
-            excluirbackupbuttons[i].addEventListener("click", function () {
+        for (const element of excluirbackupbuttons) {
+            element.addEventListener("click", function () {
                 $.ajax({
                     type: "POST",
                     url: "function/gestorexcludebackup.php",
@@ -113,8 +113,8 @@ $(function () {
 
     if (document.getElementsByClassName('incluirbackup') !== null) {
         var incluirbackupbuttons = document.getElementsByClassName('incluirbackup');
-        for (var i = 0; i < incluirbackupbuttons.length; i++) {
-            incluirbackupbuttons[i].addEventListener("click", function () {
+        for (const element of incluirbackupbuttons) {
+            element.addEventListener("click", function () {
                 $.ajax({
                     type: "POST",
                     url: "function/gestorincludebackup.php",
@@ -147,8 +147,8 @@ $(function () {
 
     if (document.getElementsByClassName('borrarfile') !== null) {
         var borrarfilebuttons = document.getElementsByClassName('borrarfile');
-        for (var i = 0; i < borrarfilebuttons.length; i++) {
-            borrarfilebuttons[i].addEventListener("click", function () {
+        for (const element of borrarfilebuttons) {
+            element.addEventListener("click", function () {
                 var eleccion = confirm("¡ATENCIÓN!\n\n¿Estás seguro de eliminar el archivo: " + this.id + " ?");
                 if (eleccion == true) {
                     $.ajax({
@@ -184,8 +184,8 @@ $(function () {
 
     if (document.getElementsByClassName('borrarcarpeta') !== null) {
         var borrarcarpetabuttons = document.getElementsByClassName('borrarcarpeta');
-        for (var i = 0; i < borrarcarpetabuttons.length; i++) {
-            borrarcarpetabuttons[i].addEventListener("click", function () {
+        for (const element of borrarcarpetabuttons) {
+            element.addEventListener("click", function () {
                 var eleccion = confirm("¡ATENCIÓN!\n\n¿Estás seguro de eliminar la carpeta: " + this.id + " ?");
                 if (eleccion == true) {
                     $.ajax({
@@ -225,8 +225,8 @@ $(function () {
 
     if (document.getElementsByClassName('renamefile') !== null) {
         var renamefilebuttons = document.getElementsByClassName('renamefile');
-        for (var i = 0; i < renamefilebuttons.length; i++) {
-            renamefilebuttons[i].addEventListener("click", function () {
+        for (const element of renamefilebuttons) {
+            element.addEventListener("click", function () {
                 var renombrado = prompt("Renombrar fichero:", this.id);
                 if (renombrado !== null) {
                     $.ajax({
@@ -270,8 +270,8 @@ $(function () {
 
     if (document.getElementsByClassName('renamefolder') !== null) {
         var renamefolderbuttons = document.getElementsByClassName('renamefolder');
-        for (var i = 0; i < renamefolderbuttons.length; i++) {
-            renamefolderbuttons[i].addEventListener("click", function () {
+        for (const element of renamefolderbuttons) {
+            element.addEventListener("click", function () {
                 var renombrado = prompt("Renombrar carpeta:", this.id);
                 if (renombrado !== null) {
                     $.ajax({
@@ -313,8 +313,8 @@ $(function () {
 
     if (document.getElementsByClassName('editarfile') !== null) {
         var editarbuttons = document.getElementsByClassName('editarfile');
-        for (var i = 0; i < editarbuttons.length; i++) {
-            editarbuttons[i].addEventListener("click", function () {
+        for (const element of editarbuttons) {
+            element.addEventListener("click", function () {
                 $.ajax({
                     type: "POST",
                     url: "function/gestoreditarfile.php",
@@ -346,8 +346,8 @@ $(function () {
 
     if (document.getElementsByClassName('descargarfile') !== null) {
         var descargarbuttons = document.getElementsByClassName('descargarfile');
-        for (var i = 0; i < descargarbuttons.length; i++) {
-            descargarbuttons[i].addEventListener("click", function () {
+        for (const element of descargarbuttons) {
+            element.addEventListener("click", function () {
                 window.open('function/gestordownfile.php?action=' + this.value, '_blank', 'noopener noreferrer', "toolbar=no,scrollbars=yes,resizable=yes,top=400,left=500,width=400,height=100");
             });
         }
@@ -355,8 +355,8 @@ $(function () {
 
     if (document.getElementsByClassName('descomprimirtar') !== null) {
         var descomprimirtarbuttons = document.getElementsByClassName('descomprimirtar');
-        for (var i = 0; i < descomprimirtarbuttons.length; i++) {
-            descomprimirtarbuttons[i].addEventListener("click", function () {
+        for (const element of descomprimirtarbuttons) {
+            element.addEventListener("click", function () {
 
                 $.ajax({
                     url: 'function/gestordescomprimirtar.php',
@@ -403,8 +403,8 @@ $(function () {
 
     if (document.getElementsByClassName('descomprimirzip') !== null) {
         var descomprimirzipbuttons = document.getElementsByClassName('descomprimirzip');
-        for (var i = 0; i < descomprimirzipbuttons.length; i++) {
-            descomprimirzipbuttons[i].addEventListener("click", function () {
+        for (const element of descomprimirzipbuttons) {
+            element.addEventListener("click", function () {
 
                 $.ajax({
                     url: 'function/gestordescomprimirzip.php',
@@ -447,8 +447,8 @@ $(function () {
 
     if (document.getElementsByClassName('comprimirzipfolder') !== null) {
         var comprimircarpetazipbuttons = document.getElementsByClassName('comprimirzipfolder');
-        for (var i = 0; i < comprimircarpetazipbuttons.length; i++) {
-            comprimircarpetazipbuttons[i].addEventListener("click", function () {
+        for (const element of comprimircarpetazipbuttons) {
+            element.addEventListener("click", function () {
 
                 $.ajax({
                     url: 'function/gestorcomprimircarpetazip.php',
@@ -570,11 +570,13 @@ $(function () {
     if (document.getElementById('bnnuevacarpeta') !== null) {
         $("#bnnuevacarpeta").click(function () {
             var renombrado = prompt("Nombre nueva carpeta:");
+            const elarraycrear = [];
+            elarraycrear[0] = String(renombrado);
             if (renombrado !== null) {
                 $.ajax({
                     url: 'function/gestorcrearcarpeta.php',
                     data: {
-                        action: renombrado
+                        action: elarraycrear
                     },
                     type: 'POST',
                     success: function (data) {
@@ -602,9 +604,9 @@ $(function () {
             var arrayseleccion = [];
             var elindice = 0;
             var checkseleccionados = document.getElementsByClassName('laseleccion');
-            for (var i = 0; i < checkseleccionados.length; i++) {
-                if (checkseleccionados[i].checked == true) {
-                    arrayseleccion[elindice] = checkseleccionados[i].value;
+            for (const element of checkseleccionados) {
+                if (element.checked == true) {
+                    arrayseleccion[elindice] = element.value;
                     elindice = elindice + 1;
                 }
             }
@@ -680,9 +682,9 @@ $(function () {
             var elindice = 0;
             var checkseleccionados = document.getElementsByClassName('laseleccion');
 
-            for (var i = 0; i < checkseleccionados.length; i++) {
-                if (checkseleccionados[i].checked == true) {
-                    arrayseleccion[elindice] = checkseleccionados[i].value;
+            for (const element of checkseleccionados) {
+                if (element.checked == true) {
+                    arrayseleccion[elindice] = element.value;
                     elindice = elindice + 1;
                 }
             }
@@ -727,9 +729,9 @@ $(function () {
     if (document.getElementById('bselectall') !== null) {
         $("#bselectall").click(function () {
             var checkseleccionados = document.getElementsByClassName('laseleccion');
-            for (var i = 0; i < checkseleccionados.length; i++) {
-                if (checkseleccionados[i].disabled == false) {
-                    checkseleccionados[i].checked = true;
+            for (const element of checkseleccionados) {
+                if (element.disabled == false) {
+                    element.checked = true;
                 }
             }
         });
@@ -738,8 +740,8 @@ $(function () {
     if (document.getElementById('bunselectall') !== null) {
         $("#bunselectall").click(function () {
             var checkseleccionados = document.getElementsByClassName('laseleccion');
-            for (var i = 0; i < checkseleccionados.length; i++) {
-                checkseleccionados[i].checked = false;
+            for (const element of checkseleccionados) {
+                element.checked = false;
             }
         });
     }
@@ -778,8 +780,8 @@ $(function () {
     if (document.getElementsByClassName('elclick1') !== null) {
         var clickhover = document.getElementsByClassName('elclick1');
         var checkseleccionados = document.getElementsByClassName('laseleccion');
-        for (var i = 0; i < clickhover.length; i++) {
-            clickhover[i].addEventListener("click", function () {
+        for (const element of clickhover) {
+            element.addEventListener("click", function () {
 
                 if (sessionStorage.pulsorecuadro == 0) {
 
@@ -801,8 +803,8 @@ $(function () {
 
     if (document.getElementsByClassName('laseleccion') !== null) {
         var checkseleccionados = document.getElementsByClassName('laseleccion');
-        for (var i = 0; i < checkseleccionados.length; i++) {
-            checkseleccionados[i].addEventListener("click", function () {
+        for (const element of checkseleccionados) {
+            element.addEventListener("click", function () {
 
                 sessionStorage.pulsorecuadro = 1;
             });
