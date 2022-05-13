@@ -489,7 +489,9 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
 
                                                                         //BOTON DESCARGAR
                                                                         if ($_SESSION['CONFIGUSER']['rango'] == 1 || $_SESSION['CONFIGUSER']['rango'] == 2 || array_key_exists('pgestorarchivosdescargar', $_SESSION['CONFIGUSER']) && $_SESSION['CONFIGUSER']['pgestorarchivosdescargar'] == 1) {
-                                                                            echo '<button type="button" class="descargarfile btn btn-primary mr-1" value="' . $fcarpetas[$i] . '" title="Descargar"><img src="img/botones/down.png" alt="Descargar"></button>';
+                                                                            if ($fcarpetas[$i] != "0") {
+                                                                                echo '<button type="button" class="descargarfile btn btn-primary mr-1" value="' . $fcarpetas[$i] . '" title="Descargar"><img src="img/botones/down.png" alt="Descargar"></button>';
+                                                                            }
                                                                         }
 
                                                                         //BOTON DESCOMPRIMIR
@@ -599,16 +601,16 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                                                             $getgigasmine = devolverdatos(obtenersizecarpeta($rutacarpetamine), 1, 2);
                                                                         ?>
                                                                             <td>
-                                                                                <p class="lead negrita">Usado: <?php echo ($getgigasmine); ?></p>
+                                                                                <p class="lead negrita">Usado: <?php echo $getgigasmine; ?></p>
                                                                             </td>
                                                                         <?php
                                                                         }
                                                                         ?>
                                                                         <td>
                                                                             <p class="lead negrita">Total: <?php if ($recsizemine == 0) {
-                                                                                                                echo ("Ilimitado");
+                                                                                                                echo "Ilimitado";
                                                                                                             } else {
-                                                                                                                echo ($recsizemine . " GB");
+                                                                                                                echo $recsizemine . " GB";
                                                                                                             } ?></p>
                                                                         </td>
                                                                         <td>
