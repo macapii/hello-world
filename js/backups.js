@@ -42,8 +42,8 @@ $(function () {
 
     if (document.getElementsByClassName('descargar') !== null) {
         var descargarbuttons = document.getElementsByClassName('descargar');
-        for (var i = 0; i < descargarbuttons.length; i++) {
-            descargarbuttons[i].addEventListener("click", function () {
+        for (const element of descargarbuttons) {
+            element.addEventListener("click", function () {
                 window.open('function/backupdownfile.php?action=' + this.value, '_blank', 'noopener noreferrer', "toolbar=no,scrollbars=yes,resizable=yes,top=400,left=500,width=400,height=100");
             });
         }
@@ -51,8 +51,8 @@ $(function () {
 
     if (document.getElementsByClassName('restaurar') !== null) {
         var restaurarbuttons = document.getElementsByClassName('restaurar');
-        for (var i = 0; i < restaurarbuttons.length; i++) {
-            restaurarbuttons[i].addEventListener("click", function () {
+        for (const element of restaurarbuttons) {
+            element.addEventListener("click", function () {
                 var eleccion = confirm("¡ATENCIÓN!\n\nAl Restaurar se borrarán todos los archivos del servidor minecraft.\n\n¿Seguro que quieres continuar?");
                 if (eleccion == true) {
 
@@ -96,8 +96,8 @@ $(function () {
 
     if (document.getElementsByClassName('borrar') !== null) {
         var borrarbuttons = document.getElementsByClassName('borrar');
-        for (var i = 0; i < borrarbuttons.length; i++) {
-            borrarbuttons[i].addEventListener("click", function () {
+        for (const element of borrarbuttons) {
+            element.addEventListener("click", function () {
                 var eleccion = confirm("¡ATENCIÓN!\n\n¿Estás seguro de eliminar el backup: " + this.value + " ?");
                 if (eleccion == true) {
 
@@ -131,11 +131,13 @@ $(function () {
             var eleccion = confirm("¡CONFIRMAR ACCION!\n\nSi el servidor está ejecutado el backup podría fallar.\n\n¿Seguro que quieres continuar?");
             if (eleccion == true) {
                 var eltexto = document.getElementById("inputbackup").value;
+                const elarraynamebackup = [String(eltexto)];
+
                 $.ajax({
                     type: "POST",
                     url: "function/backupcreate.php",
                     data: {
-                        action: eltexto
+                        action: elarraynamebackup
                     },
                     success: function (data) {
 

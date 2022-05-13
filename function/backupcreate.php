@@ -79,7 +79,9 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
             $elerror = 0;
             $test = 0;
 
-            $archivo = test_input($_POST['action']);
+            $elarray = $_POST['action'];
+            $archivo = $elarray[0];
+            $archivo = test_input($archivo);
 
             //ASIGNAR CONSTANTES SI NO EXISTEN
             if (!defined('CONFIGBACKUPMULTI')) {
