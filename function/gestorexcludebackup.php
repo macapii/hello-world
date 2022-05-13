@@ -52,7 +52,9 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
             $rutaconfig = trim(dirname(getcwd()) . "/config" . PHP_EOL);
             $rutaarchivo = trim(dirname(getcwd()) . "/config" . "/excludeback.json" . PHP_EOL);
 
-            $archivo = test_input($_POST['action']);
+            $elarray = $_POST['action'];
+            $archivo = $elarray[0];
+            $archivo = test_input($archivo);
 
             //COMPROBAR SI ESTA VACIO
             if ($elerror == 0) {

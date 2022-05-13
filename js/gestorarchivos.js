@@ -79,11 +79,12 @@ $(function () {
         var excluirbackupbuttons = document.getElementsByClassName('excluirbackup');
         for (const element of excluirbackupbuttons) {
             element.addEventListener("click", function () {
+                const elarrayexcfile = [String(this.value)];
                 $.ajax({
                     type: "POST",
                     url: "function/gestorexcludebackup.php",
                     data: {
-                        action: this.value
+                        action: elarrayexcfile
                     },
                     success: function (data) {
 
@@ -115,11 +116,12 @@ $(function () {
         var incluirbackupbuttons = document.getElementsByClassName('incluirbackup');
         for (const element of incluirbackupbuttons) {
             element.addEventListener("click", function () {
+                const elarrayincbackup = [String(this.value)];
                 $.ajax({
                     type: "POST",
                     url: "function/gestorincludebackup.php",
                     data: {
-                        action: this.value
+                        action: elarrayincbackup
                     },
                     success: function (data) {
 
