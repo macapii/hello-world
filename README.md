@@ -56,7 +56,7 @@ sudo apt upgrade
 Instalar Paquetes Requisitos (Ubuntu Server / Debian)
 
 ```
-sudo apt install apache2 php libapache2-mod-php default-jdk screen php-cli php-json gawk wget zip unzip 
+sudo apt install apache2 php libapache2-mod-php default-jdk screen php-cli php-json gawk wget tar gzip zip unzip 
 ```
 
 Instalar Paquetes Requisitos (Debian)
