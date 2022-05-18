@@ -38,6 +38,8 @@ zip                 (Info-ZIP)
 unzip               (De-archiver)
 gawk                (GNU gawk)
 wget                (GNU Wget)
+tar                 (GNU tar)
+gzip                (GNU gzip)
 ```
 
 ### Instalación 🔧
