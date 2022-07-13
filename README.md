@@ -41,6 +41,7 @@ wget                (GNU Wget)
 tar                 (GNU tar)
 gzip                (GNU gzip)
 git                 (GIT)
+pigz                (PIGZ Mark Adler)
 ```
 
 ### Instalación 🔧
@@ -57,17 +58,17 @@ sudo apt upgrade
 Instalar Paquetes Requisitos (Ubuntu Server / Debian)
 
 ```
-sudo apt install apache2 php libapache2-mod-php default-jdk screen php-cli php-json gawk wget tar gzip git zip unzip 
+sudo apt install apache2 php libapache2-mod-php default-jdk screen php-cli php-json gawk wget tar gzip git zip unzip pigz
 ```
 
 Instalar
 
 ```
 Descargar:
-wget https://github.com/Konata400/McWebPanel/archive/refs/tags/0.18-pre.zip
+wget https://github.com/Konata400/McWebPanel/archive/refs/tags/0.19-pre.zip
 
 Descomprimir:
-unzip 0.18-pre.zip
+unzip 0.19-pre.zip
 
 Eliminar index.html por defecto de apache:
 sudo rm /var/www/html/index.html
