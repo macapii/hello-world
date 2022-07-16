@@ -404,6 +404,12 @@ $(function () {
         }
     }
 
+    if (document.getElementById("label-previews-chat") !== null) {
+        if (document.getElementById("form-previews-chat") !== null) {
+            document.getElementById("label-previews-chat").innerHTML = htmlEntities("previews-chat=" + document.getElementById("form-previews-chat").value);
+        }
+    }
+
     if (document.getElementById("label-prevent-proxy-connections") !== null) {
         if (document.getElementById("form-prevent-proxy-connections") !== null) {
             document.getElementById("label-prevent-proxy-connections").innerHTML = htmlEntities("prevent-proxy-connections=" + document.getElementById("form-prevent-proxy-connections").value);
@@ -1854,6 +1860,30 @@ $(function () {
 
         if (document.getElementById("label-use-native-transport") !== null) {
             document.getElementById("label-use-native-transport").innerHTML = htmlEntities("use-native-transport=" + document.getElementById("form-use-native-transport").value);
+        }
+
+    });
+
+    $("#form-previews-chat").change(function () {
+        var envioaction = "previews-chat";
+        var enviovalor = document.getElementById("form-previews-chat").value;
+        $.ajax({
+            type: "POST",
+            url: "function/guardarproperties.php",
+            data: {
+                action: envioaction,
+                valor: enviovalor
+            },
+            success: function (data) {
+                var getdebug = 0;
+                if (getdebug == 1) {
+                    alert(data);
+                }
+            }
+        });
+
+        if (document.getElementById("label-previews-chat") !== null) {
+            document.getElementById("label-previews-chat").innerHTML = htmlEntities("previews-chat=" + document.getElementById("form-previews-chat").value);
         }
 
     });

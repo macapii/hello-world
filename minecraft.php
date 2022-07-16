@@ -1696,6 +1696,54 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                         <div class="container">
                                             <div class="row">
                                                 <div class="col-md-8">
+                                                    <h3 class=""><strong>Vista previa de chat</strong></h3>
+                                                    <p class="lead">Al habilitarse, los servidores pueden obtener una vista previa de los mensajes con estilos aplicados, como emojis o colores de chat.</p>
+                                                    <p class="lead">Vista previa de chat envía mensajes de chat al servidor a medida que se escriben, incluso antes de que se envíen</p>
+                                                    <p class="lead">Se muestra una pantalla de advertencia en el cliente cuando se une a un servidor con Vista previa de chat activado, y se puede desactivar globalmente en la configuración de chat</p>
+                                                    <p class="lead">El estilo de chat dinámico también puede ser controlado por el servidor, aunque esto solo se firma cuando la vista previa de chat está habilitada.</p>
+                                                    <p class="lead">Los clientes pueden preferir mostrar siempre el mensaje original firmado, habilitando "Mostrar solo el chat firmado" en la configuración del chat.</p>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <p class="">Valor Defecto: false<br>Requiere Versión: 1.19 o superior</p>
+                                                    <select id="form-previews-chat" class="form-control w-100">
+                                                        <?php
+                                                        $lostextos = array('False', 'True');
+                                                        $losvalues = array('false', 'true');
+
+                                                        $obtener = leerlineas('previews-chat');
+
+                                                        if ($obtener == "") {
+                                                            echo '<option selected hidden>No hay ninguna opción seleccionada</option>';
+                                                        }
+
+                                                        for ($i = 0; $i < count($lostextos); $i++) {
+
+                                                            if ($obtener == $losvalues[$i]) {
+                                                                echo '<option value="' . $losvalues[$i] . '" selected>' . $lostextos[$i] . '</option>';
+                                                            } else {
+                                                                echo '<option value="' . $losvalues[$i] . '">' . $lostextos[$i] . '</option>';
+                                                            }
+                                                        }
+                                                        ?>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <br>
+                                                    <p id="label-previews-chat" class="lead text-center text-white mt-2 bg-primary">previews-chat</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Separacion Fin -->
+                                    <hr>
+                                    <!-- Separacion Inicio -->
+                                    <div class="">
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="col-md-8">
                                                     <h3 class=""><strong>Prevenir Conexiones Proxy</strong></h3>
                                                     <p class="lead">Si el ISP/AS enviado desde el servidor es diferente al del Servidor Autentificación de Mojang, el jugador es kickeado.</p>
                                                 </div>
