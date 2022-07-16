@@ -362,6 +362,12 @@ $(function () {
         }
     }
 
+    if (document.getElementById("label-enforce-secure-profile") !== null) {
+        if (document.getElementById("form-enforce-secure-profile") !== null) {
+            document.getElementById("label-enforce-secure-profile").innerHTML = htmlEntities("enforce-secure-profile=" + document.getElementById("form-enforce-secure-profile").value);
+        }
+    }
+
     if (document.getElementById("label-white-list") !== null) {
         if (document.getElementById("form-white-list") !== null) {
             document.getElementById("label-white-list").innerHTML = htmlEntities("white-list=" + document.getElementById("form-white-list").value);
@@ -1635,6 +1641,30 @@ $(function () {
 
         });
     }
+
+    $("#form-enforce-secure-profile").change(function () {
+        var envioaction = "enforce-secure-profile";
+        var enviovalor = document.getElementById("form-enforce-secure-profile").value;
+        $.ajax({
+            type: "POST",
+            url: "function/guardarproperties.php",
+            data: {
+                action: envioaction,
+                valor: enviovalor
+            },
+            success: function (data) {
+                var getdebug = 0;
+                if (getdebug == 1) {
+                    alert(data);
+                }
+            }
+        });
+
+        if (document.getElementById("label-enforce-secure-profile") !== null) {
+            document.getElementById("label-enforce-secure-profile").innerHTML = htmlEntities("enforce-secure-profile=" + document.getElementById("form-enforce-secure-profile").value);
+        }
+
+    });
 
     $("#form-white-list").change(function () {
         var envioaction = "white-list";

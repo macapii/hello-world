@@ -1409,6 +1409,50 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                         <div class="container">
                                             <div class="row">
                                                 <div class="col-md-8">
+                                                    <h3 class=""><strong>Forzar Perfil Seguro</strong></h3>
+                                                    <p class="lead">Si se establece en verdadero, los jugadores sin una clave pública firmada por Mojang no podrán conectarse al servidor.</p>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <p class="">Valor Defecto: false<br>Requiere Versión: 1.19 o superior</p>
+                                                    <select id="form-enforce-secure-profile" class="form-control w-100">
+                                                        <?php
+                                                        $lostextos = array('False', 'True');
+                                                        $losvalues = array('false', 'true');
+
+                                                        $obtener = leerlineas('enforce-secure-profile');
+
+                                                        if ($obtener == "") {
+                                                            echo '<option selected hidden>No hay ninguna opción seleccionada</option>';
+                                                        }
+
+                                                        for ($i = 0; $i < count($lostextos); $i++) {
+
+                                                            if ($obtener == $losvalues[$i]) {
+                                                                echo '<option value="' . $losvalues[$i] . '" selected>' . $lostextos[$i] . '</option>';
+                                                            } else {
+                                                                echo '<option value="' . $losvalues[$i] . '">' . $lostextos[$i] . '</option>';
+                                                            }
+                                                        }
+                                                        ?>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <br>
+                                                    <p id="label-enforce-secure-profile" class="lead text-center text-white mt-2 bg-primary">enforce-secure-profile</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Separacion Fin -->
+                                    <hr>
+                                    <!-- Separacion Inicio -->
+                                    <div class="">
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="col-md-8">
                                                     <h3 class=""><strong>Activar Lista Blanca</strong></h3>
                                                     <p class="lead">La lista blanca solo permitirá entrar a los usuarios que estén en ella cuando esté activada.</p>
                                                 </div>
@@ -1696,7 +1740,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                         <div class="container">
                                             <div class="row">
                                                 <div class="col-md-8">
-                                                    <h3 class=""><strong>Vista previa de chat</strong></h3>
+                                                    <h3 class=""><strong>Vista Previa De Chat</strong></h3>
                                                     <p class="lead">Al habilitarse, los servidores pueden obtener una vista previa de los mensajes con estilos aplicados, como emojis o colores de chat.</p>
                                                     <p class="lead">Vista previa de chat envía mensajes de chat al servidor a medida que se escriben, incluso antes de que se envíen</p>
                                                     <p class="lead">Se muestra una pantalla de advertencia en el cliente cuando se une a un servidor con Vista previa de chat activado, y se puede desactivar globalmente en la configuración de chat</p>
