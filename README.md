@@ -74,7 +74,7 @@ Eliminar index.html por defecto de apache:
 sudo rm /var/www/html/index.html
 
 Copiar a la carpeta Apache:
-sudo cp -r McWebPanel-0.18-pre/. /var/www/html/
+sudo cp -r McWebPanel-0.19-pre/. /var/www/html/
 
 Cambiar Usuario Archivos:
 sudo chown -R www-data:www-data /var/www/html/
