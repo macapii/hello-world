@@ -98,11 +98,13 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                     fwrite($file, "query.port=25565" . PHP_EOL);
                     fwrite($file, "pvp=true" . PHP_EOL);
                     fwrite($file, "generate-structures=true" . PHP_EOL);
+                    fwrite($file, "max-chained-neighbor-updates=1000000" . PHP_EOL);
                     fwrite($file, "difficulty=easy" . PHP_EOL);
                     fwrite($file, "network-compression-threshold=256" . PHP_EOL);
+                    fwrite($file, "require-resource-pack=false" . PHP_EOL);
                     fwrite($file, "max-tick-time=60000" . PHP_EOL);
-                    fwrite($file, "max-players=20" . PHP_EOL);
                     fwrite($file, "use-native-transport=true" . PHP_EOL);
+                    fwrite($file, "max-players=20" . PHP_EOL);
                     fwrite($file, "online-mode=true" . PHP_EOL);
                     fwrite($file, "enable-status=true" . PHP_EOL);
                     fwrite($file, "allow-flight=false" . PHP_EOL);
@@ -110,14 +112,17 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                     fwrite($file, "view-distance=10" . PHP_EOL);
                     //eliminado en Minecraft 1.17 fwrite($file, "max-build-height=256" . PHP_EOL);
                     fwrite($file, "server-ip=" . PHP_EOL);
+                    fwrite($file, "resource-pack-prompt=" . PHP_EOL);
                     fwrite($file, "allow-nether=true" . PHP_EOL);
                     fwrite($file, "server-port=" . $recpuerto . PHP_EOL);
                     fwrite($file, "enable-rcon=false" . PHP_EOL);
                     fwrite($file, "sync-chunk-writes=true" . PHP_EOL);
                     fwrite($file, "op-permission-level=4" . PHP_EOL);
                     fwrite($file, "prevent-proxy-connections=false" . PHP_EOL);
+                    fwrite($file, "hide-online-players=false" . PHP_EOL);
                     fwrite($file, "resource-pack=" . PHP_EOL);
                     fwrite($file, "entity-broadcast-range-percentage=100" . PHP_EOL);
+                    fwrite($file, "simulation-distance=10" . PHP_EOL);
                     fwrite($file, "rcon.password=" . PHP_EOL);
                     fwrite($file, "player-idle-timeout=0" . PHP_EOL);
                     fwrite($file, "force-gamemode=false" . PHP_EOL);
@@ -130,16 +135,12 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                     //eliminado en Minecraft 1.18 fwrite($file, "snooper-enabled=true" . PHP_EOL);
                     fwrite($file, "function-permission-level=2" . PHP_EOL);
                     fwrite($file, "level-type=default" . PHP_EOL);
+                    fwrite($file, "text-filtering-config=" . PHP_EOL);
                     fwrite($file, "spawn-monsters=true" . PHP_EOL);
                     fwrite($file, "enforce-whitelist=false" . PHP_EOL);
                     fwrite($file, "resource-pack-sha1=" . PHP_EOL);
-                    fwrite($file, "require-resource-pack=false" . PHP_EOL);
-                    fwrite($file, "resource-pack-prompt=" . PHP_EOL);
                     fwrite($file, "spawn-protection=16" . PHP_EOL);
                     fwrite($file, "max-world-size=29999984" . PHP_EOL);
-                    fwrite($file, "text-filtering-config=" . PHP_EOL);
-                    fwrite($file, "hide-online-players=false" . PHP_EOL);
-                    fwrite($file, "simulation-distance=10" . PHP_EOL);
                     fclose($file);
 
                     //PERMISO SERVER.PROPERTIES
