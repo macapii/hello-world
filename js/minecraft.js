@@ -94,6 +94,18 @@ $(function () {
         }
     });
 
+    $("#form-max-chained-neighbor-updates").keypress(function (e) {
+        if (e.keyCode < 48 || e.keyCode > 57) {
+            if (e.keyCode == 45) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return true;
+        }
+    });
+
     $("#form-max-tick-time").keypress(function (e) {
         if (e.keyCode < 48 || e.keyCode > 57) {
             if (e.keyCode == 45) {
@@ -437,6 +449,12 @@ $(function () {
     if (document.getElementById("label-sync-chunk-writes") !== null) {
         if (document.getElementById("form-sync-chunk-writes") !== null) {
             document.getElementById("label-sync-chunk-writes").innerHTML = htmlEntities("sync-chunk-writes=" + document.getElementById("form-sync-chunk-writes").value);
+        }
+    }
+
+    if (document.getElementById("label-max-chained-neighbor-updates") !== null) {
+        if (document.getElementById("form-max-chained-neighbor-updates") !== null) {
+            document.getElementById("label-max-chained-neighbor-updates").innerHTML = htmlEntities("max-chained-neighbor-updates=" + document.getElementById("form-max-chained-neighbor-updates").value);
         }
     }
 
@@ -2013,6 +2031,41 @@ $(function () {
         }
 
     });
+
+    $("#form-max-chained-neighbor-updates").change(function () {
+        var errores = 0;
+        var envioaction = "max-chained-neighbor-updates";
+        var enviovalor = document.getElementById("form-max-chained-neighbor-updates").value;
+
+        if (enviovalor > 1000000 || enviovalor < -1) {
+            document.getElementById("form-max-chained-neighbor-updates").value = 60000;
+            errores = 1;
+        }
+
+        if (errores == 0) {
+
+            $.ajax({
+                type: "POST",
+                url: "function/guardarproperties.php",
+                data: {
+                    action: envioaction,
+                    valor: enviovalor
+                },
+                success: function (data) {
+                    var getdebug = 0;
+                    if (getdebug == 1) {
+                        alert(data);
+                    }
+                }
+            });
+
+            if (document.getElementById("label-max-chained-neighbor-updates") !== null) {
+                document.getElementById("label-max-chained-neighbor-updates").innerHTML = htmlEntities("max-chained-neighbor-updates=" + document.getElementById("form-max-chained-neighbor-updates").value);
+            }
+        }
+    });
+
+
 
     $("#form-max-tick-time").change(function () {
         var errores = 0;

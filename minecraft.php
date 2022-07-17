@@ -1964,6 +1964,30 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                         <div class="container">
                                             <div class="row">
                                                 <div class="col-md-8">
+                                                    <h3 class=""><strong>Limite Actualizaciones Consecutivas Proximas</strong></h3>
+                                                    <p class="lead">Limitar la cantidad de actualizaciones consecutivas proximas antes de omitir las adicionales.<br>Los valores negativos eliminan el límite.</p>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <p class="">Valor Defecto: 1000000<br>Valor Min: 1 - Valor Max: 1000000<br>Valor eliminar límite: -1<br>Requiere Versión: 1.19 o superior</p>
+                                                    <input id="form-max-chained-neighbor-updates" type="number" class="form-control" min="-1" max="1000000" value="<?php echo leerlineas('max-chained-neighbor-updates'); ?>">
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <br>
+                                                    <p id="label-max-chained-neighbor-updates" class="lead text-center text-white mt-2 bg-primary">max-chained-neighbor-updates</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Separacion Fin -->
+                                    <hr>
+                                    <!-- Separacion Inicio -->
+                                    <div class="">
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="col-md-8">
                                                     <h3 class=""><strong>Tiempo Máximo Respuesta</strong></h3>
                                                     <p class="lead">Los segundos que tardara en cerrar el servidor si no responde en X segundos.<br> (60000 = 60 segundos).</p>
                                                 </div>
