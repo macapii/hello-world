@@ -813,7 +813,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                                     <select id="form-level-type" class="form-control w-100">
                                                         <?php
                                                         $lostextos = array('Standard', 'Plano', 'Biomas Largos', 'Amplificado', 'Un bioma (Requiere 1.15 o superior)');
-                                                        $losvalues = array('default', 'flat', 'largeBiomes', 'amplified', 'buffet');
+                                                        $losvalues = array('default', 'flat', 'largebiomes', 'amplified', 'buffet');
 
                                                         $obtener = leerlineas('level-type');
 
