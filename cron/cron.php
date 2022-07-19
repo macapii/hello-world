@@ -413,6 +413,7 @@ if ($elerror == 0) {
                                                                     $rutatemp .= "/serverproperties.tmp";
                                                                     $rutafinal .= "/server.properties";
                                                                     $contador = 0;
+                                                                    $secuprofile = 0;
 
                                                                     $gestor = @fopen($rutafinal, "r");
                                                                     $file = fopen($rutatemp, "w");
@@ -420,16 +421,26 @@ if ($elerror == 0) {
                                                                     while (($búfer = fgets($gestor, 4096)) !== false) {
                                                                         $str = $búfer;
                                                                         $array = explode("=", $str);
+                                                                        
                                                                         if ($array[0] == "server-port") {
                                                                             fwrite($file, 'server-port=' . $recpuerto . PHP_EOL);
                                                                             $contador = 1;
                                                                         } else {
                                                                             fwrite($file, $búfer);
                                                                         }
+
+                                                                        if ($array[0] == "enforce-secure-profile") {
+                                                                            $secuprofile = 1;
+                                                                        }
                                                                     }
 
                                                                     if ($contador == 0) {
                                                                         fwrite($file, "server-port=" . $recpuerto . PHP_EOL);
+                                                                    }
+
+                                                                    //AÑADIR enforce-secure-profile EN FALSE SI NO EXISTE
+                                                                    if ($secuprofile == 0) {
+                                                                        fwrite($file, "enforce-secure-profile=false" . PHP_EOL);
                                                                     }
 
                                                                     fclose($gestor);
