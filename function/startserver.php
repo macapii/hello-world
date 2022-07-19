@@ -297,6 +297,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                 $rutatemp .= "/serverproperties.tmp";
                 $rutafinal .= "/server.properties";
                 $contador = 0;
+                $secuprofile = 0;
 
                 $gestor = @fopen($rutafinal, "r");
                 $file = fopen($rutatemp, "w");
@@ -311,10 +312,19 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                     } else {
                         fwrite($file, $búfer);
                     }
+
+                    if ($array[0] == "enforce-secure-profile") {
+                        $secuprofile = 1;
+                    }
                 }
 
                 if ($contador == 0) {
                     fwrite($file, "server-port=" . $recpuerto . PHP_EOL);
+                }
+
+                //AÑADIR enforce-secure-profile EN FALSE SI NO EXISTE
+                if ($secuprofile == 0) {
+                    fwrite($file, "enforce-secure-profile=false" . PHP_EOL);
                 }
 
                 fclose($gestor);
@@ -427,7 +437,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                     unlink($larutascrrenlog);
                 }
 
-                $comandoserver .= "cd .. && cd " . $reccarpmine . " && umask 002 && screen -c '" . $rutascreenconf . "' -dmS " . $reccarpmine . " -L -Logfile 'logs/screen.log' " . $javaruta . " -Xms" .$recxmsram ."M -Xmx" . $recram . "M ";
+                $comandoserver .= "cd .. && cd " . $reccarpmine . " && umask 002 && screen -c '" . $rutascreenconf . "' -dmS " . $reccarpmine . " -L -Logfile 'logs/screen.log' " . $javaruta . " -Xms" . $recxmsram . "M -Xmx" . $recram . "M ";
 
                 //RECOLECTOR
                 if ($recgarbagecolector == "1") {
@@ -473,7 +483,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                 }
 
                 //RESTART
-                $cominiciostart = "screen -c '" . $rutascreenconf . "' -dmS " . $reccarpmine . " -L -Logfile 'logs/screen.log' " . $javaruta . " -Xms" . $recxmsram ."M -Xmx" . $recram . "M " . $inigc . " -Dfile.encoding=UTF8 " . $recargmanualinicio . " -jar '" . $rutacarpetamine . "' nogui " . $recargmanualfinal;
+                $cominiciostart = "screen -c '" . $rutascreenconf . "' -dmS " . $reccarpmine . " -L -Logfile 'logs/screen.log' " . $javaruta . " -Xms" . $recxmsram . "M -Xmx" . $recram . "M " . $inigc . " -Dfile.encoding=UTF8 " . $recargmanualinicio . " -jar '" . $rutacarpetamine . "' nogui " . $recargmanualfinal;
                 if ($rectiposerv == "spigot") {
                     guardareinicio($larutash, $cominiciostart, $larutascrrenlog);
                 } elseif ($rectiposerv == "paper") {
