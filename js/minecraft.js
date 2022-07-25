@@ -2037,7 +2037,7 @@ $(function () {
         var envioaction = "max-chained-neighbor-updates";
         var enviovalor = document.getElementById("form-max-chained-neighbor-updates").value;
 
-        if (enviovalor > 1000000 || enviovalor < -1) {
+        if (enviovalor > 2147483647 || enviovalor < -1) {
             document.getElementById("form-max-chained-neighbor-updates").value = 60000;
             errores = 1;
         }

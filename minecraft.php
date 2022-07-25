@@ -1968,8 +1968,8 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                                     <p class="lead">Limitar la cantidad de actualizaciones consecutivas proximas antes de omitir las adicionales.<br>Los valores negativos eliminan el límite.</p>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <p class="">Valor Defecto: 1000000<br>Valor Min: 1 - Valor Max: 1000000<br>Valor eliminar límite: -1<br>Requiere Versión: 1.19 o superior</p>
-                                                    <input id="form-max-chained-neighbor-updates" type="number" class="form-control" min="-1" max="1000000" value="<?php echo leerlineas('max-chained-neighbor-updates'); ?>">
+                                                    <p class="">Valor Defecto: 1000000<br>Valor Min: 1 - Valor Max: 2147483647<br>Valor eliminar límite: -1<br>Requiere Versión: 1.19 o superior</p>
+                                                    <input id="form-max-chained-neighbor-updates" type="number" class="form-control" min="-1" max="2147483647" value="<?php echo leerlineas('max-chained-neighbor-updates'); ?>">
                                                 </div>
                                             </div>
 
