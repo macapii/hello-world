@@ -18,7 +18,7 @@ Copyright (C) 2020-2022 Cristina Ibañez, Konata400
 */
 
 define("VERSIONPANEL", "0.20");
-define("VERSIONTIPO", "Develop");
+define("VERSIONTIPO", "Pre-Release");
 
 error_reporting(E_ALL);
 ini_set("display_errors", 0);
