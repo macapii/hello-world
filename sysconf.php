@@ -22,6 +22,15 @@ require_once("template/session.php");
 require_once("template/errorreport.php");
 require_once("config/confopciones.php");
 require_once("template/header.php");
+
+function test_input($data)
+{
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
+}
+
 ?>
 <!-- Custom styles for this template-->
 <?php
@@ -557,23 +566,41 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                                                             <select id="selectedjavaver" name="selectedjavaver" class="form-control">
 
                                                                                 <?php
+                                                                                //DECLARAR VARIABLES
+                                                                                $getdistro = "";
                                                                                 $javalist = "";
                                                                                 $javaruta = "";
-                                                                                $javalist = shell_exec("update-java-alternatives -l | gawk '{ print $1 }'");
-                                                                                $javaruta = shell_exec("update-java-alternatives -l | gawk '{ print $3 }'");
-                                                                                $javalist = trim($javalist);
-                                                                                $javaruta = trim($javaruta);
-                                                                                $javalist = (explode("\n", $javalist));
-                                                                                $javaruta = (explode("\n", $javaruta));
 
-                                                                                for ($i = 0; $i < count($javalist); $i++) {
+                                                                                //OBTENER VERSION DISTRO LINUX
+                                                                                if (file_exists("/etc/os-release")) {
+                                                                                    $getdistro = shell_exec("egrep '^(ID)=' /etc/os-release");
+                                                                                    $getdistro = test_input($getdistro);
+                                                                                    $getdistro = substr($getdistro, 3);
+                                                                                    $getdistro = strtolower($getdistro);
 
-                                                                                    if ($javaruta[$i] . "/bin/java" == $recjavaname) {
-                                                                                        echo '<option value="' . $javaruta[$i] . '" selected>' . $javalist[$i] . '</option>';
+                                                                                    if ($getdistro == "ubuntu" || $getdistro == "debian") {
+                                                                                        $javalist = shell_exec("update-java-alternatives -l | gawk '{ print $1 }'");
+                                                                                        $javaruta = shell_exec("update-java-alternatives -l | gawk '{ print $3 }'");
+                                                                                        $javalist = trim($javalist);
+                                                                                        $javaruta = trim($javaruta);
+                                                                                        $javalist = (explode("\n", $javalist));
+                                                                                        $javaruta = (explode("\n", $javaruta));
+
+                                                                                        for ($i = 0; $i < count($javalist); $i++) {
+
+                                                                                            if ($javaruta[$i] . "/bin/java" == $recjavaname) {
+                                                                                                echo '<option value="' . $javaruta[$i] . '" selected>' . $javalist[$i] . '</option>';
+                                                                                            } else {
+                                                                                                echo '<option value="' . $javaruta[$i] . '">' . $javalist[$i] . '</option>';
+                                                                                            }
+                                                                                        }
                                                                                     } else {
-                                                                                        echo '<option value="' . $javaruta[$i] . '">' . $javalist[$i] . '</option>';
+                                                                                        echo '<option value="NOCOMPATIBLE">' . "DISTRO NO COMPATIBLE" . '</option>';
                                                                                     }
+                                                                                } else {
+                                                                                    echo '<option value="NOCOMPATIBLE">' . "DISTRO NO COMPATIBLE" . '</option>';
                                                                                 }
+
                                                                                 ?>
                                                                             </select>
                                                                         </div>
