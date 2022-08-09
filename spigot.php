@@ -46,8 +46,6 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
     echo '<link href="css/consola.css" rel="stylesheet">';
 }
 ?>
-<link href="css/consola.css" rel="stylesheet">
-
 </head>
 
 <body id="page-top">
