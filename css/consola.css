@@ -22,7 +22,6 @@ Copyright (C) 2020-2022 Cristina Ibañez, Konata400
     text-align: left !important;
     padding-left: 5px;
     border-style: solid;
-    border-color: #fff;
     border-width: 1px;
 }
 
@@ -197,6 +196,11 @@ Copyright (C) 2020-2022 Cristina Ibañez, Konata400
 
 .colbrillanteverdeoscuro{
     color:#00b300;
+}
+
+
+.colverdetest{
+    color:#49db30
 }
 
 .colbrillanteamarillo{
