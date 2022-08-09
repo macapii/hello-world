@@ -572,6 +572,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                                                                 $javaruta = "";
 
                                                                                 //OBTENER VERSION DISTRO LINUX
+                                                                                clearstatcache();
                                                                                 if (file_exists("/etc/os-release")) {
                                                                                     $getdistro = shell_exec("egrep '^(ID)=' /etc/os-release");
                                                                                     $getdistro = test_input($getdistro);
