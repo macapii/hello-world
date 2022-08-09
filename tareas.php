@@ -28,15 +28,16 @@ require_once("template/header.php");
 if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
     if ($_SESSION['CONFIGUSER']['psystemconftemaweb'] == 2) {
         echo '<link href="css/dark.css" rel="stylesheet">';
+        echo '<link href="css/consoladark.css" rel="stylesheet">';
     } else {
         echo '<link href="css/light.css" rel="stylesheet">';
+        echo '<link href="css/consola.css" rel="stylesheet">';
     }
 } else {
     echo '<link href="css/light.css" rel="stylesheet">';
+    echo '<link href="css/consola.css" rel="stylesheet">';
 }
 ?>
-<link href="css/consola.css" rel="stylesheet">
-
 </head>
 
 <body id="page-top">
