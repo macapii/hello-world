@@ -186,6 +186,12 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                                         $recbackuphilos = CONFIGBACKUPHILOS;
                                                     }
 
+                                                    if (!defined('CONFIGBACKUROTATE')) {
+                                                        $recbackuprotate = 0;
+                                                    } else {
+                                                        $recbackuprotate = CONFIGBACKUROTATE;
+                                                    }
+
 
                                                     $elnombredirectorio = $reccarpmine;
                                                     $rutaarchivo = getcwd();
@@ -775,7 +781,17 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
 
                                                             </div>
 
+                                                            <br>
+                                                            <div class="row">
+                                                                <div class="col-md-3">
+                                                                    <label for="backuprotate">Rotación backups automaticos:</label>
+                                                                    <input type="number" class="form-control  text-right" id="backuprotate" name="backuprotate" required="required" min="0" max="1000" value="<?php echo $recbackuprotate; ?>">
+                                                                    <label> 0 = Ilimitado</label>
+                                                                </div>
+                                                            </div>
+
                                                         <?php
+
                                                         }
                                                         ?>
 

@@ -131,7 +131,13 @@ $(function () {
                 document.getElementById("result").innerHTML = "<div class='alert alert-danger' role='alert'>Error: El campo hilos supera el número de hilos del servidor.</div>";
             } else if (data == "backuphilosvacio") {
                 document.getElementById("result").innerHTML = "<div class='alert alert-danger' role='alert'>Error: El campo hilos está vacío.</div>";
-            } else if (data == "saveconf") {
+            } else if (data == "backuprotatenonumerico"){
+                document.getElementById("result").innerHTML = "<div class='alert alert-danger' role='alert'>Error: El campo rotación backups no es numérico.</div>";
+            } else if (data == "backuprotatesoutrango"){
+                document.getElementById("result").innerHTML = "<div class='alert alert-danger' role='alert'>Error: El campo rotación backups fuera de rango.</div>";
+            }  else if (data == "backuprotatevacio"){
+                document.getElementById("result").innerHTML = "<div class='alert alert-danger' role='alert'>Error: El campo rotación backups está vacío.</div>";
+            }  else if (data == "saveconf") {
                 document.getElementById("result").innerHTML = "<div class='alert alert-success' role='alert'>Configuración Guardada.</div>";
                 document.getElementById("guardaserver").disabled = true;
             } else {
@@ -279,6 +285,13 @@ $(function () {
 
     if (document.getElementById('backuphilos') !== null) {
         $("#backuphilos").change(function () {
+            document.getElementById("guardaserver").disabled = false;
+            document.getElementById("result").innerHTML = "";
+        });
+    }
+
+    if (document.getElementById('backuprotate') !== null) {
+        $("#backuprotate").change(function () {
             document.getElementById("guardaserver").disabled = false;
             document.getElementById("result").innerHTML = "";
         });

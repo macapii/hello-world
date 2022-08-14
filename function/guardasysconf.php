@@ -854,6 +854,34 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
           }
         }
 
+        //CONFIG ROTACION BACKUPS
+        if ($_SESSION['CONFIGUSER']['rango'] == 1 || array_key_exists('psystemconfbackup', $_SESSION['CONFIGUSER']) && $_SESSION['CONFIGUSER']['psystemconfbackup'] == 1) {
+          if (isset($_POST["backuprotate"])) {
+            $elbackuprotate = test_input($_POST["backuprotate"]);
+
+            //ES NUMERICO
+            if ($elerror == 0) {
+              if (!is_numeric($elbackuprotate)) {
+                $retorno = "backuprotatenonumerico";
+                $elerror = 1;
+              }
+            }
+
+            //RANGO INFERIOR A 0 Y SUPERIOR A 1000
+            if ($elerror == 0) {
+              if ($elbackuprotate < 0 || $elbackuprotate > 1000) {
+                $retorno = "backuprotatesoutrango";
+                $elerror = 1;
+              }
+            }
+          } else {
+            $retorno = "backuprotatevacio";
+            $elerror = 1;
+          }
+        } else {
+          $elbackuprotate = CONFIGBACKUROTATE;
+        }
+
         //OPCIONES QUE NO SE CAMBIAN DESDE GUARDARSYSCONF
         $lakey = CONFIGSESSIONKEY;
         $eldirectorio = CONFIGDIRECTORIO;
@@ -950,6 +978,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
           fwrite($file, 'define("CONFIGBACKUPMULTI", "' . $elbackupmulti . '");' . PHP_EOL);
           fwrite($file, 'define("CONFIGBACKUPCOMPRESS", "' . $elbackupcompress . '");' . PHP_EOL);
           fwrite($file, 'define("CONFIGBACKUPHILOS", "' . $elbackuphilos . '");' . PHP_EOL);
+          fwrite($file, 'define("CONFIGBACKUROTATE", "' . $elbackuprotate . '");' . PHP_EOL);
           fwrite($file, "?>" . PHP_EOL);
           fclose($file);
 
