@@ -164,8 +164,10 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                                                 //OBTENER RUTA BACKUPS
                                                                 $rutaarchivo = getcwd();
                                                                 $rutaarchivo = trim($rutaarchivo);
+                                                                $rutarotate = trim($rutaarchivo);
                                                                 $rutaarchivo .= "/backups";
-
+                                                                $rutarotate .= "/config" . "/" . "backuprotate.json";
+                                                                $rotateindice = 0;
 
                                                                 //OBTENER RUTA RAIZ
                                                                 $dirraiz = getcwd() . PHP_EOL;
@@ -244,6 +246,14 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                                                     arsort($files);
                                                                     $files = array_keys($files);
 
+                                                                    if (file_exists($rutarotate)) {
+                                                                        if (is_readable($rutarotate)) {
+                                                                            $getarrayrotate = file_get_contents($rutarotate);
+                                                                            $elarrayrotate = unserialize($getarrayrotate);
+                                                                            $rotateindice = count($elarrayrotate);
+                                                                        }
+                                                                    }
+
                                                                     //RECORRER ARRAY Y AÑADIR LAS PROPIEDADES Y LOS BOTONES
                                                                     for ($i = 0; $i < count($files); $i++) {
                                                                         $archivoconcreto = $rutaarchivo;
@@ -254,29 +264,27 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                                                         $eltamano = devolverdatos(filesize($archivoconcreto), 1, 2);
                                                                         echo '<td>' . $eltamano . '</td>';
                                                                         echo '<td>';
-                                                                ?>
 
-                                                                        <?php
                                                                         if ($_SESSION['CONFIGUSER']['rango'] == 1 || $_SESSION['CONFIGUSER']['rango'] == 2 || array_key_exists('pbackupsdescargar', $_SESSION['CONFIGUSER']) && $_SESSION['CONFIGUSER']['pbackupsdescargar'] == 1) {
-                                                                        ?>
-                                                                            <button type="button" class="descargar btn btn-info text-white mr-1" value="<?php echo $files[$i] ?>">Descargar</button>
-                                                                        <?php
+                                                                            echo '<button type="button" class="descargar btn btn-info text-white mr-1" title="Descargar backup" value="' . $files[$i] . '"><img src="img/botones/down.png" alt="Descargar"></button>';
                                                                         }
-                                                                        ?>
-                                                                        <?php
+
                                                                         if ($_SESSION['CONFIGUSER']['rango'] == 1 || $_SESSION['CONFIGUSER']['rango'] == 2 || array_key_exists('pbackupsrestaurar', $_SESSION['CONFIGUSER']) && $_SESSION['CONFIGUSER']['pbackupsrestaurar'] == 1) {
-                                                                        ?>
-                                                                            <button type="button" class="restaurar btn btn-warning text-white mr-1" value="<?php echo $files[$i] ?>">Restaurar</button>
-                                                                        <?php
+                                                                            echo '<button type="button" class="restaurar btn btn-warning text-white mr-1" title="Restaurar backup" value="' . $files[$i] . '"><img src="img/botones/restore.png" alt="Restaurar"></button>';
                                                                         }
-                                                                        ?>
-                                                                        <?php
+
                                                                         if ($_SESSION['CONFIGUSER']['rango'] == 1 || $_SESSION['CONFIGUSER']['rango'] == 2 || array_key_exists('pbackupsborrar', $_SESSION['CONFIGUSER']) && $_SESSION['CONFIGUSER']['pbackupsborrar'] == 1) {
-                                                                        ?>
-                                                                            <button type="button" class="borrar btn text-white btn-danger" value="<?php echo $files[$i] ?>">Borrar</button>
-                                                                        <?php
+                                                                            echo '<button type="button" class="borrar btn text-white btn-danger mr-1" title="Borrar backup" value="' . $files[$i] . '"><img src="img/botones/borrar.png" alt="Borrar"></button>';
                                                                         }
-                                                                        ?>
+
+                                                                        if ($_SESSION['CONFIGUSER']['rango'] == 1 || $_SESSION['CONFIGUSER']['rango'] == 2) {
+                                                                            for ($elbucle = 0; $elbucle < $rotateindice; $elbucle++) {
+                                                                                if ($files[$i] == $elarrayrotate[$elbucle]['archivo']) {
+                                                                                    echo '<button type="button" class="desrotar btn text-white btn-primary" title="Quitar backup de la lista de rotación" value="' . $files[$i] . '"><img src="img/botones/norotate.png" alt="Quitar Rotación"></button>';
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                ?>
                                                                         </td>
                                                                         </tr>
                                                                     <?php
@@ -288,7 +296,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                                                     $recsizebackup = CONFIGFOLDERBACKUPSIZE;
 
                                                                     //OBTENER USADO
-                                                                    $getgigasback = devolverdatos(getfoldersize($rutaarchivo), 1,2);
+                                                                    $getgigasback = devolverdatos(getfoldersize($rutaarchivo), 1, 2);
                                                                     ?>
 
                                                                     <tr>
@@ -296,13 +304,13 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                                                             <p class="lead negrita">Almacenamiento Backups</p>
                                                                         </th>
                                                                         <td>
-                                                                            <p class="lead negrita">Usado: <?php echo ($getgigasback); ?></p>
+                                                                            <p class="lead negrita">Usado: <?php echo $getgigasback; ?></p>
                                                                         </td>
                                                                         <td>
                                                                             <p class="lead negrita">Total: <?php if ($recsizebackup == 0) {
-                                                                                                                echo ("Ilimitado");
+                                                                                                                echo "Ilimitado";
                                                                                                             } else {
-                                                                                                                echo ($recsizebackup . " GB");
+                                                                                                                echo $recsizebackup . " GB";
                                                                                                             } ?></p>
                                                                         </td>
                                                                         <td>
