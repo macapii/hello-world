@@ -421,7 +421,7 @@ if ($elerror == 0) {
                                                                     while (($búfer = fgets($gestor, 4096)) !== false) {
                                                                         $str = $búfer;
                                                                         $array = explode("=", $str);
-                                                                        
+
                                                                         if ($array[0] == "server-port") {
                                                                             fwrite($file, 'server-port=' . $recpuerto . PHP_EOL);
                                                                             $contador = 1;
@@ -705,8 +705,9 @@ if ($elerror == 0) {
                                                                             $rutaarchivo = "'" . $rutaarchivo . "/" . $reccarpmine . "/'";
                                                                             $dirconfig = $dirconfig . "/" . $archivo . "-";
                                                                             $rutaexcluidos = trim($RUTAPRINCIPAL . "/config" . "/excludeback.json" . PHP_EOL);
-                                                                            $t = date("Y-m-d-G-i-s");
 
+                                                                            $tget = time();
+                                                                            $t = date("Y-m-d-G-i-s");
                                                                             //SI ES MONONUCLEO Y NO ES LA MEJOR SE ASIGNA LA RAPIDA
                                                                             if ($recbackupmulti == 1) {
                                                                                 if ($recbackupcompress < 9) {
@@ -769,6 +770,111 @@ if ($elerror == 0) {
 
                                                                                 if (!$oky) {
                                                                                     $retorno = "Tarea Crear Backup, ejecutado correctamente.";
+
+                                                                                    //DECLARAR VARIABLES ROTATE
+                                                                                    $elbackuprotate = CONFIGBACKUROTATE;
+                                                                                    $rutarotate = trim($RUTAPRINCIPAL . "/config" . "/backuprotate.json" . PHP_EOL);
+                                                                                    $rutawriteconfig = trim($RUTAPRINCIPAL . "/config" . PHP_EOL);
+
+                                                                                    //GUARDAR LISTA BACKUP ROTATE
+                                                                                    if ($elbackuprotate >= 1) {
+                                                                                        if (is_writable($rutawriteconfig)) {
+                                                                                            clearstatcache();
+                                                                                            if (!file_exists($rutarotate)) {
+                                                                                                $arraycreate[0]['archivo'] = "AUTO-" . $t . ".tar.gz";
+                                                                                                $arraycreate[0]['fecha'] = $tget;
+                                                                                                $serialized = serialize($arraycreate);
+                                                                                                file_put_contents($rutarotate, $serialized);
+                                                                                            } else {
+                                                                                                clearstatcache();
+                                                                                                if (is_writable($rutarotate)) {
+
+                                                                                                    //INICIAR INDICE DE LOS ARRAYS PARA EVITAR ERRORES
+                                                                                                    $rotateindice = 0;
+
+                                                                                                    //LEER ARCHIVO
+                                                                                                    $getarrayrotate = file_get_contents($rutarotate);
+                                                                                                    $elarrayrotate = unserialize($getarrayrotate);
+                                                                                                    $rotateindice = count($elarrayrotate);
+
+                                                                                                    //BORRAR LOS REGISTROS EN LOS QUE NO EXISTA EL ARCHIVO DE BACKUP
+                                                                                                    $arraylimpieza = array();
+                                                                                                    $elauxiliar = 0;
+
+                                                                                                    for ($elbucle = 0; $elbucle < $rotateindice; $elbucle++) {
+                                                                                                        $rotatelimpieza = trim($RUTAPRINCIPAL . "/backups" . "/" . $elarrayrotate[$elbucle]['archivo']);
+                                                                                                        clearstatcache();
+                                                                                                        if (file_exists($rotatelimpieza)) {
+                                                                                                            $arraylimpieza[$elauxiliar]['archivo'] = $elarrayrotate[$elbucle]['archivo'];
+                                                                                                            $arraylimpieza[$elauxiliar]['fecha'] = $elarrayrotate[$elbucle]['fecha'];
+                                                                                                            $elauxiliar = $elauxiliar + 1;
+                                                                                                        }
+                                                                                                    }
+
+                                                                                                    //GUARDAR LIMPIEZA SI AL MENOS SE HA ENCONTRADO UNO
+                                                                                                    if ($elauxiliar >= 1) {
+                                                                                                        $serializedlimpia = serialize($arraylimpieza);
+                                                                                                        file_put_contents($rutarotate, $serializedlimpia);
+
+                                                                                                        //VOLVER A CARGAR Y GENERAR LOS ARRAYS Y EL COUNT YA QUE HAN CAMBIADO
+                                                                                                        $getarrayrotate = file_get_contents($rutarotate);
+                                                                                                        $elarrayrotate = unserialize($getarrayrotate);
+                                                                                                        $rotateindice = count($elarrayrotate);
+                                                                                                    }
+
+                                                                                                    //MIRAR SI HAY QUE ROTAR LOS ARCHIVOS
+                                                                                                    if ($rotateindice >= $elbackuprotate) {
+
+                                                                                                        //OBTENER TODAS LAS FECHA Y GUARDAR EN ARRAY AUXILIAR
+                                                                                                        for ($elbucle = 0; $elbucle < $rotateindice; $elbucle++) {
+                                                                                                            $arrayauxl[$elbucle] = $elarrayrotate[$elbucle]['fecha'];
+                                                                                                        }
+
+                                                                                                        //OBTENER EL VALOR MAS PEQUEÑO DE FECHA
+                                                                                                        sort($arrayauxl);
+
+                                                                                                        //CREAR ARRAY NUEVO SIN FECHA MAS ANTIGUA
+                                                                                                        $arrayfinal = array();
+                                                                                                        $elauxiliar = 0;
+
+                                                                                                        for ($elbucle = 0; $elbucle < $rotateindice; $elbucle++) {
+                                                                                                            if ($arrayauxl[0] != $elarrayrotate[$elbucle]['fecha']) {
+                                                                                                                $arrayfinal[$elauxiliar]['archivo'] = $elarrayrotate[$elbucle]['archivo'];
+                                                                                                                $arrayfinal[$elauxiliar]['fecha'] = $elarrayrotate[$elbucle]['fecha'];
+                                                                                                                $elauxiliar = $elauxiliar + 1;
+                                                                                                            } else {
+                                                                                                                //BORRAR ARCHIVO
+                                                                                                                $rotatedelete = trim($RUTAPRINCIPAL . "/backups" . "/" . $elarrayrotate[$elbucle]['archivo']);
+
+                                                                                                                clearstatcache();
+                                                                                                                if (file_exists($rotatedelete)) {
+                                                                                                                    clearstatcache();
+                                                                                                                    if (is_writable($rotatedelete)) {
+                                                                                                                        unlink($rotatedelete);
+                                                                                                                    }
+                                                                                                                }
+                                                                                                            }
+                                                                                                        }
+
+                                                                                                        //GUARDAR ARRAYFINAL
+                                                                                                        $serialized1 = serialize($arrayfinal);
+                                                                                                        file_put_contents($rutarotate, $serialized1);
+                                                                                                    }
+
+                                                                                                    //LEER ARCHIVO
+                                                                                                    $getarrayrotate2 = file_get_contents($rutarotate);
+                                                                                                    $arraycreate2 = unserialize($getarrayrotate2);
+                                                                                                    $rotateindice2 = count($arraycreate2);
+
+                                                                                                    //GUARDAR FICHERO
+                                                                                                    $arraycreate2[$rotateindice2]['archivo'] = "AUTO-" . $t . ".tar.gz";
+                                                                                                    $arraycreate2[$rotateindice2]['fecha'] = $tget;
+                                                                                                    $serialized2 = serialize($arraycreate2);
+                                                                                                    file_put_contents($rutarotate, $serialized2);
+                                                                                                }
+                                                                                            }
+                                                                                        }
+                                                                                    }
                                                                                 } else {
                                                                                     $retorno = "Error Tarea Crear Backup, no se creo correctamente.";
                                                                                     //AUNQUE NO SE CREA, A VECES SI CREA UN FICHERO VACIO
