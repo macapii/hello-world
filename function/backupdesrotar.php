@@ -53,20 +53,6 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
             $dirraiz = dirname(getcwd()) . PHP_EOL;
             $dirraiz = trim($dirraiz);
 
-            //VER SI HAY UN PROCESO YA EN RESTORE
-            if ($elerror == 0) {
-                $procesorestore = $dirraiz . "/restaurar";
-                $procesorestore = str_replace("/", "", $procesorestore);
-
-                $elcomando = "screen -ls | gawk '/\." . $procesorestore . "\t/ {print strtonum($1)'}";
-                $elpid = shell_exec($elcomando);
-
-                if ($elpid != "") {
-                    $retorno = "restoreenejecucion";
-                    $elerror = 1;
-                }
-            }
-
             //Evitar poder ir a una ruta hacia atras
             if ($elerror == 0) {
                 if (strpos($archivo, '..') !== false || strpos($archivo, '*.*') !== false || strpos($archivo, '*/*.*') !== false) {

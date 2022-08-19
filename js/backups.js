@@ -142,8 +142,6 @@ $(function () {
 
                             if (data == "1") {
                                 location.reload();
-                            } else if (data == "restoreenejecucion") {
-                                document.getElementById("textoretorno").innerHTML = "<div class='alert alert-danger' role='alert'>Error: Hay un restore en ejecución.</div>";
                             }
                         }
                     });
