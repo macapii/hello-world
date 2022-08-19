@@ -140,8 +140,6 @@ $(function () {
                         },
                         success: function (data) {
 
-                            alert(data);
-
                             if (data == "1") {
                                 location.reload();
                             } else if (data == "restoreenejecucion") {
