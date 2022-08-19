@@ -786,7 +786,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                                                 <div class="col-md-3">
                                                                     <label for="backuprotate">Rotación backups automaticos:</label>
                                                                     <input type="number" class="form-control  text-right" id="backuprotate" name="backuprotate" required="required" min="0" max="1000" value="<?php echo $recbackuprotate; ?>">
-                                                                    <label> 0 = Ilimitado</label>
+                                                                    <label> 0 = Desactivar</label>
                                                                 </div>
                                                             </div>
 
