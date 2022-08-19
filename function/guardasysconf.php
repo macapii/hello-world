@@ -56,6 +56,10 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
         $rutacarpetamine = trim($rutacarpetamine);
         $rutacarpetamine .= "/" . $reccarpmine;
 
+        //OBTENER RUTA RAIZ
+        $dirraiz = dirname(getcwd()) . PHP_EOL;
+        $dirraiz = trim($dirraiz);
+
 
         //INPUT LISTADO JARS
         if (isset($_POST["listadojars"])) {
@@ -737,6 +741,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
         if ($elerror == 0) {
           if ($_SESSION['CONFIGUSER']['rango'] == 1 || array_key_exists('psystemconfbackup', $_SESSION['CONFIGUSER']) && $_SESSION['CONFIGUSER']['psystemconfbackup'] == 1) {
 
+
             if (isset($_POST["backupmulti"])) {
               $elbackupmulti = test_input($_POST["backupmulti"]);
 
@@ -857,6 +862,13 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
         //CONFIG ROTACION BACKUPS
         if ($_SESSION['CONFIGUSER']['rango'] == 1 || array_key_exists('psystemconfbackup', $_SESSION['CONFIGUSER']) && $_SESSION['CONFIGUSER']['psystemconfbackup'] == 1) {
           if (isset($_POST["backuprotate"])) {
+
+            if (!defined('CONFIGBACKUROTATE')) {
+              $recbackuprotate = 0;
+            } else {
+              $recbackuprotate = CONFIGBACKUROTATE;
+            }
+
             $elbackuprotate = test_input($_POST["backuprotate"]);
 
             //ES NUMERICO
@@ -874,12 +886,96 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                 $elerror = 1;
               }
             }
+
+
+            if ($elerror == 0) {
+
+              //DECLARAR VARIABLES ROTATE
+              $rotateindice = 0;
+              $elauxiliar = 0;
+              $arraylimpieza = array();
+
+              //OBTENER RUTA ARCHIVO ROTACION
+              $rutarotate = trim($dirraiz . "/config" . "/backuprotate.json" . PHP_EOL);
+
+              //SI EL ROTATE LO PONES A 0 SE BORRA LA LISTA DE ROTATE
+              if ($elbackuprotate == 0) {
+                clearstatcache();
+                if (is_writable($rutarotate)) {
+                  //BORRAR LISTA
+                  unlink($rutarotate);
+                }
+              } else {
+
+                //SI EL NUMERO NUEVO DE ROTACIONES ES MENOR AL GUARDADO
+                if ($elbackuprotate < $recbackuprotate) {
+                  clearstatcache();
+                  if (is_writable($rutarotate)) {
+
+                    //LEER ARCHIVO
+                    $getarrayrotate = file_get_contents($rutarotate);
+                    $elarrayrotate = unserialize($getarrayrotate);
+                    $rotateindice = count($elarrayrotate);
+
+                    //ORDENAR POR FECHA MAS NUEVAS PRIMERO
+                    $ordenarArray = array();
+
+                    foreach ($elarrayrotate as $rotaciones) {
+                      foreach ($rotaciones as $key => $value) {
+                        if (!isset($ordenarArray[$key])) {
+                          $ordenarArray[$key] = array();
+                        }
+                        $ordenarArray[$key][] = $value;
+                      }
+                    }
+
+                    $ordenarpor = "fecha";
+
+                    array_multisort($ordenarArray[$ordenarpor], SORT_DESC, $elarrayrotate);
+
+                    if ($rotateindice > $elbackuprotate) {
+
+                      //LIMPIAR LOS REGISTROS CON FECHA MAS ANTIGUA
+                      for ($elbucle = 0; $elbucle < $elbackuprotate; $elbucle++) {
+                        $arraylimpieza[$elauxiliar]['archivo'] = $elarrayrotate[$elbucle]['archivo'];
+                        $arraylimpieza[$elauxiliar]['fecha'] = $elarrayrotate[$elbucle]['fecha'];
+                        $elauxiliar = $elauxiliar + 1;
+                      }
+
+                      //ORDENAR POR FECHA ANTIGUAS PRIMERO
+                      $ordenarArray = array();
+
+                      foreach ($arraylimpieza as $rotaciones2) {
+                        foreach ($rotaciones2 as $key => $value) {
+                          if (!isset($ordenarArray[$key])) {
+                            $ordenarArray[$key] = array();
+                          }
+                          $ordenarArray[$key][] = $value;
+                        }
+                      }
+
+                      $ordenarpor = "fecha";
+
+                      array_multisort($ordenarArray[$ordenarpor], SORT_ASC, $arraylimpieza);
+
+                      //GUARDAR LISTADO ROTATE
+                      $serializedlimpia = serialize($arraylimpieza);
+                      file_put_contents($rutarotate, $serializedlimpia);
+                    }
+                  }
+                }
+              }
+            }
           } else {
             $retorno = "backuprotatevacio";
             $elerror = 1;
           }
         } else {
-          $elbackuprotate = CONFIGBACKUROTATE;
+          if (!defined('CONFIGBACKUROTATE')) {
+            $elbackuprotate = 0;
+          } else {
+            $elbackuprotate = CONFIGBACKUROTATE;
+          }
         }
 
         //OPCIONES QUE NO SE CAMBIAN DESDE GUARDARSYSCONF
