@@ -125,6 +125,35 @@ $(function () {
         }
     }
 
+    if (document.getElementsByClassName('desrotar') !== null) {
+        var desrotarbuttons = document.getElementsByClassName('desrotar');
+        for (const element of desrotarbuttons) {
+            element.addEventListener("click", function () {
+                var eleccion = confirm("¡ATENCIÓN!\n\n¿Estás seguro de eliminar el backup de la rotación: " + this.value + " ?");
+                if (eleccion == true) {
+
+                    $.ajax({
+                        type: "POST",
+                        url: "function/backupdesrotar.php",
+                        data: {
+                            action: this.value
+                        },
+                        success: function (data) {
+
+                            alert(data);
+
+                            if (data == "1") {
+                                location.reload();
+                            } else if (data == "restoreenejecucion") {
+                                document.getElementById("textoretorno").innerHTML = "<div class='alert alert-danger' role='alert'>Error: Hay un restore en ejecución.</div>";
+                            }
+                        }
+                    });
+                }
+            });
+        }
+    }
+
     if (document.getElementById('crearbackup') !== null) {
         $("#crearbackup").click(function () {
             document.getElementById("textobackupretorno").innerHTML = "<div class='lead'></div>";
