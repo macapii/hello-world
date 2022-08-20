@@ -811,16 +811,9 @@ if ($elerror == 0) {
                                                                                                         }
                                                                                                     }
 
-                                                                                                    //GUARDAR LIMPIEZA SI AL MENOS SE HA ENCONTRADO UNO
-                                                                                                    if ($elauxiliar >= 1) {
-                                                                                                        $serializedlimpia = serialize($arraylimpieza);
-                                                                                                        file_put_contents($rutarotate, $serializedlimpia);
-
-                                                                                                        //VOLVER A CARGAR Y GENERAR LOS ARRAYS Y EL COUNT YA QUE HAN CAMBIADO
-                                                                                                        $getarrayrotate = file_get_contents($rutarotate);
-                                                                                                        $elarrayrotate = unserialize($getarrayrotate);
-                                                                                                        $rotateindice = count($elarrayrotate);
-                                                                                                    }
+                                                                                                    $elarrayrotate = null;
+                                                                                                    $elarrayrotate = $arraylimpieza;
+                                                                                                    $rotateindice = count($elarrayrotate);
 
                                                                                                     //MIRAR SI HAY QUE ROTAR LOS ARCHIVOS
                                                                                                     if ($rotateindice >= $elbackuprotate) {
@@ -856,20 +849,15 @@ if ($elerror == 0) {
                                                                                                             }
                                                                                                         }
 
-                                                                                                        //GUARDAR ARRAYFINAL
-                                                                                                        $serialized1 = serialize($arrayfinal);
-                                                                                                        file_put_contents($rutarotate, $serialized1);
+                                                                                                        $elarrayrotate = null;
+                                                                                                        $elarrayrotate = $arrayfinal;
+                                                                                                        $rotateindice = count($elarrayrotate);
                                                                                                     }
 
-                                                                                                    //LEER ARCHIVO
-                                                                                                    $getarrayrotate2 = file_get_contents($rutarotate);
-                                                                                                    $arraycreate2 = unserialize($getarrayrotate2);
-                                                                                                    $rotateindice2 = count($arraycreate2);
-
                                                                                                     //GUARDAR FICHERO
-                                                                                                    $arraycreate2[$rotateindice2]['archivo'] = "AUTO-" . $t . ".tar.gz";
-                                                                                                    $arraycreate2[$rotateindice2]['fecha'] = $tget;
-                                                                                                    $serialized2 = serialize($arraycreate2);
+                                                                                                    $elarrayrotate[$rotateindice]['archivo'] = "AUTO-" . $t . ".tar.gz";
+                                                                                                    $elarrayrotate[$rotateindice]['fecha'] = $tget;
+                                                                                                    $serialized2 = serialize($elarrayrotate);
                                                                                                     file_put_contents($rutarotate, $serialized2);
                                                                                                 }
                                                                                             }
