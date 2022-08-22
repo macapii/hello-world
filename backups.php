@@ -277,7 +277,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                                                             echo '<button type="button" class="borrar btn text-white btn-danger mr-1" title="Borrar backup" value="' . $files[$i] . '"><img src="img/botones/borrar.png" alt="Borrar"></button>';
                                                                         }
 
-                                                                        if ($_SESSION['CONFIGUSER']['rango'] == 1 || $_SESSION['CONFIGUSER']['rango'] == 2) {
+                                                                        if ($_SESSION['CONFIGUSER']['rango'] == 1 || $_SESSION['CONFIGUSER']['rango'] == 2 || array_key_exists('pbackupsdesrotar', $_SESSION['CONFIGUSER']) && $_SESSION['CONFIGUSER']['pbackupsdesrotar'] == 1) {
                                                                             for ($elbucle = 0; $elbucle < $rotateindice; $elbucle++) {
                                                                                 if ($files[$i] == $elarrayrotate[$elbucle]['archivo']) {
                                                                                     echo '<button type="button" class="desrotar btn text-white btn-primary" title="Quitar backup de la lista de rotación" value="' . $files[$i] . '"><img src="img/botones/norotate.png" alt="Quitar Rotación"></button>';
