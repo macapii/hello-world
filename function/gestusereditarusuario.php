@@ -394,6 +394,12 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                                 $arrayobtenido[$i]['pbackupsborrar'] = 0;
                             }
 
+                            if (isset($_POST['pbackupsdesrotar'])) {
+                                $arrayobtenido[$i]['pbackupsdesrotar'] = 1;
+                            } else {
+                                $arrayobtenido[$i]['pbackupsdesrotar'] = 0;
+                            }
+
                             //Gestor Archivos
                             if (isset($_POST['pgestorarchivos'])) {
                                 $arrayobtenido[$i]['pgestorarchivos'] = 1;

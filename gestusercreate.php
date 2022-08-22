@@ -389,6 +389,14 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                                                                 <p>Permite borrar backups.</p>
                                                                             </div>
 
+                                                                            <div class="form-group">
+                                                                                <div>
+                                                                                    <input id="pbackupsdesrotar" name="pbackupsdesrotar" type="checkbox" value="1">
+                                                                                    <label class="negrita mr-2" for="pbackupsdesrotar">Desrotar Backups</label>
+                                                                                </div>
+                                                                                <p>Permite eliminar el backup de la lista de rotación automática.</p>
+                                                                            </div>
+
                                                                         </div>
 
                                                                         <br>
