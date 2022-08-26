@@ -35,6 +35,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
     echo '<link href="css/light.css" rel="stylesheet">';
 }
 ?>
+<link href="css/servers.css" rel="stylesheet">
 
 </head>
 
@@ -111,7 +112,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                             <div class="row">
                                                 <div class="col-md-12">
 
-                                                    <form action="function/gestadmineditaradmin.php" method="POST" id="form-createuser" autocomplete="off">
+                                                    <form id="formeditadmin" action="function/gestadmineditaradmin.php" method="post" autocomplete="off">
                                                         <div class="py-1">
                                                             <div class="container">
                                                                 <div class="row">
@@ -211,7 +212,10 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                                                             <br><br>
 
                                                                             <!-- SYSTEM CONFIG -->
-                                                                            <div class="negrita card-header text-white bg-primary">Página System Config</div>
+                                                                            <div class="negrita card-header text-white bg-primary">Página System Config
+                                                                                <span class="botselectpeque botselectpeque-hover ml-2 float-right" id="deselecionarpsysconf" name="deselecionarpsysconf">Desactivar todo</span>
+                                                                                <span class="botselectpeque botselectpeque-hover float-right" id="selectodaspsysconf" name="selectodaspsysconf">Activar todo</span>
+                                                                            </div>
                                                                             <div class="card-body border">
 
                                                                                 <div class="form-group">
@@ -394,12 +398,12 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                                                                     <div>
                                                                                         <input id="psystemconfbackup" name="psystemconfbackup" type="checkbox" value="1" <?php
 
-                                                                                                                                                                                    if (array_key_exists('psystemconfbackup', $_SESSION['EDITARSUPER'])) {
-                                                                                                                                                                                        if ($_SESSION['EDITARSUPER']['psystemconfbackup'] == 1) {
-                                                                                                                                                                                            echo "checked";
-                                                                                                                                                                                        }
-                                                                                                                                                                                    }
-                                                                                                                                                                                    ?>>
+                                                                                                                                                                            if (array_key_exists('psystemconfbackup', $_SESSION['EDITARSUPER'])) {
+                                                                                                                                                                                if ($_SESSION['EDITARSUPER']['psystemconfbackup'] == 1) {
+                                                                                                                                                                                    echo "checked";
+                                                                                                                                                                                }
+                                                                                                                                                                            }
+                                                                                                                                                                            ?>>
 
                                                                                         <label class="negrita mr-2" for="psystemconfbackup">Configurar Opciones Backup</label>
                                                                                     </div>
