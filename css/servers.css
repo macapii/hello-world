@@ -31,3 +31,24 @@ Copyright (C) 2020-2022 Cristina Ibañez, Konata400
   color: rgb(255, 255, 255) !important;
   background-color: #87CEEB!important;
 }
+
+.botselectpeque {
+  font-weight: 400;
+  border: 1px solid transparent;
+  margin: 0 auto;
+  text-align: center;
+  display: inline-block;
+  padding: .25rem .5rem;
+  font-size: .875rem;
+  line-height: 1.5;
+  border-radius: .2rem;
+  color: #3a3b45;
+  background-color: #f8f9fc;
+  border-color: #f8f9fc;
+  cursor: pointer;
+}
+
+.botselectpeque-hover:hover {
+  color: rgb(255, 255, 255) !important;
+  background-color: #1f232b!important;
+}
