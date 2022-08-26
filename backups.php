@@ -300,7 +300,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                                                     ?>
 
                                                                     <tr>
-                                                                        <th>
+                                                                        <th id="backuplist">
                                                                             <p class="lead negrita">Almacenamiento Backups</p>
                                                                         </th>
                                                                         <td>
@@ -316,7 +316,6 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                                                         <td>
                                                                             <p class="lead"></p>
                                                                         </td>
-                                                                        <td></td>
                                                                     </tr>
 
                                                                 <?php
