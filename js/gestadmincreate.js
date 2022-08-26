@@ -98,7 +98,7 @@ $(function () {
         });
     }
 
-    $("#form-createuser").on('submit', (function (e) {
+    $("#formcreateadmin").on('submit', (function (e) {
         e.preventDefault();
         $.ajax({
             url: "function/gestusercrearadmin.php",
