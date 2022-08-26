@@ -58,13 +58,6 @@ $(function () {
         }
     });
 
-    if (document.getElementById('testeos') !== null) {
-        $("#testeos").click(function () {
-        alert("HOLA");
-        });
-    }
-
-
     if (document.getElementById('selectodasstatus') !== null) {
         $("#selectodasstatus").click(function () {
             pstatusstarserver.checked = true;
