@@ -35,6 +35,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
     echo '<link href="css/light.css" rel="stylesheet">';
 }
 ?>
+<link href="css/servers.css" rel="stylesheet">
 
 </head>
 
@@ -104,7 +105,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                             <div class="row">
                                                 <div class="col-md-12">
 
-                                                    <form action="function/gestusereditarusuario.php" method="POST" id="form-createuser">
+                                                    <form id="formedituser" action="function/gestusereditarusuario.php" method="post" autocomplete="off">
                                                         <div class="py-1">
                                                             <div class="container">
                                                                 <div class="row">
@@ -122,11 +123,11 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
 
                                                                     <div class="col-md-6">
                                                                         <label class="negrita" for="elpass">Cambiar Contraseña (Opcional)</label>
-                                                                        <input type="password" class="form-control" id="elpass" name="elpass" spellcheck="false" autocapitalize="none" placeholder="••••">
+                                                                        <input type="password" class="form-control" autocomplete="off" id="elpass" name="elpass" spellcheck="false" autocapitalize="none" placeholder="••••" required="required">
                                                                     </div>
                                                                     <div class="col-md-6">
                                                                         <label class="negrita" for="elrepass">Confirmar (Opcional)</label>
-                                                                        <input type="password" class="form-control" id="elrepass" name="elrepass" spellcheck="false" autocapitalize="none" placeholder="••••">
+                                                                        <input type="password" class="form-control" autocomplete="off" id="elrepass" name="elrepass" spellcheck="false" autocapitalize="none" placeholder="••••" required="required">
                                                                     </div>
 
                                                                     <div class="col-md-12">
@@ -141,28 +142,28 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
 
                                                                     <div class="col-md-6">
                                                                         <label class="negrita">Seleccionar Tema Web:</label>
-                                                                            <select id="selectemaweb" name="selectemaweb" class="form-control">
+                                                                        <select id="selectemaweb" name="selectemaweb" class="form-control">
+                                                                            <?php
+                                                                            if (array_key_exists('psystemconftemaweb', $_SESSION['EDITARUSUARIO'])) {
+                                                                                if ($_SESSION['EDITARUSUARIO']['psystemconftemaweb'] == 2) {
+                                                                            ?>
+                                                                                    <option value="1">Claro</option>
+                                                                                    <option value="2" selected>Oscuro</option>
                                                                                 <?php
-                                                                                if (array_key_exists('psystemconftemaweb', $_SESSION['EDITARUSUARIO'])) {
-                                                                                    if ($_SESSION['EDITARUSUARIO']['psystemconftemaweb'] == 2) {
-                                                                                ?>
-                                                                                        <option value="1">Claro</option>
-                                                                                        <option value="2" selected>Oscuro</option>
-                                                                                    <?php
-                                                                                    } else {
-                                                                                    ?>
-                                                                                        <option value="1" selected>Claro</option>
-                                                                                        <option value="2">Oscuro</option>
-                                                                                    <?php
-                                                                                    }
                                                                                 } else {
-                                                                                    ?>
+                                                                                ?>
                                                                                     <option value="1" selected>Claro</option>
                                                                                     <option value="2">Oscuro</option>
                                                                                 <?php
                                                                                 }
+                                                                            } else {
                                                                                 ?>
-                                                                            </select>
+                                                                                <option value="1" selected>Claro</option>
+                                                                                <option value="2">Oscuro</option>
+                                                                            <?php
+                                                                            }
+                                                                            ?>
+                                                                        </select>
                                                                     </div>
 
                                                                     <div class="col-md-12">
@@ -171,7 +172,10 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                                                         <br><br>
 
                                                                         <!-- STATUS -->
-                                                                        <div class="negrita card-header text-white bg-primary">Página Status</div>
+                                                                        <div class="negrita card-header text-white bg-primary">Página Status
+                                                                            <span class="botselectpeque botselectpeque-hover ml-2 float-right" id="deselecionarstatus" name="deselecionarstatus">Desactivar todo</span>
+                                                                            <span class="botselectpeque botselectpeque-hover float-right" id="selectodasstatus" name="selectodasstatus">Activar todo</span>
+                                                                        </div>
                                                                         <div class="card-body border">
 
                                                                             <div class="form-group">
@@ -235,7 +239,10 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                                                         <br>
 
                                                                         <!-- Consola -->
-                                                                        <div class="negrita card-header text-white bg-primary">Página Consola</div>
+                                                                        <div class="negrita card-header text-white bg-primary">Página Consola
+                                                                            <span class="botselectpeque botselectpeque-hover ml-2 float-right" id="deselecionarconsola" name="deselecionarconsola">Desactivar todo</span>
+                                                                            <span class="botselectpeque botselectpeque-hover float-right" id="selectodasconsola" name="selectodasconsola">Activar todo</span>
+                                                                        </div>
                                                                         <div class="card-body border">
 
                                                                             <div class="form-group">
@@ -271,7 +278,10 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                                                         <br>
 
                                                                         <!-- CONFIG MINECRAFT -->
-                                                                        <div class="negrita card-header text-white bg-primary">Página Config Minecraft</div>
+                                                                        <div class="negrita card-header text-white bg-primary">Página Config Minecraft
+                                                                            <span class="botselectpeque botselectpeque-hover ml-2 float-right" id="deselecionarpconfigmine" name="deselecionarpconfigmine">Desactivar todo</span>
+                                                                            <span class="botselectpeque botselectpeque-hover float-right" id="selectodaspconfigmine" name="selectodaspconfigmine">Activar todo</span>
+                                                                        </div>
                                                                         <div class="card-body border">
 
                                                                             <div class="form-group">
@@ -293,7 +303,10 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                                                         <br>
 
                                                                         <!-- PROG TAREAS -->
-                                                                        <div class="negrita card-header text-white bg-primary">Página Prog Tareas</div>
+                                                                        <div class="negrita card-header text-white bg-primary">Página Prog Tareas
+                                                                            <span class="botselectpeque botselectpeque-hover ml-2 float-right" id="deselecionarprogtareas" name="deselecionarprogtareas">Desactivar todo</span>
+                                                                            <span class="botselectpeque botselectpeque-hover float-right" id="selectodasprogtareas" name="selectodasprogtareas">Activar todo</span>
+                                                                        </div>
                                                                         <div class="card-body border">
 
                                                                             <div class="form-group">
@@ -385,7 +398,10 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                                                         <br>
 
                                                                         <!-- SYSTEM CONFIG -->
-                                                                        <div class="negrita card-header text-white bg-primary">Página System Config</div>
+                                                                        <div class="negrita card-header text-white bg-primary">Página System Config
+                                                                            <span class="botselectpeque botselectpeque-hover ml-2 float-right" id="deselecionarpsysconf" name="deselecionarpsysconf">Desactivar todo</span>
+                                                                            <span class="botselectpeque botselectpeque-hover float-right" id="selectodaspsysconf" name="selectodaspsysconf">Activar todo</span>
+                                                                        </div>
                                                                         <div class="card-body border">
 
                                                                             <div class="form-group">
@@ -406,8 +422,11 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
 
                                                                         <br>
 
-                                                                        <!-- COMPILAR SPIGOT -->
-                                                                        <div class="negrita card-header text-white bg-primary">Página Descargar Servidor</div>
+                                                                        <!-- DESCARGAR SERVIDOR -->
+                                                                        <div class="negrita card-header text-white bg-primary">Página Descargar Servidor
+                                                                            <span class="botselectpeque botselectpeque-hover ml-2 float-right" id="deselecionarpdesserv" name="deselecionarpdesserv">Desactivar todo</span>
+                                                                            <span class="botselectpeque botselectpeque-hover float-right" id="selectodaspdesserv" name="selectodaspdesserv">Activar todo</span>
+                                                                        </div>
                                                                         <div class="card-body border">
 
                                                                             <div class="form-group">
@@ -455,12 +474,12 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                                                             <div class="form-group">
                                                                                 <div>
                                                                                     <input id="ppagedownpaper" name="ppagedownpaper" type="checkbox" value="1" <?php
-                                                                                                                                                                    if (array_key_exists('ppagedownpaper', $_SESSION['EDITARUSUARIO'])) {
-                                                                                                                                                                        if ($_SESSION['EDITARUSUARIO']['ppagedownpaper'] == 1) {
-                                                                                                                                                                            echo "checked";
-                                                                                                                                                                        }
+                                                                                                                                                                if (array_key_exists('ppagedownpaper', $_SESSION['EDITARUSUARIO'])) {
+                                                                                                                                                                    if ($_SESSION['EDITARUSUARIO']['ppagedownpaper'] == 1) {
+                                                                                                                                                                        echo "checked";
                                                                                                                                                                     }
-                                                                                                                                                                    ?>>
+                                                                                                                                                                }
+                                                                                                                                                                ?>>
                                                                                     <label class="negrita mr-2" for="ppagedownpaper">Obtener Paper</label>
                                                                                 </div>
                                                                                 <p>Permite descargar el servidor Paper.</p>
@@ -471,7 +490,10 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                                                         <br>
 
                                                                         <!-- SUBIR SERVIDOR -->
-                                                                        <div class="negrita card-header text-white bg-primary">Página Subir Servidor</div>
+                                                                        <div class="negrita card-header text-white bg-primary">Página Subir Servidor
+                                                                            <span class="botselectpeque botselectpeque-hover ml-2 float-right" id="deselecionarpsubserv" name="deselecionarpsubserv">Desactivar todo</span>
+                                                                            <span class="botselectpeque botselectpeque-hover float-right" id="selectodaspsubserv" name="selectodaspsubserv">Activar todo</span>
+                                                                        </div>
                                                                         <div class="card-body border">
 
                                                                             <div class="form-group">
@@ -493,7 +515,10 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                                                         <br>
 
                                                                         <!-- Backups -->
-                                                                        <div class="negrita card-header text-white bg-primary">Página Backups</div>
+                                                                        <div class="negrita card-header text-white bg-primary">Página Backups
+                                                                            <span class="botselectpeque botselectpeque-hover ml-2 float-right" id="deselecionarpbackups" name="deselecionarpbackups">Desactivar todo</span>
+                                                                            <span class="botselectpeque botselectpeque-hover float-right" id="selectodaspbackups" name="selectodaspbackups">Activar todo</span>
+                                                                        </div>
                                                                         <div class="card-body border">
 
                                                                             <div class="form-group">
@@ -569,12 +594,12 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                                                             <div class="form-group">
                                                                                 <div>
                                                                                     <input id="pbackupsdesrotar" name="pbackupsdesrotar" type="checkbox" value="1" <?php
-                                                                                                                                                                if (array_key_exists('pbackupsdesrotar', $_SESSION['EDITARUSUARIO'])) {
-                                                                                                                                                                    if ($_SESSION['EDITARUSUARIO']['pbackupsdesrotar'] == 1) {
-                                                                                                                                                                        echo "checked";
+                                                                                                                                                                    if (array_key_exists('pbackupsdesrotar', $_SESSION['EDITARUSUARIO'])) {
+                                                                                                                                                                        if ($_SESSION['EDITARUSUARIO']['pbackupsdesrotar'] == 1) {
+                                                                                                                                                                            echo "checked";
+                                                                                                                                                                        }
                                                                                                                                                                     }
-                                                                                                                                                                }
-                                                                                                                                                                ?>>
+                                                                                                                                                                    ?>>
                                                                                     <label class="negrita mr-2" for="pbackupsdesrotar">Desrotar Backups</label>
                                                                                 </div>
                                                                                 <p>Permite eliminar el backup de la lista de rotación automática.</p>
@@ -585,7 +610,10 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                                                         <br>
 
                                                                         <!-- Gestor Archivos -->
-                                                                        <div class="negrita card-header text-white bg-primary">Página Gestor Archivos</div>
+                                                                        <div class="negrita card-header text-white bg-primary">Página Gestor Archivos
+                                                                            <span class="botselectpeque botselectpeque-hover ml-2 float-right" id="deselecionarpgestarch" name="deselecionarpgestarch">Desactivar todo</span>
+                                                                            <span class="botselectpeque botselectpeque-hover float-right" id="selectodaspgestarch" name="selectodaspgestarch">Activar todo</span>
+                                                                        </div>
                                                                         <div class="card-body border">
 
                                                                             <div class="form-group">
