@@ -58,6 +58,46 @@ $(function () {
         }
     });
 
+    if (document.getElementById('selectodaspsysconf') !== null) {
+        $("#selectodaspsysconf").click(function () {
+            psystemconfpuerto.checked = true;
+            psystemconfmemoria.checked = true;
+            psystemconftipo.checked = true;
+            psystemconfsubida.checked = true;
+            psystemconfnombre.checked = true;
+            psystemconfavanzados.checked = true;
+            psystemconfjavaselect.checked = true;
+            psystemconffoldersize.checked = true;
+            psystemconflinconsole.checked = true;
+            psystemconfbuffer.checked = true;
+            psystemconftypeconsole.checked = true;
+            psystemconfbackup.checked = true;
+            psystemstartonboot.checked = true;
+            psystemcustomarg.checked = true;
+            psystemconfignoreramlimit.checked = true;
+        });
+    }
+
+    if (document.getElementById('deselecionarpsysconf') !== null) {
+        $("#deselecionarpsysconf").click(function () {
+            psystemconfpuerto.checked = false;
+            psystemconfmemoria.checked = false;
+            psystemconftipo.checked = false;
+            psystemconfsubida.checked = false;
+            psystemconfnombre.checked = false;
+            psystemconfavanzados.checked = false;
+            psystemconfjavaselect.checked = false;
+            psystemconffoldersize.checked = false;
+            psystemconflinconsole.checked = false;
+            psystemconfbuffer.checked = false;
+            psystemconftypeconsole.checked = false;
+            psystemconfbackup.checked = false;
+            psystemstartonboot.checked = false;
+            psystemcustomarg.checked = false;
+            psystemconfignoreramlimit.checked = false;
+        });
+    }
+
     $("#form-createuser").on('submit', (function (e) {
         e.preventDefault();
         $.ajax({

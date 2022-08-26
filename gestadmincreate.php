@@ -35,6 +35,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
     echo '<link href="css/light.css" rel="stylesheet">';
 }
 ?>
+<link href="css/servers.css" rel="stylesheet">
 
 </head>
 
@@ -94,24 +95,24 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                             <div class="row">
                                                 <div class="col-md-12">
 
-                                                    <form action="function/gestusercrearadmin.php" method="POST" id="form-createuser">
+                                                    <form id="formcreateadmin" action="function/gestusercrearadmin.php" method="post" autocomplete="off">
                                                         <div class="py-1">
                                                             <div class="container">
                                                                 <div class="row">
                                                                     <div class="col-md-12">
                                                                         <div class="form-group">
                                                                             <label class="negrita" for="eluser">Nombre Usuario</label>
-                                                                            <input type="text" class="form-control" id="eluser" name="eluser" spellcheck="false" autocapitalize="none" required="required" maxlength="255">
+                                                                            <input type="text" class="form-control" autocomplete="off" id="eluser" name="eluser" spellcheck="false" autocapitalize="none" required="required" maxlength="255">
                                                                         </div>
                                                                     </div>
 
                                                                     <div class="col-md-6">
                                                                         <label class="negrita" for="elpass">Contraseña</label>
-                                                                        <input type="password" class="form-control" id="elpass" name="elpass" spellcheck="false" autocapitalize="none" placeholder="••••" required="required">
+                                                                        <input type="password" class="form-control" autocomplete="off" id="elpass" name="elpass" spellcheck="false" autocapitalize="none" placeholder="••••" required="required">
                                                                     </div>
                                                                     <div class="col-md-6">
                                                                         <label class="negrita" for="elrepass">Confirmar Contraseña</label>
-                                                                        <input type="password" class="form-control" id="elrepass" name="elrepass" spellcheck="false" autocapitalize="none" placeholder="••••" required="required">
+                                                                        <input type="password" class="form-control" autocomplete="off" id="elrepass" name="elrepass" spellcheck="false" autocapitalize="none" placeholder="••••" required="required">
                                                                     </div>
 
                                                                     <div class="col-md-12">
@@ -146,7 +147,10 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                                                         <br><br>
 
                                                                         <!-- SYSTEM CONFIG -->
-                                                                        <div class="negrita card-header text-white bg-primary">Página System Config</div>
+                                                                        <div class="negrita card-header text-white bg-primary">Página System Config
+                                                                            <span class="botselectpeque botselectpeque-hover ml-2 float-right" id="deselecionarpsysconf" name="deselecionarpsysconf">Desactivar todo</span>
+                                                                            <span class="botselectpeque botselectpeque-hover float-right" id="selectodaspsysconf" name="selectodaspsysconf">Activar todo</span>
+                                                                        </div>
                                                                         <div class="card-body border">
 
                                                                             <div class="form-group">
