@@ -235,11 +235,12 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                                                     $files = array();
 
                                                                     foreach (scandir($rutaarchivo) as $file) {
-                                                                        if (in_array($file, $ignored)) continue;
-                                                                        $fileNameCmps = explode(".", $file);
-                                                                        $fileExtension = strtolower(end($fileNameCmps));
-                                                                        if ($fileExtension == "gz") {
-                                                                            $files[$file] = filemtime($rutaarchivo . '/' . $file);
+                                                                        if (!in_array($file, $ignored)) {
+                                                                            $fileNameCmps = explode(".", $file);
+                                                                            $fileExtension = strtolower(end($fileNameCmps));
+                                                                            if ($fileExtension == "gz") {
+                                                                                $files[$file] = filemtime($rutaarchivo . '/' . $file);
+                                                                            }
                                                                         }
                                                                     }
 
