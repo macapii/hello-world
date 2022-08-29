@@ -85,6 +85,8 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
         $elbackupcompress = CONFIGBACKUPCOMPRESS;
         $elbackuphilos = CONFIGBACKUPHILOS;
 
+        $elbackuprotate = CONFIGBACKUROTATE;
+
         //OBTENER RUTA DONDE TIENE QUE ESTAR LA CARPETA CONFIG
         $dirconfig = "";
         $dirconfig = dirname(getcwd()) . PHP_EOL;
@@ -134,6 +136,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                 fwrite($file, 'define("CONFIGBACKUPMULTI", "' . $elbackupmulti . '");' . PHP_EOL);
                 fwrite($file, 'define("CONFIGBACKUPCOMPRESS", "' . $elbackupcompress . '");' . PHP_EOL);
                 fwrite($file, 'define("CONFIGBACKUPHILOS", "' . $elbackuphilos . '");' . PHP_EOL);
+                fwrite($file, 'define("CONFIGBACKUROTATE", "' . $elbackuprotate . '");' . PHP_EOL);
                 fwrite($file, "?>" . PHP_EOL);
                 fclose($file);
 
