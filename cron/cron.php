@@ -771,8 +771,14 @@ if ($elerror == 0) {
                                                                                 if (!$oky) {
                                                                                     $retorno = "Tarea Crear Backup, ejecutado correctamente.";
 
+                                                                                    //CARGAR ROTACIONES Y SINO EXISTE 0
+                                                                                    if (!defined('CONFIGBACKUROTATE')) {
+                                                                                        $elbackuprotate = 0;
+                                                                                    } else {
+                                                                                        $elbackuprotate = CONFIGBACKUROTATE;
+                                                                                    }
+
                                                                                     //DECLARAR VARIABLES ROTATE
-                                                                                    $elbackuprotate = CONFIGBACKUROTATE;
                                                                                     $rutarotate = trim($RUTAPRINCIPAL . "/config" . "/backuprotate.json" . PHP_EOL);
                                                                                     $rutawriteconfig = trim($RUTAPRINCIPAL . "/config" . PHP_EOL);
 
