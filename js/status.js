@@ -43,7 +43,9 @@ $(function () {
                     document.getElementById("textoretorno").innerHTML = "<div class='alert alert-danger' role='alert'>Error: El archivo no es válido.</div>";
                 } else if (data == "noescritura") {
                     document.getElementById("textoretorno").innerHTML = "<div class='alert alert-danger' role='alert'>Error: Carpeta Servidor Minecraft no tiene permisos de escritura.</div>";
-                } else if (data == "puertoenuso") {
+                } else if (data == "noescrituraservproperties") {
+                    document.getElementById("textoretorno").innerHTML = "<div class='alert alert-danger' role='alert'>Error: El archivo server.properties no tiene permisos de escritura.</div>";
+                }  else if (data == "puertoenuso") {
                     document.getElementById("textoretorno").innerHTML = "<div class='alert alert-danger' role='alert'>Error: Puerto en uso.</div>";
                 } else if (data == "nolecturamine") {
                     document.getElementById("textoretorno").innerHTML = "<div class='alert alert-danger' role='alert'>Error: La carpeta del servidor minecraft no tiene permisos de lectura.</div>";
