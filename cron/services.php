@@ -343,7 +343,7 @@ if ($elerror == 0) {
               }
             }
 
-            //COMPROBAR SERVER.PROPERTIES
+            //COMPROBAR ESCRITURA SERVER.PROPERTIES
             if ($elerror == 0) {
               $rutatemp = $rutaminecraffijo;
               $rutafinal = $rutaminecraffijo;
@@ -352,41 +352,67 @@ if ($elerror == 0) {
               $contador = 0;
               $secuprofile = 0;
 
-              $gestor = @fopen($rutafinal, "r");
-              $file = fopen($rutatemp, "w");
-
-              while (($búfer = fgets($gestor, 4096)) !== false) {
-                $str = $búfer;
-                $array = explode("=", $str);
-
-                if ($array[0] == "server-port") {
-                  fwrite($file, 'server-port=' . $recpuerto . PHP_EOL);
-                  $contador = 1;
-                } else {
-                  fwrite($file, $búfer);
-                }
-
-                if ($array[0] == "enforce-secure-profile") {
-                  $secuprofile = 1;
+              clearstatcache();
+              if (file_exists($rutafinal)) {
+                clearstatcache();
+                if (!is_writable($rutafinal)) {
+                  $elerror = 1;
+                  $retorno = "Error Tarea Iniciar Servidor, no hay permisos de escritura en server.properties";
                 }
               }
+            }
 
-              if ($contador == 0) {
+            //COMPROBAR SERVER.PROPERTIES
+            if ($elerror == 0) {
+              clearstatcache();
+              if (file_exists($rutafinal)) {
+
+                $gestor = @fopen($rutafinal, "r");
+                $file = fopen($rutatemp, "w");
+
+                while (($búfer = fgets($gestor, 4096)) !== false) {
+                  $str = $búfer;
+                  $array = explode("=", $str);
+
+                  if ($array[0] == "server-port") {
+                    fwrite($file, 'server-port=' . $recpuerto . PHP_EOL);
+                    $contador = 1;
+                  } else {
+                    fwrite($file, $búfer);
+                  }
+
+                  if ($array[0] == "enforce-secure-profile") {
+                    $secuprofile = 1;
+                  }
+                }
+
+                if ($contador == 0) {
+                  fwrite($file, "server-port=" . $recpuerto . PHP_EOL);
+                }
+
+                //AÑADIR enforce-secure-profile EN FALSE SI NO EXISTE
+                if ($secuprofile == 0) {
+                  fwrite($file, "enforce-secure-profile=false" . PHP_EOL);
+                }
+
+                fclose($gestor);
+                fclose($file);
+                rename($rutatemp, $rutafinal);
+
+                //PERMISO SERVER.PROPERTIES
+                $elcommando = "cd " . $rutaminecraffijo . " && chmod 664 server.properties";
+                exec($elcommando);
+              } else {
+                //SI NO EXISTE POR CUALQUIER RAZON, SE GENERA UN ARCHIVO DE CONFIG MINIMA
+                $file = fopen($rutafinal, "w");
                 fwrite($file, "server-port=" . $recpuerto . PHP_EOL);
-              }
-
-              //AÑADIR enforce-secure-profile EN FALSE SI NO EXISTE
-              if ($secuprofile == 0) {
                 fwrite($file, "enforce-secure-profile=false" . PHP_EOL);
+                fclose($file);
+
+                //PERMISO SERVER.PROPERTIES
+                $elcommando = "cd " . $rutaminecraffijo . " && chmod 664 server.properties";
+                exec($elcommando);
               }
-
-              fclose($gestor);
-              fclose($file);
-              rename($rutatemp, $rutafinal);
-
-              //PERMISO SERVER.PROPERTIES
-              $elcommando = "cd " . $rutaminecraffijo . " && chmod 664 server.properties";
-              exec($elcommando);
             }
 
             //INSERTAR SERVER-ICON EN CASO QUE NO EXISTA
