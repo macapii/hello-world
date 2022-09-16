@@ -400,7 +400,7 @@ require_once("../template/errorreport.php");
         fwrite($file, "spawn-animals=true" . PHP_EOL);
         //eliminado en Minecraft 1.18 fwrite($file, "snooper-enabled=true" . PHP_EOL);
         fwrite($file, "function-permission-level=2" . PHP_EOL);
-        fwrite($file, "level-type=default" . PHP_EOL);
+        //eliminado ya que puede variar si es inferior a Minecraft 1.19 fwrite($file, "level-type=default" . PHP_EOL);
         fwrite($file, "text-filtering-config=" . PHP_EOL);
         fwrite($file, "spawn-monsters=true" . PHP_EOL);
         fwrite($file, "enforce-whitelist=false" . PHP_EOL);
