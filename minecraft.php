@@ -812,8 +812,8 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                                     <p class="">Valor Defecto: default<br>Requiere Versión: 1.15 o superior</p>
                                                     <select id="form-level-type" class="form-control w-100">
                                                         <?php
-                                                        $lostextos = array('Standard', 'Plano', 'Biomas Largos', 'Amplificado', 'Un bioma (Requiere 1.15 o superior)');
-                                                        $losvalues = array('default', 'flat', 'largebiomes', 'amplified', 'buffet');
+                                                        $lostextos = array('Standard', 'Plano', 'Biomas Largos', 'Amplificado', 'Un bioma (Requiere 1.15 o superior)','Standard (Version 1.19 o superior)','Plano (Version 1.19 o superior)','Biomas Largos (Version 1.19 o superior)','Amplificado (Version 1.19 o superior)','Un bioma (Version 1.19 o superior)');
+                                                        $losvalues = array('default', 'flat', 'largebiomes', 'amplified', 'buffet','minecraft\:normal','minecraft\:flat','minecraft\:large_biomes','minecraft\:amplified','minecraft\:single_biome_surface');
 
                                                         $obtener = leerlineas('level-type');
 
