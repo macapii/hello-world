@@ -2066,7 +2066,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                             <div class="row">
                                                 <div class="col-md-8">
                                                     <h3 class=""><strong>Limite de Paquetes</strong></h3>
-                                                    <p class="lead">Permite kikear jugadores que constantemente están enviando demasiados paquetes en cuestión de segundos.</p>
+                                                    <p class="lead">Permite expulsar jugadores que constantemente están enviando demasiados paquetes en cuestión de segundos.</p>
                                                 </div>
                                                 <div class="col-md-4">
                                                     <p class="">Valor Defecto: 0 (Sin limité)<br>Requiere Versión: 1.16.2 o superior</p>
