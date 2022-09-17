@@ -210,7 +210,7 @@ Copyright (C) 2020-2022 Cristina Ibañez, Konata400
     <li class="nav-item menu-hover">
         <a class="nav-link" href="salir.php">
             <img class="d-block float-left mr-2" src="img/menu/salir.png" alt="salir">
-            <h6 class="text-light">Cerrar sessión</h6>
+            <h6 class="text-light">Cerrar sesión</h6>
         </a>
     </li>
 
