@@ -866,14 +866,16 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
             if (!defined('CONFIGBACKUROTATE')) {
               $recbackuprotate = 0;
             } else {
-              $recbackuprotate = CONFIGBACKUROTATE;
+              $recbackuprotate = intval(CONFIGBACKUROTATE);
             }
 
             $elbackuprotate = test_input($_POST["backuprotate"]);
 
             //ES NUMERICO
             if ($elerror == 0) {
-              if (!is_numeric($elbackuprotate)) {
+              if (is_numeric($elbackuprotate)) {
+                $elbackuprotate = intval($elbackuprotate);
+              } else {
                 $retorno = "backuprotatenonumerico";
                 $elerror = 1;
               }

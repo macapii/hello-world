@@ -189,7 +189,7 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                                     if (!defined('CONFIGBACKUROTATE')) {
                                                         $recbackuprotate = 0;
                                                     } else {
-                                                        $recbackuprotate = CONFIGBACKUROTATE;
+                                                        $recbackuprotate = intval(CONFIGBACKUROTATE);
                                                     }
 
 
