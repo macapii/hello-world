@@ -361,7 +361,9 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
 
               //ES NUMERICO
               if ($elerror == 0) {
-                if (!is_numeric($elnumerolineaconsola)) {
+                if (is_numeric($elnumerolineaconsola)) {
+                  $elnumerolineaconsola = intval($elnumerolineaconsola);
+                } else {
                   $retorno = "lineasconsolanonumerico";
                   $elerror = 1;
                 }
@@ -379,7 +381,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
               $elerror = 1;
             }
           } else {
-            $elnumerolineaconsola = CONFIGLINEASCONSOLA;
+            $elnumerolineaconsola = intval(CONFIGLINEASCONSOLA);
           }
         }
 
@@ -391,7 +393,9 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
 
               //ES NUMERICO
               if ($elerror == 0) {
-                if (!is_numeric($elbufferlimit)) {
+                if (is_numeric($elbufferlimit)) {
+                  $elbufferlimit = intval($elbufferlimit);
+                } else {
                   $retorno = "buffernonumerico";
                   $elerror = 1;
                 }
@@ -409,7 +413,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
               $elerror = 1;
             }
           } else {
-            $elbufferlimit = CONFIGBUFFERLIMIT;
+            $elbufferlimit = intval(CONFIGBUFFERLIMIT);
           }
         }
 
@@ -700,6 +704,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
 
               //MIRAR SI ES NUMERICO
               if (is_numeric($ellimitebackupgb)) {
+                $ellimitebackupgb = intval($ellimitebackupgb);
                 //MIRAR SI SUPERA EL LIMITE PERMITIDO
                 if ($ellimitebackupgb > 100) {
                   $elerror = 1;
@@ -710,7 +715,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                 $retorno = "valornonumerico";
               }
             } else {
-              $ellimitebackupgb = CONFIGFOLDERBACKUPSIZE;
+              $ellimitebackupgb = intval(CONFIGFOLDERBACKUPSIZE);
             }
 
             if (isset($_POST["limitminecraftgb"])) {
@@ -719,6 +724,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
 
               //MIRAR SI ES NUMERICO
               if (is_numeric($ellimiteminecraftgb)) {
+                $ellimiteminecraftgb = intval($ellimiteminecraftgb);
                 //MIRAR SI SUPERA EL LIMITE PERMITIDO
                 if ($ellimiteminecraftgb > 100) {
                   $elerror = 1;
@@ -729,11 +735,11 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                 $retorno = "valornonumerico";
               }
             } else {
-              $ellimiteminecraftgb = CONFIGFOLDERMINECRAFTSIZE;
+              $ellimiteminecraftgb = intval(CONFIGFOLDERMINECRAFTSIZE);
             }
           } else {
-            $ellimitebackupgb = CONFIGFOLDERBACKUPSIZE;
-            $ellimiteminecraftgb = CONFIGFOLDERMINECRAFTSIZE;
+            $ellimitebackupgb = intval(CONFIGFOLDERBACKUPSIZE);
+            $ellimiteminecraftgb = intval(CONFIGFOLDERMINECRAFTSIZE);
           }
         }
 

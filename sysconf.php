@@ -125,15 +125,15 @@ if (isset($_SESSION['CONFIGUSER']['psystemconftemaweb'])) {
                                                     $recjavaname = CONFIGJAVANAME;
                                                     $recjavamanual = CONFIGJAVAMANUAL;
 
-                                                    $recbackuplimitgb = CONFIGFOLDERBACKUPSIZE;
-                                                    $recminecraftlimitgb = CONFIGFOLDERMINECRAFTSIZE;
+                                                    $recbackuplimitgb = intval(CONFIGFOLDERBACKUPSIZE);
+                                                    $recminecraftlimitgb = intval(CONFIGFOLDERMINECRAFTSIZE);
 
-                                                    $recnumerolineaconsola = CONFIGLINEASCONSOLA;
+                                                    $recnumerolineaconsola = intval(CONFIGLINEASCONSOLA);
 
                                                     if (!defined('CONFIGBUFFERLIMIT')) {
                                                         $recbuffer = 100;
                                                     } else {
-                                                        $recbuffer = CONFIGBUFFERLIMIT;
+                                                        $recbuffer = intval(CONFIGBUFFERLIMIT);
                                                     }
 
                                                     $recshowsizefolder = CONFIGSHOWSIZEFOLDERS;
