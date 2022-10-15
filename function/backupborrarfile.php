@@ -93,6 +93,45 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                     //COMPROBAR SI SE PUEDE ESCRIBIR
                     if (is_writable($dirconfig)) {
                         $retorno = unlink($dirconfig);
+
+                        //DESROTAR ARCHIVO
+                        $rotateindice = 0;
+                        $elauxiliar = 0;
+                        $elauxlimpieza = 0;
+                        $arraylimpieza = array();
+                        $rutarotate = trim($dirraiz . "/config" . "/backuprotate.json" . PHP_EOL);
+
+                        clearstatcache();
+                        if (is_writable($rutarotate)) {
+
+                            //LEER ARCHIVO
+                            $getarrayrotate = file_get_contents($rutarotate);
+                            $elarrayrotate = unserialize($getarrayrotate);
+                            $rotateindice = count($elarrayrotate);
+
+                            //RECORER BUCLE Y QUITAR LOS REGISTROS QUE SE LLAMEN IGUAL A ARCHIVO
+                            for ($elbucle = 0; $elbucle < $rotateindice; $elbucle++) {
+                                if ($archivo != $elarrayrotate[$elbucle]['archivo']) {
+                                    $arraylimpieza[$elauxiliar]['archivo'] = $elarrayrotate[$elbucle]['archivo'];
+                                    $arraylimpieza[$elauxiliar]['fecha'] = $elarrayrotate[$elbucle]['fecha'];
+                                    $elauxiliar = $elauxiliar + 1;
+                                }
+                            }
+
+                            //OBTENER EL NUMERO DE REGISTROS DEL ARRAY LIMPIEZA
+                            $elauxlimpieza = count($arraylimpieza);
+
+                            //SI NO HAY REGISTROS SE BORRA SINO SE GUARDA ARCHIVO
+                            if ($elauxlimpieza == 0) {
+                                clearstatcache();
+                                if (is_writable($rutarotate)) {
+                                    unlink($rutarotate);
+                                }
+                            } else {
+                                $serializedlimpia = serialize($arraylimpieza);
+                                file_put_contents($rutarotate, $serializedlimpia);
+                            }
+                        }
                     } else {
                         $retorno = "nowritable";
                     }
