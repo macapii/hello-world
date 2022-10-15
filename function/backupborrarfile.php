@@ -89,6 +89,7 @@ if ($_SESSION['VALIDADO'] == $_SESSION['KEYSECRETA']) {
                 $dirconfig .= "/backups";
                 $dirconfig = $dirconfig . "/" . $archivo;
 
+                clearstatcache();
                 if (file_exists($dirconfig)) {
                     //COMPROBAR SI SE PUEDE ESCRIBIR
                     if (is_writable($dirconfig)) {
