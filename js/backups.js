@@ -31,17 +31,13 @@ $(function () {
             if (e.keyCode == 32) {
                 return false;
             } else {
-                if (e.keyCode >= 48 && e.keyCode <= 57 || e.keyCode >= 65 && e.keyCode <= 90 || e.keyCode >= 97 && e.keyCode <= 122 || e.keyCode == 45 || e.keyCode == 95 || e.keyCode == 13) {
-                    return true;
-                } else {
-                    return false;
-                }
+                return !!(e.keyCode >= 48 && e.keyCode <= 57 || e.keyCode >= 65 && e.keyCode <= 90 || e.keyCode >= 97 && e.keyCode <= 122 || e.keyCode == 45 || e.keyCode == 95 || e.keyCode == 13);
             }
         });
     }
 
     if (document.getElementsByClassName('descargar') !== null) {
-        var descargarbuttons = document.getElementsByClassName('descargar');
+        let descargarbuttons = document.getElementsByClassName('descargar');
         for (const element of descargarbuttons) {
             element.addEventListener("click", function () {
                 window.open('function/backupdownfile.php?action=' + this.value, '_blank', 'noopener noreferrer', "toolbar=no,scrollbars=yes,resizable=yes,top=400,left=500,width=400,height=100");
@@ -50,11 +46,12 @@ $(function () {
     }
 
     if (document.getElementsByClassName('restaurar') !== null) {
-        var restaurarbuttons = document.getElementsByClassName('restaurar');
+        let restaurarbuttons = document.getElementsByClassName('restaurar');
         for (const element of restaurarbuttons) {
             element.addEventListener("click", function () {
-                var eleccion = confirm("¡ATENCIÓN!\n\nAl Restaurar se borrarán todos los archivos del servidor minecraft.\n\n¿Seguro que quieres continuar?");
-                if (eleccion == true) {
+                let eleccion = confirm("¡ATENCIÓN!\n\nAl Restaurar se borrarán todos los archivos del servidor minecraft.\n\n¿Seguro que quieres continuar?");
+
+                if (eleccion) {
 
                     $.ajax({
                         type: "POST",
@@ -95,11 +92,11 @@ $(function () {
     }
 
     if (document.getElementsByClassName('borrar') !== null) {
-        var borrarbuttons = document.getElementsByClassName('borrar');
+        let borrarbuttons = document.getElementsByClassName('borrar');
         for (const element of borrarbuttons) {
             element.addEventListener("click", function () {
-                var eleccion = confirm("¡ATENCIÓN!\n\n¿Estás seguro de eliminar el backup: " + this.value + " ?");
-                if (eleccion == true) {
+                let eleccion = confirm("¡ATENCIÓN!\n\n¿Estás seguro de eliminar el backup: " + this.value + " ?");
+                if (eleccion) {
 
                     $.ajax({
                         type: "POST",
@@ -126,11 +123,11 @@ $(function () {
     }
 
     if (document.getElementsByClassName('desrotar') !== null) {
-        var desrotarbuttons = document.getElementsByClassName('desrotar');
+        let desrotarbuttons = document.getElementsByClassName('desrotar');
         for (const element of desrotarbuttons) {
             element.addEventListener("click", function () {
-                var eleccion = confirm("¡ATENCIÓN!\n\n¿Estás seguro de eliminar el backup de la rotación: " + this.value + " ?");
-                if (eleccion == true) {
+                let eleccion = confirm("¡ATENCIÓN!\n\n¿Estás seguro de eliminar el backup de la rotación: " + this.value + " ?");
+                if (eleccion) {
 
                     $.ajax({
                         type: "POST",
@@ -153,9 +150,9 @@ $(function () {
     if (document.getElementById('crearbackup') !== null) {
         $("#crearbackup").click(function () {
             document.getElementById("textobackupretorno").innerHTML = "<div class='lead'></div>";
-            var eleccion = confirm("¡CONFIRMAR ACCION!\n\nSi el servidor está ejecutado el backup podría fallar.\n\n¿Seguro que quieres continuar?");
+            let eleccion = confirm("¡CONFIRMAR ACCION!\n\nSi el servidor está ejecutado el backup podría fallar.\n\n¿Seguro que quieres continuar?");
             if (eleccion == true) {
-                var eltexto = document.getElementById("inputbackup").value;
+                let eltexto = document.getElementById("inputbackup").value;
                 const elarraynamebackup = [String(eltexto)];
 
                 $.ajax({
