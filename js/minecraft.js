@@ -23,84 +23,44 @@ $(function () {
     }
 
     $("#form-player-idle-timeout").keypress(function (e) {
-        if (e.keyCode < 48 || e.keyCode > 57) {
-            return false;
-        } else {
-            return true;
-        }
+        return !(e.keyCode < 48 || e.keyCode > 57);
     });
 
     $("#form-max-build-height").keypress(function (e) {
-        if (e.keyCode < 48 || e.keyCode > 57) {
-            return false;
-        } else {
-            return true;
-        }
+        return !(e.keyCode < 48 || e.keyCode > 57);
     });
 
     $("#form-entity-broadcast-range-percentage").keypress(function (e) {
-        if (e.keyCode < 48 || e.keyCode > 57) {
-            return false;
-        } else {
-            return true;
-        }
+        return !(e.keyCode < 48 || e.keyCode > 57);
     });
 
     $("#form-simulation-distance").keypress(function (e) {
-        if (e.keyCode < 48 || e.keyCode > 57) {
-            return false;
-        } else {
-            return true;
-        }
+        return !(e.keyCode < 48 || e.keyCode > 57);
     });
 
     $("#form-spawn-protection").keypress(function (e) {
-        if (e.keyCode < 48 || e.keyCode > 57) {
-            return false;
-        } else {
-            return true;
-        }
+        return !(e.keyCode < 48 || e.keyCode > 57);
     });
 
     $("#form-max-world-size").keypress(function (e) {
-        if (e.keyCode < 48 || e.keyCode > 57) {
-            return false;
-        } else {
-            return true;
-        }
+        return !(e.keyCode < 48 || e.keyCode > 57);
     });
 
     $("#form-max-players").keypress(function (e) {
-        if (e.keyCode < 48 || e.keyCode > 57) {
-            return false;
-        } else {
-            return true;
-        }
+        return !(e.keyCode < 48 || e.keyCode > 57);
     });
 
     $("#form-query-port").keypress(function (e) {
-        if (e.keyCode < 48 || e.keyCode > 57) {
-            return false;
-        } else {
-            return true;
-        }
+        return !(e.keyCode < 48 || e.keyCode > 57);
     });
 
     $("#form-rconport").keypress(function (e) {
-        if (e.keyCode < 48 || e.keyCode > 57) {
-            return false;
-        } else {
-            return true;
-        }
+        return !(e.keyCode < 48 || e.keyCode > 57);
     });
 
     $("#form-max-chained-neighbor-updates").keypress(function (e) {
         if (e.keyCode < 48 || e.keyCode > 57) {
-            if (e.keyCode == 45) {
-                return true;
-            } else {
-                return false;
-            }
+            return e.keyCode == 45;
         } else {
             return true;
         }
@@ -108,66 +68,38 @@ $(function () {
 
     $("#form-max-tick-time").keypress(function (e) {
         if (e.keyCode < 48 || e.keyCode > 57) {
-            if (e.keyCode == 45) {
-                return true;
-            } else {
-                return false;
-            }
+            return e.keyCode == 45;
         } else {
             return true;
         }
     });
 
     $("#form-op-permission-level").keypress(function (e) {
-        if (e.keyCode < 48 || e.keyCode > 57) {
-            return false;
-        } else {
-            return true;
-        }
+        return !(e.keyCode < 48 || e.keyCode > 57);
     });
 
     $("#form-function-permission-level").keypress(function (e) {
-        if (e.keyCode < 48 || e.keyCode > 57) {
-            return false;
-        } else {
-            return true;
-        }
+        return !(e.keyCode < 48 || e.keyCode > 57);
     });
 
     $("#form-rate-limit").keypress(function (e) {
-        if (e.keyCode < 48 || e.keyCode > 57) {
-            return false;
-        } else {
-            return true;
-        }
+        return !(e.keyCode < 48 || e.keyCode > 57);
     });
 
     $("#form-network-compression-threshold").keypress(function (e) {
         if (e.keyCode < 48 || e.keyCode > 57) {
-            if (e.keyCode == 45) {
-                return true;
-            } else {
-                return false;
-            }
+            return e.keyCode == 45;
         } else {
             return true;
         }
     });
 
     $("#form-view-distance").keypress(function (e) {
-        if (e.keyCode < 48 || e.keyCode > 57) {
-            return false;
-        } else {
-            return true;
-        }
+        return !(e.keyCode < 48 || e.keyCode > 57);
     });
 
     $("#form-level-name").keypress(function (e) {
-        if (e.keyCode >= 48 && e.keyCode <= 57 || e.keyCode >= 65 && e.keyCode <= 90 || e.keyCode >= 97 && e.keyCode <= 122 || e.keyCode == 45 || e.keyCode == 95 || e.keyCode == 13) {
-            return true;
-        } else {
-            return false;
-        }
+        return !!(e.keyCode >= 48 && e.keyCode <= 57 || e.keyCode >= 65 && e.keyCode <= 90 || e.keyCode >= 97 && e.keyCode <= 122 || e.keyCode == 45 || e.keyCode == 95 || e.keyCode == 13);
     });
 
     if (document.getElementById("label-gamemode") !== null) {
@@ -507,8 +439,8 @@ $(function () {
     }
 
     $("#form-gamemode").change(function () {
-        var envioaction = "gamemode";
-        var enviovalor = document.getElementById("form-gamemode").value;
+        let envioaction = "gamemode";
+        let enviovalor = document.getElementById("form-gamemode").value;
         $.ajax({
             type: "POST",
             url: "function/guardarproperties.php",
@@ -517,7 +449,7 @@ $(function () {
                 valor: enviovalor
             },
             success: function (data) {
-                var getdebug = 0;
+                let getdebug = 0;
                 if (getdebug == 1) {
                     alert(data);
                 }
@@ -531,8 +463,8 @@ $(function () {
     });
 
     $("#form-force-gamemode").change(function () {
-        var envioaction = "force-gamemode";
-        var enviovalor = document.getElementById("form-force-gamemode").value;
+        let envioaction = "force-gamemode";
+        let enviovalor = document.getElementById("form-force-gamemode").value;
         $.ajax({
             type: "POST",
             url: "function/guardarproperties.php",
@@ -541,7 +473,7 @@ $(function () {
                 valor: enviovalor
             },
             success: function (data) {
-                var getdebug = 0;
+                let getdebug = 0;
                 if (getdebug == 1) {
                     alert(data);
                 }
@@ -555,8 +487,8 @@ $(function () {
     });
 
     $("#form-difficulty").change(function () {
-        var envioaction = "difficulty";
-        var enviovalor = document.getElementById("form-difficulty").value;
+        let envioaction = "difficulty";
+        let enviovalor = document.getElementById("form-difficulty").value;
         $.ajax({
             type: "POST",
             url: "function/guardarproperties.php",
@@ -565,7 +497,7 @@ $(function () {
                 valor: enviovalor
             },
             success: function (data) {
-                var getdebug = 0;
+                let getdebug = 0;
                 if (getdebug == 1) {
                     alert(data);
                 }
@@ -579,8 +511,8 @@ $(function () {
     });
 
     $("#form-hardcore").change(function () {
-        var envioaction = "hardcore";
-        var enviovalor = document.getElementById("form-hardcore").value;
+        let envioaction = "hardcore";
+        let enviovalor = document.getElementById("form-hardcore").value;
         $.ajax({
             type: "POST",
             url: "function/guardarproperties.php",
@@ -589,7 +521,7 @@ $(function () {
                 valor: enviovalor
             },
             success: function (data) {
-                var getdebug = 0;
+                let getdebug = 0;
                 if (getdebug == 1) {
                     alert(data);
                 }
@@ -603,8 +535,8 @@ $(function () {
     });
 
     $("#form-pvp").change(function () {
-        var envioaction = "pvp";
-        var enviovalor = document.getElementById("form-pvp").value;
+        let envioaction = "pvp";
+        let enviovalor = document.getElementById("form-pvp").value;
         $.ajax({
             type: "POST",
             url: "function/guardarproperties.php",
@@ -613,7 +545,7 @@ $(function () {
                 valor: enviovalor
             },
             success: function (data) {
-                var getdebug = 0;
+                let getdebug = 0;
                 if (getdebug == 1) {
                     alert(data);
                 }
@@ -627,8 +559,8 @@ $(function () {
     });
 
     $("#form-spawn-npcs").change(function () {
-        var envioaction = "spawn-npcs";
-        var enviovalor = document.getElementById("form-spawn-npcs").value;
+        let envioaction = "spawn-npcs";
+        let enviovalor = document.getElementById("form-spawn-npcs").value;
         $.ajax({
             type: "POST",
             url: "function/guardarproperties.php",
@@ -637,7 +569,7 @@ $(function () {
                 valor: enviovalor
             },
             success: function (data) {
-                var getdebug = 0;
+                let getdebug = 0;
                 if (getdebug == 1) {
                     alert(data);
                 }
@@ -651,8 +583,8 @@ $(function () {
     });
 
     $("#form-spawn-animals").change(function () {
-        var envioaction = "spawn-animals";
-        var enviovalor = document.getElementById("form-spawn-animals").value;
+        let envioaction = "spawn-animals";
+        let enviovalor = document.getElementById("form-spawn-animals").value;
         $.ajax({
             type: "POST",
             url: "function/guardarproperties.php",
@@ -661,7 +593,7 @@ $(function () {
                 valor: enviovalor
             },
             success: function (data) {
-                var getdebug = 0;
+                let getdebug = 0;
                 if (getdebug == 1) {
                     alert(data);
                 }
@@ -675,8 +607,8 @@ $(function () {
     });
 
     $("#form-spawn-monsters").change(function () {
-        var envioaction = "spawn-monsters";
-        var enviovalor = document.getElementById("form-spawn-monsters").value;
+        let envioaction = "spawn-monsters";
+        let enviovalor = document.getElementById("form-spawn-monsters").value;
         $.ajax({
             type: "POST",
             url: "function/guardarproperties.php",
@@ -685,7 +617,7 @@ $(function () {
                 valor: enviovalor
             },
             success: function (data) {
-                var getdebug = 0;
+                let getdebug = 0;
                 if (getdebug == 1) {
                     alert(data);
                 }
@@ -699,8 +631,8 @@ $(function () {
     });
 
     $("#form-allow-flight").change(function () {
-        var envioaction = "allow-flight";
-        var enviovalor = document.getElementById("form-allow-flight").value;
+        let envioaction = "allow-flight";
+        let enviovalor = document.getElementById("form-allow-flight").value;
         $.ajax({
             type: "POST",
             url: "function/guardarproperties.php",
@@ -709,7 +641,7 @@ $(function () {
                 valor: enviovalor
             },
             success: function (data) {
-                var getdebug = 0;
+                let getdebug = 0;
                 if (getdebug == 1) {
                     alert(data);
                 }
@@ -723,9 +655,9 @@ $(function () {
     });
 
     $("#form-player-idle-timeout").change(function () {
-        var errores = 0;
-        var envioaction = "player-idle-timeout";
-        var enviovalor = document.getElementById("form-player-idle-timeout").value;
+        let errores = 0;
+        let envioaction = "player-idle-timeout";
+        let enviovalor = document.getElementById("form-player-idle-timeout").value;
         if (enviovalor > 2147483647) {
             errores = 1;
         }
@@ -739,7 +671,7 @@ $(function () {
                     valor: enviovalor
                 },
                 success: function (data) {
-                    var getdebug = 0;
+                    let getdebug = 0;
                     if (getdebug == 1) {
                         alert(data);
                     }
@@ -753,8 +685,8 @@ $(function () {
     });
 
     $("#form-resource-pack").keyup(function () {
-        var envioaction = "resource-pack";
-        var enviovalor = document.getElementById("form-resource-pack").value;
+        let envioaction = "resource-pack";
+        let enviovalor = document.getElementById("form-resource-pack").value;
         $.ajax({
             type: "POST",
             url: "function/guardarproperties.php",
@@ -763,7 +695,7 @@ $(function () {
                 valor: enviovalor
             },
             success: function (data) {
-                var getdebug = 0;
+                let getdebug = 0;
                 if (getdebug == 1) {
                     alert(data);
                 }
@@ -778,19 +710,19 @@ $(function () {
 
     if (document.getElementById("form-resource-pack") !== null) {
         document.getElementById("form-resource-pack").addEventListener('paste', function (event) {
-            var envioaction = "resource-pack";
-            var enviovalor = event.clipboardData.getData('text');
+            let envioaction = "resource-pack";
 
-            var eltext = "";
-            var textini = "";
-            var textfinal = "";
-            var enviar = "";
+            let enviovalor = "";
+            let eltext = "";
+            let textini = "";
+            let textfinal = "";
+            let enviar = "";
 
-            var text = document.getElementById("form-resource-pack");
+            let text = document.getElementById("form-resource-pack");
 
-            var startPosition = text.selectionStart;
-            var endPosition = text.selectionEnd;
-            var longitud = text.leng;
+            let startPosition = text.selectionStart;
+            let endPosition = text.selectionEnd;
+            let longitud = text.leng;
 
             eltext = document.getElementById("form-resource-pack").value;
             textini = eltext.substring(0, startPosition);
@@ -807,7 +739,7 @@ $(function () {
                     valor: enviovalor
                 },
                 success: function (data) {
-                    var getdebug = 0;
+                    let getdebug = 0;
                     if (getdebug == 1) {
                         alert(data);
                     }
@@ -822,8 +754,8 @@ $(function () {
     }
 
     $("#form-resource-pack-sha1").keyup(function () {
-        var envioaction = "resource-pack-sha1";
-        var enviovalor = document.getElementById("form-resource-pack-sha1").value;
+        let envioaction = "resource-pack-sha1";
+        let enviovalor = document.getElementById("form-resource-pack-sha1").value;
         $.ajax({
             type: "POST",
             url: "function/guardarproperties.php",
@@ -832,7 +764,7 @@ $(function () {
                 valor: enviovalor
             },
             success: function (data) {
-                var getdebug = 0;
+                let getdebug = 0;
                 if (getdebug == 1) {
                     alert(data);
                 }
@@ -847,19 +779,19 @@ $(function () {
 
     if (document.getElementById("form-resource-pack-sha1") !== null) {
         document.getElementById("form-resource-pack-sha1").addEventListener('paste', function (event) {
-            var envioaction = "resource-pack-sha1";
-            var enviovalor = event.clipboardData.getData('text');
+            let envioaction = "resource-pack-sha1";
 
-            var eltext = "";
-            var textini = "";
-            var textfinal = "";
-            var enviar = "";
+            let enviovalor = "";
+            let eltext = "";
+            let textini = "";
+            let textfinal = "";
+            let enviar = "";
 
-            var text = document.getElementById("form-resource-pack-sha1");
+            let text = document.getElementById("form-resource-pack-sha1");
 
-            var startPosition = text.selectionStart;
-            var endPosition = text.selectionEnd;
-            var longitud = text.leng;
+            let startPosition = text.selectionStart;
+            let endPosition = text.selectionEnd;
+            let longitud = text.leng;
 
             eltext = document.getElementById("form-resource-pack-sha1").value;
             textini = eltext.substring(0, startPosition);
@@ -876,7 +808,7 @@ $(function () {
                     valor: enviovalor
                 },
                 success: function (data) {
-                    var getdebug = 0;
+                    let getdebug = 0;
                     if (getdebug == 1) {
                         alert(data);
                     }
@@ -891,8 +823,8 @@ $(function () {
     }
 
     $("#form-require-resource-pack").change(function () {
-        var envioaction = "require-resource-pack";
-        var enviovalor = document.getElementById("form-require-resource-pack").value;
+        let envioaction = "require-resource-pack";
+        let enviovalor = document.getElementById("form-require-resource-pack").value;
         $.ajax({
             type: "POST",
             url: "function/guardarproperties.php",
@@ -901,7 +833,7 @@ $(function () {
                 valor: enviovalor
             },
             success: function (data) {
-                var getdebug = 0;
+                let getdebug = 0;
                 if (getdebug == 1) {
                     alert(data);
                 }
@@ -915,8 +847,8 @@ $(function () {
     });
 
     $("#form-resource-pack-prompt").keyup(function () {
-        var envioaction = "resource-pack-prompt";
-        var enviovalor = document.getElementById("form-resource-pack-prompt").value;
+        let envioaction = "resource-pack-prompt";
+        let enviovalor = document.getElementById("form-resource-pack-prompt").value;
         $.ajax({
             type: "POST",
             url: "function/guardarproperties.php",
@@ -925,7 +857,7 @@ $(function () {
                 valor: enviovalor
             },
             success: function (data) {
-                var getdebug = 0;
+                let getdebug = 0;
                 if (getdebug == 1) {
                     alert(data);
                 }
@@ -940,19 +872,19 @@ $(function () {
 
     if (document.getElementById("form-resource-pack-prompt") !== null) {
         document.getElementById("form-resource-pack-prompt").addEventListener('paste', function (event) {
-            var envioaction = "resource-pack-prompt";
-            var enviovalor = event.clipboardData.getData('text');
+            let envioaction = "resource-pack-prompt";
 
-            var eltext = "";
-            var textini = "";
-            var textfinal = "";
-            var enviar = "";
+            let enviovalor = "";
+            let eltext = "";
+            let textini = "";
+            let textfinal = "";
+            let enviar = "";
 
-            var text = document.getElementById("form-resource-pack-prompt");
+            let text = document.getElementById("form-resource-pack-prompt");
 
-            var startPosition = text.selectionStart;
-            var endPosition = text.selectionEnd;
-            var longitud = text.leng;
+            let startPosition = text.selectionStart;
+            let endPosition = text.selectionEnd;
+            let longitud = text.leng;
 
             eltext = document.getElementById("form-resource-pack-prompt").value;
             textini = eltext.substring(0, startPosition);
@@ -969,7 +901,7 @@ $(function () {
                     valor: enviovalor
                 },
                 success: function (data) {
-                    var getdebug = 0;
+                    let getdebug = 0;
                     if (getdebug == 1) {
                         alert(data);
                     }
@@ -984,8 +916,8 @@ $(function () {
     }
 
     $("#form-level-name").keyup(function () {
-        var envioaction = "level-name";
-        var enviovalor = document.getElementById("form-level-name").value;
+        let envioaction = "level-name";
+        let enviovalor = document.getElementById("form-level-name").value;
         enviovalor = enviovalor.toLowerCase();
         $.ajax({
             type: "POST",
@@ -995,7 +927,7 @@ $(function () {
                 valor: enviovalor
             },
             success: function (data) {
-                var getdebug = 0;
+                let getdebug = 0;
                 if (getdebug == 1) {
                     alert(data);
                 }
@@ -1009,8 +941,8 @@ $(function () {
     });
 
     $("#form-level-seed").keyup(function () {
-        var envioaction = "level-seed";
-        var enviovalor = document.getElementById("form-level-seed").value;
+        let envioaction = "level-seed";
+        let enviovalor = document.getElementById("form-level-seed").value;
         $.ajax({
             type: "POST",
             url: "function/guardarproperties.php",
@@ -1019,7 +951,7 @@ $(function () {
                 valor: enviovalor
             },
             success: function (data) {
-                var getdebug = 0;
+                let getdebug = 0;
                 if (getdebug == 1) {
                     alert(data);
                 }
@@ -1034,19 +966,19 @@ $(function () {
 
     if (document.getElementById("form-level-seed") !== null) {
         document.getElementById("form-level-seed").addEventListener('paste', function (event) {
-            var envioaction = "level-seed";
-            var enviovalor = event.clipboardData.getData('text');
+            let envioaction = "level-seed";
 
-            var eltext = "";
-            var textini = "";
-            var textfinal = "";
-            var enviar = "";
+            let enviovalor = "";
+            let eltext = "";
+            let textini = "";
+            let textfinal = "";
+            let enviar = "";
 
-            var text = document.getElementById("form-level-seed");
+            let text = document.getElementById("form-level-seed");
 
-            var startPosition = text.selectionStart;
-            var endPosition = text.selectionEnd;
-            var longitud = text.leng;
+            let startPosition = text.selectionStart;
+            let endPosition = text.selectionEnd;
+            let longitud = text.leng;
 
             eltext = document.getElementById("form-level-seed").value;
             textini = eltext.substring(0, startPosition);
@@ -1063,7 +995,7 @@ $(function () {
                     valor: enviovalor
                 },
                 success: function (data) {
-                    var getdebug = 0;
+                    let getdebug = 0;
                     if (getdebug == 1) {
                         alert(data);
                     }
@@ -1078,8 +1010,8 @@ $(function () {
     }
 
     $("#form-level-type").change(function () {
-        var envioaction = "level-type";
-        var enviovalor = document.getElementById("form-level-type").value;
+        let envioaction = "level-type";
+        let enviovalor = document.getElementById("form-level-type").value;
         $.ajax({
             type: "POST",
             url: "function/guardarproperties.php",
@@ -1088,7 +1020,7 @@ $(function () {
                 valor: enviovalor
             },
             success: function (data) {
-                var getdebug = 0;
+                let getdebug = 0;
                 if (getdebug == 1) {
                     alert(data);
                 }
@@ -1102,8 +1034,8 @@ $(function () {
     });
 
     $("#form-generator-settings").keyup(function () {
-        var envioaction = "generator-settings";
-        var enviovalor = document.getElementById("form-generator-settings").value;
+        let envioaction = "generator-settings";
+        let enviovalor = document.getElementById("form-generator-settings").value;
         $.ajax({
             type: "POST",
             url: "function/guardarproperties.php",
@@ -1112,7 +1044,7 @@ $(function () {
                 valor: enviovalor
             },
             success: function (data) {
-                var getdebug = 0;
+                let getdebug = 0;
                 if (getdebug == 1) {
                     alert(data);
                 }
@@ -1127,19 +1059,19 @@ $(function () {
 
     if (document.getElementById("form-generator-settings") !== null) {
         document.getElementById("form-generator-settings").addEventListener('paste', function (event) {
-            var envioaction = "generator-settings";
-            var enviovalor = event.clipboardData.getData('text');
+            let envioaction = "generator-settings";
 
-            var eltext = "";
-            var textini = "";
-            var textfinal = "";
-            var enviar = "";
+            let enviovalor = "";
+            let eltext = "";
+            let textini = "";
+            let textfinal = "";
+            let enviar = "";
 
-            var text = document.getElementById("form-generator-settings");
+            let text = document.getElementById("form-generator-settings");
 
-            var startPosition = text.selectionStart;
-            var endPosition = text.selectionEnd;
-            var longitud = text.leng;
+            let startPosition = text.selectionStart;
+            let endPosition = text.selectionEnd;
+            let longitud = text.leng;
 
             eltext = document.getElementById("form-generator-settings").value;
             textini = eltext.substring(0, startPosition);
@@ -1156,7 +1088,7 @@ $(function () {
                     valor: enviovalor
                 },
                 success: function (data) {
-                    var getdebug = 0;
+                    let getdebug = 0;
                     if (getdebug == 1) {
                         alert(data);
                     }
@@ -1171,9 +1103,9 @@ $(function () {
     }
 
     $("#form-max-build-height").change(function () {
-        var errores = 0;
-        var envioaction = "max-build-height";
-        var enviovalor = document.getElementById("form-max-build-height").value;
+        let errores = 0;
+        let envioaction = "max-build-height";
+        let enviovalor = document.getElementById("form-max-build-height").value;
         if (enviovalor > 256 || enviovalor < 8) {
             errores = 1;
         }
@@ -1187,7 +1119,7 @@ $(function () {
                     valor: enviovalor
                 },
                 success: function (data) {
-                    var getdebug = 0;
+                    let getdebug = 0;
                     if (getdebug == 1) {
                         alert(data);
                     }
@@ -1201,8 +1133,8 @@ $(function () {
     });
 
     $("#form-generate-structures").change(function () {
-        var envioaction = "generate-structures";
-        var enviovalor = document.getElementById("form-generate-structures").value;
+        let envioaction = "generate-structures";
+        let enviovalor = document.getElementById("form-generate-structures").value;
         $.ajax({
             type: "POST",
             url: "function/guardarproperties.php",
@@ -1211,7 +1143,7 @@ $(function () {
                 valor: enviovalor
             },
             success: function (data) {
-                var getdebug = 0;
+                let getdebug = 0;
                 if (getdebug == 1) {
                     alert(data);
                 }
@@ -1225,8 +1157,8 @@ $(function () {
     });
 
     $("#form-allow-nether").change(function () {
-        var envioaction = "allow-nether";
-        var enviovalor = document.getElementById("form-allow-nether").value;
+        let envioaction = "allow-nether";
+        let enviovalor = document.getElementById("form-allow-nether").value;
         $.ajax({
             type: "POST",
             url: "function/guardarproperties.php",
@@ -1235,7 +1167,7 @@ $(function () {
                 valor: enviovalor
             },
             success: function (data) {
-                var getdebug = 0;
+                let getdebug = 0;
                 if (getdebug == 1) {
                     alert(data);
                 }
@@ -1249,9 +1181,9 @@ $(function () {
     });
 
     $("#form-entity-broadcast-range-percentage").change(function () {
-        var errores = 0;
-        var envioaction = "entity-broadcast-range-percentage";
-        var enviovalor = document.getElementById("form-entity-broadcast-range-percentage").value;
+        let errores = 0;
+        let envioaction = "entity-broadcast-range-percentage";
+        let enviovalor = document.getElementById("form-entity-broadcast-range-percentage").value;
 
         if (enviovalor > 1000 || enviovalor < 10) {
             errores = 1;
@@ -1267,7 +1199,7 @@ $(function () {
                     valor: enviovalor
                 },
                 success: function (data) {
-                    var getdebug = 0;
+                    let getdebug = 0;
                     if (getdebug == 1) {
                         alert(data);
                     }
@@ -1281,9 +1213,9 @@ $(function () {
     });
 
     $("#form-simulation-distance").change(function () {
-        var errores = 0;
-        var envioaction = "simulation-distance";
-        var enviovalor = document.getElementById("form-simulation-distance").value;
+        let errores = 0;
+        let envioaction = "simulation-distance";
+        let enviovalor = document.getElementById("form-simulation-distance").value;
 
         if (enviovalor > 32 || enviovalor < 5) {
             errores = 1;
@@ -1299,7 +1231,7 @@ $(function () {
                     valor: enviovalor
                 },
                 success: function (data) {
-                    var getdebug = 0;
+                    let getdebug = 0;
                     if (getdebug == 1) {
                         alert(data);
                     }
@@ -1313,9 +1245,9 @@ $(function () {
     });
 
     $("#form-spawn-protection").change(function () {
-        var errores = 0;
-        var envioaction = "spawn-protection";
-        var enviovalor = document.getElementById("form-spawn-protection").value;
+        let errores = 0;
+        let envioaction = "spawn-protection";
+        let enviovalor = document.getElementById("form-spawn-protection").value;
 
         if (enviovalor > 16 || enviovalor < 0) {
             errores = 1;
@@ -1331,7 +1263,7 @@ $(function () {
                     valor: enviovalor
                 },
                 success: function (data) {
-                    var getdebug = 0;
+                    let getdebug = 0;
                     if (getdebug == 1) {
                         alert(data);
                     }
@@ -1345,9 +1277,9 @@ $(function () {
     });
 
     $("#form-max-world-size").change(function () {
-        var errores = 0;
-        var envioaction = "max-world-size";
-        var enviovalor = document.getElementById("form-max-world-size").value;
+        let errores = 0;
+        let envioaction = "max-world-size";
+        let enviovalor = document.getElementById("form-max-world-size").value;
 
         if (enviovalor > 29999984 || enviovalor < 1) {
             errores = 1;
@@ -1363,7 +1295,7 @@ $(function () {
                     valor: enviovalor
                 },
                 success: function (data) {
-                    var getdebug = 0;
+                    let getdebug = 0;
                     if (getdebug == 1) {
                         alert(data);
                     }
@@ -1377,8 +1309,8 @@ $(function () {
     });
 
     $("#form-online-mode").change(function () {
-        var envioaction = "online-mode";
-        var enviovalor = document.getElementById("form-online-mode").value;
+        let envioaction = "online-mode";
+        let enviovalor = document.getElementById("form-online-mode").value;
         $.ajax({
             type: "POST",
             url: "function/guardarproperties.php",
@@ -1387,7 +1319,7 @@ $(function () {
                 valor: enviovalor
             },
             success: function (data) {
-                var getdebug = 0;
+                let getdebug = 0;
                 if (getdebug == 1) {
                     alert(data);
                 }
@@ -1401,9 +1333,9 @@ $(function () {
     });
 
     $("#form-max-players").change(function () {
-        var errores = 0;
-        var envioaction = "max-players";
-        var enviovalor = document.getElementById("form-max-players").value;
+        let errores = 0;
+        let envioaction = "max-players";
+        let enviovalor = document.getElementById("form-max-players").value;
 
         if (enviovalor > 2147483647 || enviovalor < 1) {
             errores = 1;
@@ -1419,7 +1351,7 @@ $(function () {
                     valor: enviovalor
                 },
                 success: function (data) {
-                    var getdebug = 0;
+                    let getdebug = 0;
                     if (getdebug == 1) {
                         alert(data);
                     }
@@ -1433,8 +1365,8 @@ $(function () {
     });
 
     $("#form-hide-online-players").change(function () {
-        var envioaction = "hide-online-players";
-        var enviovalor = document.getElementById("form-hide-online-players").value;
+        let envioaction = "hide-online-players";
+        let enviovalor = document.getElementById("form-hide-online-players").value;
         $.ajax({
             type: "POST",
             url: "function/guardarproperties.php",
@@ -1443,7 +1375,7 @@ $(function () {
                 valor: enviovalor
             },
             success: function (data) {
-                var getdebug = 0;
+                let getdebug = 0;
                 if (getdebug == 1) {
                     alert(data);
                 }
@@ -1457,8 +1389,8 @@ $(function () {
     });
 
     $("#form-enable-command-block").change(function () {
-        var envioaction = "enable-command-block";
-        var enviovalor = document.getElementById("form-enable-command-block").value;
+        let envioaction = "enable-command-block";
+        let enviovalor = document.getElementById("form-enable-command-block").value;
         $.ajax({
             type: "POST",
             url: "function/guardarproperties.php",
@@ -1467,7 +1399,7 @@ $(function () {
                 valor: enviovalor
             },
             success: function (data) {
-                var getdebug = 0;
+                let getdebug = 0;
                 if (getdebug == 1) {
                     alert(data);
                 }
@@ -1481,8 +1413,8 @@ $(function () {
     });
 
     $("#form-enable-query").change(function () {
-        var envioaction = "enable-query";
-        var enviovalor = document.getElementById("form-enable-query").value;
+        let envioaction = "enable-query";
+        let enviovalor = document.getElementById("form-enable-query").value;
         $.ajax({
             type: "POST",
             url: "function/guardarproperties.php",
@@ -1491,7 +1423,7 @@ $(function () {
                 valor: enviovalor
             },
             success: function (data) {
-                var getdebug = 0;
+                let getdebug = 0;
                 if (getdebug == 1) {
                     alert(data);
                 }
@@ -1505,9 +1437,9 @@ $(function () {
     });
 
     $("#form-query-port").change(function () {
-        var errores = 0;
-        var envioaction = "query.port";
-        var enviovalor = document.getElementById("form-query-port").value;
+        let errores = 0;
+        let envioaction = "query.port";
+        let enviovalor = document.getElementById("form-query-port").value;
 
         if (enviovalor > 65535 || enviovalor < 1025) {
             errores = 1;
@@ -1523,7 +1455,7 @@ $(function () {
                     valor: enviovalor
                 },
                 success: function (data) {
-                    var getdebug = 0;
+                    let getdebug = 0;
                     if (getdebug == 1) {
                         alert(data);
                     }
@@ -1537,8 +1469,8 @@ $(function () {
     });
 
     $("#form-enable-rcon").change(function () {
-        var envioaction = "enable-rcon";
-        var enviovalor = document.getElementById("form-enable-rcon").value;
+        let envioaction = "enable-rcon";
+        let enviovalor = document.getElementById("form-enable-rcon").value;
         $.ajax({
             type: "POST",
             url: "function/guardarproperties.php",
@@ -1547,7 +1479,7 @@ $(function () {
                 valor: enviovalor
             },
             success: function (data) {
-                var getdebug = 0;
+                let getdebug = 0;
                 if (getdebug == 1) {
                     alert(data);
                 }
@@ -1561,9 +1493,9 @@ $(function () {
     });
 
     $("#form-rconport").change(function () {
-        var errores = 0;
-        var envioaction = "rcon.port";
-        var enviovalor = document.getElementById("form-rconport").value;
+        let errores = 0;
+        let envioaction = "rcon.port";
+        let enviovalor = document.getElementById("form-rconport").value;
 
         if (enviovalor > 65535 || enviovalor < 1025) {
             errores = 1;
@@ -1579,7 +1511,7 @@ $(function () {
                     valor: enviovalor
                 },
                 success: function (data) {
-                    var getdebug = 0;
+                    let getdebug = 0;
                     if (getdebug == 1) {
                         alert(data);
                     }
@@ -1593,8 +1525,8 @@ $(function () {
     });
 
     $("#form-rcon-password").keyup(function () {
-        var envioaction = "rcon.password";
-        var enviovalor = document.getElementById("form-rcon-password").value;
+        let envioaction = "rcon.password";
+        let enviovalor = document.getElementById("form-rcon-password").value;
         $.ajax({
             type: "POST",
             url: "function/guardarproperties.php",
@@ -1603,7 +1535,7 @@ $(function () {
                 valor: enviovalor
             },
             success: function (data) {
-                var getdebug = 0;
+                let getdebug = 0;
                 if (getdebug == 1) {
                     alert(data);
                 }
@@ -1617,19 +1549,19 @@ $(function () {
 
     if (document.getElementById("form-rcon-password") !== null) {
         document.getElementById("form-rcon-password").addEventListener('paste', function (event) {
-            var envioaction = "rcon.password";
-            var enviovalor = event.clipboardData.getData('text');
+            let envioaction = "rcon.password";
 
-            var eltext = "";
-            var textini = "";
-            var textfinal = "";
-            var enviar = "";
+            let enviovalor = "";
+            let eltext = "";
+            let textini = "";
+            let textfinal = "";
+            let enviar = "";
 
-            var text = document.getElementById("form-rcon-password");
+            let text = document.getElementById("form-rcon-password");
 
-            var startPosition = text.selectionStart;
-            var endPosition = text.selectionEnd;
-            var longitud = text.leng;
+            let startPosition = text.selectionStart;
+            let endPosition = text.selectionEnd;
+            let longitud = text.leng;
 
             eltext = document.getElementById("form-rcon-password").value;
             textini = eltext.substring(0, startPosition);
@@ -1646,7 +1578,7 @@ $(function () {
                     valor: enviovalor
                 },
                 success: function (data) {
-                    var getdebug = 0;
+                    let getdebug = 0;
                     if (getdebug == 1) {
                         alert(data);
                     }
@@ -1661,8 +1593,8 @@ $(function () {
     }
 
     $("#form-enforce-secure-profile").change(function () {
-        var envioaction = "enforce-secure-profile";
-        var enviovalor = document.getElementById("form-enforce-secure-profile").value;
+        let envioaction = "enforce-secure-profile";
+        let enviovalor = document.getElementById("form-enforce-secure-profile").value;
         $.ajax({
             type: "POST",
             url: "function/guardarproperties.php",
@@ -1671,7 +1603,7 @@ $(function () {
                 valor: enviovalor
             },
             success: function (data) {
-                var getdebug = 0;
+                let getdebug = 0;
                 if (getdebug == 1) {
                     alert(data);
                 }
@@ -1685,8 +1617,8 @@ $(function () {
     });
 
     $("#form-white-list").change(function () {
-        var envioaction = "white-list";
-        var enviovalor = document.getElementById("form-white-list").value;
+        let envioaction = "white-list";
+        let enviovalor = document.getElementById("form-white-list").value;
         $.ajax({
             type: "POST",
             url: "function/guardarproperties.php",
@@ -1695,7 +1627,7 @@ $(function () {
                 valor: enviovalor
             },
             success: function (data) {
-                var getdebug = 0;
+                let getdebug = 0;
                 if (getdebug == 1) {
                     alert(data);
                 }
@@ -1709,8 +1641,8 @@ $(function () {
     });
 
     $("#form-enforce-whitelist").change(function () {
-        var envioaction = "enforce-whitelist";
-        var enviovalor = document.getElementById("form-enforce-whitelist").value;
+        let envioaction = "enforce-whitelist";
+        let enviovalor = document.getElementById("form-enforce-whitelist").value;
         $.ajax({
             type: "POST",
             url: "function/guardarproperties.php",
@@ -1719,7 +1651,7 @@ $(function () {
                 valor: enviovalor
             },
             success: function (data) {
-                var getdebug = 0;
+                let getdebug = 0;
                 if (getdebug == 1) {
                     alert(data);
                 }
@@ -1734,8 +1666,8 @@ $(function () {
 
     $("#form-server-ip").keyup(function () {
         const regexipExp = /^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/gi;
-        var envioaction = "server-ip";
-        var enviovalor = document.getElementById("form-server-ip").value;
+        let envioaction = "server-ip";
+        let enviovalor = document.getElementById("form-server-ip").value;
 
         const validarIP = regexipExp.test(enviovalor);
 
@@ -1751,7 +1683,7 @@ $(function () {
                 valor: enviovalor
             },
             success: function (data) {
-                var getdebug = 0;
+                let getdebug = 0;
                 if (getdebug == 1) {
                     alert(data);
                 }
@@ -1767,19 +1699,19 @@ $(function () {
     if (document.getElementById("form-server-ip") !== null) {
         document.getElementById("form-server-ip").addEventListener('paste', function (event) {
             const regexipExp = /^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/gi;
-            var envioaction = "server-ip";
-            var enviovalor = event.clipboardData.getData('text');
+            let envioaction = "server-ip";
 
-            var eltext = "";
-            var textini = "";
-            var textfinal = "";
-            var enviar = "";
+            let enviovalor = "";
+            let eltext = "";
+            let textini = "";
+            let textfinal = "";
+            let enviar = "";
 
-            var text = document.getElementById("form-server-ip");
+            let text = document.getElementById("form-server-ip");
 
-            var startPosition = text.selectionStart;
-            var endPosition = text.selectionEnd;
-            var longitud = text.leng;
+            let startPosition = text.selectionStart;
+            let endPosition = text.selectionEnd;
+            let longitud = text.leng;
 
             eltext = document.getElementById("form-server-ip").value;
             textini = eltext.substring(0, startPosition);
@@ -1802,7 +1734,7 @@ $(function () {
                     valor: enviovalor
                 },
                 success: function (data) {
-                    var getdebug = 0;
+                    let getdebug = 0;
                     if (getdebug == 1) {
                         alert(data);
                     }
@@ -1817,8 +1749,8 @@ $(function () {
     }
 
     $("#form-enable-status").change(function () {
-        var envioaction = "enable-status";
-        var enviovalor = document.getElementById("form-enable-status").value;
+        let envioaction = "enable-status";
+        let enviovalor = document.getElementById("form-enable-status").value;
         $.ajax({
             type: "POST",
             url: "function/guardarproperties.php",
@@ -1827,7 +1759,7 @@ $(function () {
                 valor: enviovalor
             },
             success: function (data) {
-                var getdebug = 0;
+                let getdebug = 0;
                 if (getdebug == 1) {
                     alert(data);
                 }
@@ -1841,8 +1773,8 @@ $(function () {
     });
 
     $("#form-broadcast-console-to-ops").change(function () {
-        var envioaction = "broadcast-console-to-ops";
-        var enviovalor = document.getElementById("form-broadcast-console-to-ops").value;
+        let envioaction = "broadcast-console-to-ops";
+        let enviovalor = document.getElementById("form-broadcast-console-to-ops").value;
         $.ajax({
             type: "POST",
             url: "function/guardarproperties.php",
@@ -1851,7 +1783,7 @@ $(function () {
                 valor: enviovalor
             },
             success: function (data) {
-                var getdebug = 0;
+                let getdebug = 0;
                 if (getdebug == 1) {
                     alert(data);
                 }
@@ -1865,8 +1797,8 @@ $(function () {
     });
 
     $("#form-broadcast-rcon-to-ops").change(function () {
-        var envioaction = "broadcast-rcon-to-ops";
-        var enviovalor = document.getElementById("form-broadcast-rcon-to-ops").value;
+        let envioaction = "broadcast-rcon-to-ops";
+        let enviovalor = document.getElementById("form-broadcast-rcon-to-ops").value;
         $.ajax({
             type: "POST",
             url: "function/guardarproperties.php",
@@ -1875,7 +1807,7 @@ $(function () {
                 valor: enviovalor
             },
             success: function (data) {
-                var getdebug = 0;
+                let getdebug = 0;
                 if (getdebug == 1) {
                     alert(data);
                 }
@@ -1889,8 +1821,8 @@ $(function () {
     });
 
     $("#form-use-native-transport").change(function () {
-        var envioaction = "use-native-transport";
-        var enviovalor = document.getElementById("form-use-native-transport").value;
+        let envioaction = "use-native-transport";
+        let enviovalor = document.getElementById("form-use-native-transport").value;
         $.ajax({
             type: "POST",
             url: "function/guardarproperties.php",
@@ -1899,7 +1831,7 @@ $(function () {
                 valor: enviovalor
             },
             success: function (data) {
-                var getdebug = 0;
+                let getdebug = 0;
                 if (getdebug == 1) {
                     alert(data);
                 }
@@ -1913,8 +1845,8 @@ $(function () {
     });
 
     $("#form-previews-chat").change(function () {
-        var envioaction = "previews-chat";
-        var enviovalor = document.getElementById("form-previews-chat").value;
+        let envioaction = "previews-chat";
+        let enviovalor = document.getElementById("form-previews-chat").value;
         $.ajax({
             type: "POST",
             url: "function/guardarproperties.php",
@@ -1923,7 +1855,7 @@ $(function () {
                 valor: enviovalor
             },
             success: function (data) {
-                var getdebug = 0;
+                let getdebug = 0;
                 if (getdebug == 1) {
                     alert(data);
                 }
@@ -1937,8 +1869,8 @@ $(function () {
     });
 
     $("#form-prevent-proxy-connections").change(function () {
-        var envioaction = "prevent-proxy-connections";
-        var enviovalor = document.getElementById("form-prevent-proxy-connections").value;
+        let envioaction = "prevent-proxy-connections";
+        let enviovalor = document.getElementById("form-prevent-proxy-connections").value;
         $.ajax({
             type: "POST",
             url: "function/guardarproperties.php",
@@ -1947,7 +1879,7 @@ $(function () {
                 valor: enviovalor
             },
             success: function (data) {
-                var getdebug = 0;
+                let getdebug = 0;
                 if (getdebug == 1) {
                     alert(data);
                 }
@@ -1961,8 +1893,8 @@ $(function () {
     });
 
     $("#form-enable-jmx-monitoring").change(function () {
-        var envioaction = "enable-jmx-monitoring";
-        var enviovalor = document.getElementById("form-enable-jmx-monitoring").value;
+        let envioaction = "enable-jmx-monitoring";
+        let enviovalor = document.getElementById("form-enable-jmx-monitoring").value;
         $.ajax({
             type: "POST",
             url: "function/guardarproperties.php",
@@ -1971,7 +1903,7 @@ $(function () {
                 valor: enviovalor
             },
             success: function (data) {
-                var getdebug = 0;
+                let getdebug = 0;
                 if (getdebug == 1) {
                     alert(data);
                 }
@@ -1985,8 +1917,8 @@ $(function () {
     });
 
     $("#form-snooper-enabled").change(function () {
-        var envioaction = "snooper-enabled";
-        var enviovalor = document.getElementById("form-snooper-enabled").value;
+        let envioaction = "snooper-enabled";
+        let enviovalor = document.getElementById("form-snooper-enabled").value;
         $.ajax({
             type: "POST",
             url: "function/guardarproperties.php",
@@ -1995,7 +1927,7 @@ $(function () {
                 valor: enviovalor
             },
             success: function (data) {
-                var getdebug = 0;
+                let getdebug = 0;
                 if (getdebug == 1) {
                     alert(data);
                 }
@@ -2009,8 +1941,8 @@ $(function () {
     });
 
     $("#form-sync-chunk-writes").change(function () {
-        var envioaction = "sync-chunk-writes";
-        var enviovalor = document.getElementById("form-sync-chunk-writes").value;
+        let envioaction = "sync-chunk-writes";
+        let enviovalor = document.getElementById("form-sync-chunk-writes").value;
         $.ajax({
             type: "POST",
             url: "function/guardarproperties.php",
@@ -2019,7 +1951,7 @@ $(function () {
                 valor: enviovalor
             },
             success: function (data) {
-                var getdebug = 0;
+                let getdebug = 0;
                 if (getdebug == 1) {
                     alert(data);
                 }
@@ -2033,9 +1965,9 @@ $(function () {
     });
 
     $("#form-max-chained-neighbor-updates").change(function () {
-        var errores = 0;
-        var envioaction = "max-chained-neighbor-updates";
-        var enviovalor = document.getElementById("form-max-chained-neighbor-updates").value;
+        let errores = 0;
+        let envioaction = "max-chained-neighbor-updates";
+        let enviovalor = document.getElementById("form-max-chained-neighbor-updates").value;
 
         if (enviovalor > 2147483647 || enviovalor < -1) {
             document.getElementById("form-max-chained-neighbor-updates").value = 60000;
@@ -2052,7 +1984,7 @@ $(function () {
                     valor: enviovalor
                 },
                 success: function (data) {
-                    var getdebug = 0;
+                    let getdebug = 0;
                     if (getdebug == 1) {
                         alert(data);
                     }
@@ -2068,9 +2000,9 @@ $(function () {
 
 
     $("#form-max-tick-time").change(function () {
-        var errores = 0;
-        var envioaction = "max-tick-time";
-        var enviovalor = document.getElementById("form-max-tick-time").value;
+        let errores = 0;
+        let envioaction = "max-tick-time";
+        let enviovalor = document.getElementById("form-max-tick-time").value;
 
         if (enviovalor > 300000 || enviovalor < -1) {
             document.getElementById("form-max-tick-time").value = 60000;
@@ -2087,7 +2019,7 @@ $(function () {
                     valor: enviovalor
                 },
                 success: function (data) {
-                    var getdebug = 0;
+                    let getdebug = 0;
                     if (getdebug == 1) {
                         alert(data);
                     }
@@ -2101,9 +2033,9 @@ $(function () {
     });
 
     $("#form-op-permission-level").change(function () {
-        var errores = 0;
-        var envioaction = "op-permission-level";
-        var enviovalor = document.getElementById("form-op-permission-level").value;
+        let errores = 0;
+        let envioaction = "op-permission-level";
+        let enviovalor = document.getElementById("form-op-permission-level").value;
 
         if (enviovalor > 4 || enviovalor < 1) {
             errores = 1;
@@ -2119,7 +2051,7 @@ $(function () {
                     valor: enviovalor
                 },
                 success: function (data) {
-                    var getdebug = 0;
+                    let getdebug = 0;
                     if (getdebug == 1) {
                         alert(data);
                     }
@@ -2133,9 +2065,9 @@ $(function () {
     });
 
     $("#form-function-permission-level").change(function () {
-        var errores = 0;
-        var envioaction = "function-permission-level";
-        var enviovalor = document.getElementById("form-function-permission-level").value;
+        let errores = 0;
+        let envioaction = "function-permission-level";
+        let enviovalor = document.getElementById("form-function-permission-level").value;
 
         if (enviovalor > 4 || enviovalor < 1) {
             errores = 1;
@@ -2151,7 +2083,7 @@ $(function () {
                     valor: enviovalor
                 },
                 success: function (data) {
-                    var getdebug = 0;
+                    let getdebug = 0;
                     if (getdebug == 1) {
                         alert(data);
                     }
@@ -2165,8 +2097,8 @@ $(function () {
     });
 
     $("#form-rate-limit").change(function () {
-        var envioaction = "rate-limit";
-        var enviovalor = document.getElementById("form-rate-limit").value;
+        let envioaction = "rate-limit";
+        let enviovalor = document.getElementById("form-rate-limit").value;
         $.ajax({
             type: "POST",
             url: "function/guardarproperties.php",
@@ -2175,7 +2107,7 @@ $(function () {
                 valor: enviovalor
             },
             success: function (data) {
-                var getdebug = 0;
+                let getdebug = 0;
                 if (getdebug == 1) {
                     alert(data);
                 }
@@ -2189,9 +2121,9 @@ $(function () {
     });
 
     $("#form-network-compression-threshold").change(function () {
-        var errores = 0;
-        var envioaction = "network-compression-threshold";
-        var enviovalor = document.getElementById("form-network-compression-threshold").value;
+        let errores = 0;
+        let envioaction = "network-compression-threshold";
+        let enviovalor = document.getElementById("form-network-compression-threshold").value;
 
         if (enviovalor > 256 || enviovalor < -1) {
             document.getElementById("form-network-compression-threshold").value = 256;
@@ -2208,7 +2140,7 @@ $(function () {
                     valor: enviovalor
                 },
                 success: function (data) {
-                    var getdebug = 0;
+                    let getdebug = 0;
                     if (getdebug == 1) {
                         alert(data);
                     }
@@ -2222,9 +2154,9 @@ $(function () {
     });
 
     $("#form-view-distance").change(function () {
-        var errores = 0;
-        var envioaction = "view-distance";
-        var enviovalor = document.getElementById("form-view-distance").value;
+        let errores = 0;
+        let envioaction = "view-distance";
+        let enviovalor = document.getElementById("form-view-distance").value;
 
         if (enviovalor > 32 || enviovalor < 3) {
             errores = 1;
@@ -2240,7 +2172,7 @@ $(function () {
                     valor: enviovalor
                 },
                 success: function (data) {
-                    var getdebug = 0;
+                    let getdebug = 0;
                     if (getdebug == 1) {
                         alert(data);
                     }
@@ -2261,7 +2193,7 @@ $(function () {
                 action: textomotd
             },
             success: function (data) {
-                var getdebug = 0;
+                let getdebug = 0;
                 if (getdebug == 1) {
                     alert(data);
                 }
@@ -2274,8 +2206,8 @@ $(function () {
     }
 
     $("#form-motd").keyup(function () {
-        var envioaction = "motd";
-        var enviovalor = document.getElementById("form-motd").value;
+        let envioaction = "motd";
+        let enviovalor = document.getElementById("form-motd").value;
         $.ajax({
             type: "POST",
             url: "function/guardarproperties.php",
@@ -2284,7 +2216,7 @@ $(function () {
                 valor: enviovalor
             },
             success: function (data) {
-                var getdebug = 0;
+                let getdebug = 0;
                 if (getdebug == 1) {
                     alert(data);
                 }
@@ -2303,19 +2235,19 @@ $(function () {
 
     if (document.getElementById("form-motd") !== null) {
         document.getElementById("form-motd").addEventListener('paste', function (event) {
-            var envioaction = "motd";
-            var enviovalor = event.clipboardData.getData('text');
+            let envioaction = "motd";
 
-            var eltext = "";
-            var textini = "";
-            var textfinal = "";
-            var enviar = "";
+            let enviovalor = "";
+            let eltext = "";
+            let textini = "";
+            let textfinal = "";
+            let enviar = "";
 
-            var text = document.getElementById("form-motd");
+            let text = document.getElementById("form-motd");
 
-            var startPosition = text.selectionStart;
-            var endPosition = text.selectionEnd;
-            var longitud = text.leng;
+            let startPosition = text.selectionStart;
+            let endPosition = text.selectionEnd;
+            let longitud = text.leng;
 
             eltext = document.getElementById("form-motd").value;
             textini = eltext.substring(0, startPosition);
@@ -2332,7 +2264,7 @@ $(function () {
                     valor: enviovalor
                 },
                 success: function (data) {
-                    var getdebug = 0;
+                    let getdebug = 0;
                     if (getdebug == 1) {
                         alert(data);
                     }
@@ -2352,8 +2284,8 @@ $(function () {
 
     if (document.getElementById("restablecer") !== null) {
         $("#restablecer").click(function () {
-            var eleccion = confirm("¡Confirmacion de restablecer configuracin por defecto!\n\n¡Esta acción creará un nuevo archivo de configuración server.properties, una vez realizado no se podrá cancelar!\n\n¿Seguro que quieres continuar?");
-            if (eleccion == true) {
+            let eleccion = confirm("¡Confirmacion de restablecer configuración por defecto!\n\n¡Esta acción creará un nuevo archivo de configuración server.properties, una vez realizado no se podrá cancelar!\n\n¿Seguro que quieres continuar?");
+            if (eleccion) {
 
                 $.ajax({
                     url: 'function/restablecerproperties.php',
@@ -2369,7 +2301,6 @@ $(function () {
                         } else if (data == "nowriteproperties") {
                             alert("El archivo server.properties no tiene permisos de escritura");
                         }
-
                     }
                 });
             }
