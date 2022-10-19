@@ -26,7 +26,7 @@ $(function () {
         $("#descargar").click(function () {
             document.getElementById("textoretorno").innerHTML = "";
             document.getElementById("gifloading").style.visibility = "visible";
-            vervanilla = document.getElementById('serselectver').value
+            let vervanilla = document.getElementById('serselectver').value
             $.ajax({
                 url: 'function/descargarvanilla.php',
                 data: {
