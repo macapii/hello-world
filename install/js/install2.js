@@ -21,13 +21,13 @@ $(function () {
     document.getElementById("binstalar").disabled = false;
 
     $("#verpassword").click(function () {
-        var x1 = document.getElementById("elpass");
+        let x1 = document.getElementById("elpass");
         if (x1.type === "password") {
             x1.type = "text";
         } else {
             x1.type = "password";
         }
-        var x2 = document.getElementById("elrepass");
+        let x2 = document.getElementById("elrepass");
         if (x2.type === "password") {
             x2.type = "text";
         } else {
@@ -36,7 +36,7 @@ $(function () {
     });
 
     $("#elpass").change(function () {
-        var getpass = document.getElementById("elpass").value;
+        let getpass = document.getElementById("elpass").value;
         if (getpass == "") {
             document.getElementById("textoretorno").innerHTML = "";
         } else {
@@ -61,7 +61,7 @@ $(function () {
     });
 
     $("#elport").change(function () {
-        var elnumero = document.getElementById("elport").value;
+        let elnumero = document.getElementById("elport").value;
 
         if (elnumero < 1025 || elnumero > 65535) {
             document.getElementById("elport").value = "25565";
@@ -70,16 +70,12 @@ $(function () {
     });
 
     $("#elport").keypress(function (e) {
-        if (e.keyCode < 48 || e.keyCode > 57) {
-            return false;
-        } else {
-            return true;
-        }
+        return !(e.keyCode < 48 || e.keyCode > 57);
     });
 
     $("#login-install2").submit(function () {
-        var elerror = 0;
-        var eltexto = "<div class='alert alert-danger' role='alert'>";
+        let elerror = 0;
+        let eltexto = "<div class='alert alert-danger' role='alert'>";
 
         if (document.getElementById("eluser").value == "") {
             eltexto = eltexto + "No has introducido ningún nombre de usuario";
