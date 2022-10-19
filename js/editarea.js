@@ -22,7 +22,8 @@ $(function () {
 
     if (document.getElementById('selectodashoras') !== null) {
         $("#selectodashoras").click(function () {
-            for (var i = 0; i <= 23; i++) {
+            let checkhoras;
+            for (let i = 0; i <= 23; i++) {
                 checkhoras = document.getElementById('h' + i);
                 checkhoras.checked = true;
             }
@@ -31,7 +32,8 @@ $(function () {
 
     if (document.getElementById('deselecionarhoras') !== null) {
         $("#deselecionarhoras").click(function () {
-            for (var i = 0; i <= 23; i++) {
+            let checkhoras;
+            for (let i = 0; i <= 23; i++) {
                 checkhoras = document.getElementById('h' + i);
                 checkhoras.checked = false;
             }
@@ -40,7 +42,8 @@ $(function () {
 
     if (document.getElementById('selectodosminutos') !== null) {
         $("#selectodosminutos").click(function () {
-            for (var i = 0; i <= 59; i++) {
+            let checkminutos;
+            for (let i = 0; i <= 59; i++) {
                 checkminutos = document.getElementById('m' + i);
                 checkminutos.checked = true;
             }
@@ -52,7 +55,8 @@ $(function () {
 
     if (document.getElementById('deselecionarminutos') !== null) {
         $("#deselecionarminutos").click(function () {
-            for (var i = 0; i <= 59; i++) {
+            let checkminutos;
+            for (let i = 0; i <= 59; i++) {
                 checkminutos = document.getElementById('m' + i);
                 checkminutos.checked = false;
             }
@@ -64,12 +68,14 @@ $(function () {
 
     if (document.getElementById('marcahoras') !== null) {
         $("#marcahoras").change(function () {
+            let marcado;
             marcado = parseInt(this.value);
-            for (var i = 0; i <= 59; i++) {
+            let checkminutos;
+            for (let i = 0; i <= 59; i++) {
                 checkminutos = document.getElementById('m' + i);
                 checkminutos.checked = false;
             }
-            for (var i = 0; i <= 59; i = i + marcado) {
+            for (let i = 0; i <= 59; i = i + marcado) {
                 checkminutos = document.getElementById('m' + i);
                 checkminutos.checked = true;
             }
@@ -95,7 +101,7 @@ $(function () {
 
     $("#edittarea").click(function () {
 
-        var eldata = $("#formtarea :input").serializeArray();
+        let eldata = $("#formtarea :input").serializeArray();
         $.post($("#formtarea").attr("action"), eldata, function (data) {
 
             if (data == "errnosession") {
