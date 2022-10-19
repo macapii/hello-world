@@ -21,7 +21,7 @@ $(function () {
     $("#guardaserver").click(function () {
         document.getElementById("result").innerHTML = '<img src="img/guardando.gif" alt="Guardando">'
 
-        var eldata = $("#formconf :input").serializeArray();
+        let eldata = $("#formconf :input").serializeArray();
 
         document.getElementById('finpage').scrollIntoView();
 
@@ -131,13 +131,13 @@ $(function () {
                 document.getElementById("result").innerHTML = "<div class='alert alert-danger' role='alert'>Error: El campo hilos supera el número de hilos del servidor.</div>";
             } else if (data == "backuphilosvacio") {
                 document.getElementById("result").innerHTML = "<div class='alert alert-danger' role='alert'>Error: El campo hilos está vacío.</div>";
-            } else if (data == "backuprotatenonumerico"){
+            } else if (data == "backuprotatenonumerico") {
                 document.getElementById("result").innerHTML = "<div class='alert alert-danger' role='alert'>Error: El campo rotación backups no es numérico.</div>";
-            } else if (data == "backuprotatesoutrango"){
+            } else if (data == "backuprotatesoutrango") {
                 document.getElementById("result").innerHTML = "<div class='alert alert-danger' role='alert'>Error: El campo rotación backups fuera de rango.</div>";
-            }  else if (data == "backuprotatevacio"){
+            } else if (data == "backuprotatevacio") {
                 document.getElementById("result").innerHTML = "<div class='alert alert-danger' role='alert'>Error: El campo rotación backups está vacío.</div>";
-            }  else if (data == "saveconf") {
+            } else if (data == "saveconf") {
                 document.getElementById("result").innerHTML = "<div class='alert alert-success' role='alert'>Configuración Guardada.</div>";
                 document.getElementById("guardaserver").disabled = true;
             } else {
@@ -411,7 +411,7 @@ $(function () {
 
     if (document.getElementById('elport') !== null) {
         $("#elport").change(function () {
-            var elnumero = document.getElementById("elport").value;
+            let elnumero = document.getElementById("elport").value;
             document.getElementById("result").innerHTML = "";
 
             if (elnumero >= 1024 && elnumero <= 65535) {
@@ -424,17 +424,13 @@ $(function () {
 
     if (document.getElementById('elport') !== null) {
         $("#elport").keypress(function (e) {
-            if (e.keyCode < 48 || e.keyCode > 57) {
-                return false;
-            } else {
-                return true;
-            }
+            return !(e.keyCode < 48 || e.keyCode > 57);
         });
     }
 
     if (document.getElementById('linconsola') !== null) {
         $("#linconsola").change(function () {
-            var elnumero = document.getElementById("linconsola").value;
+            let elnumero = document.getElementById("linconsola").value;
             document.getElementById("result").innerHTML = "";
 
             if (elnumero < 0 || elnumero > 1000) {
@@ -447,17 +443,13 @@ $(function () {
 
     if (document.getElementById('linconsola') !== null) {
         $("#linconsola").keypress(function (e) {
-            if (e.keyCode < 48 || e.keyCode > 57) {
-                return false;
-            } else {
-                return true;
-            }
+            return !(e.keyCode < 48 || e.keyCode > 57);
         });
     }
 
     if (document.getElementById('bufferlimit') !== null) {
         $("#bufferlimit").change(function () {
-            var elnumero = document.getElementById("bufferlimit").value;
+            let elnumero = document.getElementById("bufferlimit").value;
             document.getElementById("result").innerHTML = "";
 
             if (elnumero < 0 || elnumero > 500) {
@@ -470,11 +462,7 @@ $(function () {
 
     if (document.getElementById('bufferlimit') !== null) {
         $("#bufferlimit").keypress(function (e) {
-            if (e.keyCode < 48 || e.keyCode > 57) {
-                return false;
-            } else {
-                return true;
-            }
+            return !(e.keyCode < 48 || e.keyCode > 57);
         });
     }
 
@@ -487,7 +475,7 @@ $(function () {
 
     if (document.getElementById('limitbackupgb') !== null) {
         $("#limitbackupgb").change(function () {
-            var elnumero = document.getElementById("limitbackupgb").value;
+            let elnumero = document.getElementById("limitbackupgb").value;
             document.getElementById("result").innerHTML = "";
 
             if (elnumero < 0 || elnumero > 100) {
@@ -500,17 +488,13 @@ $(function () {
 
     if (document.getElementById('limitbackupgb') !== null) {
         $("#limitbackupgb").keypress(function (e) {
-            if (e.keyCode < 48 || e.keyCode > 57) {
-                return false;
-            } else {
-                return true;
-            }
+            return !(e.keyCode < 48 || e.keyCode > 57);
         });
     }
 
     if (document.getElementById('limitminecraftgb') !== null) {
         $("#limitminecraftgb").change(function () {
-            var elnumero = document.getElementById("limitminecraftgb").value;
+            let elnumero = document.getElementById("limitminecraftgb").value;
             document.getElementById("result").innerHTML = "";
 
             if (elnumero < 0 || elnumero > 100) {
@@ -523,11 +507,13 @@ $(function () {
 
     if (document.getElementById('limitminecraftgb') !== null) {
         $("#limitminecraftgb").keypress(function (e) {
-            if (e.keyCode < 48 || e.keyCode > 57) {
-                return false;
-            } else {
-                return true;
-            }
+            return !(e.keyCode < 48 || e.keyCode > 57);
+        });
+    }
+
+    if (document.getElementById('backuprotate') !== null) {
+        $("#backuprotate").keypress(function (e) {
+            return !(e.keyCode < 48 || e.keyCode > 57);
         });
     }
 
