@@ -22,7 +22,7 @@ $(function () {
     sessionStorage.actdesroll = 0;
 
     function redimensionar() {
-        var tamano = window.innerHeight;
+        let tamano = window.innerHeight;
         tamano = tamano - 150;
         document.getElementById("laconsola").style.height = tamano + "px";
     }
@@ -92,7 +92,7 @@ $(function () {
     setInterval(myTimer, 2000);
 
     function enviarcomando() {
-        var eltexto = "";
+        let eltexto = "";
 
         if (document.getElementById("elcomando").value !== null) {
 
@@ -155,7 +155,7 @@ $(function () {
         });
     }
 
-    function tecladownbuffer(){
+    function tecladownbuffer() {
 
         $.ajax({
             url: 'function/buffer.php',
