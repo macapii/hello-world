@@ -30,8 +30,6 @@ $(function () {
                 if (data == "SALIR") {
                     location.href = "index.php";
                 }
-
-
             }
         });
     }

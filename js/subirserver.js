@@ -22,13 +22,14 @@ $(function () {
     document.getElementById("gifloading").style.visibility = "hidden";
 
     $(".custom-file-input").on("change", function () {
-        var elerror = 0;
-        var fileName = $(this).val().split("\\").pop();
-        var res = fileName.substring(fileName.length - 4, fileName.length);
+        let eltamano;
+        let elerror = 0;
+        let fileName = $(this).val().split("\\").pop();
+        let res = fileName.substring(fileName.length - 4, fileName.length);
         if (res.toLowerCase() == ".jar") {
             $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
-            var elarchivo = document.getElementById('fileName');
-            var eltamano = elarchivo.files.item(0).size;
+            let elarchivo = document.getElementById('fileName');
+            eltamano = elarchivo.files.item(0).size;
         } else {
             alert("Solo se permiten subir archivos .jar");
             document.getElementById("botonsubir").disabled = true;

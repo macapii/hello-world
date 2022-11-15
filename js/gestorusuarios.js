@@ -26,10 +26,10 @@ $(function () {
         location.href = "gestusercreate.php";
     });
 
-    var actdesuserbuttons = document.getElementsByClassName('actdesuser');
-    for (var i = 0; i < actdesuserbuttons.length; i++) {
-        actdesuserbuttons[i].addEventListener("click", function () {
-            var indexarray = String(this.value);
+    let actdesuserbuttons = document.getElementsByClassName('actdesuser');
+    for (const element of actdesuserbuttons) {
+        element.addEventListener("click", function () {
+            let indexarray = String(this.value);
             $.ajax({
                 url: 'function/gestuseractdesusuario.php',
                 data: {
@@ -60,10 +60,10 @@ $(function () {
         });
     }
 
-    var cambiartemabuttons = document.getElementsByClassName('cambiartema');
-    for (var i = 0; i < cambiartemabuttons.length; i++) {
-        cambiartemabuttons[i].addEventListener("click", function () {
-            var indexarray = String(this.value);
+    let cambiartemabuttons = document.getElementsByClassName('cambiartema');
+    for (const element of cambiartemabuttons) {
+        element.addEventListener("click", function () {
+            let indexarray = String(this.value);
             $.ajax({
                 url: 'function/gestusercambiartema.php',
                 data: {
@@ -94,10 +94,10 @@ $(function () {
         });
     }
 
-    var edituserbuttons = document.getElementsByClassName('edituser');
-    for (var i = 0; i < edituserbuttons.length; i++) {
-        edituserbuttons[i].addEventListener("click", function () {
-            var indexarray = String(this.value);
+    let edituserbuttons = document.getElementsByClassName('edituser');
+    for (const element of edituserbuttons) {
+        element.addEventListener("click", function () {
+            let indexarray = String(this.value);
             $.ajax({
                 url: 'function/gestusercalleditaruser.php',
                 data: {
@@ -132,10 +132,10 @@ $(function () {
         });
     }
 
-    var deluserbuttons = document.getElementsByClassName('deluser');
-    for (var i = 0; i < deluserbuttons.length; i++) {
-        deluserbuttons[i].addEventListener("click", function () {
-            var indexarray = String(this.value);
+    let deluserbuttons = document.getElementsByClassName('deluser');
+    for (const element of deluserbuttons) {
+        element.addEventListener("click", function () {
+            let indexarray = String(this.value);
             $.ajax({
                 url: 'function/gestusereliminarusuario.php',
                 data: {

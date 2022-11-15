@@ -19,7 +19,7 @@ Copyright (C) 2020-2022 Cristina Ibañez, Konata400
 $(function () {
 
     $("#elpass").keyup(function () {
-        var getpass = document.getElementById("elpass").value;
+        let getpass = document.getElementById("elpass").value;
         if (getpass == "") {
             document.getElementById("textoretorno").innerHTML = "";
         } else {
@@ -44,7 +44,7 @@ $(function () {
     $("#verpassword").click(function () {
 
         if (document.getElementById('eloldpass') !== null) {
-            var t = document.getElementById("eloldpass");
+            let t = document.getElementById("eloldpass");
 
             if (t.type === "password") {
                 t.type = "text";
@@ -54,7 +54,7 @@ $(function () {
         }
 
         if (document.getElementById('elpass') !== null) {
-            var x = document.getElementById("elpass");
+            let x = document.getElementById("elpass");
 
             if (x.type === "password") {
                 x.type = "text";
@@ -64,7 +64,7 @@ $(function () {
         }
 
         if (document.getElementById('elrepass') !== null) {
-            var y = document.getElementById("elrepass");
+            let y = document.getElementById("elrepass");
 
             if (y.type === "password") {
                 y.type = "text";

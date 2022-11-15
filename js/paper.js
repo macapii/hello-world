@@ -22,7 +22,7 @@ $(function () {
     document.getElementById("descargar").disabled = true;
 
     $("#serselectver").on('change', function () {
-        verpaper = this.value;
+        let verpaper = this.value;
 
         document.getElementById("gifloading").style.visibility = "visible";
         document.getElementById("textoretorno").innerHTML = "";
@@ -44,8 +44,8 @@ $(function () {
                 if (data.retorno == "okbuild") {
 
                     $('#buildversion').append('<option selected disabled hidden>No hay ninguna build seleccionada</option>');
-                    for (let i = 0; i < data.lasbuild.length; i++) {
-                        textbuild = data.lasbuild[i];
+                    for (const element of data.lasbuild) {
+                        let textbuild = element;
                         $('#buildversion').append(new Option(textbuild, textbuild, false, false));
                     }
 
@@ -71,8 +71,8 @@ $(function () {
 
     if (document.getElementById('descargar') !== null) {
         $("#descargar").click(function () {
-            desversion = document.getElementById("serselectver").value;
-            desbuild = document.getElementById("buildversion").value;
+            let desversion = document.getElementById("serselectver").value;
+            let desbuild = document.getElementById("buildversion").value;
 
             document.getElementById("gifloading").style.visibility = "visible";
 

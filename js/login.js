@@ -19,7 +19,7 @@ Copyright (C) 2020-2022 Cristina Ibañez, Konata400
 $(function () {
 
     $("#verpassword").click(function () {
-        var x = document.getElementById("inputPassword");
+        let x = document.getElementById("inputPassword");
         if (x.type === "password") {
             x.type = "text";
         } else {

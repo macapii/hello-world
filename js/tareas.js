@@ -19,10 +19,10 @@ Copyright (C) 2020-2022 Cristina Ibañez, Konata400
 $(function () {
 
     if (document.getElementsByClassName('editartarea') !== null) {
-        var actdesbuttons = document.getElementsByClassName('editartarea');
-        for (var i = 0; i < actdesbuttons.length; i++) {
-            actdesbuttons[i].addEventListener("click", function () {
-                var indexarray = String(this.value);
+        let actdesbuttons = document.getElementsByClassName('editartarea');
+        for (const element of actdesbuttons) {
+            element.addEventListener("click", function () {
+                let indexarray = String(this.value);
                 
                 $.ajax({
                     url: 'function/tareascalleditar.php',
@@ -31,7 +31,7 @@ $(function () {
                     },
                     type: 'POST',
                     success: function (data) {
-                        var getdebug = 0;
+                        let getdebug = 0;
                         if (getdebug == 1) {
                             alert(data);
                         }
@@ -56,10 +56,10 @@ $(function () {
     }
 
     if (document.getElementsByClassName('actdes') !== null) {
-        var actdesbuttons = document.getElementsByClassName('actdes');
-        for (var i = 0; i < actdesbuttons.length; i++) {
-            actdesbuttons[i].addEventListener("click", function () {
-                var indexarray = String(this.value);
+        let actdesbuttons = document.getElementsByClassName('actdes');
+        for (const element of actdesbuttons) {
+            element.addEventListener("click", function () {
+                let indexarray = String(this.value);
                 
                 $.ajax({
                     url: 'function/tareaactdes.php',
@@ -68,7 +68,7 @@ $(function () {
                     },
                     type: 'POST',
                     success: function (data) {
-                        var getdebug = 0;
+                        let getdebug = 0;
                         if (getdebug == 1) {
                             alert(data);
                         }
@@ -93,10 +93,10 @@ $(function () {
     }
 
     if (document.getElementsByClassName('borrar') !== null) {
-        var borrarbuttons = document.getElementsByClassName('borrar');
-        for (var i = 0; i < borrarbuttons.length; i++) {
-            borrarbuttons[i].addEventListener("click", function () {
-                var indexarray = String(this.value);
+        let borrarbuttons = document.getElementsByClassName('borrar');
+        for (const element of borrarbuttons) {
+            element.addEventListener("click", function () {
+                let indexarray = String(this.value);
 
                 $.ajax({
                     url: 'function/tareaborrar.php',
@@ -105,7 +105,7 @@ $(function () {
                     },
                     type: 'POST',
                     success: function (data) {
-                        var getdebug = 0;
+                        let getdebug = 0;
                         if (getdebug == 1) {
                             alert(data);
                         }

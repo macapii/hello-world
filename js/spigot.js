@@ -32,7 +32,7 @@ $(function () {
 
     if (document.getElementById('compilar') !== null) {
         $("#compilar").click(function () {
-            verspigot = document.getElementById('serselectver').value
+            let verspigot = document.getElementById('serselectver').value
             $.ajax({
                 url: 'function/compilarspigot.php',
                 data: {
@@ -97,7 +97,7 @@ $(function () {
             },
             type: 'POST',
             success: function (data) {
-                var textoantiguo = document.getElementById("laconsola").value;
+                let textoantiguo = document.getElementById("laconsola").value;
 
                 document.getElementById("laconsola").innerHTML = data;
 

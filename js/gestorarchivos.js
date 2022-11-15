@@ -18,13 +18,13 @@ Copyright (C) 2020-2022 Cristina Ibañez, Konata400
 
 $(function () {
 
-    var uncheckalinicio = document.getElementsByClassName('laseleccion');
+    let uncheckalinicio = document.getElementsByClassName('laseleccion');
     for (const element of uncheckalinicio) {
         element.checked = false;
     }
 
     if (document.getElementsByClassName('entrar') !== null) {
-        var entrarbuttons = document.getElementsByClassName('entrar');
+        let entrarbuttons = document.getElementsByClassName('entrar');
         for (const element of entrarbuttons) {
             element.addEventListener("click", function () {
                 $.ajax({
@@ -50,7 +50,7 @@ $(function () {
     }
 
     if (document.getElementsByClassName('atras') !== null) {
-        var atrasbuttons = document.getElementsByClassName('atras');
+        let atrasbuttons = document.getElementsByClassName('atras');
         for (const element of atrasbuttons) {
             element.addEventListener("click", function () {
                 $.ajax({
@@ -76,7 +76,7 @@ $(function () {
     }
 
     if (document.getElementsByClassName('excluirbackup') !== null) {
-        var excluirbackupbuttons = document.getElementsByClassName('excluirbackup');
+        let excluirbackupbuttons = document.getElementsByClassName('excluirbackup');
         for (const element of excluirbackupbuttons) {
             element.addEventListener("click", function () {
                 const elarrayexcfile = [String(this.value)];
@@ -113,7 +113,7 @@ $(function () {
     }
 
     if (document.getElementsByClassName('incluirbackup') !== null) {
-        var incluirbackupbuttons = document.getElementsByClassName('incluirbackup');
+        let incluirbackupbuttons = document.getElementsByClassName('incluirbackup');
         for (const element of incluirbackupbuttons) {
             element.addEventListener("click", function () {
                 const elarrayincbackup = [String(this.value)];
@@ -148,11 +148,11 @@ $(function () {
     }
 
     if (document.getElementsByClassName('borrarfile') !== null) {
-        var borrarfilebuttons = document.getElementsByClassName('borrarfile');
+        let borrarfilebuttons = document.getElementsByClassName('borrarfile');
         for (const element of borrarfilebuttons) {
             element.addEventListener("click", function () {
-                var eleccion = confirm("¡ATENCIÓN!\n\n¿Estás seguro de eliminar el archivo: " + this.id + " ?");
-                if (eleccion == true) {
+                let eleccion = confirm("¡ATENCIÓN!\n\n¿Estás seguro de eliminar el archivo: " + this.id + " ?");
+                if (eleccion) {
                     const elarrayborrarfile = [String(this.value)];
                     $.ajax({
                         type: "POST",
@@ -186,11 +186,11 @@ $(function () {
     }
 
     if (document.getElementsByClassName('borrarcarpeta') !== null) {
-        var borrarcarpetabuttons = document.getElementsByClassName('borrarcarpeta');
+        let borrarcarpetabuttons = document.getElementsByClassName('borrarcarpeta');
         for (const element of borrarcarpetabuttons) {
             element.addEventListener("click", function () {
-                var eleccion = confirm("¡ATENCIÓN!\n\n¿Estás seguro de eliminar la carpeta: " + this.id + " ?");
-                if (eleccion == true) {
+                let eleccion = confirm("¡ATENCIÓN!\n\n¿Estás seguro de eliminar la carpeta: " + this.id + " ?");
+                if (eleccion) {
                     const elarrayborrarcarp = [String(this.value)];
                     $.ajax({
                         type: "POST",
@@ -228,10 +228,10 @@ $(function () {
     }
 
     if (document.getElementsByClassName('renamefile') !== null) {
-        var renamefilebuttons = document.getElementsByClassName('renamefile');
+        let renamefilebuttons = document.getElementsByClassName('renamefile');
         for (const element of renamefilebuttons) {
             element.addEventListener("click", function () {
-                var renombrado = prompt("Renombrar fichero:", this.id);
+                let renombrado = prompt("Renombrar fichero:", this.id);
                 if (renombrado !== null) {
                     $.ajax({
                         type: "POST",
@@ -273,10 +273,10 @@ $(function () {
     }
 
     if (document.getElementsByClassName('renamefolder') !== null) {
-        var renamefolderbuttons = document.getElementsByClassName('renamefolder');
+        let renamefolderbuttons = document.getElementsByClassName('renamefolder');
         for (const element of renamefolderbuttons) {
             element.addEventListener("click", function () {
-                var renombrado = prompt("Renombrar carpeta:", this.id);
+                let renombrado = prompt("Renombrar carpeta:", this.id);
                 if (renombrado !== null) {
                     $.ajax({
                         type: "POST",
@@ -316,7 +316,7 @@ $(function () {
     }
 
     if (document.getElementsByClassName('editarfile') !== null) {
-        var editarbuttons = document.getElementsByClassName('editarfile');
+        let editarbuttons = document.getElementsByClassName('editarfile');
         for (const element of editarbuttons) {
             element.addEventListener("click", function () {
                 $.ajax({
@@ -349,7 +349,7 @@ $(function () {
     }
 
     if (document.getElementsByClassName('descargarfile') !== null) {
-        var descargarbuttons = document.getElementsByClassName('descargarfile');
+        let descargarbuttons = document.getElementsByClassName('descargarfile');
         for (const element of descargarbuttons) {
             element.addEventListener("click", function () {
                 window.open('function/gestordownfile.php?action=' + this.value, '_blank', 'noopener noreferrer', "toolbar=no,scrollbars=yes,resizable=yes,top=400,left=500,width=400,height=100");
@@ -358,7 +358,7 @@ $(function () {
     }
 
     if (document.getElementsByClassName('descomprimirtar') !== null) {
-        var descomprimirtarbuttons = document.getElementsByClassName('descomprimirtar');
+        let descomprimirtarbuttons = document.getElementsByClassName('descomprimirtar');
         for (const element of descomprimirtarbuttons) {
             element.addEventListener("click", function () {
 
@@ -406,7 +406,7 @@ $(function () {
     }
 
     if (document.getElementsByClassName('descomprimirzip') !== null) {
-        var descomprimirzipbuttons = document.getElementsByClassName('descomprimirzip');
+        let descomprimirzipbuttons = document.getElementsByClassName('descomprimirzip');
         for (const element of descomprimirzipbuttons) {
             element.addEventListener("click", function () {
 
@@ -450,7 +450,7 @@ $(function () {
     }
 
     if (document.getElementsByClassName('comprimirzipfolder') !== null) {
-        var comprimircarpetazipbuttons = document.getElementsByClassName('comprimirzipfolder');
+        let comprimircarpetazipbuttons = document.getElementsByClassName('comprimirzipfolder');
         for (const element of comprimircarpetazipbuttons) {
             element.addEventListener("click", function () {
 
@@ -501,11 +501,11 @@ $(function () {
     }
 
     $(".custom-file-input").on("change", function () {
-        var fileName = $(this).val().split("\\").pop();
+        let fileName = $(this).val().split("\\").pop();
         $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
 
-        var elarchivo = document.getElementById('fileName');
-        var eltamano = elarchivo.files.item(0).size;
+        let elarchivo = document.getElementById('fileName');
+        let eltamano = elarchivo.files.item(0).size;
 
         $.ajax({
             url: 'function/gestorlimituploadfile.php',
@@ -573,7 +573,7 @@ $(function () {
 
     if (document.getElementById('bnnuevacarpeta') !== null) {
         $("#bnnuevacarpeta").click(function () {
-            var renombrado = prompt("Nombre nueva carpeta:");
+            let renombrado = prompt("Nombre nueva carpeta:");
             const elarraycrear = [String(renombrado)];
             if (renombrado !== null) {
                 $.ajax({
@@ -604,9 +604,9 @@ $(function () {
 
     if (document.getElementById('bcopiar') !== null) {
         $("#bcopiar").click(function () {
-            var arrayseleccion = [];
-            var elindice = 0;
-            var checkseleccionados = document.getElementsByClassName('laseleccion');
+            let arrayseleccion = [];
+            let elindice = 0;
+            let checkseleccionados = document.getElementsByClassName('laseleccion');
             for (const element of checkseleccionados) {
                 if (element.checked == true) {
                     arrayseleccion[elindice] = element.value;
@@ -645,7 +645,7 @@ $(function () {
 
     if (document.getElementById('bpegar') !== null) {
         $("#bpegar").click(function () {
-            var eleccion = confirm("¡CONFIRMAR ACCION!\n\nEn caso de existir un archivo con el mismo nombre se sobrescribirá.\n\n¿Seguro que quieres continuar?");
+            let eleccion = confirm("¡CONFIRMAR ACCION!\n\nEn caso de existir un archivo con el mismo nombre se sobrescribirá.\n\n¿Seguro que quieres continuar?");
             if (eleccion == true) {
 
                 $.ajax({
@@ -681,9 +681,9 @@ $(function () {
 
     if (document.getElementById('beliminarseleccion') !== null) {
         $("#beliminarseleccion").click(function () {
-            var arrayseleccion = [];
-            var elindice = 0;
-            var checkseleccionados = document.getElementsByClassName('laseleccion');
+            let arrayseleccion = [];
+            let elindice = 0;
+            let checkseleccionados = document.getElementsByClassName('laseleccion');
 
             for (const element of checkseleccionados) {
                 if (element.checked == true) {
@@ -695,7 +695,7 @@ $(function () {
             if (arrayseleccion == "") {
                 alert("No has seleccionado ningún elemento");
             } else {
-                var eleccion = confirm("¡ELIMINAR CONFIRMAR ACCIÓN!\n\n¡Vas a eliminar las carpetas o archivos seleccionados!\n\n¿Seguro que quieres continuar?");
+                let eleccion = confirm("¡ELIMINAR CONFIRMAR ACCIÓN!\n\n¡Vas a eliminar las carpetas o archivos seleccionados!\n\n¿Seguro que quieres continuar?");
                 if (eleccion == true) {
                     $.ajax({
                         url: 'function/gestorborrarmultiple.php',
@@ -731,7 +731,7 @@ $(function () {
 
     if (document.getElementById('bselectall') !== null) {
         $("#bselectall").click(function () {
-            var checkseleccionados = document.getElementsByClassName('laseleccion');
+            let checkseleccionados = document.getElementsByClassName('laseleccion');
             for (const element of checkseleccionados) {
                 if (element.disabled == false) {
                     element.checked = true;
@@ -742,7 +742,7 @@ $(function () {
 
     if (document.getElementById('bunselectall') !== null) {
         $("#bunselectall").click(function () {
-            var checkseleccionados = document.getElementsByClassName('laseleccion');
+            let checkseleccionados = document.getElementsByClassName('laseleccion');
             for (const element of checkseleccionados) {
                 element.checked = false;
             }
@@ -751,7 +751,7 @@ $(function () {
 
     if (document.getElementById('resetexcluidos') !== null) {
         $("#resetexcluidos").click(function () {
-            var eleccion = confirm("Borrar listado excluidos!\n\n¡Vas a eliminar el listado de archivos excluidos!\n\n¿Seguro que quieres continuar?");
+            let eleccion = confirm("Borrar listado excluidos!\n\n¡Vas a eliminar el listado de archivos excluidos!\n\n¿Seguro que quieres continuar?");
             if (eleccion == true) {
                 $.ajax({
                     url: 'function/gestorborrarexcluidos.php',
@@ -781,8 +781,8 @@ $(function () {
     sessionStorage.pulsorecuadro = 0;
 
     if (document.getElementsByClassName('elclick1') !== null) {
-        var clickhover = document.getElementsByClassName('elclick1');
-        var checkseleccionados = document.getElementsByClassName('laseleccion');
+        let clickhover = document.getElementsByClassName('elclick1');
+        let checkseleccionados = document.getElementsByClassName('laseleccion');
         for (const element of clickhover) {
             element.addEventListener("click", function () {
 
@@ -805,7 +805,7 @@ $(function () {
     }
 
     if (document.getElementsByClassName('laseleccion') !== null) {
-        var checkseleccionados = document.getElementsByClassName('laseleccion');
+        let checkseleccionados = document.getElementsByClassName('laseleccion');
         for (const element of checkseleccionados) {
             element.addEventListener("click", function () {
 
